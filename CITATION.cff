@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use these skills in teaching or research, please cite the library version you used."
 title: "AI Skills Without Borders: shared AI skills for medical and biomedical-research education"
-version: 0.1.6
+version: 0.1.7
 date-released: 2026-11-10
 license: CC-BY-4.0
 repository-code: "https://github.com/ai-skills-without-borders/skills"

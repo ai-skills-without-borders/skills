@@ -180,3 +180,132 @@ def equation_html():
             '<div class="eq-op" aria-hidden="true">=</div>'
             f'<div class="eq-item skill"><span class="eq-icon">{svg(skill)}</span><b>A skill</b><span>transferable know-how any assistant can use</span></div>'
             '</div>')
+
+
+# ---------------------------------------------------------------- generic line icons for pages
+
+_UI = {
+    "unequal": '<path d="M4 20V10M10 20V4M16 20v-6M22 20H2"/>',
+    "open": '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>',
+    "flow": '<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+    "grading": '<path d="M9 5h11M9 12h11M9 19h11"/><path d="m3 5 1.5 1.5L7 4M3 12l1.5 1.5L7 11"/><circle cx="5" cy="19" r="1.5"/>',
+    "curriculum": '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M7 13h4M7 16.5h7"/>',
+    "reading": '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5Z"/><path d="M12 6.5v13"/>',
+    "formatting": '<rect x="5" y="4.5" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="m8.5 13 2.5 2.5 4.5-5"/>',
+    "mentoring": '<circle cx="8" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M2.5 20c.5-3.5 2.8-5.5 5.5-5.5s5 2 5.5 5.5M13.5 20c.4-2.6 1.8-4 3.5-4s3.1 1.4 3.5 4"/>',
+    "write": '<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+    "share": '<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6"/>',
+    "improve": '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4.5h-4.5"/>',
+    "person": '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.6-4 3.4-6.5 7-6.5s6.4 2.5 7 6.5"/>',
+    "school": '<path d="M3 20h18M5 20v-8M9.5 20v-8M14.5 20v-8M19 20v-8M2.5 10h19L12 4z"/>',
+    "check": '<circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/>',
+}
+
+
+def ui_icon(name, size=24, cls="ui-icon"):
+    return (f'<svg class="{cls}" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{_UI[name]}</svg>')
+
+
+def access_svg(stacked=False):
+    """Before and after: expertise locked in one institution, then flowing through the open library to everyone."""
+    f = 'font-family="Atkinson Hyperlegible, system-ui, sans-serif"'
+
+    def school(x, y, has, ring):
+        dot = f'<circle cx="{x + 15}" cy="{y - 15}" r="7" fill="{YELLOW}" stroke="{NAVY}" stroke-width="1.5"/>' if has else ""
+        return (f'<circle cx="{x}" cy="{y}" r="24" fill="#fff" stroke="{ring}" stroke-width="2.2"/>'
+                f'<path d="M{x - 10} {y + 7}h20M{x - 8} {y + 7}v-8M{x - 3} {y + 7}v-8M{x + 3} {y + 7}v-8M{x + 8} {y + 7}v-8M{x - 11} {y - 2}h22L{x} {y - 9}Z" '
+                f'fill="none" stroke="{NAVY if ring != RULE else "#9aa9b5"}" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>' + dot)
+
+    pos = [(150, 52), (250, 120), (215, 225), (85, 225), (50, 120)]
+    # before: one institution holds the expertise, the others are on their own
+    before = school(150, 135, True, TEAL)
+    before += "".join(school(x, y, False, RULE) for x, y in pos)
+    before += (f'<circle cx="150" cy="135" r="38" fill="none" stroke="{NAVY}" stroke-width="1.5" stroke-dasharray="4 4"/>'
+               f'<text x="150" y="285" text-anchor="middle" font-size="15" font-weight="700" fill="{NAVY}">Today</text>'
+               f'<text x="150" y="304" text-anchor="middle" font-size="12.5" fill="#4b6178">Expertise stays where it was built</text>')
+    # after: the open library in the middle, two-way exchange with every institution
+    after = ""
+    for x, y in pos:
+        after += (f'<path d="M150 135 L{x} {y}" stroke="{BLUE}" stroke-width="2.6" stroke-dasharray="0.1 7" stroke-linecap="round"/>')
+    after += "".join(school(x, y, True, TEAL) for x, y in pos)
+    after += (f'<rect x="118" y="108" width="64" height="56" rx="9" fill="{NAVY}"/>'
+              + "".join(f'<rect x="130" y="{119 + k * 11}" width="40" height="6" rx="3" fill="{c}"/>' for k, c in enumerate([YELLOW, "#7cc4c4", "#9cc6dd", "#7cc4c4"]))
+              + f'<text x="150" y="285" text-anchor="middle" font-size="15" font-weight="700" fill="{NAVY}">With shared skills</text>'
+              f'<text x="150" y="304" text-anchor="middle" font-size="12.5" fill="#4b6178">Every educator can use it and add to it</text>')
+    if stacked:
+        legend = (f'<circle cx="92" cy="660" r="6" fill="{YELLOW}" stroke="{NAVY}" stroke-width="1.5"/>'
+                  f'<text x="104" y="664" font-size="12.5" fill="#4b6178">teaching expertise</text>')
+        arrow = f'<path d="M150 318v26m-9-10 9 10 9-10" fill="none" stroke="{NAVY}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>'
+        return ('<svg class="access-art stacked" viewBox="0 0 300 675" role="img" aria-labelledby="access-ts">'
+                '<title id="access-ts">Today, teaching expertise stays in the institution where it was built. With shared skills, an open library connects every institution, and each one both uses and adds expertise.</title>'
+                f'<g {f}><g>{before}</g>{arrow}<g transform="translate(0 340)">{after}</g>{legend}</g></svg>')
+    legend = (f'<circle cx="252" cy="330" r="6" fill="{YELLOW}" stroke="{NAVY}" stroke-width="1.5"/>'
+              f'<text x="264" y="334" font-size="12.5" fill="#4b6178">teaching expertise</text>')
+    arrow = f'<path d="M318 160h34m-10-9 10 9-10 9" fill="none" stroke="{NAVY}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>'
+    return ('<svg class="access-art wide" viewBox="0 0 670 345" role="img" aria-labelledby="access-t">'
+            '<title id="access-t">Today, teaching expertise stays in the institution where it was built. With shared skills, an open library connects every institution, and each one both uses and adds expertise.</title>'
+            f'<g {f}><g>{before}</g>{arrow}<g transform="translate(370 0)">{after}</g>{legend}</g></svg>')
+
+
+def idea_html():
+    """Write once, share, improve together: three steps that loop."""
+    steps = [("write", "Write it once", "An educator who knows a task well writes the skill: what it is for, what it needs, the steps, what it should produce, and its limits."),
+             ("share", "Share it", "Colleagues at other institutions use it in their own AI tool: Claude, ChatGPT, Gemini or Copilot, with a paste-in version for free plans."),
+             ("improve", "Improve it together", "Each use, report, adaptation and review makes the skill better and shows how far it can be trusted.")]
+    items = "".join(f'<li><span class="idea-ic">{ui_icon(k, 26)}</span><b>{t}</b>{d}</li>' for k, t, d in steps)
+    return f'<div class="idea"><ol class="idea-steps">{items}</ol><p class="idea-loop" aria-hidden="true"><span>and back to the start: every improvement reaches every user</span></p></div>'
+
+
+def timeline_html(segments, total):
+    """A schedule drawn to scale: one row per segment, bar placed at its start time."""
+    rows, t = [], 0
+    for mins, title, note in segments:
+        left, width = t / total * 100, mins / total * 100
+        rows.append(f'<li><div class="tl-text"><b>{title}</b><span>{note}</span></div>'
+                    f'<div class="tl-track"><span class="tl-bar" style="left:{left:.2f}%;width:{width:.2f}%"><em>{mins} min</em></span></div></li>')
+        t += mins
+    ticks = "".join(f'<span style="left:{m / total * 100:.2f}%">{m}</span>' for m in range(0, total + 1, 15))
+    return (f'<div class="timeline"><ol>{"".join(rows)}</ol>'
+            f'<div class="tl-axis"><div class="tl-text"></div><div class="tl-ticks">{ticks}</div></div></div>')
+
+
+def tiers_html(entries):
+    """How a principle earns its place: origin source, then medical-education evidence, else a visible flag."""
+    return ('<div class="tiers">'
+            '<div class="tier"><span class="tier-n">1</span><b>Origin</b><span>The source where the principle was first formulated, often in the learning sciences</span></div>'
+            '<span class="tier-plus" aria-hidden="true">+</span>'
+            '<div class="tier"><span class="tier-n">2</span><b>Medical-education evidence</b><span>A study with health-professions learners, or a standard from a medical-education body</span></div>'
+            '<span class="tier-plus" aria-hidden="true">=</span>'
+            '<div class="tier-out"><div class="ok"><b>Ready for medical educators</b></div><div class="flag"><b>If tier 2 is missing</b>marked “evidence from general education only”</div></div>'
+            '</div>')
+
+
+def coverage_html(entries, layers):
+    """One square per principle, by layer: filled when health-professions evidence backs it."""
+    rows = []
+    for layer, (title, _) in layers.items():
+        ps = [p for p in entries if p["layer"] == layer]
+        ok = sum(p["med_ok"] for p in ps)
+        cells = "".join(f'<span class="sq {"ok" if p["med_ok"] else "gap"}" title="{p["name"]}"><span class="vh">{p["name"]}: {"medical-education evidence" if p["med_ok"] else "general education only"}</span></span>' for p in ps)
+        rows.append(f'<div class="cov-row"><div class="cov-name">{title}</div><div class="cov-cells">{cells}</div><div class="cov-n">{ok} of {len(ps)}</div></div>')
+    total = len(entries)
+    ok = sum(p["med_ok"] for p in entries)
+    return (f'<div class="coverage"><p class="cov-head"><b>{ok} of {total}</b> principles have evidence from health-professions education.</p>{"".join(rows)}'
+            '<p class="cov-legend"><span class="sq ok"></span> medical-education evidence <span class="sq gap"></span> general education only, still needed</p></div>')
+
+
+def effort_html(items):
+    """Ways to contribute as a staircase: more time, more impact."""
+    n = len(items)
+    steps = "".join(f'<a class="stair" href="{href}" style="--h:{(i + 1) / n:.3f}"><span class="stair-bar"></span><b>{title}</b><span>{time}</span></a>'
+                    for i, (title, time, href) in enumerate(items))
+    return f'<div class="stairs" role="list">{steps}</div><p class="stairs-axis" aria-hidden="true"><span>Less time</span><span>More time, more impact</span></p>'
+
+
+def approval_html(rows):
+    """Who approves what: change, approver, and what must be true."""
+    out = "".join(f'<li><div class="ap-what">{ui_icon(ic, 22)}<b>{what}</b></div><span class="ap-arrow" aria-hidden="true"></span>'
+                  f'<div class="ap-who">{ui_icon(who_ic, 22)}<b>{who}</b><span>{need}</span></div></li>'
+                  for ic, what, who_ic, who, need in rows)
+    return f'<ol class="approval">{out}</ol>'

@@ -34,6 +34,28 @@ LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
 TOOLNAME = {"claude": "Claude", "chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot"}
 STATE = {"untested": "not yet tested", "works": "works", "works-with-limits": "works, with limits", "broken": "broken"}
 
+WORKSHOP = [
+    (15, "Introduction and demonstration", "What a skill is, how it differs from a prompt, examples across AI platforms"),
+    (5, "Choose a table and a task", "Five tables by area of work; pick a task from the material you brought"),
+    (25, "Build the skill", "Fill in the template, write the skill, test it on your own material, refine"),
+    (15, "Peer exchange and portability test", "Can a colleague use it? Does it work in another AI tool?"),
+    (10, "Shared library and community", "Add the skill to the library; how the community grows"),
+    (5, "Closing", "Key lessons and how to keep contributing"),
+]
+EFFORT = [
+    ("Send a usage report", "five minutes, after real teaching", "#quick"),
+    ("Suggest a change or review a skill", "one real task", "#quick"),
+    ("Edit a skill directly", "in your browser, no Git", "#edit"),
+    ("Create an institutional variant", "the skill, fitted to your institution", "#adapt"),
+    ("Share a new skill", "your own know-how, for everyone", "#new"),
+]
+APPROVAL = [
+    ("improve", "Any change to a shared skill, or a new skill", "person", "One maintainer", "Checks pass. New skills start as Draft"),
+    ("school", "Institutional variant", "school", "One maintainer from that institution", "Checks pass"),
+    ("check", "Maturity upgrade", "person", "One library maintainer", "Linked usage reports; for Reviewed, one completed review"),
+]
+
+
 def pedagogy_body():
     """guide/pedagogy.md from its first section on: the page has its own title and introduction."""
     text = (ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")
@@ -230,17 +252,21 @@ def build_site(cards, variants, cfg, public_card):
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
                         read("skills.html"), "skills.html", read("skills.js")),
         "contribute.html": ("Contribute — " + cfg["library_name"], "Adapt, improve and share skills.",
-                            read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()), "contribute.html", ""),
+                            read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
-                         read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
+                         read("quality.html").replace("{{APPROVAL}}", visuals.approval_html(APPROVAL)).replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "about.html": ("Why this project — " + cfg["library_name"], "Why shared AI skills matter for biomedical research and medical education, and who is behind the project.",
-                       read("about.html"), "about.html", ""),
+                       read("about.html").replace("{{ACCESS}}", visuals.access_svg() + visuals.access_svg(stacked=True)).replace("{{IDEA}}", visuals.idea_html()).replace(
+                           "{{WORKSHOP}}", visuals.timeline_html(WORKSHOP, 75)), "about.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
                           read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows(ped)).replace("{{MATRIX}}", visuals.matrix_html(ped)).replace(
-                              "{{PEDAGOGY_MD}}", gh_links(md(pedagogy_body()), gh)),
+                              "{{PEDAGOGY_MD}}", gh_links(md(pedagogy_body()), gh).replace(
+                              "<h2>Each principle in detail</h2>",
+                              visuals.tiers_html(ped) + visuals.coverage_html(ped, principles.LAYERS) + "<h2>Each principle in detail</h2>", 1)),
                           "pedagogy.html", ""),
     }
     for fname, (title, desc, content, active, scripts) in pages.items():
+        content = re.sub(r"\{\{UI:(\w+)\}\}", lambda m: visuals.ui_icon(m.group(1)), content)
         (DOCS / fname).write_text(layout(cfg, title, desc, content, active, scripts=scripts, catalog=catalog), encoding="utf-8")
     for c in cards:
         c2 = dict(c)
