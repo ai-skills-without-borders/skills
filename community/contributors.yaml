@@ -4,7 +4,8 @@
 # generated from this file by tools/build.py. A maintainer adds an entry when a
 # contribution is merged or a report is received.
 #
-# Every contribution names an institution. A person's name appears only if they
+# Only contributions to skills are recorded (a new skill, an improvement, a variant,
+# a usage report or a review), not other work on the project. Every contribution names an institution. A person's name appears only if they
 # agreed to be credited (the "credit me by name" box in the forms).
 #
 # institutions:
@@ -17,9 +18,9 @@
 #
 # contributions (newest last):
 #   - date: YYYY-MM-DD
-#     type: skill | improvement | variant | usage-report | review | workshop | founding
+#     type: skill | improvement | variant | usage-report | review
 #     institution: <id>
-#     skill: <skill name>       when the contribution is about one skill
+#     skill: <skill name>       required: only contributions to skills are recorded
 #     person: "Name"            only with consent
 #     link: URL                 the pull request, issue or report
 #     note: short description
@@ -41,16 +42,6 @@ institutions:
     founding: true
 
 contributions:
-  - date: 2026-11-09
-    type: founding
-    institution: weizmann
-    person: "Amit Shraga, PhD"
-    note: Co-founded the library
-  - date: 2026-11-09
-    type: founding
-    institution: mssm
-    person: "Talia H. Swartz, MD, PhD"
-    note: Co-founded the library
   - date: 2026-11-09
     type: skill
     institution: weizmann
@@ -81,11 +72,6 @@ contributions:
     institution: weizmann
     skill: exam-question-writer
     person: "Amit Shraga, PhD"
-  - date: 2026-11-10
-    type: improvement
-    institution: mssm
-    person: "Talia H. Swartz, MD, PhD"
-    note: Added medical-education sources for five principles of the pedagogy
   - date: 2026-11-10
     type: skill
     institution: mssm

@@ -20,8 +20,6 @@ TYPES = {
     "variant": ("Institutional variant", "#4a86a8"),
     "usage-report": ("Usage report", "#7cc4c4"),
     "review": ("Review", "#9cc6dd"),
-    "workshop": ("Workshop", "#c9a800"),
-    "founding": ("Founding", "#f4dc4a"),
 }
 
 
@@ -72,7 +70,9 @@ def validate(skill_names):
         d = c.get("date")
         if not isinstance(d, dt.date):
             errors.append(f"{tag}: date must be YYYY-MM-DD")
-        if c.get("skill") and c["skill"] not in skill_names:
+        if not c.get("skill"):
+            errors.append(f"{tag}: every contribution must name the skill it is about (only contributions to skills are recorded)")
+        elif c["skill"] not in skill_names:
             errors.append(f"{tag}: unknown skill '{c['skill']}'")
     return errors
 
@@ -109,9 +109,7 @@ def stats():
     insts, contribs = load()
     by_country = Counter(insts[c["institution"]]["country"] for c in contribs)
     by_inst = Counter(c["institution"] for c in contribs)
-    for iid, i in insts.items():  # an institution with no contributions yet still counts as a member
-        by_country.setdefault(i["country"], 0)
-        by_inst.setdefault(iid, 0)
+    insts = {k: v for k, v in insts.items() if by_inst.get(k)}  # only institutions with skill contributions
     return insts, contribs, by_country, by_inst
 
 
@@ -178,7 +176,7 @@ def institutions_html():
         i = insts[iid]
         segs = "".join(f'<span style="width:{m / top * 100:.2f}%;background:{TYPES[t][1]}" title="{TYPES[t][0]}: {m}"></span>'
                        for t, m in sorted(kinds[iid].items(), key=lambda kv: list(TYPES).index(kv[0])))
-        badge = '<span class="founding-badge">Founding institution</span>' if i.get("founding") else ""
+        badge = ""
         where = ", ".join(x for x in (i.get("city"), country_name(i["country"], world)) if x)
         rows.append(f'<li><span class="rank">{rank}</span><div class="i-main"><b>{e(i["name"])}</b>'
                     f'<span class="i-where"><span class="flag" aria-hidden="true">{_flag(i["country"])}</span>{e(where)} {badge}</span>'

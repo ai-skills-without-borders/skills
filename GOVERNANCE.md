@@ -48,7 +48,7 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 
 Every contribution is recorded with the contributor's institution and country, so the community can see where its knowledge comes from. The issue forms ask for both, and pull requests state them in the description.
 
-When a contribution is merged or a report is received, the approving maintainer adds it to [`community/contributors.yaml`](community/contributors.yaml): the date, the type (skill, improvement, variant, usage report, review, workshop), the institution and, if relevant, the skill. A new institution is added there once, with its country and approximate location. A person's name is recorded only if they ticked "credit me by name". The [community page](https://ai-skills-without-borders.github.io/skills/community.html) is generated from this file, and the build checks that every entry names a known institution.
+When a contribution is merged or a report is received, the approving maintainer adds it to [`community/contributors.yaml`](community/contributors.yaml): the date, the type (new skill, improvement, variant, usage report or review), the institution and the skill. Only contributions to skills are recorded; other work on the project is not. A new institution is added there once, with its country and approximate location. A person's name is recorded only if they ticked "credit me by name". The [community page](https://ai-skills-without-borders.github.io/skills/community.html) is generated from this file, and the build checks that every entry names a known institution.
 
 ## How changes are approved
 
