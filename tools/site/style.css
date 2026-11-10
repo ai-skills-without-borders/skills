@@ -579,3 +579,7 @@ p.more { margin: 18px 0 0; font-weight: 700; }
   .c-bar { grid-column: 1 / -1; grid-row: 2; }
   .recent li { grid-template-columns: 1fr; gap: 2px; }
 }
+
+.origin { border-left: 4px solid var(--marker); padding: 2px 0 2px 20px; max-width: 72ch; }
+.origin p { margin: 8px 0 0; }
+.origin p:first-child { margin-top: 0; }
