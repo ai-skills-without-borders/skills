@@ -119,7 +119,30 @@
     window.addEventListener("resize", spy);
     spy();
   }
-  document.addEventListener("DOMContentLoaded", () => { pageMap(); setTopH(); });
+  // Tabs (first-contribution guide): click or arrow keys switch panels.
+  function tabs() {
+    document.querySelectorAll('[role="tablist"]').forEach(list => {
+      const ts = [...list.querySelectorAll('[role="tab"]')];
+      const show = t => {
+        ts.forEach(x => {
+          const on = x === t;
+          x.setAttribute("aria-selected", String(on));
+          x.tabIndex = on ? 0 : -1;
+          document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+        });
+      };
+      ts.forEach((t, i) => {
+        t.addEventListener("click", () => show(t));
+        t.addEventListener("keydown", ev => {
+          const d = ev.key === "ArrowRight" ? 1 : ev.key === "ArrowLeft" ? -1 : 0;
+          if (!d) return;
+          const n = ts[(i + d + ts.length) % ts.length];
+          show(n); n.focus(); ev.preventDefault();
+        });
+      });
+    });
+  }
+  document.addEventListener("DOMContentLoaded", () => { tabs(); pageMap(); setTopH(); });
   window.addEventListener("resize", setTopH);
   window.addEventListener("load", setTopH);
 })();

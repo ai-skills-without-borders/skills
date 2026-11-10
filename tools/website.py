@@ -253,7 +253,7 @@ def build_site(cards, variants, cfg, public_card):
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
                         read("skills.html"), "skills.html", read("skills.js")),
         "contribute.html": ("Contribute — " + cfg["library_name"], "Adapt, improve and share skills.",
-                            read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
+                            read("contribute.html").replace("{{GUIDE}}", visuals.guide_html(gh)).replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
                          read("quality.html").replace("{{APPROVAL}}", visuals.approval_html(APPROVAL)).replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "community.html": ("Community — " + cfg["library_name"], "Contributions by country and institution.",

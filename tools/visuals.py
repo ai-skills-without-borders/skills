@@ -309,3 +309,53 @@ def approval_html(rows):
                   f'<div class="ap-who">{ui_icon(who_ic, 22)}<b>{who}</b><span>{need}</span></div></li>'
                   for ic, what, who_ic, who, need in rows)
     return f'<ol class="approval">{out}</ol>'
+
+
+# ---------------------------------------------------------------- first-contribution guide
+
+def _screen(body, url="github.com/ai-skills-without-borders/skills"):
+    return (f'<div class="mock" aria-hidden="true"><div class="mock-bar"><i></i><i></i><i></i><span>{url}</span></div>'
+            f'<div class="mock-body">{body}</div></div>')
+
+
+def _field(label, value="", req=False, tall=False):
+    star = '<em>*</em>' if req else ""
+    return f'<div class="mf"><span>{label}{star}</span><div class="mf-in{" tall" if tall else ""}">{value}</div></div>'
+
+
+def guide_html(gh):
+    new_steps = [
+        ("Open the form", "Click <b>Share a new skill</b>. It opens a short form on GitHub. You need a free GitHub account, nothing else.",
+         _screen('<div class="m-title">Share a new skill</div><p class="m-p">Propose a skill for the library.</p><span class="m-btn hl">Share a new skill</span>', "ai-skills-without-borders.github.io")),
+        ("Say who you are", "Your institution and country put you on the community map. Your name appears only if you tick the box.",
+         _screen(_field("Institution", "Your medical school", True) + _field("Country", "Your country", True) + '<div class="m-check"><i>✓</i>Credit me by name</div>')),
+        ("Describe the skill", "Six short parts: purpose, inputs, steps, expected output, how you know it works, and limits. Then attach a ZIP or paste the instructions.",
+         _screen(_field("Purpose", "Writes exam items from objectives", True) + _field("Limitations", "Needs expert review", True) + '<div class="m-file">📎 my-skill.zip</div>')),
+        ("Submit, and it's in", "A maintainer checks it and adds it to the library as a Draft, with you and your institution credited.",
+         _screen('<span class="m-btn go">Submit new issue</span><div class="m-arrow">↓</div><div class="m-card"><b>Your skill</b><span class="m-chip">Draft</span></div>', "ai-skills-without-borders.github.io")),
+    ]
+    report_steps = [
+        ("Open the skill's page", "Find the skill in the catalog and scroll to <b>Improve or adapt this skill</b>.",
+         _screen('<div class="m-title">Exam Question Writer</div><div class="m-sub">Improve or adapt this skill</div><span class="m-link hl">Report how it went</span><span class="m-link">Suggest a change</span>', "ai-skills-without-borders.github.io")),
+        ("Choose what to share", "<b>Report how it went</b> after using it, <b>Suggest a change</b> in plain words, or <b>Report a problem</b>.",
+         _screen('<span class="m-opt hl">Usage report</span><span class="m-opt">Suggest a change</span><span class="m-opt">Problem</span><span class="m-opt">Review</span>')),
+        ("Fill in a short form", "Your institution, what you asked, what worked and what didn't. About five minutes.",
+         _screen(_field("Institution", "Your medical school", True) + _field("What worked", "Items matched our objectives") + _field("What didn't", "Too many options per item"))),
+        ("Submit, and the skill improves", "A maintainer updates the skill, credits your institution, and your report adds to the skill's maturity.",
+         _screen('<span class="m-btn go">Submit new issue</span><div class="m-arrow">↓</div><div class="m-card"><b>Exam Question Writer</b><span class="m-chip up">+1 usage report</span></div>', "ai-skills-without-borders.github.io")),
+    ]
+
+    def track(steps, cta, href):
+        items = "".join(f'<li><div class="g-num">{k}</div><div class="g-text"><b>{t}</b><p>{d}</p></div>{m}</li>'
+                        for k, (t, d, m) in enumerate(steps, 1))
+        return f'<ol class="guide-steps">{items}</ol><p class="guide-cta"><a class="btn primary" href="{href}">{cta}</a></p>'
+
+    return (
+        '<div class="guide">'
+        '<div class="guide-tabs" role="tablist" aria-label="Choose a guide">'
+        '<button role="tab" id="gt-new" aria-controls="gp-new" aria-selected="true">Share a new skill</button>'
+        '<button role="tab" id="gt-report" aria-controls="gp-report" aria-selected="false" tabindex="-1">Update or report on a skill</button>'
+        '</div>'
+        f'<div class="guide-panel" role="tabpanel" id="gp-new" aria-labelledby="gt-new">{track(new_steps, "Share a new skill", gh + "/issues/new?template=new-skill.yml")}</div>'
+        f'<div class="guide-panel" role="tabpanel" id="gp-report" aria-labelledby="gt-report" hidden>{track(report_steps, "Browse the skills", "skills.html")}</div>'
+        '</div>')
