@@ -43,6 +43,7 @@ Candidates for a new skill, or an addition to an existing one.
 | `pbl-rbl-session-builder` | 6 |
 | `reading-material-generator` | 4 |
 | `syllabus-builder` | 5 |
+| `thesis-lab-navigator` | 1 |
 
 ## Evidence by layer
 

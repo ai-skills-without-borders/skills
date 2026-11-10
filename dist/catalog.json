@@ -570,5 +570,61 @@
     "zip": "downloads/syllabus-builder.zip",
     "paste": "paste/syllabus-builder.md",
     "source_url": null
+  },
+  {
+    "name": "thesis-lab-navigator",
+    "title": "Thesis Lab Navigator",
+    "version": "0.1.0",
+    "summary": "Helps a graduate or MD-PhD student plan rotations and choose a thesis lab.",
+    "tasks": [
+      "Help me plan my rotations",
+      "Which lab should I join",
+      "What should I ask a PI",
+      "Compare the labs I rotated in",
+      "How do I ask to join a lab"
+    ],
+    "users": [
+      "learners"
+    ],
+    "audience": [
+      "Learners"
+    ],
+    "inputs": [
+      "Where the student is in choosing",
+      "The program's rules on rotations, deadlines and approvals",
+      "The student's interests and limits",
+      "Labs under consideration, if any"
+    ],
+    "outputs": [
+      "The student's ranked priorities for a lab",
+      "A rotation plan with a question each rotation should answer",
+      "Questions for the PI, lab members and program leaders",
+      "Reflection on what each rotation showed",
+      "A side-by-side comparison of labs against the student's priorities",
+      "A plan for asking to join and confirming funding and expectations"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "untested",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "description": "Helps a graduate or MD-PhD student plan rotations and choose a thesis lab. It helps the student work out what they need from a lab, plan rotations, prepare questions for the PI and lab members, reflect on what they saw during a rotation, compare labs against their own priorities and ask to join. The student makes the decision.",
+    "zip": "downloads/thesis-lab-navigator.zip",
+    "paste": "paste/thesis-lab-navigator.md",
+    "source_url": null
   }
 ]
