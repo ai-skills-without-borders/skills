@@ -23,7 +23,7 @@
       const nv = (c.variants || []).length;
       return `<article class="skill" id="skill-${c.name}">
         <div class="row">
-          <div><h3><a href="skills/${esc(c.name)}.html">${esc(c.title)}</a>${c.starter ? `<span class="starter-note">Start here</span>` : ""}${nv ? `<span class="variants-note">${nv} institutional variant${nv > 1 ? "s" : ""}</span>` : ""}</h3><p>${esc(c.summary)}</p></div>
+          <div class="titleline"><span class="sk-badge">${c.icon}</span><div><h3><a href="skills/${esc(c.name)}.html">${esc(c.title)}</a>${c.starter ? `<span class="starter-note">Start here</span>` : ""}${nv ? `<span class="variants-note">${nv} institutional variant${nv > 1 ? "s" : ""}</span>` : ""}</h3><p>${esc(c.summary)}</p></div></div>
           <div class="ladder" aria-label="Maturity: ${LABEL[c.maturity]}"><div class="steps">${steps}</div><span>${LABEL[c.maturity]}${c.runs_code ? " · optional scripts" : ""}</span></div>
           <button class="toggle" type="button" aria-expanded="false" aria-controls="d-${c.name}" aria-label="Show details for ${esc(c.title)}">+</button>
         </div>

@@ -18,6 +18,8 @@ from pathlib import Path
 
 import markdown
 
+import visuals
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "tools" / "site"
 DOCS = ROOT / "docs"
@@ -131,7 +133,7 @@ def skill_page(c, cfg, variants):
                  "TASKS": li(c.get("tasks")), "INPUTS": li(c.get("inputs")), "OUTPUTS": li(c.get("outputs")),
                  "PEDAGOGY": ped, "VARIANTS": vhtml, "ORIGIN": origin, "FRAMEWORKS": frameworks,
                  "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "TESTED": tested, "USED_AT": used_at,
-                 "REVIEWERS": reviewers, "NAME": e(c["name"])}.items():
+                 "REVIEWERS": reviewers, "NAME": e(c["name"]), "ICON": visuals.icon(c["name"], 36)}.items():
         content = content.replace("{{" + k + "}}", v)
     return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../")
 
@@ -139,11 +141,20 @@ def skill_page(c, cfg, variants):
 def status_table(cards):
     rows = []
     for c in sorted(cards, key=lambda c: (-LADDER.index(c["maturity"]), c["title"])):
-        tested = ", ".join(f"{TOOLNAME.get(t, t)}: {STATE.get(s, s)}" for t, s in (c.get("tested_in") or {}).items())
-        rows.append(f'<tr><td><a href="skills/{e(c["name"])}.html">{e(c["title"])}</a></td><td>{LABEL[c["maturity"]]}</td>'
-                    f'<td class="hide-m">{e(tested)}</td><td>{len(c.get("used_at") or [])}</td><td>{len(c.get("reviewers") or [])}</td></tr>')
+        sym = {"works": "✓", "works-with-limits": "◐", "broken": "✕", "untested": "○"}
+        tested = " ".join(f'<span class="tchip {s}" title="{e(STATE.get(s, s))}">{sym.get(s, "○")} {e(TOOLNAME.get(t, t))}</span>'
+                          for t, s in (c.get("tested_in") or {}).items())
+        rows.append(f'<tr><td><a href="skills/{e(c["name"])}.html">{e(c["title"])}</a></td><td><span class="mini-ladder">{"".join('<i class="on"></i>' if i <= LADDER.index(c["maturity"]) else "<i></i>" for i in range(4))}</span>{LABEL[c["maturity"]]}</td>'
+                    f'<td class="hide-m">{tested}</td><td>{len(c.get("used_at") or [])}</td><td>{len(c.get("reviewers") or [])}</td></tr>')
+    legend = '<p class="sub" style="margin-top:10px">✓ works · ◐ works with limits · ✕ broken · ○ not yet tested</p>'
     return ('<table class="status"><thead><tr><th>Skill</th><th>Maturity</th><th class="hide-m">Tested in</th>'
-            '<th>Usage reports</th><th>Reviews</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table>")
+            '<th>Usage reports</th><th>Reviews</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table>" + legend)
+
+
+def fill_steps(page):
+    for k in ("ASK", "MATCH", "FRAME", "KNOW", "OK"):
+        page = page.replace("{{IC_" + k + "}}", visuals.step_icon(k))
+    return page
 
 
 def ped_rows():
@@ -180,22 +191,23 @@ def build_site(cards, variants, cfg, public_card):
     for c in cards:
         pc = public_card(c)
         pc["variants"] = [v["name"] for v in by_parent.get(c["name"], [])]
+        pc["icon"] = visuals.icon(c["name"], 26)
         catalog.append(pc)
 
     pages = {
         "index.html": (f"{cfg['library_name']} — shared AI skills for medical educators",
                        "Shared AI skills for medical and biomedical-research educators.",
-                       read("home.html"), "", read("home.js")),
+                       read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()), "", read("home.js")),
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
-                       read("start.html"), "start.html", ""),
+                       fill_steps(read("start.html")), "start.html", ""),
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
                         read("skills.html"), "skills.html", read("skills.js")),
         "contribute.html": ("Contribute — " + cfg["library_name"], "Adapt, improve and share skills.",
-                            read("contribute.html"), "contribute.html", ""),
+                            read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
-                         read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)), "quality.html", ""),
+                         read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
-                          read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows()).replace(
+                          read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows()).replace("{{MATRIX}}", visuals.matrix_html(PED)).replace(
                               "{{PEDAGOGY_MD}}", gh_links(md((ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")), gh)),
                           "pedagogy.html", ""),
     }

@@ -12,6 +12,6 @@
   document.getElementById("rail").innerHTML = THREAD.map(([n, l, w], i) =>
     `<a class="node${i === 0 ? " first" : ""}" href="skills/${n}.html"><span class="dot" aria-hidden="true"></span><span class="lbl">${l}</span><span class="what">${w}</span></a>`).join("");
   document.getElementById("starters").innerHTML = (window.ASB_CATALOG || []).filter(c => c.starter).map(c =>
-    `<a href="skills/${esc(c.name)}.html"><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p></a>`).join("");
+    `<a href="skills/${esc(c.name)}.html"><div class="titleline"><span class="sk-badge">${c.icon}</span><div><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p></div></div></a>`).join("");
 })();
 </script>

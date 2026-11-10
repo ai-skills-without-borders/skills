@@ -180,7 +180,7 @@
 
 /* ---------- multi-page additions ---------- */
 .top nav a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; font-weight: 700; }
-.pagehead { padding: 48px 0 8px; }
+.pagehead { padding-top: 48px; padding-bottom: 8px; }
 .pagehead h1 { font-size: clamp(1.9rem, 3.8vw, 2.7rem); line-height: 1.12; margin: 0 0 12px; max-width: 22ch; }
 .pagehead p { font-size: 1.12rem; color: var(--ink-soft); max-width: 62ch; margin: 0; }
 .crumbs { font-size: .9rem; color: var(--ink-soft); margin-bottom: 14px; }
@@ -272,3 +272,46 @@ a.node { text-decoration: none; display: block; }
   .prose table { display: block; overflow-x: auto; }
   .seg { display: flex; }
 }
+
+/* ---------- visuals ---------- */
+.sk-badge { width: 44px; height: 44px; border-radius: 12px; background: #e4f1ef; color: var(--sage); display: grid; place-items: center; flex: none; }
+.sk-badge.big { width: 64px; height: 64px; border-radius: 16px; }
+.row .titleline, .starters .titleline { display: flex; gap: 14px; align-items: flex-start; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 32px; align-items: center; }
+.hero-art { width: 100%; max-width: 460px; height: auto; justify-self: end; }
+.cycle-art { width: 100%; max-width: 420px; height: auto; }
+.cycle-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.howflow { list-style: none; padding: 0; margin: 26px 0 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+.howflow li { position: relative; padding: 0 22px 0 0; }
+.howflow li:not(:last-child)::after { content: ""; position: absolute; top: 26px; right: 4px; width: 14px; height: 14px; border-top: 3px solid var(--focus); border-right: 3px solid var(--focus); transform: rotate(45deg); }
+.howflow .hf-icon { width: 54px; height: 54px; border-radius: 50%; background: var(--white); border: 3px solid var(--sage); color: var(--sage); display: grid; place-items: center; margin-bottom: 10px; }
+.howflow li:first-child .hf-icon { background: var(--marker); border-color: var(--marker); color: var(--ink); }
+.howflow b { display: block; font-size: 1rem; margin-bottom: 3px; }
+.howflow span { font-size: .9rem; color: var(--ink-soft); display: block; }
+.matrix-wrap { overflow-x: auto; margin: 6px 0 8px; }
+.matrix { border-collapse: collapse; width: 100%; min-width: 640px; background: var(--white); }
+.matrix th, .matrix td { border-bottom: 1px solid var(--rule); padding: 10px 8px; }
+.matrix thead th { border-bottom: 2px solid var(--ink); vertical-align: bottom; }
+.matrix thead a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; font-size: .82rem; color: var(--ink); }
+.matrix thead svg { color: var(--sage); }
+.matrix tbody th { text-align: left; font-size: .95rem; font-weight: 700; }
+.matrix td { text-align: center; width: 11%; }
+.dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; }
+.dot.research { background: var(--sage); }
+.dot.standard { background: var(--focus); }
+.dot.practice { background: var(--marker); }
+.mini-ladder { display: inline-grid; grid-template-columns: repeat(4, 14px); gap: 2px; margin-right: 8px; vertical-align: middle; }
+.mini-ladder i { height: 6px; border-radius: 2px; background: var(--rule); }
+.mini-ladder i.on { background: var(--sage); }
+@media (max-width: 820px) {
+  .hero-grid, .cycle-grid { grid-template-columns: 1fr; }
+  .hero-art { justify-self: start; max-width: 360px; }
+  .howflow { grid-template-columns: 1fr; gap: 14px; }
+  .howflow li { display: grid; grid-template-columns: 54px 1fr; gap: 14px; padding: 0; align-items: center; }
+  .howflow .hf-icon { margin: 0; }
+  .howflow li:not(:last-child)::after { display: none; }
+}
+.tchip { display: inline-block; font-size: .82rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--rule); background: var(--white); margin: 2px 2px 2px 0; color: var(--ink-soft); }
+.tchip.works { border-color: var(--sage); color: #1f5c5c; }
+.tchip.works-with-limits { border-color: var(--marker); }
+.tchip.broken { border-color: #c0573f; color: #8a3524; }
