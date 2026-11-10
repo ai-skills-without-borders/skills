@@ -25,6 +25,7 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | draft |
 | [journal-club-planner](skills/journal-club-planner) | Helps a student prepare to present a research paper at journal club. | No | draft |
 | [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | draft |
+| [mdphd-calendar-builder](skills/mdphd-calendar-builder) | Helps MD-PhD program directors and administrators build one complete calendar for their program. | No | draft |
 | [mentor-compact-creator](skills/mentor-compact-creator) | Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top. | No | draft |
 | [mstp-t32-planner](skills/mstp-t32-planner) | Plan our MSTP T32 renewal
 What do we need for the MSTP T32

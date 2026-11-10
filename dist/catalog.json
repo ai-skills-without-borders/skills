@@ -353,6 +353,64 @@
     "source_url": null
   },
   {
+    "name": "mdphd-calendar-builder",
+    "title": "MD-PhD Calendar Builder",
+    "version": "0.1.0",
+    "summary": "Helps MD-PhD program directors and administrators build one complete calendar for their program.",
+    "tasks": [
+      "Help me build our program calendar",
+      "Make a master calendar for the MD-PhD program",
+      "What dates should our program track",
+      "Map our students' milestones by year",
+      "When should we send committee meeting reminders",
+      "Put our events and deadlines in one place"
+    ],
+    "users": [
+      "program-staff"
+    ],
+    "audience": [
+      "Program staff"
+    ],
+    "inputs": [
+      "The program's structure",
+      "The program's rules for lab choice, qualifying exam, committee…",
+      "Entering years of current cohorts",
+      "Existing calendars, handbooks and the medical school and graduate…",
+      "Where the calendar will live, such as Google Calendar, Outlook or a…",
+      "Any grants with reporting dates, such as a T32"
+    ],
+    "outputs": [
+      "A master calendar table with event, date or window, audience,…",
+      "Views by month, by cohort and by owner",
+      "A list of clashes with exams, holidays and religious observances",
+      "A CSV file to import confirmed dates into Google Calendar or Outlook",
+      "An upkeep plan naming who refreshes the calendar each year"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "untested",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "description": "Helps MD-PhD program directors and administrators build a complete program calendar for any MD-PhD program. Use when someone says \"help me build our program calendar\", \"make a master calendar for the MD-PhD program\", \"what dates should our program track\", \"map our students' milestones by year\", \"when should we send committee meeting reminders\" or \"put our events and deadlines in one place\". It covers the yearly program cycle, each student's milestones from admission to residency, national dates such as AMCAS, NIH fellowships and the Match, and reminders with enough lead time. It works from the program's own structure and rules and never invents dates.",
+    "zip": "downloads/mdphd-calendar-builder.zip",
+    "paste": "paste/mdphd-calendar-builder.md",
+    "source_url": null
+  },
+  {
     "name": "mentor-compact-creator",
     "title": "Mentor Compact Creator",
     "version": "0.1.0",

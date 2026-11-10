@@ -39,6 +39,7 @@ Candidates for a new skill, or an addition to an existing one.
 | `journal-club-planner` | 1 |
 | `learning-objectives-designer` | 5 |
 | `lesson-format-checker` | 3 |
+| `mdphd-calendar-builder` | 1 |
 | `mentor-compact-creator` | 1 |
 | `mstp-t32-planner` | 1 |
 | `pbl-rbl-session-builder` | 6 |
