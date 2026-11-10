@@ -1,0 +1,40 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: exam-question-writer
+title: Exam Question Writer
+version: 0.1.0
+summary: Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws.
+tasks:
+- Write exam questions
+- Build a practice quiz
+- Blueprint an exam
+- Review existing items
+- Export to Moodle
+audience:
+- Course leaders
+- Assessment committees
+inputs:
+- Objectives table
+- Source of truth
+- Formative or summative purpose
+outputs:
+- Items with keys and rationales
+- Coverage table
+- Moodle GIFT / CSV export
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Item-writing principles (cf. NBME guide)
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: New skill
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: false

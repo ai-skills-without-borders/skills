@@ -1,0 +1,36 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: lesson-format-checker
+title: Lesson & Notebook Format Checker
+version: 0.1.0
+summary: Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes.
+tasks:
+- Check a lesson plan's format
+- Lint an assignment notebook
+- Check session timing
+- Create a lesson in the standard structure
+audience:
+- Course coordinators
+- Computational course teams
+inputs:
+- Lesson plan or .ipynb
+- Format profile (two examples included)
+outputs:
+- Findings list
+- Fixed copy with approved changes
+runs_code: true
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks: []
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: 'Weizmann notebook format checker (generalized: profiles are pluggable; lesson plans added)'
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: false

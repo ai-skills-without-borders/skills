@@ -1,0 +1,8 @@
+# Library settings used by tools/build.py. Change repo once the GitHub organization exists.
+library_name: AI Skills Without Borders
+tagline: Shared AI skills for medical and biomedical-research educators
+repo: ai-skills-without-borders/skills        # <github-org>/<repo>
+site_url: https://ai-skills-without-borders.github.io/skills/
+plugin_name: ai-skills-without-borders
+version: 0.1.0
+contact: "Amit Shraga (Weizmann Institute of Science) and Talia Swartz (Icahn School of Medicine at Mount Sinai)"

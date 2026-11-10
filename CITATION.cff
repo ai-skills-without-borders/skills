@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these skills in teaching or research, please cite the library version you used."
+title: "AI Skills Without Borders: shared AI skills for medical and biomedical-research education"
+version: 0.1.0
+date-released: 2026-11-10
+license: CC-BY-4.0
+repository-code: "https://github.com/ai-skills-without-borders/skills"
+authors:
+  - family-names: Shraga
+    given-names: Amit
+    affiliation: "Gutwirth Medical School, Weizmann Institute of Science"
+  - family-names: Swartz
+    given-names: Talia
+    affiliation: "Icahn School of Medicine at Mount Sinai"
+keywords:
+  - medical education
+  - biomedical research education
+  - agent skills
+  - generative AI
+  - curriculum

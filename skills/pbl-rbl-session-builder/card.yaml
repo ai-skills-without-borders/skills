@@ -1,0 +1,38 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: pbl-rbl-session-builder
+title: PBL / RBL Session Builder
+version: 0.1.0
+summary: Design partner for case-based PBL and tool-based RBL sessions, with readers, quizzes and intro lectures.
+tasks:
+- Build a PBL session
+- Build an RBL session
+- Write a teaching case
+- Pre-reading and comprehension quiz
+audience:
+- Session designers
+- Facilitators
+inputs:
+- Course context and learner stage
+- Source of truth
+- 'Optional: gold-standard example sessions'
+outputs:
+- Interleaved student/facilitator session
+- Reader, quiz, lecture brief
+runs_code: false
+maturity: tested-at-origin
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Pedagogical canon (in skill)
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: PBL/RBL builder used in the Weizmann MD-PhD program (course-agnostic fork)
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: true

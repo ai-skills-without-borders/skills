@@ -1,0 +1,42 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: syllabus-builder
+title: Syllabus Builder
+version: 0.1.0
+summary: Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework.
+tasks:
+- Build a syllabus
+- Update a syllabus
+- Map a course to competencies or EPAs
+- Find coverage gaps
+audience:
+- Course leaders
+- Program directors
+inputs:
+- Course material
+- Competency framework document
+- 'Optional: institution syllabus template'
+outputs:
+- Syllabus (Word or Markdown)
+- Course-leader report
+- Companion data file for updates
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Institutional EPAs
+- AAMC Foundational Competencies
+- AAMC GREAT MD-PhD competencies
+- AAMC AI competencies
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: 'Weizmann syllabus builder (generalized: framework and template are now pluggable)'
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: false

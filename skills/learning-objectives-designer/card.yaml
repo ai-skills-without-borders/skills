@@ -1,0 +1,41 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: learning-objectives-designer
+title: Learning Objectives Designer
+version: 0.1.0
+summary: Extracts, writes, splits, levels and maps learning objectives; produces the numbered objectives table the other skills use.
+tasks:
+- Write learning objectives
+- Fix vague or compound objectives
+- Map a course to competencies
+- Check alignment of objectives, activities and assessment
+audience:
+- Course leaders
+- Session designers
+- Curriculum committees
+inputs:
+- Course material (slides, syllabi, notebooks) or a description
+- 'Optional: competency framework document'
+outputs:
+- Objectives table (Markdown + CSV)
+- Alignment gaps
+- Proposed framework links
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Bloom (revised)
+- Three-level scale
+- Any supplied competency framework
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: New skill, building on the objectives rules in the Weizmann syllabus builder
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: true

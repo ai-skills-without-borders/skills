@@ -1,0 +1,35 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: reading-material-generator
+title: Reading Material Generator
+version: 0.1.0
+summary: Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks.
+tasks:
+- Create a pre-reading
+- Turn a paper into reading material
+- Group reading for a workshop
+audience:
+- Lecturers
+- Session designers
+inputs:
+- Source documents
+- Session time or word budget
+- Objective IDs
+outputs:
+- Self-contained HTML reading (or Markdown)
+runs_code: false
+maturity: tested-at-origin
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks: []
+origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+derived_from: Reading generator used in the Weizmann MD-PhD program
+maintainers:
+- Amit Shraga (Weizmann)
+reviewers: []
+license: CC-BY-4.0
+starter: true
