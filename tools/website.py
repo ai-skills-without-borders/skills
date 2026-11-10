@@ -34,6 +34,12 @@ LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
 TOOLNAME = {"claude": "Claude", "chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot"}
 STATE = {"untested": "not yet tested", "works": "works", "works-with-limits": "works, with limits", "broken": "broken"}
 
+def pedagogy_body():
+    """guide/pedagogy.md from its first section on: the page has its own title and introduction."""
+    text = (ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")
+    return text[text.index("\n## ") + 1:]
+
+
 def ped_entries(skill_names):
     """Principles from guide/principles.yaml, ready for the website."""
     _, ps = principles.load()
@@ -231,7 +237,7 @@ def build_site(cards, variants, cfg, public_card):
                          read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
                           read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows(ped)).replace("{{MATRIX}}", visuals.matrix_html(ped)).replace(
-                              "{{PEDAGOGY_MD}}", gh_links(md((ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")), gh)),
+                              "{{PEDAGOGY_MD}}", gh_links(md(pedagogy_body()), gh)),
                           "pedagogy.html", ""),
     }
     for fname, (title, desc, content, active, scripts) in pages.items():

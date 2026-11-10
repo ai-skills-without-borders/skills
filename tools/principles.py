@@ -120,20 +120,20 @@ def pedagogy_section(skill_names):
     out, n = [], 0
     basis_label = {"research": "Research", "standard": "Standard", "practice": "Practice"}
     for layer, (title, intro) in LAYERS.items():
-        out += [f"## {title}", "", intro, ""]
+        out += [f"### {title}", "", intro, ""]
         for p in [p for p in principles if p["layer"] == layer]:
             n += 1
-            out += [f"### {n}. {p['name']} — *{basis_label[p['basis']]}*", "", p["summary"], ""]
+            out += [f"#### {n}. {p['name']} — *{basis_label[p['basis']]}*", "", p["summary"], ""]
             general = [r for r in p["refs"] if not is_medical(r)]
             medical = [r for r in p["refs"] if is_medical(r)]
-            out.append("**Sources**")
+            out += ["**Sources**", ""]
             for r in general:
                 out.append(f"- {r['short']} ({r['role']}; {POP_LABEL[r['population']]}, {r['design']}). {r['transfer']}")
             for r in medical:
                 out.append(f"- *Medical education:* {r['short']} ({r['design']}). {r['transfer']}")
             out.append(_evidence_line(p))
             if p["applies"]:
-                out += ["**Where it appears**"]
+                out += ["**Where it appears**", ""]
                 for s, how in p["applies"].items():
                     who = {"all": "Every skill", "library": "The library"}.get(s, f"`{s}`")
                     out.append(f"- {who}: {how}")
