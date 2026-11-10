@@ -58,10 +58,6 @@ Every skill in this library:
 
 These align with the AAMC *Principles for the Responsible Use of AI in and for Medical Education*.
 
-## Pedagogical foundations
-
-Every rule in the skills is traceable to research, a professional standard, or — labelled honestly — local teaching practice. See **[docs/pedagogy.md](docs/pedagogy.md)** for the principles (constructive alignment, levelled objectives, competencies and entrustment, PBL, productive failure, cognitive load, retrieval practice, item-writing quality, assessment validity, responsible AI), where each appears, known limits, and full references. Each skill also carries its own `references/pedagogical-basis.md`.
-
 ## Contribute
 
 - **Used a skill?** File a [usage report](community/usage-report.md) — it's the most valuable contribution. It tells others where a skill works.
