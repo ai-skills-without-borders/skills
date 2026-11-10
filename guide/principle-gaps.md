@@ -38,6 +38,7 @@ Candidates for a new skill, or an addition to an existing one.
 | `exam-question-writer` | 5 |
 | `learning-objectives-designer` | 5 |
 | `lesson-format-checker` | 3 |
+| `mentor-compact-creator` | 1 |
 | `pbl-rbl-session-builder` | 6 |
 | `reading-material-generator` | 4 |
 | `syllabus-builder` | 5 |

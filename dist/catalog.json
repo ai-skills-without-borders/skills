@@ -277,6 +277,54 @@
     "source_url": null
   },
   {
+    "name": "mentor-compact-creator",
+    "title": "Mentor Compact Creator",
+    "version": "0.1.0",
+    "summary": "Builds mentoring compacts in two layers.",
+    "tasks": [
+      "See the skill's description"
+    ],
+    "audience": [
+      "Educators"
+    ],
+    "inputs": [
+      "For the program layer",
+      "For the pair layer",
+      "The trainee's stage, such as graduate student, MD-PhD student or…",
+      "The current compact, for an update"
+    ],
+    "outputs": [
+      "A program compact with each section marked as a program rule or as…",
+      "A side-by-side comparison of the mentor's and trainee's answers,…",
+      "Neutral questions to help the pair talk through their differences",
+      "A one-page pair agreement that sits after the program layer",
+      "A date to review the compact"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "works",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "description": "Builds mentoring compacts in two layers. A program sets up its shared compact once, with its expectations, milestones, funding, safety rules, time away and contacts. Then each mentor and trainee add their own agreements on top, like how often they meet, authorship, working hours and career goals. Use it when a program wants a compact template, when a new trainee joins a lab, when a mentor and trainee want to reset expectations or when a compact is due for its yearly review.",
+    "zip": "downloads/mentor-compact-creator.zip",
+    "paste": "paste/mentor-compact-creator.md",
+    "source_url": null
+  },
+  {
     "name": "pbl-rbl-session-builder",
     "title": "PBL / RBL Session Builder",
     "version": "0.1.0",

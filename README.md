@@ -24,6 +24,7 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [curriculum-map-builder](skills/curriculum-map-builder) | Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested. | No | draft |
 | [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | draft |
 | [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | draft |
+| [mentor-compact-creator](skills/mentor-compact-creator) | Builds mentoring compacts in two layers. | No | draft |
 | [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | draft |
 <!-- CATALOG:END -->
 

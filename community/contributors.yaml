@@ -84,3 +84,9 @@ contributions:
     skill: curriculum-map-builder
     person: "Talia H. Swartz, MD, PhD"
     link: https://github.com/ai-skills-without-borders/skills/issues/2
+  - date: 2026-11-10
+    type: skill
+    institution: mssm
+    skill: mentor-compact-creator
+    person: "Talia H. Swartz, MD, PhD"
+    link: https://github.com/ai-skills-without-borders/skills/issues/3
