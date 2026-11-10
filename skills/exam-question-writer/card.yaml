@@ -31,10 +31,10 @@ last_tested: null
 used_at: []
 frameworks:
 - Item-writing principles (cf. NBME guide)
-origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: New skill
 maintainers:
-- Amit Shraga (Weizmann)
+- Amit Shraga, PhD (Weizmann Institute of Science)
 reviewers: []
 license: CC-BY-4.0
 starter: false

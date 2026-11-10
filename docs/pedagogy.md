@@ -92,7 +92,7 @@ The AAMC *Principles for the Responsible Use of AI in and for Medical Education*
 
 ## Local practice, labelled honestly
 
-These rules come from teaching experience in the MD-PhD program at the Gutwirth Medical School. They are explainable but not directly tested. Institutions may change them.
+These rules come from teaching experience in the MD-PhD program at the Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science. They are explainable but not directly tested. Institutions may change them.
 
 | Rule | Skill | Rationale |
 |---|---|---|

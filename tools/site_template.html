@@ -169,6 +169,10 @@
   .ways p { margin: 0 0 10px; color: var(--ink-soft); font-size: .97rem; }
   .principles { columns: 2; column-gap: 40px; padding-left: 20px; margin: 0; max-width: 900px; }
   .principles li { break-inside: avoid; margin-bottom: 10px; }
+  .founders { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 36px; margin-bottom: 18px; }
+  .founders div { font-size: .93rem; }
+  .founders b { display: block; color: var(--ink); font-size: 1rem; }
+  @media (max-width: 820px) { .founders { grid-template-columns: 1fr; } }
   footer { margin-top: 56px; padding: 28px 0 40px; border-top: 1px solid var(--rule); font-size: .92rem; color: var(--ink-soft); }
 
   @media (max-width: 820px) {
@@ -358,6 +362,7 @@
 
 <footer>
   <div class="wrap">
+    <div class="founders" id="founders"></div>
     <p id="foot"></p>
     <p>Skill content CC BY 4.0, scripts MIT. Competency frameworks referenced here belong to their publishers and are not reproduced.</p>
   </div>
@@ -494,7 +499,8 @@ document.getElementById("report").href = `${GH}/issues/new?template=usage-report
 document.getElementById("newskill").href = `${GH}/issues/new?template=new-skill.yml`;
 document.getElementById("review").href = `${GH}/blob/main/community/review-checklist.md`;
 document.getElementById("pedlink").href = `${GH}/blob/main/docs/pedagogy.md`;
-document.getElementById("foot").textContent = `Library version ${CONFIG.version}. Founded by ${CONFIG.contact}. Open to every institution.`;
+document.getElementById("founders").innerHTML = (CONFIG.founders || []).map(f => `<div><b>${esc(f.name)}</b>${esc(f.role)}<br>${esc(f.institution)}</div>`).join("");
+document.getElementById("foot").textContent = `Library version ${CONFIG.version}. Open to every institution.`;
 document.getElementById("q").addEventListener("input", renderList);
 renderRail(); renderTools(); renderInstall(); renderList(); renderPed();
 </script>

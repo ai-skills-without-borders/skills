@@ -5,4 +5,11 @@ repo: ai-skills-without-borders/skills        # <github-org>/<repo>
 site_url: https://ai-skills-without-borders.github.io/skills/
 plugin_name: ai-skills-without-borders
 version: 0.1.0
-contact: "Amit Shraga (Weizmann Institute of Science) and Talia Swartz (Icahn School of Medicine at Mount Sinai)"
+contact: "Amit Shraga (Weizmann Institute of Science) and Talia H. Swartz (Icahn School of Medicine at Mount Sinai)"
+founders:
+  - name: "Amit Shraga, PhD"
+    role: "Head of Data Science Tools; Chair, AI & Digital Tools Committee"
+    institution: "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science"
+  - name: "Talia H. Swartz, MD, PhD"
+    role: "Senior Associate Dean for MD-PhD Education; Director, Medical Scientist Training Program"
+    institution: "Icahn School of Medicine at Mount Sinai"

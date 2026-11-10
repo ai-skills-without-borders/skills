@@ -26,10 +26,10 @@ tested_in:
 last_tested: null
 used_at: []
 frameworks: []
-origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: Reading generator used in the Weizmann MD-PhD program
 maintainers:
-- Amit Shraga (Weizmann)
+- Amit Shraga, PhD (Weizmann Institute of Science)
 reviewers: []
 license: CC-BY-4.0
 starter: true

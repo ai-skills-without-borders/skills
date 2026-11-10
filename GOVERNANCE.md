@@ -4,7 +4,7 @@ How skills enter the library, how their maturity is labelled, and who decides.
 
 ## Roles
 
-- **Maintainers** — merge changes, run releases, keep the catalog honest. Currently: Amit Shraga (Weizmann) and Talia Swartz (Mount Sinai). The list grows with founding institutions.
+- **Maintainers** — merge changes, run releases, keep the catalog honest. Currently: Amit Shraga, PhD (The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science) and Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai). The list grows with founding institutions.
 - **Skill maintainer** — the person responsible for one skill: answers issues, updates it when tools change. Named in its `card.yaml`.
 - **Reviewers** — educators from an institution *other* than the skill's origin, who test and review a skill using [community/review-checklist.md](community/review-checklist.md).
 - **Contributors** — anyone who submits a skill, a fix, a profile, or a usage report.

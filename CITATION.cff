@@ -8,9 +8,9 @@ repository-code: "https://github.com/ai-skills-without-borders/skills"
 authors:
   - family-names: Shraga
     given-names: Amit
-    affiliation: "Gutwirth Medical School, Weizmann Institute of Science"
+    affiliation: "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science"
   - family-names: Swartz
-    given-names: Talia
+    given-names: Talia H.
     affiliation: "Icahn School of Medicine at Mount Sinai"
 keywords:
   - medical education

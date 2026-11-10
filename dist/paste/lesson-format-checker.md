@@ -125,7 +125,7 @@ A profile is your house style written as rules an AI assistant (and a person) ca
 
 # Profile: Jupyter assignment notebook
 
-Example profile, based on the assignment-notebook house style used in the MD-PhD program at the Gutwirth Medical School (Weizmann Institute of Science). Copy and adapt it.
+Example profile, based on the assignment-notebook house style used in the MD-PhD program at the Miriam and Aaron Gutwirth Medical School (Weizmann Institute of Science). Copy and adapt it.
 
 ## Profile settings
 

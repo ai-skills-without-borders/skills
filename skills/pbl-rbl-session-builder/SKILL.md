@@ -14,7 +14,7 @@ This skill helps an educator build **discovery-based teaching sessions** — and
 
 The goal: a builder with deep subject expertise but little AI experience can produce a genuinely well-designed active-learning session without a learning-design specialist in the room. The reference files carry that specialist's thinking.
 
-> **Origin:** generalized from the PBL/RBL session builder used in the MD-PhD program at the Gutwirth Medical School (Weizmann Institute of Science). The pedagogy is portable; institution-specific content has been removed. Where you see a placeholder for *your field*, fill it in.
+> **Origin:** generalized from the PBL/RBL session builder used in the MD-PhD program at the Miriam and Aaron Gutwirth Medical School (Weizmann Institute of Science). The pedagogy is portable; institution-specific content has been removed. Where you see a placeholder for *your field*, fill it in.
 
 ---
 

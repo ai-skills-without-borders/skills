@@ -32,10 +32,10 @@ frameworks:
 - Bloom (revised)
 - Three-level scale
 - Any supplied competency framework
-origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: New skill, building on the objectives rules in the Weizmann syllabus builder
 maintainers:
-- Amit Shraga (Weizmann)
+- Amit Shraga, PhD (Weizmann Institute of Science)
 reviewers: []
 license: CC-BY-4.0
 starter: true

@@ -38,10 +38,10 @@
     "frameworks": [
       "Item-writing principles (cf. NBME guide)"
     ],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "New skill",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",
@@ -91,10 +91,10 @@
       "Three-level scale",
       "Any supplied competency framework"
     ],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "New skill, building on the objectives rules in the Weizmann syllabus builder",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",
@@ -138,10 +138,10 @@
     "last_tested": null,
     "used_at": [],
     "frameworks": [],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Weizmann notebook format checker (generalized: profiles are pluggable; lesson plans added)",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",
@@ -188,10 +188,10 @@
     "frameworks": [
       "Pedagogical canon (in skill)"
     ],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "PBL/RBL builder used in the Weizmann MD-PhD program (course-agnostic fork)",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",
@@ -234,10 +234,10 @@
     "last_tested": null,
     "used_at": [],
     "frameworks": [],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Reading generator used in the Weizmann MD-PhD program",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",
@@ -288,10 +288,10 @@
       "AAMC GREAT MD-PhD competencies",
       "AAMC AI competencies"
     ],
-    "origin_institution": "Gutwirth Medical School, Weizmann Institute of Science",
+    "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Weizmann syllabus builder (generalized: framework and template are now pluggable)",
     "maintainers": [
-      "Amit Shraga (Weizmann)"
+      "Amit Shraga, PhD (Weizmann Institute of Science)"
     ],
     "reviewers": [],
     "license": "CC-BY-4.0",

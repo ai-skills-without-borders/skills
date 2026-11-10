@@ -185,7 +185,7 @@ def build_site(cards, cfg):
         shutil.copy(ROOT / "assets" / f, DOCS / f)
     template = (ROOT / "tools" / "site_template.html").read_text(encoding="utf-8")
     data = json.dumps([public_card(c) for c in cards], ensure_ascii=False).replace("</", "<\\/")
-    conf = json.dumps({k: cfg[k] for k in ("library_name", "tagline", "repo", "plugin_name", "version", "contact")},
+    conf = json.dumps({k: cfg[k] for k in ("library_name", "tagline", "repo", "plugin_name", "version", "contact", "founders")},
                       ensure_ascii=False).replace("</", "<\\/")
     html = template.replace("/*CATALOG_JSON*/[]", data).replace("/*CONFIG_JSON*/{}", conf)
     (DOCS / "index.html").write_text(html, encoding="utf-8")

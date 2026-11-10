@@ -33,10 +33,10 @@ frameworks:
 - AAMC Foundational Competencies
 - AAMC GREAT MD-PhD competencies
 - AAMC AI competencies
-origin_institution: Gutwirth Medical School, Weizmann Institute of Science
+origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: 'Weizmann syllabus builder (generalized: framework and template are now pluggable)'
 maintainers:
-- Amit Shraga (Weizmann)
+- Amit Shraga, PhD (Weizmann Institute of Science)
 reviewers: []
 license: CC-BY-4.0
 starter: false
