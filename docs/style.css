@@ -175,7 +175,7 @@
     .ped-row { grid-template-columns: 1fr; gap: 8px; }
     .principles { columns: 1; }
     .top .wrap { flex-wrap: wrap; padding-top: 10px; padding-bottom: 6px; }
-    .top nav { width: 100%; overflow-x: auto; gap: 16px; padding-bottom: 6px; font-size: .92rem; white-space: nowrap; }
+    .top nav { width: 100%; flex-wrap: wrap; gap: 4px 18px; padding-bottom: 8px; font-size: .95rem; }
   }
 
 /* ---------- multi-page additions ---------- */

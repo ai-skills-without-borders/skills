@@ -10,6 +10,7 @@ Called by tools/build.py. Pages:
     quality.html      maturity levels, status of every skill, approval rules
     contribute.html   report, suggest, edit, adapt, share
 """
+import hashlib
 import html
 import json
 import re
@@ -80,6 +81,9 @@ def layout(cfg, title, description, content, active, root="", scripts="", catalo
         f"<div><b>{e(f['name'])}</b>{e(f['role'])}<br>{e(f['institution'])}</div>" for f in cfg.get("founders", []))
     conf = {k: cfg[k] for k in ("library_name", "repo", "plugin_name", "version")}
     page = (SITE / "base.html").read_text(encoding="utf-8")
+    # cache-busting: a new version of the CSS/JS gets a new URL, so phones never mix new pages with old styles
+    ver = hashlib.sha1(((SITE / "style.css").read_bytes() + (SITE / "site.js").read_bytes())).hexdigest()[:10]
+    page = page.replace('style.css"', f'style.css?v={ver}"').replace('site.js"', f'site.js?v={ver}"')
     extra = ""
     if catalog is not None:
         extra = "<script>window.ASB_CATALOG = " + json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/") + ";</script>\n"
