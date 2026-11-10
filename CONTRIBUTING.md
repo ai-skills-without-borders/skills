@@ -2,6 +2,8 @@
 
 Thank you. There are six ways to contribute, from easiest to most involved.
 
+Whatever you contribute, please tell us your **institution and country**. Every contribution is recorded with them and shown on the [community page](https://ai-skills-without-borders.github.io/skills/community.html). Your name appears there only if you ask to be credited.
+
 ## 1. Report how a skill worked for you (most valuable)
 
 Used a skill for real teaching or preparation? Fill in a usage report — through the **Usage report** issue form on GitHub, or the web form linked from the catalog site. It takes about five minutes and is what moves a skill from `draft` to `tested-elsewhere`. See [community/usage-report.md](community/usage-report.md) for the questions.

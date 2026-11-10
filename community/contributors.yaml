@@ -1,0 +1,83 @@
+# Community registry: every institution that contributes, and every contribution.
+#
+# The community page (map, countries, institutions, recent contributions) is
+# generated from this file by tools/build.py. A maintainer adds an entry when a
+# contribution is merged or a report is received.
+#
+# Every contribution names an institution. A person's name appears only if they
+# agreed to be credited (the "credit me by name" box in the forms).
+#
+# institutions:
+#   <id>:                       short id, lowercase, used below and in variants/<id>/
+#     name:                     full name, as the institution writes it
+#     country: IL               ISO 3166-1 alpha-2 code
+#     city:                     optional
+#     lat, lon:                 approximate location, for the map
+#     founding: true            optional, for founding institutions
+#
+# contributions (newest last):
+#   - date: YYYY-MM-DD
+#     type: skill | improvement | variant | usage-report | review | workshop | founding
+#     institution: <id>
+#     skill: <skill name>       when the contribution is about one skill
+#     person: "Name"            only with consent
+#     link: URL                 the pull request, issue or report
+#     note: short description
+
+institutions:
+  weizmann:
+    name: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
+    country: IL
+    city: Rehovot
+    lat: 31.90
+    lon: 34.81
+    founding: true
+  mssm:
+    name: Icahn School of Medicine at Mount Sinai
+    country: US
+    city: New York
+    lat: 40.79
+    lon: -73.95
+    founding: true
+
+contributions:
+  - date: 2026-11-09
+    type: founding
+    institution: weizmann
+    person: "Amit Shraga, PhD"
+    note: Co-founded the library
+  - date: 2026-11-09
+    type: founding
+    institution: mssm
+    person: "Talia H. Swartz, MD, PhD"
+    note: Co-founded the library
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: learning-objectives-designer
+    person: "Amit Shraga, PhD"
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: syllabus-builder
+    person: "Amit Shraga, PhD"
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: pbl-rbl-session-builder
+    person: "Amit Shraga, PhD"
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: reading-material-generator
+    person: "Amit Shraga, PhD"
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: lesson-format-checker
+    person: "Amit Shraga, PhD"
+  - date: 2026-11-09
+    type: skill
+    institution: weizmann
+    skill: exam-question-writer
+    person: "Amit Shraga, PhD"

@@ -1,29 +1,72 @@
 name: Suggest a change to a skill
 description: Propose an improvement in plain words — no GitHub editing needed
-title: "[change] <skill> — <short description>"
-labels: ["improvement"]
+title: '[change] <skill> — <short description>'
+labels:
+- improvement
 body:
-  - type: dropdown
-    id: skill
-    attributes:
-      label: Skill
-      options: [learning-objectives-designer, pbl-rbl-session-builder, reading-material-generator, syllabus-builder, lesson-format-checker, exam-question-writer, other]
-    validations: {required: true}
-  - type: dropdown
-    id: scope
-    attributes:
-      label: Who would this help?
-      options: ["Everyone — change the shared skill", "Mainly my institution — consider a variant", "Not sure"]
-  - type: textarea
-    id: what
-    attributes: {label: What should change, and why?}
-    validations: {required: true}
-  - type: textarea
-    id: wording
-    attributes: {label: "Proposed wording (optional)", render: markdown}
-  - type: input
-    id: evidence
-    attributes: {label: "Source or experience behind it (optional)", placeholder: "a study, a standard, or 'used it in 3 courses and saw…'"}
-  - type: input
-    id: who
-    attributes: {label: Your name and institution (for credit)}
+- type: input
+  id: contributor_name
+  attributes:
+    label: Your name
+- type: input
+  id: institution
+  attributes:
+    label: Institution
+    description: Every contribution is recorded with its institution, so the community page can show where the library's knowledge comes from.
+  validations:
+    required: true
+- type: input
+  id: country
+  attributes:
+    label: Country
+  validations:
+    required: true
+- type: input
+  id: role
+  attributes:
+    label: Your role
+    placeholder: e.g. course leader, MSTP director, graduate program administrator
+- type: checkboxes
+  id: credit
+  attributes:
+    label: Credit
+    options:
+    - label: Credit me by name on the community page (otherwise only the institution is shown)
+- type: dropdown
+  id: skill
+  attributes:
+    label: Skill
+    options:
+    - learning-objectives-designer
+    - pbl-rbl-session-builder
+    - reading-material-generator
+    - syllabus-builder
+    - lesson-format-checker
+    - exam-question-writer
+    - other
+  validations:
+    required: true
+- type: dropdown
+  id: scope
+  attributes:
+    label: Who would this help?
+    options:
+    - Everyone — change the shared skill
+    - Mainly my institution — consider a variant
+    - Not sure
+- type: textarea
+  id: what
+  attributes:
+    label: What should change, and why?
+  validations:
+    required: true
+- type: textarea
+  id: wording
+  attributes:
+    label: Proposed wording (optional)
+    render: markdown
+- type: input
+  id: evidence
+  attributes:
+    label: Source or experience behind it (optional)
+    placeholder: a study, a standard, or 'used it in 3 courses and saw…'

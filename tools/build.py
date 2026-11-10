@@ -25,6 +25,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import community  # noqa: E402
 import principles  # noqa: E402
 import website  # noqa: E402  (tools/website.py)
 
@@ -203,6 +204,7 @@ def main():
     cards, errors, warnings = validate()
     shared_names = [c["name"] for c in cards if not c["_variant"]]
     errors += principles.validate(shared_names)
+    errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates()
     for w in warnings:
         print(f"warning: {w}")
     for e in errors:

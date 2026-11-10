@@ -19,6 +19,7 @@ from pathlib import Path
 
 import markdown
 
+import community
 import principles
 import visuals
 
@@ -27,7 +28,7 @@ SITE = ROOT / "tools" / "site"
 DOCS = ROOT / "docs"
 
 NAV = [("start.html", "Start here"), ("skills.html", "Skills"), ("pedagogy.html", "Pedagogy"),
-       ("quality.html", "Quality"), ("contribute.html", "Contribute"), ("about.html", "About")]
+       ("quality.html", "Quality"), ("contribute.html", "Contribute"), ("community.html", "Community"), ("about.html", "About")]
 LADDER = ["draft", "tested-at-origin", "tested-elsewhere", "reviewed"]
 LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
          "tested-elsewhere": "Tested elsewhere", "reviewed": "Reviewed"}
@@ -255,6 +256,10 @@ def build_site(cards, variants, cfg, public_card):
                             read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
                          read("quality.html").replace("{{APPROVAL}}", visuals.approval_html(APPROVAL)).replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
+        "community.html": ("Community — " + cfg["library_name"], "Contributions by country and institution.",
+                           read("community.html").replace("{{COUNTERS}}", community.counters_html()).replace("{{MAP}}", community.map_svg()).replace(
+                               "{{COUNTRIES}}", community.countries_html()).replace("{{INSTITUTIONS}}", community.institutions_html()).replace(
+                               "{{RECENT}}", community.recent_html({c["name"]: c["title"] for c in cards})), "community.html", ""),
         "about.html": ("Why this project — " + cfg["library_name"], "Why shared AI skills matter for biomedical research and medical education, and who is behind the project.",
                        read("about.html").replace("{{ACCESS}}", visuals.access_svg() + visuals.access_svg(stacked=True)).replace("{{IDEA}}", visuals.idea_html()).replace(
                            "{{WORKSHOP}}", visuals.timeline_html(WORKSHOP, 75)), "about.html", ""),

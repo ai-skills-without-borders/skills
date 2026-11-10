@@ -36,12 +36,19 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 | `tasks` | What educators search for ("Write exam questions") |
 | `audience`, `inputs`, `outputs` | Who it's for, what it needs, what it produces |
 | `runs_code` | Whether any step runs scripts |
-| `maturity`, `tested_in`, `last_tested`, `used_at` | Evidence (see above) |
+| `maturity`, `tested_in`, `last_tested` | Evidence (see above) |
+| `used_at` | Institution ids from `community/contributors.yaml` where the skill was used for real teaching |
 | `frameworks` | Frameworks it works with |
 | `origin_institution`, `derived_from` | Where it came from |
-| `maintainers`, `reviewers` | People |
+| `maintainers`, `reviewers` | People, each written as `Name (Institution)` |
 | `license` | Always CC-BY-4.0 for content |
 | `starter` | In the starter set shown first on the catalog |
+
+## Recording contributions
+
+Every contribution is recorded with the contributor's institution and country, so the community can see where its knowledge comes from. The issue forms ask for both, and pull requests state them in the description.
+
+When a contribution is merged or a report is received, the approving maintainer adds it to [`community/contributors.yaml`](community/contributors.yaml): the date, the type (skill, improvement, variant, usage report, review, workshop), the institution and, if relevant, the skill. A new institution is added there once, with its country and approximate location. A person's name is recorded only if they ticked "credit me by name". The [community page](https://ai-skills-without-borders.github.io/skills/community.html) is generated from this file, and the build checks that every entry names a known institution.
 
 ## How changes are approved
 

@@ -1,63 +1,117 @@
 name: Usage report
 description: Tell us how a skill worked for a real teaching task
-title: "[usage] <skill> — <tool>"
-labels: ["usage-report"]
+title: '[usage] <skill> — <tool>'
+labels:
+- usage-report
 body:
-  - type: markdown
-    attributes:
-      value: "Thank you! Please don't include patient data, learner names or grades, or unpublished material."
-  - type: dropdown
-    id: skill
-    attributes:
-      label: Skill
-      options: [learning-objectives-designer, pbl-rbl-session-builder, reading-material-generator, syllabus-builder, lesson-format-checker, exam-question-writer, other]
-    validations: {required: true}
-  - type: input
-    id: version
-    attributes: {label: Skill version (from card.yaml)}
-  - type: input
-    id: institution
-    attributes: {label: Institution and your role}
-    validations: {required: true}
-  - type: input
-    id: tool
-    attributes: {label: AI tool and plan, placeholder: "e.g. ChatGPT Edu, Claude Pro, Gemini Enterprise, paste-in in Gemini app"}
-    validations: {required: true}
-  - type: textarea
-    id: task
-    attributes: {label: Task — what you asked it to do}
-    validations: {required: true}
-  - type: dropdown
-    id: outcome
-    attributes:
-      label: Outcome
-      options: [Used as-is, Used after edits, Not used]
-    validations: {required: true}
-  - type: input
-    id: time
-    attributes: {label: Roughly how long until a usable result?}
-  - type: dropdown
-    id: help
-    attributes:
-      label: Help needed
-      options: [None, Documentation only, Help from a colleague, Help from the skill's author]
-  - type: textarea
-    id: worked
-    attributes: {label: What worked}
-  - type: textarea
-    id: didnt
-    attributes: {label: "What didn't work (be specific)"}
-  - type: textarea
-    id: changed
-    attributes: {label: What you changed (in the output or the skill)}
-  - type: dropdown
-    id: again
-    attributes:
-      label: Would you use it again?
-      options: ["Yes", "Maybe", "No"]
-  - type: checkboxes
-    id: listing
-    attributes:
-      label: Listing
-      options:
-        - label: You may list my institution in the skill's used_at
+- type: markdown
+  attributes:
+    value: Thank you! Please don't include patient data, learner names or grades, or unpublished material.
+- type: input
+  id: contributor_name
+  attributes:
+    label: Your name
+- type: input
+  id: institution
+  attributes:
+    label: Institution
+    description: Every contribution is recorded with its institution, so the community page can show where the library's knowledge comes from.
+  validations:
+    required: true
+- type: input
+  id: country
+  attributes:
+    label: Country
+  validations:
+    required: true
+- type: input
+  id: role
+  attributes:
+    label: Your role
+    placeholder: e.g. course leader, MSTP director, graduate program administrator
+- type: checkboxes
+  id: credit
+  attributes:
+    label: Credit
+    options:
+    - label: Credit me by name on the community page (otherwise only the institution is shown)
+- type: dropdown
+  id: skill
+  attributes:
+    label: Skill
+    options:
+    - learning-objectives-designer
+    - pbl-rbl-session-builder
+    - reading-material-generator
+    - syllabus-builder
+    - lesson-format-checker
+    - exam-question-writer
+    - other
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Skill version (from card.yaml)
+- type: input
+  id: tool
+  attributes:
+    label: AI tool and plan
+    placeholder: e.g. ChatGPT Edu, Claude Pro, Gemini Enterprise, paste-in in Gemini app
+  validations:
+    required: true
+- type: textarea
+  id: task
+  attributes:
+    label: Task — what you asked it to do
+  validations:
+    required: true
+- type: dropdown
+  id: outcome
+  attributes:
+    label: Outcome
+    options:
+    - Used as-is
+    - Used after edits
+    - Not used
+  validations:
+    required: true
+- type: input
+  id: time
+  attributes:
+    label: Roughly how long until a usable result?
+- type: dropdown
+  id: help
+  attributes:
+    label: Help needed
+    options:
+    - None
+    - Documentation only
+    - Help from a colleague
+    - Help from the skill's author
+- type: textarea
+  id: worked
+  attributes:
+    label: What worked
+- type: textarea
+  id: didnt
+  attributes:
+    label: What didn't work (be specific)
+- type: textarea
+  id: changed
+  attributes:
+    label: What you changed (in the output or the skill)
+- type: dropdown
+  id: again
+  attributes:
+    label: Would you use it again?
+    options:
+    - 'Yes'
+    - Maybe
+    - 'No'
+- type: checkboxes
+  id: listing
+  attributes:
+    label: Listing
+    options:
+    - label: You may list my institution in the skill's used_at

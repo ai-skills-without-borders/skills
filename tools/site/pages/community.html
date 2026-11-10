@@ -1,0 +1,52 @@
+<div class="pagehead wrap">
+  <h1>The community</h1>
+  <p>Where the library's knowledge comes from: every skill, improvement, variant, report and review is recorded with the institution and country of the educator who made it.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The community at a glance</h2>
+    {{COUNTERS}}
+    <div class="map-wrap">{{MAP}}</div>
+    <p class="map-legend"><span><i class="lg-country"></i>country with contributions</span><span><i class="lg-inst"></i>institution, sized by contributions</span><span><i class="lg-found"></i>founding institution</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Contributions by country</h2>
+    <p class="sub">Countries ranked by the number of contributions from their institutions.</p>
+    {{COUNTRIES}}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Most active institutions</h2>
+    <p class="sub">Institutions ranked by contributions, with the kind of each contribution.</p>
+    {{INSTITUTIONS}}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Recent contributions</h2>
+    {{RECENT}}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Put your institution on the map</h2>
+    <p class="sub">The library is at its start: the map grows with every institution that joins. Any contribution counts, from a five-minute usage report to a new skill.</p>
+    <ul class="standards">
+      <li><b>Every contribution names an institution and a country.</b> The forms ask for them, and pull requests say them in the description.</li>
+      <li><b>Your name appears only if you agree.</b> Tick "credit me by name" in the form; otherwise only your institution is shown.</li>
+      <li><b>Counted when accepted.</b> A maintainer adds the contribution to the community record when it is merged or received.</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn primary" href="contribute.html">Ways to contribute</a>
+      <a class="btn plain" href="{{GH}}/blob/main/community/contributors.yaml">The community record</a>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,13 @@
 
 <!-- One or two sentences. Link the issue if there is one. -->
 
+## Who is contributing
+
+<!-- Required: every contribution is recorded with its institution and country. -->
+- Institution:
+- Country:
+- Credit me by name on the community page: yes / no
+
 ## Type
 
 - [ ] Improvement to a shared skill
@@ -17,6 +24,7 @@
 - [ ] Any new rule says what it rests on in `references/pedagogical-basis.md` (Research, Standard or Practice)
 - [ ] `card.yaml` updated: version bumped; maturity changes have evidence in `used_at` / `reviewers`
 - [ ] No patient data, learner data, or text I can't license
+- [ ] A maintainer has added this contribution to `community/contributors.yaml` (institution, country, and name only with consent)
 
 ## Tested in
 

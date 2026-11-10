@@ -1,50 +1,93 @@
 name: New skill
 description: Propose a skill (no GitHub skills needed — attach a ZIP or paste the instructions)
-title: "[new skill] <name>"
-labels: ["new-skill"]
+title: '[new skill] <name>'
+labels:
+- new-skill
 body:
-  - type: input
-    id: name
-    attributes: {label: Proposed name, placeholder: lowercase-with-hyphens}
-    validations: {required: true}
-  - type: textarea
-    id: task
-    attributes: {label: Purpose - what task does it do, and when should an educator use it?}
-    validations: {required: true}
-  - type: textarea
-    id: inputs
-    attributes: {label: Inputs - what must the user provide?}
-    validations: {required: true}
-  - type: textarea
-    id: output
-    attributes: {label: Expected output - what exactly does it produce?}
-    validations: {required: true}
-  - type: textarea
-    id: success
-    attributes: {label: Success criteria - how do you know the output is good enough to use?}
-  - type: textarea
-    id: limitations
-    attributes: {label: Limitations - what does it not do, and what must the educator always check?}
-    validations: {required: true}
-  - type: input
-    id: author
-    attributes: {label: Author(s) and institution}
-    validations: {required: true}
-  - type: textarea
-    id: instructions
-    attributes: {label: "Instructions (paste SKILL.md or attach a ZIP below)", render: markdown}
-  - type: dropdown
-    id: tested
-    attributes:
-      label: Has it been used for real teaching?
-      options: ["No — draft", "Yes, at my institution", "Yes, at several institutions"]
-  - type: input
-    id: tools
-    attributes: {label: Tools it has been used in}
-  - type: checkboxes
-    id: rights
-    attributes:
-      label: Rights
-      options:
-        - label: I have the right to release this under CC BY 4.0 (content) / MIT (code), and it contains no patient or learner data
-          required: true
+- type: input
+  id: contributor_name
+  attributes:
+    label: Your name
+- type: input
+  id: institution
+  attributes:
+    label: Institution
+    description: Every contribution is recorded with its institution, so the community page can show where the library's knowledge comes from.
+  validations:
+    required: true
+- type: input
+  id: country
+  attributes:
+    label: Country
+  validations:
+    required: true
+- type: input
+  id: role
+  attributes:
+    label: Your role
+    placeholder: e.g. course leader, MSTP director, graduate program administrator
+- type: checkboxes
+  id: credit
+  attributes:
+    label: Credit
+    options:
+    - label: Credit me by name on the community page (otherwise only the institution is shown)
+- type: input
+  id: name
+  attributes:
+    label: Proposed name
+    placeholder: lowercase-with-hyphens
+  validations:
+    required: true
+- type: textarea
+  id: task
+  attributes:
+    label: 'Purpose: what task does it do, and when should an educator use it?'
+  validations:
+    required: true
+- type: textarea
+  id: inputs
+  attributes:
+    label: 'Inputs: what must the user provide?'
+  validations:
+    required: true
+- type: textarea
+  id: output
+  attributes:
+    label: 'Expected output: what exactly does it produce?'
+  validations:
+    required: true
+- type: textarea
+  id: success
+  attributes:
+    label: 'Success criteria: how do you know the output is good enough to use?'
+- type: textarea
+  id: limitations
+  attributes:
+    label: 'Limitations: what does it not do, and what must the educator always check?'
+  validations:
+    required: true
+- type: textarea
+  id: instructions
+  attributes:
+    label: Instructions (paste SKILL.md or attach a ZIP below)
+    render: markdown
+- type: dropdown
+  id: tested
+  attributes:
+    label: Has it been used for real teaching?
+    options:
+    - No — draft
+    - Yes, at my institution
+    - Yes, at several institutions
+- type: input
+  id: tools
+  attributes:
+    label: Tools it has been used in
+- type: checkboxes
+  id: rights
+  attributes:
+    label: Rights
+    options:
+    - label: I have the right to release this under CC BY 4.0 (content) / MIT (code), and it contains no patient or learner data
+      required: true

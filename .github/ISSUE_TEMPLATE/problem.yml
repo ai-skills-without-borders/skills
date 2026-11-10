@@ -1,17 +1,52 @@
 name: Problem with a skill
 description: Something didn't work as expected
-title: "[problem] <skill> — <short description>"
-labels: ["bug"]
+title: '[problem] <skill> — <short description>'
+labels:
+- bug
 body:
-  - type: input
-    id: skill
-    attributes: {label: Skill and version}
-    validations: {required: true}
-  - type: input
-    id: tool
-    attributes: {label: AI tool and plan}
-    validations: {required: true}
-  - type: textarea
-    id: what
-    attributes: {label: What you asked, what happened, what you expected}
-    validations: {required: true}
+- type: input
+  id: contributor_name
+  attributes:
+    label: Your name
+- type: input
+  id: institution
+  attributes:
+    label: Institution
+    description: Every contribution is recorded with its institution, so the community page can show where the library's knowledge comes from.
+  validations:
+    required: true
+- type: input
+  id: country
+  attributes:
+    label: Country
+  validations:
+    required: true
+- type: input
+  id: role
+  attributes:
+    label: Your role
+    placeholder: e.g. course leader, MSTP director, graduate program administrator
+- type: checkboxes
+  id: credit
+  attributes:
+    label: Credit
+    options:
+    - label: Credit me by name on the community page (otherwise only the institution is shown)
+- type: input
+  id: skill
+  attributes:
+    label: Skill and version
+  validations:
+    required: true
+- type: input
+  id: tool
+  attributes:
+    label: AI tool and plan
+  validations:
+    required: true
+- type: textarea
+  id: what
+  attributes:
+    label: 'What went wrong: what you asked, what happened, and what you expected'
+  validations:
+    required: true
