@@ -230,3 +230,27 @@ def validate_templates():
             if not (ids.get(need, {}).get("validations") or {}).get("required"):
                 errors.append(f"{tag} must have a required '{need}' field")
     return errors
+
+
+def feed_xml(titles, site_url, library_name):
+    """Atom feed of contributions to skills, newest first, for anyone who wants to follow the library."""
+    from xml.sax.saxutils import escape as x
+    insts, contribs, _, _ = stats()
+    items = sorted(enumerate(contribs), key=lambda kc: (kc[1]["date"], kc[0]), reverse=True)[:50]
+    updated = f'{items[0][1]["date"]}T00:00:00Z' if items else "2026-01-01T00:00:00Z"
+    entries = []
+    for k, c in items:
+        i = insts.get(c["institution"], {"name": c["institution"]})
+        skill = titles.get(c["skill"], c["skill"])
+        what = TYPES[c["type"]][0]
+        title = f"{what}: {skill}" if c["type"] == "skill" else f"{what} of {skill}"
+        who = f'{c["person"]}, ' if c.get("person") else ""
+        url = f'{site_url}skills/{c["skill"]}.html'
+        summary = f'{who}{i["name"]}.' + (f' {c["note"]}' if c.get("note") else "")
+        entries.append(f'<entry><id>{x(url)}#{c["date"]}-{k}</id><title>{x(title)}</title>'
+                       f'<link href="{x(url)}"/><updated>{c["date"]}T00:00:00Z</updated>'
+                       f'<summary>{x(summary)}</summary></entry>')
+    return ('<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom">'
+            f'<id>{x(site_url)}feed.xml</id><title>{x(library_name)}: new skills and contributions</title>'
+            f'<link href="{x(site_url)}feed.xml" rel="self"/><link href="{x(site_url)}community.html"/>'
+            f'<updated>{updated}</updated>{"".join(entries)}</feed>\n')

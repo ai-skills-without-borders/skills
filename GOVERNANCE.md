@@ -65,7 +65,7 @@ Reviews by other institutions are welcome at any time. They raise a skill's matu
 Every pull request runs `tools/build.py --check` automatically. Approvals are recorded on the pull request; `.github/CODEOWNERS` routes review requests to the right people.
 
 
-**Automatic publishing.** A new skill submitted through the "New skill" form by a user listed under `auto_publish` in `config.yaml` (currently the two maintainers) is added to the library automatically as Draft: the form is turned into a skill folder, checked, published and the issue closed. Submissions from everyone else wait for one maintainer, as above.
+**Automatic publishing.** A new skill submitted through the "New skill" form by a user listed under `auto_publish` in `config.yaml` (currently the two maintainers) is added to the library automatically as Draft: the form is turned into a skill folder, checked, published and the issue closed. Submissions from everyone else are turned into a pull request automatically, and the maintainers are asked to review it, which sends them an email; one approval and a merge publish it. Anyone can follow new skills through the site's feed (`feed.xml`) or by watching the repository.
 
 ## Editing paths for contributors
 

@@ -1,8 +1,9 @@
-name: Publish new skill from issue
-# When a "New skill" issue is opened or edited:
-# - from a user listed under auto_publish in config.yaml, the skill is added to the
-#   library as Draft, checked, committed and published, and the issue is closed;
-# - from anyone else, the issue gets a thank-you comment and waits for a maintainer.
+name: New skill from issue
+# When a "New skill" issue is opened or edited, the form is turned into a skill folder and checked.
+# - Author listed under auto_publish in config.yaml: the skill is committed and published as
+#   Draft, and the issue is closed with a link.
+# - Anyone else: a pull request is opened and the maintainers are asked to review it, which
+#   sends them an email. One approval and a merge publish it.
 
 on:
   issues:
@@ -11,14 +12,15 @@ on:
 permissions:
   contents: write
   issues: write
+  pull-requests: write
   actions: write
 
 concurrency:
-  group: new-skill
+  group: new-skill-${{ github.event.issue.number }}
   cancel-in-progress: false
 
 jobs:
-  publish:
+  skill:
     if: contains(github.event.issue.labels.*.name, 'new-skill') && github.event.issue.state == 'open'
     runs-on: ubuntu-latest
     env:
@@ -31,45 +33,42 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install pyyaml markdown
 
-      - name: Is the author trusted?
-        id: trust
+      - name: Who submitted it
+        id: who
         run: |
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import os, yaml
-          trusted = [u.lower() for u in yaml.safe_load(open("config.yaml")).get("auto_publish", [])]
-          print("trusted=" + ("yes" if os.environ["AUTHOR"].lower() in trusted else "no"))
+          cfg = yaml.safe_load(open("config.yaml"))
+          trusted = [u for u in cfg.get("auto_publish", [])]
+          author = os.environ["AUTHOR"].lower()
+          print("trusted=" + ("yes" if author in [u.lower() for u in trusted] else "no"))
+          print("reviewers=" + " ".join(u for u in trusted if u.lower() != author))
+          print("mentions=" + " ".join("@" + u for u in trusted))
+          print("site=" + cfg["site_url"])
           PY
 
-      - name: Thank other contributors
-        if: steps.trust.outputs.trusted != 'yes' && github.event.action == 'opened'
-        run: |
-          gh issue comment "$ISSUE" --body "Thank you for sharing a skill! A maintainer will review it and add it to the library, usually within a few days. You'll get a link here when it's published."
-
       - name: Fetch the issue and any attached ZIP
-        if: steps.trust.outputs.trusted == 'yes'
         run: |
           mkdir -p /tmp/sub
           gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}" --jq .body > /tmp/sub/body.md
           url=$(grep -oE 'https://github\.com/(user-attachments/files|[^ )]+/files)/[^ )]+\.zip' /tmp/sub/body.md | head -1 || true)
           if [ -n "$url" ]; then curl -sSL -H "Authorization: Bearer $GH_TOKEN" -o /tmp/sub/skill.zip "$url"; fi
 
-      - name: Build the skill
-        if: steps.trust.outputs.trusted == 'yes'
+      - name: Build and check the skill
         id: build
         run: |
           zarg=""; [ -f /tmp/sub/skill.zip ] && zarg="--zip /tmp/sub/skill.zip"
           name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
           echo "name=$name" >> "$GITHUB_OUTPUT"
-          if [ -z "$name" ]; then echo "ok=no" >> "$GITHUB_OUTPUT"; exit 0; fi
-          if python tools/build.py --check > /tmp/sub/check.txt 2>&1; then
+          if [ -n "$name" ] && python tools/build.py --check > /tmp/sub/check.txt 2>&1; then
             python tools/build.py
             echo "ok=yes" >> "$GITHUB_OUTPUT"
           else
             echo "ok=no" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Publish
-        if: steps.build.outputs.ok == 'yes'
+      - name: Publish (trusted authors)
+        if: steps.who.outputs.trusted == 'yes' && steps.build.outputs.ok == 'yes'
         run: |
           name='${{ steps.build.outputs.name }}'
           git config user.name "github-actions[bot]"
@@ -78,15 +77,41 @@ jobs:
           git commit -m "Add skill ${name} (Draft) from issue #${ISSUE}"
           git push
           gh workflow run build.yml --ref main
-          site=$(python -c "import yaml;print(yaml.safe_load(open('config.yaml'))['site_url'])")
-          gh issue comment "$ISSUE" --body "Published as **Draft**: ${site}skills/${name}.html (the site updates within a few minutes). It now moves up as people use it and send usage reports. Thank you!"
+          gh issue comment "$ISSUE" --body "Published as **Draft**: ${{ steps.who.outputs.site }}skills/${name}.html (the site updates within a few minutes). It moves up as people use it and send usage reports. Thank you!"
           gh issue close "$ISSUE"
 
+      - name: Open a pull request for review (everyone else)
+        if: steps.who.outputs.trusted != 'yes' && steps.build.outputs.ok == 'yes'
+        run: |
+          name='${{ steps.build.outputs.name }}'
+          branch="new-skill/issue-${ISSUE}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add -A
+          git commit -m "Add skill ${name} (Draft) from issue #${ISSUE}"
+          git push -f origin "$branch"
+          pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls?head=${GITHUB_REPOSITORY_OWNER}:${branch}&state=open" --jq '.[0].number // empty')
+          if [ -z "$pr" ]; then
+            body="New skill **${name}** from #${ISSUE}, submitted by @${AUTHOR}. The automatic checks passed.
+
+          Approve and merge to publish it as Draft. Closes #${ISSUE}."
+            pr=$(gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls" -f title="New skill: ${name}" -f head="$branch" -f base=main -f body="$body" --jq .number) || pr=""
+          fi
+          if [ -n "$pr" ]; then
+            for r in ${{ steps.who.outputs.reviewers }}; do
+              gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${pr}/requested_reviewers" -f "reviewers[]=$r" > /dev/null || true
+            done
+            gh issue comment "$ISSUE" --body "Thank you for sharing a skill! It passed the automatic checks and is waiting for a maintainer's approval: #${pr}. You'll get a link here when it's published."
+          else
+            gh issue comment "$ISSUE" --body "Thank you for sharing a skill! It passed the automatic checks. ${{ steps.who.outputs.mentions }}: it is ready for review on branch \`${branch}\` (https://github.com/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1)."
+          fi
+
       - name: Report a problem
-        if: steps.trust.outputs.trusted == 'yes' && steps.build.outputs.ok != 'yes'
+        if: steps.build.outputs.ok != 'yes'
         run: |
           {
-            echo "The skill could not be published automatically. Please fix the form (edit this issue) and it will be retried."
+            echo "Thank you for sharing a skill! It could not be prepared automatically. Please fix the form (edit this issue) and it will be retried, or a maintainer will help: ${{ steps.who.outputs.mentions }}"
             echo
             echo '```'
             cat /tmp/sub/err.txt /tmp/sub/check.txt 2>/dev/null | grep -v '^warning' | tail -20

@@ -238,6 +238,7 @@ def build_site(cards, variants, cfg, public_card):
     shutil.copy(SITE / "style.css", DOCS / "style.css")
     shutil.copy(SITE / "site.js", DOCS / "site.js")
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    (DOCS / "feed.xml").write_text(community.feed_xml({c["name"]: c["title"] for c in cards}, cfg["site_url"], cfg["library_name"]), encoding="utf-8")
 
     by_parent = {}
     for v in variants:
