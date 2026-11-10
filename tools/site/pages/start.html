@@ -6,17 +6,15 @@
   <div class="wrap">
       
 
+      {{EQUATION}}
       <div class="intro">
         <div>
           <p><strong>A skill is transferable teaching know-how, packaged for an AI assistant.</strong> It is a short set of written instructions that an educator wrote once, so that anyone's AI assistant can do one teaching task the way an experienced colleague would.</p>
           <p>Think of it as a protocol for the AI. A good protocol holds two things: <strong>knowledge</strong> (the standards, rules and common mistakes an expert knows) and a <strong>framework</strong> (the steps, the checkpoints where you approve, and the exact shape of the result). A skill holds both.</p>
           <p>You don't open a skill or run it. Once it is installed, you ask your assistant in ordinary words, for example "write exam questions for my renal objectives". The assistant recognizes the task, loads the right skill, and follows it.</p>
         </div>
-        <div class="anatomy" aria-label="What is inside a skill">
-          <h3>What's inside a skill</h3>
-          <div class="file trigger"><b>When to use it</b><span class="path">the description at the top of SKILL.md</span><p>The words educators actually say, so the assistant knows when to pick it up.</p></div>
-          <div class="file"><b>The framework</b><span class="path">the body of SKILL.md</span><p>Steps in order, questions to ask you first, where to stop for your approval, and what the result looks like.</p></div>
-          <div class="file knowledge"><b>The knowledge</b><span class="path">references/ folder</span><p>Standards, checklists, examples and rules, loaded only when a step needs them.</p></div>
+        <div class="anatomy-wrap">
+          {{ANATOMY}}
         </div>
       </div>
 

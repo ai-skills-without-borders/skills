@@ -152,6 +152,7 @@ def status_table(cards):
 
 
 def fill_steps(page):
+    page = page.replace("{{ANATOMY}}", visuals.anatomy_svg() + visuals.anatomy_svg(stacked=True)).replace("{{EQUATION}}", visuals.equation_html())
     for k in ("ASK", "MATCH", "FRAME", "KNOW", "OK"):
         page = page.replace("{{IC_" + k + "}}", visuals.step_icon(k))
     return page
