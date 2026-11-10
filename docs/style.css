@@ -335,3 +335,13 @@ a.node { text-decoration: none; display: block; }
   .anatomy-art.stacked { display: block; }
 }
 .newhere { margin: 14px 0 0; font-size: .97rem; color: var(--ink-soft); }
+
+/* principles registry: layers, source tiers, gap flag */
+h3.layer { margin: 34px 0 4px; font-size: 1.2rem; }
+p.layer-intro { margin: 0 0 6px; color: var(--ink-soft); max-width: 70ch; }
+.ped-row h4 { margin: 0 0 4px; font-size: 1.05rem; }
+.ped-row .src b { color: var(--ink); font-weight: 700; }
+.ped-row .src.flag { display: inline-block; background: var(--marker-soft); color: #5a4a00; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.ped-row .where .none { color: var(--ink-soft); font-style: italic; }
+.matrix tr.mlayer th { text-align: left; font-size: .8rem; color: var(--ink-soft); padding-top: 16px; border-bottom: 1px solid var(--ink); }
+.matrix .gen { font-size: .72rem; font-weight: 700; color: #5a4a00; background: var(--marker-soft); padding: 1px 6px; border-radius: 3px; margin-left: 4px; white-space: nowrap; }

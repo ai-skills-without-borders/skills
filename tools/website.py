@@ -19,6 +19,7 @@ from pathlib import Path
 
 import markdown
 
+import principles
 import visuals
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,18 +34,17 @@ LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
 TOOLNAME = {"claude": "Claude", "chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot"}
 STATE = {"untested": "not yet tested", "works": "works", "works-with-limits": "works, with limits", "broken": "broken"}
 
-PED = [
-    ("Constructive alignment", "Objectives, activities and assessment are designed together, so learners practise and are tested on what the objectives say.", "standard", "Objectives, Syllabus, Exam items, Lesson check", "Biggs, 1996"),
-    ("Observable, levelled objectives", "One observable verb at a defined cognitive level; for skills, a condition and a criterion.", "standard", "Objectives, Syllabus", "Anderson & Krathwohl, 2001; Mager, 1962"),
-    ("Competencies and entrustment", "Count a competency only where learners perform it and someone observes it. Frameworks need faculty review before use.", "standard", "Syllabus, Objectives", "ten Cate, 2005; AAMC Foundational Competencies, 2024; GREAT MD-PhD toolkit, 2026"),
-    ("Problem-based learning", "Problems activate prior knowledge and store it in the context where it will be used. Curriculum-level outcomes are mixed, so structure matters.", "research", "Session", "Schmidt, 1983; Norman & Schmidt, 1992; Colliver, 2000"),
-    ("Problem solving before instruction", "Trying first, then consolidating, improves understanding and transfer, when the struggle is designed and followed by explicit instruction.", "research", "Session", "Kapur, 2008; Sinha & Kapur, 2021 (meta-analysis of 53 studies)"),
-    ("Managing cognitive load", "Working memory is limited, and novices need guidance: one inference per prompt, terms defined at first use, worked code before independent code.", "research", "Session, Reading, Lesson check, Objectives", "Sweller, 1988; Kirschner, Sweller & Clark, 2006"),
-    ("Retrieval practice with feedback", "Recalling strengthens memory more than rereading, including in medical education, and feedback is essential.", "research", "Reading, Session, Exam items", "Roediger & Karpicke, 2006; Larsen, Butler & Roediger, 2008"),
-    ("Item-writing quality", "Validated guidelines define well-formed items. Flawed items are common and disadvantage some students.", "standard", "Exam items", "Haladyna, Downing & Rodriguez, 2002; Downing, 2005; NBME Item-Writing Guide, 2020"),
-    ("Assessment validity and purpose", "Results support a decision only with validity evidence for that use. Formative and summative assessment are built differently.", "standard", "Exam items, Syllabus", "Downing, 2003; van der Vleuten, 1996"),
-    ("Responsible AI in education", "Disclose AI use, protect privacy, keep the educator in charge, and never invent sources.", "standard", "Every skill", "AAMC Principles for the Responsible Use of AI in Medical Education, 2025"),
-]
+def ped_entries(skill_names):
+    """Principles from guide/principles.yaml, ready for the website."""
+    _, ps = principles.load()
+    out = []
+    for p in ps:
+        med = [r["short"] for r in p["refs"] if principles.is_medical(r)]
+        gen = [r["short"] for r in p["refs"] if not principles.is_medical(r)]
+        out.append({**p, "used": principles.skills_of(p, skill_names), "med": med, "gen": gen,
+                    "med_ok": principles.has_medical_evidence(p),
+                    "library": "library" in p["applies"]})
+    return out
 
 
 def e(s):
@@ -162,15 +162,33 @@ def fill_steps(page):
     return page
 
 
-def ped_rows():
+def ped_rows(entries):
     label = {"research": "Research", "standard": "Standard", "practice": "Practice"}
-    return "".join(
-        f'<div class="ped-row"><div><h3>{e(t)}</h3><p>{e(d)}</p><p class="src">{e(src)}</p></div>'
-        f'<div><span class="basis {b}">{label[b]}</span></div><div class="where"><b>Applied in</b>{e(w)}</div></div>'
-        for t, d, b, w, src in PED)
+    short = dict(visuals.SHORT)
+    out = []
+    for layer, (title, intro) in principles.LAYERS.items():
+        out.append(f'<h3 class="layer">{e(title)}</h3><p class="layer-intro">{e(intro)}</p><div class="ped">')
+        for p in [x for x in entries if x["layer"] == layer]:
+            where = ", ".join(short[n] for n in p["used"]) if p["used"] else ""
+            if len(p["used"]) == len(short):
+                where = "Every skill"
+            if p["library"]:
+                where = (where + "; the library as a whole" if where else "The library as a whole")
+            where = where or '<span class="none">No skill yet</span>'
+            srcs = f'<p class="src"><b>Origin and general evidence:</b> {e("; ".join(p["gen"]))}</p>' if p["gen"] else ""
+            if p["med"]:
+                srcs += f'<p class="src"><b>Medical education:</b> {e("; ".join(p["med"]))}</p>'
+            if not p["med_ok"]:
+                srcs += '<p class="src flag">Evidence from general education only</p>'
+            out.append(f'<div class="ped-row"><div><h4>{e(p["name"])}</h4><p>{e(p["summary"])}</p>{srcs}</div>'
+                       f'<div><span class="basis {p["basis"]}">{label[p["basis"]]}</span></div>'
+                       f'<div class="where"><b>Applied in</b>{where if "span" in where else e(where)}</div></div>')
+        out.append("</div>")
+    return "".join(out)
 
 
 def build_site(cards, variants, cfg, public_card):
+    ped = ped_entries([n for n, _ in visuals.SHORT if n in {c["name"] for c in cards}])
     gh = f"https://github.com/{cfg['repo']}"
     # clean generated output, keep nothing stale
     for p in ("downloads", "paste", "skills"):
@@ -212,7 +230,7 @@ def build_site(cards, variants, cfg, public_card):
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
                          read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
-                          read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows()).replace("{{MATRIX}}", visuals.matrix_html(PED)).replace(
+                          read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows(ped)).replace("{{MATRIX}}", visuals.matrix_html(ped)).replace(
                               "{{PEDAGOGY_MD}}", gh_links(md((ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")), gh)),
                           "pedagogy.html", ""),
     }

@@ -85,11 +85,16 @@ _ALIASES = {"Objectives": "learning-objectives-designer", "Syllabus": "syllabus-
 
 def matrix_html(ped):
     head = "".join(f'<th scope="col"><a href="skills/{n}.html">{icon(n, 22)}<span>{s}</span></a></th>' for n, s in SHORT)
-    rows = []
-    for title, _d, basis, where, _src in ped:
-        used = {n for n, _ in SHORT} if where.strip() == "Every skill" else {_ALIASES[w.strip()] for w in where.split(",") if w.strip() in _ALIASES}
-        cells = "".join(f'<td>{"<span class=\"dot " + basis + "\" title=\"" + basis + "\"></span>" if n in used else ""}</td>' for n, _ in SHORT)
-        rows.append(f'<tr><th scope="row">{title}</th>{cells}</tr>')
+    rows, layer = [], None
+    names = {"science": "Science teaching", "medicine": "Medical education", "ai": "AI era"}
+    for p in ped:
+        if p["layer"] != layer:
+            layer = p["layer"]
+            rows.append(f'<tr class="mlayer"><th colspan="{len(SHORT) + 1}" scope="rowgroup">{names[layer]}</th></tr>')
+        basis = p["basis"]
+        cells = "".join(f'<td>{"<span class=\"dot " + basis + "\" title=\"" + basis + "\"></span>" if n in p["used"] else ""}</td>' for n, _ in SHORT)
+        flag = "" if p["med_ok"] else ' <span class="gen" title="Evidence from general education only">general ed.</span>'
+        rows.append(f'<tr><th scope="row">{p["name"]}{flag}</th>{cells}</tr>')
     return (f'<div class="matrix-wrap"><table class="matrix"><thead><tr><th></th>{head}</tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>')
 

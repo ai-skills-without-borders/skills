@@ -25,6 +25,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import principles  # noqa: E402
 import website  # noqa: E402  (tools/website.py)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -200,6 +201,8 @@ def main():
     check_only = "--check" in sys.argv
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     cards, errors, warnings = validate()
+    shared_names = [c["name"] for c in cards if not c["_variant"]]
+    errors += principles.validate(shared_names)
     for w in warnings:
         print(f"warning: {w}")
     for e in errors:
@@ -219,6 +222,8 @@ def main():
     shared = [c for c in cards if not c["_variant"]]
     variants = [c for c in cards if c["_variant"]]
     update_readme(shared, cfg)
+    principles.write_pedagogy(shared_names)
+    principles.write_gaps(shared_names)
     website.build_site(shared, variants, cfg, public_card)
     print("built dist/ and docs/")
 
