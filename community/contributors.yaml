@@ -115,3 +115,9 @@ contributions:
     person: "Talia H. Swartz, MD, PhD"
     github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/5
+  - date: 2026-11-10
+    type: skill
+    institution: mssm
+    skill: mstp-t32-planner
+    github: taliaswartz
+    link: https://github.com/ai-skills-without-borders/skills/issues/6

@@ -1,0 +1,57 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: mstp-t32-planner
+title: MSTP T32 Preparer
+version: 0.1.0
+summary: 'Plan our MSTP T32 renewal
+
+  What do we need for the MSTP T32
+
+  Make a checklist for our training grant
+
+  Check our T32 against the current announcement
+
+  What goes in the…'
+tasks:
+- Plan our MSTP T32 renewal
+- What do we need for the MSTP T32
+- Make a checklist for our training grant
+- Check our T32 against the current announcement
+- What goes in the organizational support letter
+- Help me collect the training tables
+users:
+- educators
+- program-staff
+audience:
+- Educators
+- Program staff
+inputs:
+- Application type
+- Target due date and the current award's end date
+- The team and who owns each part
+- The last application, summary statement, progress reports and…
+outputs:
+- A note confirming which announcement and notices were checked, and…
+- A tracker of every component with page limits, file names, owners…
+- A timeline working back from the internal deadline
+- A plan for the training tables and outcomes data
+- Draft requests to faculty, the dean's office and the registrar
+- A Program Plan outline with the reviewer questions each section must…
+- A budget checklist using current NRSA levels
+- A compliance check and review-criteria self-check before submission
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks: []
+origin_institution: Icahn School of Medicine at Mount Sinai
+derived_from: New skill
+maintainers:
+- Contributor (Icahn School of Medicine at Mount Sinai)
+reviewers: []
+license: CC-BY-4.0
+starter: false

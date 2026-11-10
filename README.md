@@ -26,6 +26,11 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [journal-club-planner](skills/journal-club-planner) | Helps a student prepare to present a research paper at journal club. | No | draft |
 | [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | draft |
 | [mentor-compact-creator](skills/mentor-compact-creator) | Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top. | No | draft |
+| [mstp-t32-planner](skills/mstp-t32-planner) | Plan our MSTP T32 renewal
+What do we need for the MSTP T32
+Make a checklist for our training grant
+Check our T32 against the current announcement
+What goes in the… | No | draft |
 | [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | draft |
 | [thesis-lab-navigator](skills/thesis-lab-navigator) | Helps a graduate or MD-PhD student plan rotations and choose a thesis lab. | No | draft |
 <!-- CATALOG:END -->
