@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t">
+  <title id="t">AI Skills Without Borders</title>
+  <defs>
+    <clipPath id="inside"><circle cx="256" cy="256" r="226"/></clipPath>
+  </defs>
+  <circle cx="256" cy="256" r="232" fill="#ffffff"/>
+  <!-- outer ring -->
+  <circle cx="256" cy="256" r="232" fill="none" stroke="#4a86a8" stroke-width="22"/>
+  <!-- book: page fill to mask the globe behind it -->
+  <path d="M256 268 C224 244 178 236 132 240 L132 384 C184 382 228 390 256 412 C284 390 328 382 380 384 L380 240 C334 236 288 244 256 268 Z" fill="#ffffff"/>
+  <!-- inner pages (teal) -->
+  <g fill="none" stroke="#3d9696" stroke-width="22" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M256 268 C224 244 178 236 132 240 L132 384 C184 382 228 390 256 412"/>
+    <path d="M256 268 C288 244 334 236 380 240 L380 384 C328 382 284 390 256 412"/>
+    <line x1="256" y1="268" x2="256" y2="402"/>
+  </g>
+  <!-- cover / base (navy) -->
+  <path d="M104 270 L104 414 L220 414 C236 414 246 420 256 430 C266 420 276 414 292 414 L408 414 L408 270"
+        fill="none" stroke="#22405f" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- circuit lines rising from the book -->
+  <g fill="none" stroke="#22405f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 250 L256 150"/>
+    <path d="M232 240 L232 214 L196 186 L196 176"/>
+    <path d="M280 240 L280 214 L316 186 L316 176"/>
+  </g>
+  <g fill="#ffffff" stroke="#22405f" stroke-width="16">
+    <circle cx="256" cy="134" r="17"/>
+    <circle cx="196" cy="161" r="17"/>
+    <circle cx="316" cy="161" r="17"/>
+  </g>
+</svg>

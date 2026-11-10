@@ -5,20 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Skills Without Borders — skills catalog</title>
 <meta name="description" content="Shared AI skills for medical and biomedical-research educators. Download, install in your AI assistant, and report how it went.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #14303a;
-    --ink-soft: #3d5a62;
+    --ink: #22405f;
+    --ink-soft: #4b6178;
     --paper: #f7f9f8;
     --white: #ffffff;
     --marker: #f4dc4a;
     --marker-soft: #fbf0b0;
-    --sage: #5e7f74;
+    --sage: #3d9696;
     --rule: #d5dedb;
-    --focus: #1c6ea4;
+    --focus: #4a86a8;
     --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
   * { box-sizing: border-box; }
@@ -35,7 +37,7 @@
   .top { border-bottom: 1px solid var(--rule); background: var(--white); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
   .brand { font-weight: 700; font-size: 1.05rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-  .brand svg { flex: none; }
+  .brand img { flex: none; display: block; }
   .top nav { display: flex; gap: 20px; font-size: .95rem; }
   .top nav a { text-decoration: none; }
   .top nav a:hover { text-decoration: underline; }
@@ -52,9 +54,9 @@
   .thread p { margin: 0 0 22px; color: var(--ink-soft); font-size: .98rem; max-width: 70ch; }
   .objective { display: inline-block; font-weight: 700; background: var(--marker); padding: 2px 8px; border-radius: 3px; }
   .rail { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-  .rail::before { content: ""; position: absolute; left: 4%; right: 4%; top: 15px; height: 4px; background: var(--marker); border-radius: 2px; }
+  .rail::before { content: ""; position: absolute; left: 4%; right: 4%; top: 15px; height: 0; border-top: 3px dotted var(--focus); }
   .node { position: relative; text-align: center; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; padding: 0 2px 4px; }
-  .node .dot { display: block; width: 34px; height: 34px; margin: 0 auto 10px; border-radius: 50%; background: var(--white); border: 3px solid var(--ink); position: relative; }
+  .node .dot { display: block; width: 34px; height: 34px; margin: 0 auto 10px; border-radius: 50%; background: var(--white); border: 3px solid var(--sage); position: relative; }
   .node.first .dot { background: var(--marker); }
   .node .lbl { display: block; font-weight: 700; font-size: .92rem; line-height: 1.25; }
   .node .what { display: block; font-size: .82rem; color: var(--ink-soft); margin-top: 3px; line-height: 1.3; }
@@ -74,7 +76,7 @@
 
   .install { background: var(--marker-soft); border-radius: 8px; padding: 14px 18px; margin: 0 0 22px; font-size: .97rem; }
   .install strong { display: block; margin-bottom: 2px; }
-  .install code, .detail code { font-size: .88em; background: rgba(20,48,58,.07); padding: 1px 5px; border-radius: 3px; }
+  .install code, .detail code { font-size: .88em; background: rgba(34,64,95,.07); padding: 1px 5px; border-radius: 3px; }
 
   .list { border-top: 2px solid var(--ink); }
   .skill { border-bottom: 1px solid var(--rule); }
@@ -103,7 +105,7 @@
   .actions { display: flex; flex-wrap: wrap; gap: 10px; }
   .btn { display: inline-block; font: inherit; font-size: .95rem; font-weight: 700; padding: 9px 16px; border-radius: 8px; text-decoration: none; border: 1.5px solid var(--ink); }
   .btn.primary { background: var(--ink); color: var(--white); }
-  .btn.primary:hover { background: #0e252d; }
+  .btn.primary:hover { background: #18304a; }
   .btn.plain { background: var(--white); }
   .empty { padding: 28px 4px; color: var(--ink-soft); }
   .origin { font-size: .9rem; color: var(--ink-soft); }
@@ -135,7 +137,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="11" width="26" height="6" rx="3" fill="#f4dc4a"/><circle cx="6" cy="14" r="4.5" fill="#fff" stroke="#14303a" stroke-width="2.4"/><circle cx="22" cy="14" r="4.5" fill="#14303a"/></svg>
+      <img src="favicon.svg" alt="" width="40" height="40">
       <span id="libname">AI Skills Without Borders</span>
     </a>
     <nav aria-label="Main">

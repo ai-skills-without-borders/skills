@@ -181,6 +181,8 @@ def build_site(cards, cfg):
     for c in cards:
         shutil.copy(DIST / "zips" / f"{c['name']}.zip", DOCS / "downloads")
         shutil.copy(DIST / "paste" / f"{c['name']}.md", DOCS / "paste")
+    for f in ("logo.svg", "logo.png", "favicon.svg", "favicon.png"):
+        shutil.copy(ROOT / "assets" / f, DOCS / f)
     template = (ROOT / "tools" / "site_template.html").read_text(encoding="utf-8")
     data = json.dumps([public_card(c) for c in cards], ensure_ascii=False).replace("</", "<\\/")
     conf = json.dumps({k: cfg[k] for k in ("library_name", "tagline", "repo", "plugin_name", "version", "contact")},
