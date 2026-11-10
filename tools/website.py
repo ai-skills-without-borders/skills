@@ -83,8 +83,6 @@ def layout(cfg, title, description, content, active, root="", scripts="", catalo
     nav = "\n".join(
         f'      <a href="{root}{href}"{" aria-current=\"page\"" if href == active else ""}>{label}</a>'
         for href, label in NAV) + f'\n      <a href="{gh}">GitHub</a>'
-    founders = "".join(
-        f"<div><b>{e(f['name'])}</b>{e(f['role'])}<br>{e(f['institution'])}</div>" for f in cfg.get("founders", []))
     conf = {k: cfg[k] for k in ("library_name", "repo", "plugin_name", "version")}
     page = (SITE / "base.html").read_text(encoding="utf-8")
     # cache-busting: a new version of the CSS/JS gets a new URL, so phones never mix new pages with old styles
@@ -94,7 +92,7 @@ def layout(cfg, title, description, content, active, root="", scripts="", catalo
     if catalog is not None:
         extra = "<script>window.ASB_CATALOG = " + json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/") + ";</script>\n"
     for k, v in {"TITLE": e(title), "DESCRIPTION": e(description), "ROOT": root, "LIBNAME": e(cfg["library_name"]),
-                 "NAV": nav, "FOUNDERS": founders, "VERSION": e(cfg["version"]), "GH": gh,
+                 "NAV": nav, "VERSION": e(cfg["version"]), "GH": gh,
                  "CONFIG_JSON": json.dumps(conf).replace("</", "<\\/"), "SCRIPTS": extra + scripts,
                  "CONTENT": content.replace("{{GH}}", gh)}.items():
         page = page.replace("{{" + k + "}}", v)
