@@ -14,7 +14,7 @@ Found a problem in a skill? Open an issue describing what you asked, which tool 
 
 - **In plain words:** open the *Suggest a change* issue form. Say what should change, why, and (optionally) the wording.
 - **Directly:** on the skill's page on the website, choose *Edit on GitHub*, or open the file on GitHub and press the pencil icon. Make your change and choose *Propose changes*. GitHub makes a copy (fork) under your account and opens a pull request; nothing changes in the library until a maintainer approves it.
-- **Approval:** see the table in [GOVERNANCE.md](GOVERNANCE.md#how-changes-are-approved). Bigger changes also need a reviewer from another institution.
+- **Approval:** one maintainer approves, after the automatic checks pass. See [GOVERNANCE.md](GOVERNANCE.md#how-changes-are-approved).
 
 ## 4. Adapt a skill for your institution
 
@@ -44,7 +44,7 @@ Send the skill folder (zipped) or the text of your instructions through the **Ne
 3. Add `card.yaml` (copy one from another skill; start at `maturity: draft`).
 4. Put long detail in `references/` and load it from `SKILL.md` only when needed. Keep `SKILL.md` focused — under about 500 lines.
 5. Run `python tools/build.py --check`. Fix every error.
-6. Open a pull request. A maintainer and, where possible, a reviewer from another institution will look at it with [community/review-checklist.md](community/review-checklist.md).
+6. Open a pull request. One maintainer reviews and merges it. It starts as `draft`; reviews by other institutions later raise its maturity.
 
 ### What makes a good skill here
 

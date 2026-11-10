@@ -45,14 +45,15 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 
 ## How changes are approved
 
-| Change | Who approves | Evidence needed |
+One approval is enough. The automatic checks catch format problems, and the maturity label tells users how well tested a skill is, so a change never has to wait for a committee.
+
+| Change | Who approves | Needed |
 |---|---|---|
-| Wording fix or clarification to a shared skill | Skill maintainer or a library maintainer | Automated checks pass |
-| New capability or changed inputs/outputs in a shared skill | Skill maintainer **and** one reviewer from another institution | Automated checks; tested in at least one tool |
-| New shared skill | Two library maintainers | Automated checks; starts at `draft` |
-| Institutional variant | A maintainer of that institution's variants | Automated checks; library principles kept |
-| Maturity upgrade | A library maintainer | Linked usage reports (`used_at`) and, for `reviewed`, a completed review |
-| Change to a pedagogical rule | Skill maintainer | The source or experience behind it, labelled Research / Standard / Practice |
+| Any change to a shared skill, or a new skill | One maintainer (the skill's maintainer or a library maintainer) | Automatic checks pass. New skills start as `draft` |
+| Institutional variant | One maintainer from that institution, or a library maintainer | Automatic checks pass |
+| Maturity upgrade | One library maintainer | The evidence linked in the card (usage reports; for `reviewed`, one completed review) |
+
+Reviews by other institutions are welcome at any time. They raise a skill's maturity label; they never block a change.
 
 Every pull request runs `tools/build.py --check` automatically. Approvals are recorded on the pull request; `.github/CODEOWNERS` routes review requests to the right people.
 
