@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.png" alt="AI Skills Without Borders logo" width="160"></p>
+
 # AI Skills Without Borders
 
 **Shared AI skills for medical and biomedical-research educators.**
