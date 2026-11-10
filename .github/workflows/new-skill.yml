@@ -8,7 +8,7 @@ name: New skill from issue
 
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [opened, edited]
 
 permissions:
   contents: write
