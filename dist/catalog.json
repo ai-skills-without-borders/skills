@@ -247,6 +247,71 @@
     "source_url": null
   },
   {
+    "name": "leadership-communication-meeting-organizer",
+    "title": "Leadership Communication Meeting Organizer",
+    "version": "0.1.0",
+    "summary": "Helps faculty or student leaders organize and run a structured meeting where everyone takes a role, speaks and gives feedback to practice leadership communication.",
+    "tasks": [
+      "Help me run a speaking practice session",
+      "Plan a leadership communication workshop",
+      "Assign meeting roles for a communication session",
+      "Write impromptu speaking prompts for medical students",
+      "Make role guides for a timekeeper and grammarian",
+      "Write a prep sheet for students coming to a communication session"
+    ],
+    "users": [
+      "educators",
+      "learners",
+      "program-staff"
+    ],
+    "audience": [
+      "Educators",
+      "Learners",
+      "Program staff"
+    ],
+    "inputs": [
+      "Number of people and their stage, such as first-year medical…",
+      "Session length and whether it's in person or virtual",
+      "What the group should practice, such as leadership communication or…",
+      "Who runs the meeting and who leads impromptu speaking",
+      "Whether anyone will give a prepared speech",
+      "Any existing slides, sign-up sheet or role guides"
+    ],
+    "outputs": [
+      "A run of show with segments and timing",
+      "A sign-up sheet and name and role cards",
+      "A one-page guide for each role",
+      "A prep sheet for participants",
+      "15 to 20 impromptu speaking prompts suited to the group",
+      "Guidance for evaluators, end-of-meeting reports and the group…",
+      "A facilitator guide and slide outline",
+      "Adjustments for virtual, large-group, short or repeated sessions"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "untested",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "description": "Helps faculty or student leaders organize and run a structured meeting where everyone takes a role, speaks and gives feedback to practice leadership communication. Use when someone says \"help me run a speaking practice session\", \"plan a communication workshop where students practice speaking\", \"assign meeting roles for a public speaking session\", \"write impromptu speaking prompts\", \"make role guides for a timekeeper and grammarian\" or \"help me run a leadership communication session\". It produces the run of show, role assignments, role guides, student prep sheets, impromptu prompts, feedback guidance and printable materials. It works for in-person, virtual, short or large-group sessions.",
+    "zip": "downloads/leadership-communication-meeting-organizer.zip",
+    "paste": "paste/leadership-communication-meeting-organizer.md",
+    "source_url": null
+  },
+  {
     "name": "learning-objectives-designer",
     "title": "Learning Objectives Designer",
     "version": "0.1.0",

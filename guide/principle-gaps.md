@@ -37,6 +37,7 @@ Candidates for a new skill, or an addition to an existing one.
 | `curriculum-map-builder` | 3 |
 | `exam-question-writer` | 5 |
 | `journal-club-planner` | 1 |
+| `leadership-communication-meeting-organizer` | 1 |
 | `learning-objectives-designer` | 5 |
 | `lesson-format-checker` | 3 |
 | `mdphd-calendar-builder` | 1 |
