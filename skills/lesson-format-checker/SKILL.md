@@ -7,6 +7,8 @@ description: Checks a lesson plan, session plan or course/assignment Jupyter not
 
 Checks a teaching document against a **format profile** — the institution's house style written down as checkable rules — then helps fix it interactively. It never silently rewrites the educator's file: findings first, then only the approved fixes, in a new copy.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 ## Profiles
 
 A profile is a Markdown file listing the rules. This skill ships with:

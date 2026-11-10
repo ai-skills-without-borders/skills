@@ -14,6 +14,8 @@ Use this when: Extracts, writes, simplifies, levels and maps learning objectives
 
 Turns whatever an educator has — finished material, a half-built course, or a verbal description — into a clean, numbered set of learning objectives: one observable target per objective, each with a cognitive level, a source, and (optionally) proposed links to a competency framework. The table it produces is the shared backbone for the other skills in this library: the syllabus, sessions, readings and exam questions all point back to its objective IDs.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 Three things this skill is strict about:
 
 1. **One objective, one target.** An objective that asks for two things ("explain X and design Y") cannot be assessed cleanly and is split.
@@ -294,3 +296,24 @@ When revising, add a section under the table:
 Changelog
 - v2 (date): O3 split into O3a/O3b (R1 one target). O5 level 2 → 1 to match quiz.
 ```
+
+### File: `references/pedagogical-basis.md`
+
+# Pedagogical basis
+
+Why this skill's rules are what they are. Labels: **Research** (experimental studies or meta-analyses), **Standard** (professional consensus or published standard), **Practice** (local convention from experienced educators; institutions may change it).
+
+Use this file to explain a rule when an educator asks "why?", and to judge which rules can be relaxed (Practice) and which should not (Research, Standard).
+
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| Check every objective for an activity and an assessment | Standard | Constructive alignment — Biggs, 1996, *Higher Education* 32:347–364 |
+| One observable verb; level matched to the activity | Standard | Revised Bloom taxonomy — Anderson & Krathwohl, 2001 |
+| Condition and criterion for skills and procedures | Standard | Mager, 1962, *Preparing Objectives for Programmed Instruction* |
+| One target per objective | Research + Practice | Cognitive load — Sweller, 1988, *Cognitive Science* 12:257–285; also makes alignment and item writing checkable |
+| Framework links are proposals for faculty review | Standard | AAMC/AACOM/ACGME Foundational Competencies (2024): no external framework without formal faculty review |
+| E / P / X strength of a framework link | Practice | Applies entrustment (performed and observed) — ten Cate, 2005, *Medical Education* 39:1176–1177 |
+| Three levels instead of six | Practice | Easier faculty agreement; Bloom level still recorded |
+| AI-assistance line; no learner data | Standard | AAMC Principles for the Responsible Use of AI in Medical Education (2025) |
+
+Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).

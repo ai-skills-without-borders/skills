@@ -7,6 +7,8 @@ description: Builds case-based PBL (problem-based learning) and tool-based RBL (
 
 This skill helps an educator build **discovery-based teaching sessions** — and the readings, quizzes, and lectures around them — in any discipline. It is used by **two kinds of people at once**:
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 1. **The builder** — a teacher or domain expert designing a session. They may or may not be an AI power user. The reference files are written for them.
 2. **The AI** — the assistant the builder is working through. This SKILL.md is the orchestration layer that keeps the AI's output at the level the builder deserves.
 

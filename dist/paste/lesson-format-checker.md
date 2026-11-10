@@ -16,6 +16,8 @@ Use this when: Checks a lesson plan, session plan or course/assignment Jupyter n
 
 Checks a teaching document against a **format profile** — the institution's house style written down as checkable rules — then helps fix it interactively. It never silently rewrites the educator's file: findings first, then only the approved fixes, in a new copy.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 ## Profiles
 
 A profile is a Markdown file listing the rules. This skill ships with:
@@ -297,3 +299,23 @@ These rules come from the batch grader used with the example notebook profile. T
 2. Parse the model notebook: report the number of gradable questions, their keys, and warnings.
 3. Build a simulated learner copy (tagged answers in each answer box, facilitator boxes removed, stripped code replaced) and confirm each tagged answer lands under the right key.
 4. Repeat on the original notebook and show before/after.
+
+### File: `references/pedagogical-basis.md`
+
+# Pedagogical basis
+
+Why this skill's rules are what they are. Labels: **Research** (experimental studies or meta-analyses), **Standard** (professional consensus or published standard), **Practice** (local convention from experienced educators; institutions may change it).
+
+Use this file to explain a rule when an educator asks "why?", and to judge which rules can be relaxed (Practice) and which should not (Research, Standard).
+
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| Every segment names its objective; every objective is served; assessment per objective | Standard | Constructive alignment — Biggs, 1996, *Higher Education* 32:347–364 |
+| Time estimates that add up to the session | Research + Practice | Managing load and pacing — Sweller, 1988; the exact format is local practice |
+| Model answer for each question; facilitator notes separate from learner text | Research + Practice | Feedback is essential for learning from questions — Larsen, Butler & Roediger, 2008, *Medical Education* 42:959–966; separation is local practice |
+| Deliberate keep/strip choice for code cells | Research | Worked examples for first exposure, then fading to independent work — Sweller, 1988 |
+| Glossary required | Research + Practice | Reduces extraneous load for mixed-background learners; table format is local practice |
+| AI-use statement; no learner data | Standard | AAMC AI Principles (2025): transparency and data privacy |
+| Box colours, markers, numbering | Practice | Operational consistency and compatibility with grading and export tools |
+
+Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).

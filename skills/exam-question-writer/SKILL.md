@@ -7,6 +7,8 @@ description: Writes exam and practice questions aligned to learning objectives f
 
 Writes assessment items that test what the objectives say — no more, no less — and checks each one for the flaws that make items test test-wiseness instead of knowledge. Every item is tagged to one objective ID and one cognitive level, so coverage can be counted.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 Three things this skill is strict about:
 
 1. **Blueprint before items.** Items are planned against objectives first, so coverage is deliberate, not an accident of what was easy to write.

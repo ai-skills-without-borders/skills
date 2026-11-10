@@ -110,6 +110,58 @@
   .empty { padding: 28px 4px; color: var(--ink-soft); }
   .origin { font-size: .9rem; color: var(--ink-soft); }
 
+
+  /* beginners */
+  #start .intro { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+  #start .intro p { margin: 0 0 14px; max-width: 60ch; }
+  .anatomy { background: var(--white); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; }
+  .anatomy h3 { margin: 0 0 12px; font-size: 1rem; }
+  .file { font-family: var(--font); border-left: 4px solid var(--sage); padding: 8px 0 8px 14px; margin-bottom: 12px; }
+  .file:last-child { margin-bottom: 0; }
+  .file b { display: block; font-size: .98rem; }
+  .file .path { font-size: .85rem; color: var(--ink-soft); }
+  .file p { margin: 4px 0 0 !important; font-size: .93rem; color: var(--ink-soft); }
+  .file.knowledge { border-left-color: var(--focus); }
+  .file.trigger { border-left-color: var(--marker); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 30px 0 8px; }
+  .compare div { border-radius: 8px; padding: 16px 18px; font-size: .96rem; }
+  .compare .without { background: var(--white); border: 1px dashed var(--ink-soft); }
+  .compare .with { background: var(--white); border: 2px solid var(--sage); }
+  .compare h3 { margin: 0 0 8px; font-size: 1rem; }
+  .compare ul { margin: 0; padding-left: 18px; }
+  .compare li { margin-bottom: 4px; }
+  .steps3 { list-style: none; counter-reset: s; padding: 0; margin: 26px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .steps3 li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 12px; font-size: .97rem; }
+  .steps3 li::before { content: counter(s); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--white); font-weight: 700; margin-bottom: 8px; }
+  .steps3 b { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+  .why { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 36px; margin-top: 26px; }
+  .why h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .why p { margin: 0; color: var(--ink-soft); font-size: .97rem; }
+  .faq { margin-top: 30px; border-top: 1px solid var(--rule); }
+  .faq details { border-bottom: 1px solid var(--rule); padding: 12px 2px; }
+  .faq summary { cursor: pointer; font-weight: 700; }
+  .faq details p { margin: 8px 0 2px; color: var(--ink-soft); max-width: 70ch; }
+  h3.block { font-size: 1.25rem; margin: 40px 0 0; }
+
+
+  /* pedagogy */
+  .ped { border-top: 2px solid var(--ink); margin-top: 8px; }
+  .ped-row { display: grid; grid-template-columns: minmax(0, 1.25fr) 120px minmax(0, 1fr); gap: 20px; padding: 16px 4px; border-bottom: 1px solid var(--rule); align-items: start; }
+  .ped-row h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .ped-row p { margin: 0; font-size: .95rem; color: var(--ink-soft); max-width: 60ch; }
+  .basis { font-size: .85rem; font-weight: 700; padding: 3px 9px; border-radius: 4px; display: inline-block; }
+  .basis.research { background: #dcefee; color: #1f5c5c; }
+  .basis.standard { background: #dde8f1; color: #234a68; }
+  .basis.practice { background: var(--marker-soft); color: #5a4a00; }
+  .ped-row .where { font-size: .9rem; }
+  .ped-row .where b { display: block; font-size: .82rem; color: var(--ink-soft); font-weight: 700; margin-bottom: 2px; }
+  .ped-row .src { font-size: .85rem; color: var(--ink-soft); margin-top: 6px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 0 0 18px; font-size: .93rem; color: var(--ink-soft); }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .practice-note { margin-top: 22px; background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 20px; font-size: .96rem; }
+  .practice-note p { margin: 0 0 8px; }
+  .practice-note p:last-child { margin: 0; }
+
   /* ways to help */
   .ways { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 28px; margin-top: 10px; }
   .ways div { border-top: 2px solid var(--ink); padding-top: 12px; }
@@ -128,6 +180,8 @@
     .toggle { grid-column: 2; grid-row: 1; }
     .detail { grid-template-columns: 1fr; }
     .ways { grid-template-columns: 1fr; }
+    #start .intro, .compare, .steps3, .why { grid-template-columns: 1fr; }
+    .ped-row { grid-template-columns: 1fr; gap: 8px; }
     .principles { columns: 1; }
     .top nav { display: none; }
   }
@@ -141,7 +195,9 @@
       <span id="libname">AI Skills Without Borders</span>
     </a>
     <nav aria-label="Main">
+      <a href="#start">New to skills?</a>
       <a href="#catalog">Skills</a>
+      <a href="#pedagogy">Pedagogy</a>
       <a href="#help">Contribute</a>
       <a id="gh" href="#">GitHub</a>
     </nav>
@@ -152,7 +208,7 @@
   <div class="hero wrap">
     <h1>Teaching skills your AI assistant can borrow</h1>
     <p class="lede">Packaged instructions, written by educators, that teach an AI assistant one teaching task well: objectives, sessions, readings, syllabi, lesson checks and exam questions.</p>
-    <p class="tools">One open format works in Claude, ChatGPT, Gemini and Microsoft Copilot, with a paste-in version for free plans.</p>
+    <p class="tools">One open format works in Claude, ChatGPT, Gemini and Microsoft Copilot, with a paste-in version for free plans. New to this? <a href="#start">Start with what a skill is</a>.</p>
 
     <div class="thread" aria-labelledby="thread-h">
       <h2 id="thread-h">Follow one objective through the library</h2>
@@ -160,6 +216,70 @@
       <div class="rail" id="rail"></div>
     </div>
   </div>
+
+  <section id="start">
+    <div class="wrap">
+      <h2>New to skills? Start here</h2>
+      <p class="sub">No coding and no AI expertise needed. If you can describe how you teach, you can use a skill, and eventually write one.</p>
+
+      <div class="intro">
+        <div>
+          <p><strong>A skill is transferable teaching know-how, packaged for an AI assistant.</strong> It is a short set of written instructions that an educator wrote once, so that anyone's AI assistant can do one teaching task the way an experienced colleague would.</p>
+          <p>Think of it as a protocol for the AI. A good protocol holds two things: <strong>knowledge</strong> (the standards, rules and common mistakes an expert knows) and a <strong>framework</strong> (the steps, the checkpoints where you approve, and the exact shape of the result). A skill holds both.</p>
+          <p>You don't open a skill or run it. Once it is installed, you ask your assistant in ordinary words, for example "write exam questions for my renal objectives". The assistant recognizes the task, loads the right skill, and follows it.</p>
+        </div>
+        <div class="anatomy" aria-label="What is inside a skill">
+          <h3>What's inside a skill</h3>
+          <div class="file trigger"><b>When to use it</b><span class="path">the description at the top of SKILL.md</span><p>The words educators actually say, so the assistant knows when to pick it up.</p></div>
+          <div class="file"><b>The framework</b><span class="path">the body of SKILL.md</span><p>Steps in order, questions to ask you first, where to stop for your approval, and what the result looks like.</p></div>
+          <div class="file knowledge"><b>The knowledge</b><span class="path">references/ folder</span><p>Standards, checklists, examples and rules, loaded only when a step needs them.</p></div>
+        </div>
+      </div>
+
+      <div class="compare">
+        <div class="without">
+          <h3>A one-off prompt</h3>
+          <ul>
+            <li>Written from scratch each time, by each person</li>
+            <li>Quality depends on how well you prompted today</li>
+            <li>Lost when the chat ends</li>
+            <li>Hard to share, review or improve</li>
+          </ul>
+        </div>
+        <div class="with">
+          <h3>A skill</h3>
+          <ul>
+            <li>Written once by someone who knows the task well</li>
+            <li>Same standards and steps every time, for everyone</li>
+            <li>Installed once, available in every chat</li>
+            <li>Shared, tested at other schools, and improved over time</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="block">How to use one</h3>
+      <ol class="steps3">
+        <li><b>Install it</b>Download the skill below and upload it in your AI tool's skills settings. No skills in your plan? Use the paste-in version.</li>
+        <li><b>Ask in plain words</b>Describe your task and attach your material, for example your slides, a paper, or your objectives. The skill asks for anything it still needs.</li>
+        <li><b>Review and decide</b>The skill stops for your approval at key points, flags what it couldn't verify, and never invents sources. You stay the expert.</li>
+      </ol>
+
+      <h3 class="block">Why it's worth it</h3>
+      <div class="why">
+        <div><h3>Expertise travels</h3><p>What one experienced educator knows about writing objectives or exam items reaches colleagues in other schools and countries, without a workshop.</p></div>
+        <div><h3>Consistent quality</h3><p>Every course leader gets the same checks: one target per objective, no flawed exam items, timings that add up.</p></div>
+        <div><h3>Less time on the mechanics</h3><p>The routine parts get done quickly, leaving more of your time for teaching decisions.</p></div>
+        <div><h3>Not locked to one tool</h3><p>Skills use an open format. Your institution can switch AI providers without losing the work.</p></div>
+      </div>
+
+      <div class="faq">
+        <details><summary>Is a skill just a long prompt?</summary><p>Partly. Unlike a prompt, it is saved and loaded automatically when it fits, it can carry reference files and examples, and it is versioned, tested and shared like any other teaching resource.</p></details>
+        <details><summary>Does a skill send my material anywhere?</summary><p>No. A skill is only instructions. Your material goes wherever your AI tool already sends it, so follow your institution's rules for that tool, and never share identifiable patient or student data.</p></details>
+        <details><summary>Do I need to know how to code?</summary><p>No. Only one skill here has optional scripts, and it still works without them. Writing a new skill means writing clear instructions in plain English.</p></details>
+        <details><summary>Can I change a skill for my school?</summary><p>Yes. Skills are openly licensed. Adapt the wording, your framework or your templates, and consider sharing the improvement back.</p></details>
+      </div>
+    </div>
+  </section>
 
   <section id="catalog">
     <div class="wrap">
@@ -177,6 +297,23 @@
       </div>
       <div class="install" id="install" aria-live="polite"></div>
       <div class="list" id="list"></div>
+    </div>
+  </section>
+
+  <section id="pedagogy">
+    <div class="wrap">
+      <h2>The pedagogy behind the skills</h2>
+      <p class="sub">Every rule in a skill should be traceable. Here is what each principle rests on and which skills apply it. Rules that come from local teaching experience are labelled as such, so you know which ones you can change.</p>
+      <div class="legend">
+        <span><span class="basis research">Research</span> experimental studies or meta-analyses</span>
+        <span><span class="basis standard">Standard</span> professional consensus or published standard</span>
+        <span><span class="basis practice">Practice</span> local convention, open to change</span>
+      </div>
+      <div class="ped" id="ped"></div>
+      <div class="practice-note">
+        <p><strong>Local practice, labelled honestly.</strong> A few rules come from teaching experience rather than studies: the 3,000 words-per-hour reading budget, three cognitive levels instead of six, the E / P / X evidence levels for competency maps, and the format conventions. For example, adults read non-fiction at about 238 words per minute (Brysbaert, 2019); the reading budget is deliberately slower to leave time for study and discussion. Your institution can set its own values.</p>
+        <p>Each skill also carries its own evidence note, so the AI can explain any rule when you ask why. <a id="pedlink" href="#">Read the full foundations, limits and references</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -274,6 +411,25 @@ function renderInstall() { document.getElementById("install").innerHTML = TOOLS[
 
 function haystack(c) { return [c.name, c.title, c.summary, c.description, ...(c.tasks || []), ...(c.audience || []), ...(c.frameworks || [])].join(" ").toLowerCase(); }
 
+
+const PED = [
+  ["Constructive alignment", "Objectives, activities and assessment are designed together, so learners practise and are tested on what the objectives say.", "standard", "Objectives, Syllabus, Exam items, Lesson check", "Biggs, 1996"],
+  ["Observable, levelled objectives", "One observable verb at a defined cognitive level; for skills, a condition and a criterion.", "standard", "Objectives, Syllabus", "Anderson & Krathwohl, 2001; Mager, 1962"],
+  ["Competencies and entrustment", "Count a competency only where learners perform it and someone observes it. Frameworks need faculty review before use.", "standard", "Syllabus, Objectives", "ten Cate, 2005; AAMC Foundational Competencies, 2024; GREAT MD-PhD toolkit, 2026"],
+  ["Problem-based learning", "Problems activate prior knowledge and store it in the context where it will be used. Curriculum-level outcomes are mixed, so structure matters.", "research", "Session", "Schmidt, 1983; Norman & Schmidt, 1992; Colliver, 2000"],
+  ["Problem solving before instruction", "Trying first, then consolidating, improves understanding and transfer, when the struggle is designed and followed by explicit instruction.", "research", "Session", "Kapur, 2008; Sinha & Kapur, 2021 (meta-analysis of 53 studies)"],
+  ["Managing cognitive load", "Working memory is limited, and novices need guidance: one inference per prompt, terms defined at first use, worked code before independent code.", "research", "Session, Reading, Lesson check, Objectives", "Sweller, 1988; Kirschner, Sweller & Clark, 2006"],
+  ["Retrieval practice with feedback", "Recalling strengthens memory more than rereading, including in medical education, and feedback is essential.", "research", "Reading, Session, Exam items", "Roediger & Karpicke, 2006; Larsen, Butler & Roediger, 2008"],
+  ["Item-writing quality", "Validated guidelines define well-formed items. Flawed items are common and disadvantage some students.", "standard", "Exam items", "Haladyna, Downing & Rodriguez, 2002; Downing, 2005; NBME Item-Writing Guide, 2020"],
+  ["Assessment validity and purpose", "Results support a decision only with validity evidence for that use. Formative and summative assessment are built differently.", "standard", "Exam items, Syllabus", "Downing, 2003; van der Vleuten, 1996"],
+  ["Responsible AI in education", "Disclose AI use, protect privacy, keep the educator in charge, and never invent sources.", "standard", "Every skill", "AAMC Principles for the Responsible Use of AI in Medical Education, 2025"],
+];
+function renderPed() {
+  const label = { research: "Research", standard: "Standard", practice: "Practice" };
+  document.getElementById("ped").innerHTML = PED.map(([t, d, b, w, src]) =>
+    `<div class="ped-row"><div><h3>${t}</h3><p>${d}</p><p class="src">${src}</p></div><div><span class="basis ${b}">${label[b]}</span></div><div class="where"><b>Applied in</b>${w}</div></div>`).join("");
+}
+
 function renderList() {
   const q = document.getElementById("q").value.trim().toLowerCase();
   const words = q.split(/\s+/).filter(Boolean);
@@ -306,6 +462,7 @@ function renderList() {
           <a class="btn primary" href="${esc(c.zip)}" download>Download ZIP</a>
           <a class="btn plain" href="${esc(c.paste)}">Paste-in version</a>
           <a class="btn plain" href="${GH}/tree/main/skills/${esc(c.name)}">Read the skill</a>
+          <a class="btn plain" href="${GH}/blob/main/skills/${esc(c.name)}/references/pedagogical-basis.md">Pedagogical basis</a>
         </div>
         <p class="wide origin">Version ${esc(c.version)}. ${esc(c.derived_from || "")}. Maintained by ${esc((c.maintainers || []).join(", "))}.</p>
       </div>
@@ -336,9 +493,10 @@ document.getElementById("gh").href = GH;
 document.getElementById("report").href = `${GH}/issues/new?template=usage-report.yml`;
 document.getElementById("newskill").href = `${GH}/issues/new?template=new-skill.yml`;
 document.getElementById("review").href = `${GH}/blob/main/community/review-checklist.md`;
+document.getElementById("pedlink").href = `${GH}/blob/main/docs/pedagogy.md`;
 document.getElementById("foot").textContent = `Library version ${CONFIG.version}. Founded by ${CONFIG.contact}. Open to every institution.`;
 document.getElementById("q").addEventListener("input", renderList);
-renderRail(); renderTools(); renderInstall(); renderList();
+renderRail(); renderTools(); renderInstall(); renderList(); renderPed();
 </script>
 </body>
 </html>

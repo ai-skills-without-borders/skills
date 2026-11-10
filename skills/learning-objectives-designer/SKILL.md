@@ -7,6 +7,8 @@ description: Extracts, writes, simplifies, levels and maps learning objectives f
 
 Turns whatever an educator has — finished material, a half-built course, or a verbal description — into a clean, numbered set of learning objectives: one observable target per objective, each with a cognitive level, a source, and (optionally) proposed links to a competency framework. The table it produces is the shared backbone for the other skills in this library: the syllabus, sessions, readings and exam questions all point back to its objective IDs.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 Three things this skill is strict about:
 
 1. **One objective, one target.** An objective that asks for two things ("explain X and design Y") cannot be assessed cleanly and is split.

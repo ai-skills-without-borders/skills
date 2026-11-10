@@ -7,6 +7,8 @@ description: Turns one or more source documents (journal papers, book chapters, 
 
 Turns source documents into reading material sized correctly for a real session — not a generic summary, and not the paper's own structure reused. Two things this skill is strict about, because they're easy to get wrong and hard to notice: the reading-time arithmetic, and never inventing a figure or a source.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 ## The reading-rate rule
 
 **Reading rate: 3,000 words per hour.** This one constant is used for every reading in a deployment. It is not adjusted per request — not for audience level, subject difficulty, technical density or session type. (An institution that has measured a different rate for its learners may change this constant once, here, for everyone; it is never changed request by request.)

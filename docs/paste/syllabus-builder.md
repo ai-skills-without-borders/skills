@@ -14,6 +14,8 @@ Use this when: Builds or updates a course syllabus from whatever course material
 
 Turns a course leader's material into (1) a student-facing syllabus with a defensible competency map, and (2) a course-leader report of gaps, weak links and next steps. Built for courses still under construction: it fills what the material supports, leaves precise visible placeholders for the rest, and can be re-run later to update the same syllabus.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 Two things this skill is strict about, because students and programs act on a syllabus:
 
 1. **Nothing factual is invented.** Names, contacts, dates, rooms, credits, readings, pages, thresholds — from the material or the course leader, or a visible placeholder.
@@ -246,6 +248,24 @@ Places to look, not automatic assignments.
 - Matrix comparison
 - Cheap upgrades — often the most useful part for a course leader
 - Anything in the framework document that looks inconsistent and affects this course (report it; don't resolve it)
+
+### File: `references/pedagogical-basis.md`
+
+# Pedagogical basis
+
+Why this skill's rules are what they are. Labels: **Research** (experimental studies or meta-analyses), **Standard** (professional consensus or published standard), **Practice** (local convention from experienced educators; institutions may change it).
+
+Use this file to explain a rule when an educator asks "why?", and to judge which rules can be relaxed (Practice) and which should not (Research, Standard).
+
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| Objectives, schedule and assessment linked | Standard | Constructive alignment — Biggs, 1996, *Higher Education* 32:347–364 |
+| Competency counts as evidence only where performed and observed/assessed | Standard | Entrustment — ten Cate, 2005, *Medical Education* 39:1176–1177; validity of assessment for its use — Downing, 2003, *Medical Education* 37:830–837 |
+| Framework wording only from the supplied document; map is a proposal | Standard | AAMC/AACOM/ACGME Foundational Competencies (2024): formal faculty review required; GREAT MD-PhD competencies — Estrada et al., 2026, *Academic Medicine* |
+| E / P / X levels; re-check above six E links; "cheap upgrades" | Practice | Local method against inflated maps; P → E by adding observation or a rubric follows the entrustment logic |
+| Nothing factual invented; visible placeholders | Standard | AAMC AI Principles (2025): transparency; a syllabus is a contract with learners |
+
+Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
 
 ### File: `references/syllabus-sections.md`
 

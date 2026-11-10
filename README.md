@@ -8,6 +8,8 @@ A community library of *Agent Skills* — packaged instructions that teach an AI
 
 Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https://agentskills.io) format. The same folder works in Claude, ChatGPT (Business / Enterprise / Edu), Gemini Enterprise, Microsoft 365 Copilot (Cowork, Copilot Studio) and coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot). For personal plans without skill support, every skill also comes as a paste-in version for a GPT, Gem or Project.
 
+> **New to skills?** Read [what a skill is and how to use one](docs/getting-started.md).
+
 > Founded by educators at the Gutwirth Medical School (Weizmann Institute of Science) and the Icahn School of Medicine at Mount Sinai. Open to every institution.
 
 ## The skills
@@ -55,6 +57,10 @@ Every skill in this library:
 6. **Is evidence-labelled.** Each skill's card says where it has been tested and by whom (see [GOVERNANCE.md](GOVERNANCE.md)).
 
 These align with the AAMC *Principles for the Responsible Use of AI in and for Medical Education*.
+
+## Pedagogical foundations
+
+Every rule in the skills is traceable to research, a professional standard, or — labelled honestly — local teaching practice. See **[docs/pedagogy.md](docs/pedagogy.md)** for the principles (constructive alignment, levelled objectives, competencies and entrustment, PBL, productive failure, cognitive load, retrieval practice, item-writing quality, assessment validity, responsible AI), where each appears, known limits, and full references. Each skill also carries its own `references/pedagogical-basis.md`.
 
 ## Contribute
 

@@ -7,6 +7,8 @@ description: Builds or updates a course syllabus from whatever course material e
 
 Turns a course leader's material into (1) a student-facing syllabus with a defensible competency map, and (2) a course-leader report of gaps, weak links and next steps. Built for courses still under construction: it fills what the material supports, leaves precise visible placeholders for the rest, and can be re-run later to update the same syllabus.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 Two things this skill is strict about, because students and programs act on a syllabus:
 
 1. **Nothing factual is invented.** Names, contacts, dates, rooms, credits, readings, pages, thresholds — from the material or the course leader, or a visible placeholder.

@@ -14,6 +14,8 @@ Use this when: Turns one or more source documents (journal papers, book chapters
 
 Turns source documents into reading material sized correctly for a real session — not a generic summary, and not the paper's own structure reused. Two things this skill is strict about, because they're easy to get wrong and hard to notice: the reading-time arithmetic, and never inventing a figure or a source.
 
+**Why these rules:** the evidence behind each rule, and which rules are local practice that an institution may change, are in `references/pedagogical-basis.md`. Read it when an educator asks why, or wants to relax a rule.
+
 ## The reading-rate rule
 
 **Reading rate: 3,000 words per hour.** This one constant is used for every reading in a deployment. It is not adjusted per request — not for audience level, subject difficulty, technical density or session type. (An institution that has measured a different rate for its learners may change this constant once, here, for everyone; it is never changed request by request.)
@@ -113,3 +115,26 @@ If the educator has institutional branding, take colours from the actual logo fi
 - Never exceed the word budget silently.
 - No identifiable patient or learner data, even if present in the source material given to you.
 - Never overwrite the educator's file; output a new one.
+
+---
+
+## Reference files
+
+### File: `references/pedagogical-basis.md`
+
+# Pedagogical basis
+
+Why this skill's rules are what they are. Labels: **Research** (experimental studies or meta-analyses), **Standard** (professional consensus or published standard), **Practice** (local convention from experienced educators; institutions may change it).
+
+Use this file to explain a rule when an educator asks "why?", and to judge which rules can be relaxed (Practice) and which should not (Research, Standard).
+
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| Rebuild the source as a teaching arc; depth over coverage | Research | Cognitive load — Sweller, 1988, *Cognitive Science* 12:257–285 |
+| Define every term at first use, for the least specialized reader | Research | Reduces extraneous load for mixed-background groups (cognitive load theory) |
+| Higher-order reflection prompts placed right after the concept | Standard | Constructive alignment with objectives — Biggs, 1996; levels — Anderson & Krathwohl, 2001 |
+| Easy click-to-reveal self-check | Research | Retrieval practice — Roediger & Karpicke, 2006, *Psychological Science* 17:249–255; Larsen, Butler & Roediger, 2008, *Medical Education* 42:959–966 |
+| Real figures only, cited; never invent sources | Standard | Academic integrity; AAMC AI Principles (2025): transparency |
+| Reading budget of 3,000 words per hour | Practice | Adults read non-fiction silently at ~238 words/minute (Brysbaert, 2019, *Journal of Memory and Language* 109:104047). The budget (~50 words/minute) deliberately leaves time for study, reflection and discussion. Institutions may measure and set their own constant |
+
+Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
