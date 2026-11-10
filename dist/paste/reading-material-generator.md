@@ -137,4 +137,4 @@ Use this file to explain a rule when an educator asks "why?", and to judge which
 | Real figures only, cited; never invent sources | Standard | Academic integrity; AAMC AI Principles (2025): transparency |
 | Reading budget of 3,000 words per hour | Practice | Adults read non-fiction silently at ~238 words/minute (Brysbaert, 2019, *Journal of Memory and Language* 109:104047). The budget (~50 words/minute) deliberately leaves time for study, reflection and discussion. Institutions may measure and set their own constant |
 
-Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
+Full list, references and limits: `guide/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/guide/pedagogy.md).

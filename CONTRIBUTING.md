@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you. There are four ways to contribute, from easiest to most involved.
+Thank you. There are six ways to contribute, from easiest to most involved.
 
 ## 1. Report how a skill worked for you (most valuable)
 
@@ -10,12 +10,24 @@ Used a skill for real teaching or preparation? Fill in a usage report — throug
 
 Found a problem in a skill? Open an issue describing what you asked, which tool you used, what happened and what you expected. Don't include patient data, learner data, or unpublished material.
 
-## 3. Contribute a format profile or framework file
+## 3. Improve an existing skill
+
+- **In plain words:** open the *Suggest a change* issue form. Say what should change, why, and (optionally) the wording.
+- **Directly:** on the skill's page on the website, choose *Edit on GitHub*, or open the file on GitHub and press the pencil icon. Make your change and choose *Propose changes*. GitHub makes a copy (fork) under your account and opens a pull request; nothing changes in the library until a maintainer approves it.
+- **Approval:** see the table in [GOVERNANCE.md](GOVERNANCE.md#how-changes-are-approved). Bigger changes also need a reviewer from another institution.
+
+## 4. Adapt a skill for your institution
+
+1. **Configure first.** Supply your framework (`frameworks/`), format profile, template or AI-use wording. Most adaptations need nothing more.
+2. **Share what generalizes.** If others would benefit, improve the shared skill (section 3).
+3. **Make a variant** for what is truly local: see [variants/README.md](variants/README.md). Your institution owns and approves its variants.
+
+## 5. Contribute a format profile or framework file
 
 - **Format profile** for `lesson-format-checker`: copy a profile in `skills/lesson-format-checker/profiles/`, adapt it, and submit it.
 - **Framework file**: see [frameworks/README.md](frameworks/README.md). Only contribute frameworks whose license allows redistribution; otherwise contribute a pointer file.
 
-## 4. Contribute a skill
+## 6. Contribute a new skill
 
 ### Without GitHub
 Send the skill folder (zipped) or the text of your instructions through the **New skill** form. A maintainer will turn it into a pull request with you as author.

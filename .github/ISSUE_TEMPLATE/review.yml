@@ -1,0 +1,49 @@
+name: Review or endorse a skill
+description: You tested a skill from another institution on your own task and reviewed it with the checklist
+title: "[review] <skill> — <your institution>"
+labels: ["review"]
+body:
+  - type: markdown
+    attributes:
+      value: "Reviews by educators from an institution other than the skill's origin are what move a skill to 'reviewed'. Please test it on a real task from your own teaching first. Checklist: community/review-checklist.md"
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options: [learning-objectives-designer, pbl-rbl-session-builder, reading-material-generator, syllabus-builder, lesson-format-checker, exam-question-writer, other]
+    validations: {required: true}
+  - type: input
+    id: reviewer
+    attributes: {label: Your name, role and institution}
+    validations: {required: true}
+  - type: input
+    id: tools
+    attributes: {label: AI tool(s) you tested it in}
+    validations: {required: true}
+  - type: textarea
+    id: task
+    attributes: {label: The real task you used it for}
+    validations: {required: true}
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: It triggered when expected and asked for the context it needed
+        - label: It did not invent sources, figures, names, dates or framework wording
+        - label: It flagged missing information instead of filling it
+        - label: It asked for my approval before final output (or I told it not to)
+        - label: It included an AI-assistance line or asked for my institution's wording
+        - label: It never asked for or reproduced identifiable patient or learner data
+        - label: Outputs were aligned to objectives and pitched at the learner stage I gave
+        - label: Nothing depends on one institution or one AI product
+        - label: The skill card is accurate
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Verdict
+      options: ["Endorse — recommend 'reviewed'", "Endorse after changes (listed below)", "Do not endorse yet"]
+    validations: {required: true}
+  - type: textarea
+    id: changes
+    attributes: {label: Changes you recommend}

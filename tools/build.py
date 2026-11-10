@@ -10,10 +10,10 @@ Builds:
     dist/zips/<skill>.zip       skill folder for upload (Claude, ChatGPT, Gemini, Copilot)
     dist/paste/<skill>.md       single-file paste-in version for GPTs, Gems, Projects
     dist/catalog.json           machine-readable catalog of all skill cards
-    docs/downloads/, docs/paste/, docs/index.html   the GitHub Pages catalog site
+    docs/                       the multi-page website (see tools/website.py)
     README.md                   the skills table between the CATALOG markers
 
-Requires PyYAML.
+Requires PyYAML and Markdown.
 """
 import json
 import re
@@ -24,8 +24,12 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import website  # noqa: E402  (tools/website.py)
+
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
+VARIANTS = ROOT / "variants"
 DIST = ROOT / "dist"
 DOCS = ROOT / "docs"
 
@@ -48,10 +52,18 @@ def read_frontmatter(path):
     return yaml.safe_load(m.group(1)) or {}, m.group(2)
 
 
+def skill_dirs():
+    shared = sorted(p for p in SKILLS.iterdir() if p.is_dir())
+    variants = sorted(p for inst in VARIANTS.iterdir() if inst.is_dir() for p in inst.iterdir() if p.is_dir()) \
+        if VARIANTS.exists() else []
+    return [(d, False) for d in shared] + [(d, True) for d in variants]
+
+
 def validate():
     errors, warnings, skills = [], [], []
-    for d in sorted(p for p in SKILLS.iterdir() if p.is_dir()):
-        tag = f"[{d.name}]"
+    shared_names = {p.name for p in SKILLS.iterdir() if p.is_dir()}
+    for d, is_variant in skill_dirs():
+        tag = f"[{'variant ' if is_variant else ''}{d.name}]"
         skill_md = d / "SKILL.md"
         if not skill_md.exists():
             errors.append(f"{tag} missing SKILL.md"); continue
@@ -106,8 +118,18 @@ def validate():
         if len(body) > PASTE_INSTRUCTION_LIMIT:
             warnings.append(f"{tag} instructions are {len(body)} chars; paste-in GPT users must upload them as a file")
 
+        if is_variant:
+            parent = card.get("variant_of")
+            if parent not in shared_names:
+                errors.append(f"{tag} card.yaml variant_of '{parent}' is not a shared skill")
+            if d.name in shared_names:
+                errors.append(f"{tag} a variant needs its own name, e.g. {d.name}-{d.parent.name}")
+            for k in ("institution", "changes"):
+                if not card.get(k):
+                    errors.append(f"{tag} card.yaml missing '{k}' (required for variants)")
         card["description"] = desc
         card["_dir"] = d
+        card["_variant"] = is_variant
         skills.append(card)
     return skills, errors, warnings
 
@@ -129,7 +151,7 @@ def build_paste(card, cfg):
         f"# {card['title']} — paste-in version",
         "",
         f"From the {cfg['library_name']} library, v{card['version']} ({card['license']}). "
-        f"Source: https://github.com/{cfg['repo']}/tree/main/skills/{d.name}",
+        f"Source: https://github.com/{cfg['repo']}/tree/main/{d.relative_to(ROOT).as_posix()}",
         "",
         "How to use: paste the **Instructions** section into the instructions of a custom GPT, Gem or Project "
         "(or at the start of a chat). Add the **Reference files** as knowledge files, or paste them too if there is room. "
@@ -151,6 +173,8 @@ def build_paste(card, cfg):
 
 def public_card(card):
     c = {k: v for k, v in card.items() if not k.startswith("_")}
+    if card.get("_variant"):
+        c["variant_institution_dir"] = card["_dir"].parent.name
     c["zip"] = f"downloads/{card['name']}.zip"
     c["paste"] = f"paste/{card['name']}.md"
     c["source_url"] = None
@@ -172,26 +196,6 @@ def update_readme(cards, cfg):
     readme.write_text(new, encoding="utf-8")
 
 
-def build_site(cards, cfg):
-    for sub in ("downloads", "paste"):
-        target = DOCS / sub
-        if target.exists():
-            shutil.rmtree(target)
-        target.mkdir(parents=True)
-    for c in cards:
-        shutil.copy(DIST / "zips" / f"{c['name']}.zip", DOCS / "downloads")
-        shutil.copy(DIST / "paste" / f"{c['name']}.md", DOCS / "paste")
-    for f in ("logo.svg", "logo.png", "favicon.svg", "favicon.png"):
-        shutil.copy(ROOT / "assets" / f, DOCS / f)
-    template = (ROOT / "tools" / "site_template.html").read_text(encoding="utf-8")
-    data = json.dumps([public_card(c) for c in cards], ensure_ascii=False).replace("</", "<\\/")
-    conf = json.dumps({k: cfg[k] for k in ("library_name", "tagline", "repo", "plugin_name", "version", "contact", "founders")},
-                      ensure_ascii=False).replace("</", "<\\/")
-    html = template.replace("/*CATALOG_JSON*/[]", data).replace("/*CONFIG_JSON*/{}", conf)
-    (DOCS / "index.html").write_text(html, encoding="utf-8")
-    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
-
-
 def main():
     check_only = "--check" in sys.argv
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
@@ -210,10 +214,12 @@ def main():
     for c in cards:
         build_zip(c)
         build_paste(c, cfg)
-    (DIST / "catalog.json").write_text(json.dumps([public_card(c) for c in cards], indent=2, ensure_ascii=False),
+    (DIST / "catalog.json").write_text(json.dumps([public_card(c) for c in cards], indent=2, ensure_ascii=False, default=str),
                                       encoding="utf-8")
-    update_readme(cards, cfg)
-    build_site(cards, cfg)
+    shared = [c for c in cards if not c["_variant"]]
+    variants = [c for c in cards if c["_variant"]]
+    update_readme(shared, cfg)
+    website.build_site(shared, variants, cfg, public_card)
     print("built dist/ and docs/")
 
 

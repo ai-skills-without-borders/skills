@@ -1,0 +1,60 @@
+<div class="pagehead wrap">
+  <h1>Adapt, improve and share skills</h1>
+  <p>The library gets better when educators at other institutions use the skills, tell us what happened, and change them. Here is every way to take part, from five minutes to a new skill.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Five minutes</h2>
+    <div class="ways">
+      <div><h3>Report how a skill went</h3><p>After using a skill for real teaching. Your report is what moves a skill from draft to tested elsewhere.</p><a class="btn primary" href="{{GH}}/issues/new?template=usage-report.yml">Send a usage report</a></div>
+      <div><h3>Suggest a change</h3><p>Say what should change and why, in plain words. A maintainer turns it into an edit and credits you.</p><a class="btn plain" href="{{GH}}/issues/new?template=suggest-change.yml">Suggest a change</a></div>
+      <div><h3>Review or endorse</h3><p>Test a skill from another institution on your own task, then fill in the checklist.</p><a class="btn plain" href="{{GH}}/issues/new?template=review.yml">Review a skill</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Edit a skill directly</h2>
+    <p class="sub">You don't need to know Git. Everything happens in the browser, and nothing changes in the library until it is approved.</p>
+    <ol class="flow">
+      <li><div><b>Open the skill's page and choose "Edit the skill on GitHub"</b><span>You need a free GitHub account. The editor shows the skill's instructions as plain text.</span></div></li>
+      <li><div><b>Make your change and choose "Propose changes"</b><span>GitHub makes a copy of the library under your account (a fork) and prepares a pull request.</span></div></li>
+      <li><div><b>Automatic checks run</b><span>The build checks the skill's format, links and card. If something fails, the pull request says what to fix.</span></div></li>
+      <li><div><b>A maintainer reviews it</b><span>Small fixes need one approval. Bigger changes also need a reviewer from another institution. See <a href="quality.html#approval">who approves what</a>.</span></div></li>
+      <li><div><b>Merged and published</b><span>The website and downloads update automatically, and your name is in the history.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="adapt">
+  <div class="wrap">
+    <h2>Adapt a skill for your institution</h2>
+    <p class="sub">Most adaptations don't need a copy of the skill. Try these in order.</p>
+    <ol class="flow">
+      <li><div><b>Configure it</b><span>Skills take your institution's material as input: your competency framework (<a href="{{GH}}/tree/main/frameworks">frameworks</a>), your format profile, your syllabus template, your AI-use wording. Supply them in the conversation or as files.</span></div></li>
+      <li><div><b>Improve the shared skill</b><span>If others would benefit, propose the change to the shared skill. Everyone gains, and you don't maintain a copy.</span></div></li>
+      <li><div><b>Make an institutional variant</b><span>For what is truly local, create a variant under <code>variants/&lt;your-institution&gt;/</code>. Your institution owns and approves it, and it appears on the parent skill's page. <a href="{{GH}}/blob/main/variants/README.md">How variants work</a>.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="new">
+  <div class="wrap">
+    <h2>Share a new skill</h2>
+    <div class="ways">
+      <div><h3>Without GitHub</h3><p>Attach a ZIP or paste your instructions in the form. A maintainer prepares it with you as author.</p><a class="btn primary" href="{{GH}}/issues/new?template=new-skill.yml">Propose a skill</a></div>
+      <div><h3>With GitHub</h3><p>Add a folder under <code>skills/</code> with <code>SKILL.md</code>, <code>card.yaml</code> and a pedagogical basis, then open a pull request.</p><a class="btn plain" href="{{GH}}/blob/main/CONTRIBUTING.md">Contributor guide</a></div>
+      <div><h3>What makes a good skill</h3><p>A real recurring task, plain trigger words, tool-agnostic, the library's principles, and the evidence behind its rules.</p><a class="btn plain" href="pedagogy.html">The pedagogy</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Running a workshop?</h2>
+    <p class="sub">The round-table protocol has a 75-minute plan, a recording sheet, and how to turn participants' experience into usage reports.</p>
+    <a class="btn plain" href="{{GH}}/blob/main/community/roundtable-protocol.md">Round-table protocol</a>
+  </div>
+</section>

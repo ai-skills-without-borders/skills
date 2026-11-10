@@ -8,7 +8,7 @@ A community library of *Agent Skills* — packaged instructions that teach an AI
 
 Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https://agentskills.io) format. The same folder works in Claude, ChatGPT (Business / Enterprise / Edu), Gemini Enterprise, Microsoft 365 Copilot (Cowork, Copilot Studio) and coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot). For personal plans without skill support, every skill also comes as a paste-in version for a GPT, Gem or Project.
 
-> **New to skills?** Read [what a skill is and how to use one](docs/getting-started.md).
+> **New to skills?** Read [what a skill is and how to use one](guide/getting-started.md).
 
 > Founded by educators at the Miriam and Aaron Gutwirth Medical School (Weizmann Institute of Science) and the Icahn School of Medicine at Mount Sinai. Open to every institution.
 
@@ -39,7 +39,7 @@ learning-objectives-designer ──► objectives table (O1, O2, …)
 
 ## Install
 
-See **[docs/install.md](docs/install.md)** for step-by-step instructions per tool. Quick versions:
+See **[guide/install.md](guide/install.md)** for step-by-step instructions per tool. Quick versions:
 
 - **Claude Code:** `/plugin marketplace add ai-skills-without-borders/skills` then `/plugin install ai-skills-without-borders@ai-skills-without-borders`
 - **Claude.ai, ChatGPT, Gemini Enterprise, Copilot Cowork:** download a skill's ZIP from the [catalog site](https://ai-skills-without-borders.github.io/skills/) and upload it in the tool's Skills settings.
@@ -60,7 +60,7 @@ These align with the AAMC *Principles for the Responsible Use of AI in and for M
 
 ## Pedagogical foundations
 
-Every rule in the skills is traceable to research, a professional standard, or — labelled honestly — local teaching practice. See **[docs/pedagogy.md](docs/pedagogy.md)** for the principles (constructive alignment, levelled objectives, competencies and entrustment, PBL, productive failure, cognitive load, retrieval practice, item-writing quality, assessment validity, responsible AI), where each appears, known limits, and full references. Each skill also carries its own `references/pedagogical-basis.md`.
+Every rule in the skills is traceable to research, a professional standard, or — labelled honestly — local teaching practice. See **[guide/pedagogy.md](guide/pedagogy.md)** for the principles (constructive alignment, levelled objectives, competencies and entrustment, PBL, productive failure, cognitive load, retrieval practice, item-writing quality, assessment validity, responsible AI), where each appears, known limits, and full references. Each skill also carries its own `references/pedagogical-basis.md`.
 
 ## Contribute
 
@@ -76,7 +76,9 @@ skills/<skill>/card.yaml     the skill card (maturity, testing, authors)
 skills/<skill>/references/   detail the skill loads on demand
 frameworks/                  how to supply a competency framework
 community/                   usage reports, review checklist, workshop protocol
-docs/                        catalog site (GitHub Pages) and install guide
+guide/                       getting started, install guide, pedagogical foundations
+variants/                    institutional versions of skills
+docs/                        the website (built by tools/build.py — don't edit by hand)
 dist/                        built ZIPs and paste-in versions (generated)
 tools/build.py               validates skills and builds dist/ and the site
 ```

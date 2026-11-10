@@ -15,4 +15,4 @@ Use this file to explain a rule when an educator asks "why?", and to judge which
 
 How the skill reconciles discovery with guidance: struggle is designed, narrow and bounded (one inference at a time, calibrated to the students), and every trap is followed by an explicit reveal.
 
-Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
+Full list, references and limits: `guide/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/guide/pedagogy.md).

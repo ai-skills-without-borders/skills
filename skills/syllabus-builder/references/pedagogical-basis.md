@@ -12,4 +12,4 @@ Use this file to explain a rule when an educator asks "why?", and to judge which
 | E / P / X levels; re-check above six E links; "cheap upgrades" | Practice | Local method against inflated maps; P → E by adding observation or a rubric follows the entrustment logic |
 | Nothing factual invented; visible placeholders | Standard | AAMC AI Principles (2025): transparency; a syllabus is a contract with learners |
 
-Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
+Full list, references and limits: `guide/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/guide/pedagogy.md).

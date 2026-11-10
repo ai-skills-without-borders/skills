@@ -43,6 +43,26 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 | `license` | Always CC-BY-4.0 for content |
 | `starter` | In the starter set shown first on the catalog |
 
+## How changes are approved
+
+| Change | Who approves | Evidence needed |
+|---|---|---|
+| Wording fix or clarification to a shared skill | Skill maintainer or a library maintainer | Automated checks pass |
+| New capability or changed inputs/outputs in a shared skill | Skill maintainer **and** one reviewer from another institution | Automated checks; tested in at least one tool |
+| New shared skill | Two library maintainers | Automated checks; starts at `draft` |
+| Institutional variant | A maintainer of that institution's variants | Automated checks; library principles kept |
+| Maturity upgrade | A library maintainer | Linked usage reports (`used_at`) and, for `reviewed`, a completed review |
+| Change to a pedagogical rule | Skill maintainer | The source or experience behind it, labelled Research / Standard / Practice |
+
+Every pull request runs `tools/build.py --check` automatically. Approvals are recorded on the pull request; `.github/CODEOWNERS` routes review requests to the right people.
+
+## Editing paths for contributors
+
+- **Suggest** a change in plain words with the *Suggest a change* issue form — no GitHub editing needed.
+- **Edit** a skill file directly with GitHub's *Edit* button. GitHub creates a copy (fork) and a pull request for you; nothing changes until it is approved.
+- **Adapt** for your institution: configure first (frameworks, profiles, templates), then propose a shared improvement, and only then create a variant (see `variants/README.md`).
+- **Endorse** a skill after testing it with the *Review or endorse* issue form.
+
 ## Decisions
 
 Maintainers decide by consensus. Disagreements about a skill's content go to its skill maintainer first. Changes to these rules are proposed as a pull request and stay open for at least two weeks.

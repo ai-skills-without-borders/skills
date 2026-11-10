@@ -15,4 +15,4 @@ Use this file to explain a rule when an educator asks "why?", and to judge which
 | Three levels instead of six | Practice | Easier faculty agreement; Bloom level still recorded |
 | AI-assistance line; no learner data | Standard | AAMC Principles for the Responsible Use of AI in Medical Education (2025) |
 
-Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
+Full list, references and limits: `guide/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/guide/pedagogy.md).

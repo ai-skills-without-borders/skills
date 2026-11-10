@@ -4,6 +4,6 @@ A design partner for discovery-based teaching sessions — case-driven PBL or to
 
 - **New here?** Start with `references/getting-started.md`.
 - **Want the best results?** Drop your source material in `sources/` and a gold-standard example in `examples/` — see `references/equipping-the-skill.md`.
-- **Installing?** See the library's install guide (`docs/install.md` in the repository).
+- **Installing?** See the library's install guide (`guide/install.md` in the repository).
 
 `SKILL.md` is the entry point your AI assistant loads; you don't need to read it. Everything in `references/` loads on demand.

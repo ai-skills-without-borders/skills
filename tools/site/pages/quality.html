@@ -1,0 +1,67 @@
+<div class="pagehead wrap">
+  <h1>How skills are tested and approved</h1>
+  <p>A skill is only as good as the evidence that it works somewhere other than where it was written. Every skill shows its level, where it has been tested, and who reviewed it.</p>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Maturity levels</h2>
+    <p class="sub">A skill moves up only with evidence attached. It moves down if a tool change breaks it.</p>
+    <ol class="ladder-big">
+      <li><b>Draft</b>Written or generalized, passes the automatic checks, not yet used for real teaching in this form.</li>
+      <li><b>Tested at origin</b>Used for real teaching at the institution that wrote it, with a usage report.</li>
+      <li><b>Tested elsewhere</b>Used successfully at one or more other institutions, each with a usage report.</li>
+      <li><b>Reviewed</b>Tested elsewhere and independently reviewed with the checklist by an educator from another institution.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Status of every skill</h2>
+    <p class="sub">Updated automatically from each skill's card.</p>
+    {{STATUS_TABLE}}
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What is checked automatically</h2>
+    <p class="sub">Every change runs the library's build before anyone reviews it.</p>
+    <ul>
+      <li>The skill's name, description and card are complete and consistent.</li>
+      <li>Every file the skill refers to exists.</li>
+      <li>No product-specific instructions that would stop it working in other AI tools.</li>
+      <li>Skills that include scripts say so, and work by reading where code can't run.</li>
+      <li>Maturity claims above "tested at origin" have usage reports or reviewers listed.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="approval">
+  <div class="wrap">
+    <h2>Who approves what</h2>
+    <table class="status">
+      <thead><tr><th>Change</th><th>Approved by</th><th class="hide-m">Evidence needed</th></tr></thead>
+      <tbody>
+        <tr><td>Wording fix to a shared skill</td><td>Skill maintainer or a library maintainer</td><td class="hide-m">Automatic checks pass</td></tr>
+        <tr><td>New capability or changed inputs/outputs</td><td>Skill maintainer and a reviewer from another institution</td><td class="hide-m">Checks pass; tested in at least one tool</td></tr>
+        <tr><td>New shared skill</td><td>Two library maintainers</td><td class="hide-m">Checks pass; starts as draft</td></tr>
+        <tr><td>Institutional variant</td><td>That institution's variant maintainer</td><td class="hide-m">Checks pass; library principles kept</td></tr>
+        <tr><td>Maturity upgrade</td><td>A library maintainer</td><td class="hide-m">Linked usage reports; for Reviewed, a completed review</td></tr>
+        <tr><td>Change to a pedagogical rule</td><td>Skill maintainer</td><td class="hide-m">The source or experience behind it, labelled Research, Standard or Practice</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Review a skill</h2>
+    <p class="sub">Choose a skill from another institution, use it on a real task from your own teaching, then fill in the review. Reviews are public and credited.</p>
+    <div class="ctas">
+      <a class="btn primary" href="{{GH}}/issues/new?template=review.yml">Review or endorse a skill</a>
+      <a class="btn plain" href="{{GH}}/blob/main/community/review-checklist.md">Read the checklist</a>
+    </div>
+  </div>
+</section>

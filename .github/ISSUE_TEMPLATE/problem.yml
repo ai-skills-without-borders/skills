@@ -1,0 +1,17 @@
+name: Problem with a skill
+description: Something didn't work as expected
+title: "[problem] <skill> — <short description>"
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes: {label: Skill and version}
+    validations: {required: true}
+  - type: input
+    id: tool
+    attributes: {label: AI tool and plan}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: What you asked, what happened, what you expected}
+    validations: {required: true}

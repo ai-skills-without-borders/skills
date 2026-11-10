@@ -1,0 +1,73 @@
+<div class="wrap">
+  <div class="skillhead">
+    <div>
+      <p class="crumbs"><a href="../skills.html">Skills</a> › {{TITLE}}</p>
+      <h1>{{TITLE}}</h1>
+      <p>{{SUMMARY}}</p>
+    </div>
+    <div class="facts">
+      <div><b>Maturity</b>{{MATURITY}}</div>
+      <div><b>Version</b>{{VERSION}}</div>
+      <div><b>Runs code</b>{{RUNS_CODE}}</div>
+      <div><b>Maintained by</b>{{MAINTAINERS}}</div>
+    </div>
+  </div>
+</div>
+<section>
+  <div class="wrap twocol">
+    <div>
+      <div class="block">
+        <h2>When to use it</h2>
+        <p>{{DESCRIPTION}}</p>
+        <div class="three">
+          <div><h3>Use it to</h3><ul>{{TASKS}}</ul></div>
+          <div><h3>You bring</h3><ul>{{INPUTS}}</ul></div>
+          <div><h3>You get</h3><ul>{{OUTPUTS}}</ul></div>
+        </div>
+      </div>
+      <div class="block">
+        <h2>Pedagogical basis</h2>
+        <p>What each rule rests on. <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span> — rules labelled Practice are local conventions your institution may change. <a href="../pedagogy.html">All principles and references</a>.</p>
+        <div class="prose">{{PEDAGOGY}}</div>
+      </div>
+      <div class="block">
+        <h2>Institutional variants</h2>
+        {{VARIANTS}}
+      </div>
+      <div class="block">
+        <h2>Where it comes from</h2>
+        <p>{{ORIGIN}}</p>
+        {{FRAMEWORKS}}
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <h2>Get it</h2>
+        <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
+        <div class="install" id="install" aria-live="polite" style="margin:14px 0 0"></div>
+        <div class="actions">
+          <a class="btn primary" href="../{{ZIP}}" download>Download ZIP</a>
+          <a class="btn plain" href="../{{PASTE}}">Paste-in version</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Tested in</h2>
+        <div class="tested">{{TESTED}}</div>
+        <p style="margin-top:12px">{{USED_AT}}</p>
+        <p>{{REVIEWERS}}</p>
+        <a href="../quality.html">How skills are tested and approved</a>
+      </div>
+      <div class="panel">
+        <h2>Improve or adapt it</h2>
+        <ul>
+          <li><a href="{{GH}}/issues/new?template=usage-report.yml">Report how it went</a> — five minutes, the most useful contribution</li>
+          <li><a href="{{GH}}/issues/new?template=suggest-change.yml">Suggest a change</a> in plain words</li>
+          <li><a href="{{GH}}/edit/main/skills/{{NAME}}/SKILL.md">Edit the skill on GitHub</a> — GitHub makes a copy and a pull request for approval</li>
+          <li><a href="{{GH}}/issues/new?template=review.yml">Review or endorse it</a> after testing</li>
+          <li><a href="../contribute.html#adapt">Adapt it for your institution</a></li>
+        </ul>
+        <div class="actions"><a class="btn plain" href="{{GH}}/tree/main/skills/{{NAME}}">Read the skill files</a></div>
+      </div>
+    </div>
+  </div>
+</section>

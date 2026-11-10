@@ -1,0 +1,29 @@
+name: Suggest a change to a skill
+description: Propose an improvement in plain words — no GitHub editing needed
+title: "[change] <skill> — <short description>"
+labels: ["improvement"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options: [learning-objectives-designer, pbl-rbl-session-builder, reading-material-generator, syllabus-builder, lesson-format-checker, exam-question-writer, other]
+    validations: {required: true}
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Who would this help?
+      options: ["Everyone — change the shared skill", "Mainly my institution — consider a variant", "Not sure"]
+  - type: textarea
+    id: what
+    attributes: {label: What should change, and why?}
+    validations: {required: true}
+  - type: textarea
+    id: wording
+    attributes: {label: "Proposed wording (optional)", render: markdown}
+  - type: input
+    id: evidence
+    attributes: {label: "Source or experience behind it (optional)", placeholder: "a study, a standard, or 'used it in 3 courses and saw…'"}
+  - type: input
+    id: who
+    attributes: {label: Your name and institution (for credit)}

@@ -14,4 +14,4 @@ Use this file to explain a rule when an educator asks "why?", and to judge which
 | Fair vignettes; no demographic cueing | Standard | NBME Item-Writing Guide (2020): patient characteristics guidance |
 | AI-written items are drafts | Standard | AAMC AI Principles (2025) |
 
-Full list, references and limits: `docs/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/docs/pedagogy.md).
+Full list, references and limits: `guide/pedagogy.md` in the library repository (https://github.com/ai-skills-without-borders/skills/blob/main/guide/pedagogy.md).
