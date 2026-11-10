@@ -1,15 +1,19 @@
 # Library settings used by tools/build.py. Change repo once the GitHub organization exists.
 library_name: AI Skills Without Borders
 tagline: Shared AI skills for medical and biomedical-research educators
+# GitHub users whose "New skill" submissions are published automatically (as Draft)
+auto_publish: [mmmmpf, taliaswartz]
 repo: ai-skills-without-borders/skills        # <github-org>/<repo>
 site_url: https://ai-skills-without-borders.github.io/skills/
 plugin_name: ai-skills-without-borders
-version: 0.1.9
+version: 0.1.10
 contact: "Amit Shraga (Weizmann Institute of Science) and Talia H. Swartz (Icahn School of Medicine at Mount Sinai)"
 founders:
   - name: "Amit Shraga, PhD"
     role: "Head of Data Science Tools; Chair, AI & Digital Tools Committee"
     institution: "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science"
+    github: mmmmpf
   - name: "Talia H. Swartz, MD, PhD"
-    role: "Associate Professor of Medicine (Infectious Diseases); Director, Medical Scientist Training Program"
+    role: "Senior Associate Dean for MD-PhD Education; Professor of Medicine (Infectious Diseases); Director, MD-PhD Program"
     institution: "Icahn School of Medicine at Mount Sinai"
+    github: taliaswartz

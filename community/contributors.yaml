@@ -81,3 +81,20 @@ contributions:
     institution: weizmann
     skill: exam-question-writer
     person: "Amit Shraga, PhD"
+  - date: 2026-11-10
+    type: improvement
+    institution: mssm
+    person: "Talia H. Swartz, MD, PhD"
+    note: Added medical-education sources for five principles of the pedagogy
+  - date: 2026-11-10
+    type: skill
+    institution: mssm
+    skill: committee-meeting-planner
+    person: "Talia H. Swartz, MD, PhD"
+    link: https://github.com/ai-skills-without-borders/skills/issues/1
+  - date: 2026-11-10
+    type: skill
+    institution: mssm
+    skill: curriculum-map-builder
+    person: "Talia H. Swartz, MD, PhD"
+    link: https://github.com/ai-skills-without-borders/skills/issues/2

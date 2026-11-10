@@ -111,7 +111,7 @@ def _link(r):
 def _evidence_line(p):
     if has_medical_evidence(p):
         return ""
-    return "\n> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.\n"
+    return "\n> **Evidence from general education only.** No health-professions source in the registry supports this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.\n"
 
 
 def pedagogy_section(skill_names):
@@ -144,6 +144,8 @@ def pedagogy_section(skill_names):
                 out += [f"*Practice:* {p['practice_note']}", ""]
             if p.get("limits"):
                 out += [f"**Limit:** {p['limits']}", ""]
+            if p.get("see_also"):
+                out += ["*See also:* " + "; ".join(f"[{x['title']}]({x['url']})" for x in p["see_also"]), ""]
     return "\n".join(out).strip()
 
 
@@ -182,7 +184,7 @@ def write_gaps(skill_names):
         "",
         "## 1. Principles with evidence from general education only",
         "",
-        "The registry has no health-professions source for these yet. Each needs one: a study such as an RCT, a meta-analysis or a BEME review, or a medical-education standard. Suggest one in an issue.",
+        "No health-professions source in the registry supports these yet (sources that give context only do not count). Each needs one: a study such as an RCT, a meta-analysis or a BEME review, or a medical-education standard. Suggest one in an issue.",
         "",
     ]
     lines += [f"- **{p['name']}** ({p['layer']}): {', '.join(r['short'] for r in p['refs'])}" for p in no_med] or ["- None."]

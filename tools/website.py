@@ -215,6 +215,11 @@ def ped_rows(entries):
 
 
 def build_site(cards, variants, cfg, public_card):
+    # every shared skill gets a short label for tables and diagrams (card field `short`, else its title)
+    known = {n for n, _ in visuals.SHORT}
+    for c in cards:
+        if not c.get("_variant") and c["name"] not in known:
+            visuals.SHORT.append((c["name"], c.get("short") or c["title"]))
     ped = ped_entries([n for n, _ in visuals.SHORT if n in {c["name"] for c in cards}])
     gh = f"https://github.com/{cfg['repo']}"
     # clean generated output, keep nothing stale

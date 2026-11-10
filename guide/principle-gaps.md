@@ -4,17 +4,13 @@ Generated from `guide/principles.yaml` by `tools/build.py`. Do not edit by hand.
 
 This report shows where the library's pedagogy is thin, so reviewers know where to look first.
 
-**16 principles** in three layers; **11** have evidence from health-professions education.
+**16 principles** in three layers; **15** have evidence from health-professions education.
 
 ## 1. Principles with evidence from general education only
 
-The registry has no health-professions source for these yet. Each needs one: a study such as an RCT, a meta-analysis or a BEME review, or a medical-education standard. Suggest one in an issue.
+No health-professions source in the registry supports these yet (sources that give context only do not count). Each needs one: a study such as an RCT, a meta-analysis or a BEME review, or a medical-education standard. Suggest one in an issue.
 
-- **Scientific teaching** (science): Handelsman et al., 2004, Freeman et al., 2014
-- **Constructive alignment** (science): Biggs, 1996
-- **Observable, levelled objectives** (science): Anderson & Krathwohl, 2001, Mager, 1962
-- **Active learning** (science): Freeman et al., 2014
-- **AI that protects learning** (ai): Bastani et al., 2025, AMEE Guide 156 (Tolsgaard et al., 2023)
+- **AI that protects learning** (ai): Bastani et al., 2025, AMEE Guide 156 (Tolsgaard et al., 2023), BEME Guide 84 (Gordon et al., 2024)
 
 ## 2. Principles that no skill applies yet
 
@@ -27,8 +23,6 @@ Candidates for a new skill, or an addition to an existing one.
 
 ## 3. Principles resting on a single source
 
-- **Constructive alignment**: Biggs, 1996
-- **Active learning**: Freeman et al., 2014
 - **Professional identity formation**: Cruess et al., 2014
 
 ## 4. Skills with no principle mapped
@@ -39,6 +33,8 @@ Candidates for a new skill, or an addition to an existing one.
 
 | Skill | Principles |
 |---|---|
+| `committee-meeting-planner` | 2 |
+| `curriculum-map-builder` | 3 |
 | `exam-question-writer` | 5 |
 | `learning-objectives-designer` | 5 |
 | `lesson-format-checker` | 3 |
@@ -50,6 +46,6 @@ Candidates for a new skill, or an addition to an existing one.
 
 | Layer | Principles | With medical-education evidence |
 |---|---|---|
-| Overarching principles of science teaching | 8 | 4 |
+| Overarching principles of science teaching | 8 | 8 |
 | Principles specific to medical education | 6 | 6 |
 | Teaching in the AI era | 2 | 1 |

@@ -1,0 +1,52 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: committee-meeting-planner
+title: Committee Meeting Planner
+version: 0.1.0
+summary: Helps a graduate student plan, run and write up their own thesis committee meeting, from the scheduling poll to the summary of the committee's advice.
+tasks:
+- Schedule a thesis committee meeting
+- Write to the committee
+- Follow up on a scheduling poll
+- Prepare committee slides
+- Write a progress report
+- Write up the committee's advice
+audience:
+- Graduate and MD-PhD students
+- Mentors
+- Program coordinators and directors
+inputs:
+- The program's rules for committee meetings
+- Committee members, emails and time zones
+- Date and action items of the last meeting
+- Poll responses
+- The student's notes and data
+- The student's notes from the meeting
+outputs:
+- Poll email in every member's time zone
+- Reminders and confirmation emails
+- Calendar invite
+- Slide outline
+- Progress report draft (2–3 pages)
+- Materials email and day-before reminder
+- Meeting agenda
+- One-page summary of the committee's advice
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Program committee policies
+- NIH Individual Development Plans (NOT-OD-14-113)
+origin_institution: Icahn School of Medicine at Mount Sinai
+derived_from: New skill
+maintainers:
+- Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)
+reviewers: []
+license: CC-BY-4.0
+starter: false
+short: Committee

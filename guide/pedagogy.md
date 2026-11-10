@@ -39,8 +39,7 @@ Teach the way we do science: choose methods with evidence behind them, measure w
 
 - Handelsman et al., 2004 (origin; undergraduate STEM, policy forum). Written for research universities; applies directly to biomedical research and PhD teaching.
 - Freeman et al., 2014 (science-ed; undergraduate STEM, meta-analysis (225 studies)). Undergraduate STEM courses, including biology. Closest to pre-clinical and graduate science teaching; not tested in clinical settings.
-
-> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
+- *Medical education:* BEME Guide 1 (Harden et al., 1999) (position paper (founding BEME guide)). Calls for medical teaching decisions to move from opinion to the best available evidence; the medical-education form of scientific teaching. A position paper, not a trial.
 
 **Where it appears**
 
@@ -53,8 +52,8 @@ Objectives, activities and assessment are designed together, so learners practis
 **Sources**
 
 - Biggs, 1996 (origin; higher education, theory). A design theory for any course; adopted widely in medical curricula, but not tested experimentally there.
-
-> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
+- *Medical education:* AMEE Guide 14 (Harden et al., 1999) (guide). Outcome-based education for medical curricula: outcomes are specified first, and teaching and assessment are planned from them. A guide, not a trial.
+- *Medical education:* Frank et al., 2010 (international consensus). Defines CBME for medical curricula; a consensus, not an outcome study.
 
 **Where it appears**
 
@@ -62,6 +61,7 @@ Objectives, activities and assessment are designed together, so learners practis
 - `syllabus-builder`: Links objectives, schedule and assessment; a competency counts as evidence only when it is assessed.
 - `exam-question-writer`: A blueprint before items; one item tests one objective.
 - `lesson-format-checker`: Every lesson segment names the objective it serves, and every objective is served.
+- `curriculum-map-builder`: Links course goals, module goals, session objectives and assessment items, and flags goals that are never taught or never assessed.
 
 #### 3. Observable, levelled objectives — *Standard*
 
@@ -71,13 +71,14 @@ One observable verb at a defined cognitive level; for skills, a condition and a 
 
 - Anderson & Krathwohl, 2001 (origin; higher education, framework). A general classification of objectives; used as-is in medical schools.
 - Mager, 1962 (origin; higher education, framework). Condition and criterion suit procedural and clinical skills especially well.
-
-> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
+- *Medical education:* Thomas, Kern et al., 2016 (textbook). The standard curriculum-development text in medical education; step 3 covers goals and measurable objectives.
+- *Medical education:* Chatterjee & Corral, 2017 (review with practical guidance). Objectives as observable, measurable learner behaviour, and the basis for aligning assessment and teaching in academic medicine.
 
 **Where it appears**
 
 - `learning-objectives-designer`: One verb, one target; no 'understand' or 'know'; level matched to what the activity demands.
 - `syllabus-builder`: Course objectives use the same rules.
+- `curriculum-map-builder`: Checks objectives per session for one clear task, varied verbs and no vague verbs such as 'understand'.
 
 *Practice:* Collapsing Bloom's six levels into three (Foundational / Applied / Advanced) is a local convention for easier agreement; the skill records both.
 
@@ -88,13 +89,17 @@ Learners do something with the material in class, rather than only listen. It ra
 **Sources**
 
 - Freeman et al., 2014 (origin; undergraduate STEM, meta-analysis (225 studies)). Undergraduate STEM courses, including biology. Closest to pre-clinical and graduate science teaching; not tested in clinical settings.
-
-> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
+- *Medical education:* Boedeker et al., 2025 (randomized cross-over trial (146 second-year medical students)). Interactive large-group sessions scored 0.27 SD higher than lectures on the same content, with the largest gains for lower-achieving students.
+- *Medical education:* Hew & Lo, 2018 (meta-analysis (28 studies)). Flipped classrooms outperformed traditional ones (SMD 0.33), more so when class began with a quiz.
+- *Medical education:* BEME Guide 30 (Fatmi et al., 2013) (systematic review). Team-based learning against other methods across the health professions; study designs and quality varied.
+- *Medical education:* Chen, Lui & Martinelli, 2017 (systematic review (9 controlled studies)). Learners liked flipped classrooms, but effects on knowledge and skills were inconclusive (median effect size 0.08).
 
 **Where it appears**
 
 - `pbl-rbl-session-builder`: Every phase asks students to predict, analyse or decide before anything is revealed.
 - `reading-material-generator`: Readings end with questions students answer, not only text to absorb.
+
+**Limit:** In medical education, much of the evidence comes from studies with weak designs, and flipped classrooms in particular show mixed effects on knowledge. The randomized trial by Boedeker et al. (2025) is the strongest single result.
 
 #### 5. Problem solving before instruction — *Research*
 
@@ -233,6 +238,7 @@ A result supports a decision only with validity evidence for that use. Competenc
 **Where it appears**
 
 - `exam-question-writer`: Asks formative or summative first; summative items need expert review, piloting and item analysis.
+- `committee-meeting-planner`: Treats the thesis committee meeting as one of many checkpoints: the student brings the last meeting's action items, and the committee confirms a written summary of its advice.
 - `syllabus-builder`: A competency counts as evidence only where performance is observed or assessed.
 
 #### 14. Professional identity formation — *Standard*
@@ -257,11 +263,15 @@ Disclose AI use, protect privacy, give equal access, keep the educator in charge
 
 - UNESCO AI Competency Framework for Teachers, 2024 (standard; professional standard, framework (15 competencies in 5 dimensions)). For teachers at every level; not specific to medicine.
 - *Medical education:* AAMC AI Principles, 2025 (standard). Written for medical education.
+- *Medical education:* AAMC AI Competencies, 2026 (competency framework). AI competencies in developmental tiers from medical school through practice; the reference for what learners should be able to do with AI.
+- *Medical education:* AMEE Guide 158 (Masters, 2023) (guide). Ethical issues for teachers and administrators using AI: data, privacy, consent, bias, transparency and responsibility.
 
 **Where it appears**
 
 - Every skill: An AI-assistance line in the institution's wording; no identifiable patient or learner data; the educator approves before anything is final; no invented sources.
 - The library: Open format and paste-in versions, so access does not depend on one paid tool.
+
+*See also:* [AAMC: Advancing AI Across Academic Medicine resource collection](https://www.aamc.org/about-us/mission-areas/medical-education/advancing-ai-across-academic-medicine-resource-collection)
 
 #### 16. AI that protects learning — *Research*
 
@@ -271,12 +281,13 @@ Unrestricted AI help can raise practice scores and lower real learning. Student-
 
 - Bastani et al., 2025 (origin; school students, field experiment). High-school mathematics. Unguarded AI access lowered later performance; a tutor version with safeguards largely avoided the harm. Not yet replicated in medical education.
 - *Medical education:* AMEE Guide 156 (Tolsgaard et al., 2023) (guide). How to study AI in medical education rigorously. Context for the principle, not evidence that guardrails work.
+- *Medical education:* BEME Guide 84 (Gordon et al., 2024) (scoping review (278 publications)). Maps AI in medical education and calls for ethical guidelines. Context for this principle, not a test of whether guardrails protect learning.
 
-> **Evidence from general education only.** The registry has no health-professions source for this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
+> **Evidence from general education only.** No health-professions source in the registry supports this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
 
 **Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
 
-**Limit:** The trial was in high-school mathematics. The skills here are for educators, not students, so this principle has no skill yet.
+**Limit:** The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. The skills here are for educators, not students, so this principle has no skill yet.
 <!-- PRINCIPLES:END -->
 
 ---
@@ -314,22 +325,32 @@ If your experience or a study contradicts a rule here, open an issue with the so
 - Association of American Medical Colleges. (2025). Principles for the responsible use of artificial intelligence in and for medical education. https://www.aamc.org/about-us/mission-areas/medical-education/principles-ai-use
 - Bastani, H., Bastani, O., Sungu, A., et al. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. PNAS, 122(26), e2422633122. https://doi.org/10.1073/pnas.2422633122
 - Biggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32(3), 347–364. https://doi.org/10.1007/BF00138871
+- Boedeker, P., Schlingmann, T., Kailin, J., et al. (2025). Active versus passive learning in large-group sessions in medical school: A randomized cross-over trial investigating effects on learning and the feeling of learning. Medical Science Educator, 35(1), 459–467. https://doi.org/10.1007/s40670-024-02219-1
 - Cepeda, N. J., Pashler, H., Vul, E., Wixted, J. T., & Rohrer, D. (2006). Distributed practice in verbal recall tasks: A review and quantitative synthesis. Psychological Bulletin, 132(3), 354–380. https://doi.org/10.1037/0033-2909.132.3.354
+- Chatterjee, D., & Corral, J. (2017). How to write well-defined learning objectives. Journal of Education in Perioperative Medicine, 19(4), E610.
+- Chen, F., Lui, A. M., & Martinelli, S. M. (2017). A systematic review of the effectiveness of flipped classrooms in medical education. Medical Education, 51(6), 585–597. https://doi.org/10.1111/medu.13272
 - Colliver, J. A. (2000). Effectiveness of problem-based learning curricula: Research and theory. Academic Medicine, 75(3), 259–266.
 - Cruess, R. L., Cruess, S. R., Boudreau, J. D., Snell, L., & Steinert, Y. (2014). Reframing medical education to support professional identity formation. Academic Medicine, 89(11), 1446–1451.
 - Downing, S. M. (2003). Validity: On the meaningful interpretation of assessment data. Medical Education, 37(9), 830–837.
 - Downing, S. M. (2005). The effects of violating standard item writing principles on tests and students. Advances in Health Sciences Education, 10(2), 133–143. https://doi.org/10.1007/s10459-004-4019-5
 - Ericsson, K. A. (2004). Deliberate practice and the acquisition and maintenance of expert performance in medicine and related domains. Academic Medicine, 79(10 Suppl), S70–S81. https://doi.org/10.1097/00001888-200410001-00022
 - Estrada, L., Baca, J. T., Baron, M. H., et al. (2026). A community-informed toolkit for physician-scientist competencies and milestones: Bridging the worlds of medicine and research. Academic Medicine. https://doi.org/10.1093/acamed/wvag053
+- Fatmi, M., Hartling, L., Hillier, T., Campbell, S., & Oswald, A. E. (2013). The effectiveness of team-based learning on learning outcomes in health professions education: BEME Guide No. 30. Medical Teacher, 35(12), e1608–e1624. https://doi.org/10.3109/0142159X.2013.849802
 - Frank, J. R., Snell, L. S., ten Cate, O., et al. (2010). Competency-based medical education: Theory to practice. Medical Teacher, 32(8), 638–645. https://doi.org/10.3109/0142159X.2010.501190
 - Freeman, S., Eddy, S. L., McDonough, M., et al. (2014). Active learning increases student performance in science, engineering, and mathematics. PNAS, 111(23), 8410–8415. https://doi.org/10.1073/pnas.1319030111
+- Gordon, M., Daniel, M., Ajiboye, A., et al. (2024). A scoping review of artificial intelligence in medical education: BEME Guide No. 84. Medical Teacher, 46(4), 446–470. https://doi.org/10.1080/0142159X.2024.2314198
 - Haladyna, T. M., Downing, S. M., & Rodriguez, M. C. (2002). A review of multiple-choice item-writing guidelines for classroom assessment. Applied Measurement in Education, 15(3), 309–333. https://doi.org/10.1207/S15324818AME1503_5
 - Handelsman, J., Ebert-May, D., Beichner, R., et al. (2004). Scientific teaching. Science, 304(5670), 521–522. https://doi.org/10.1126/science.1096022
+- Harden, R. M., Crosby, J. R., & Davis, M. H. (1999). AMEE Guide No. 14: Outcome-based education: Part 1 – An introduction to outcome-based education. Medical Teacher, 21(1), 7–14. https://doi.org/10.1080/01421599979969
+- Harden, R. M., Grant, J., Buckley, G., & Hart, I. R. (1999). BEME Guide No. 1: Best Evidence Medical Education. Medical Teacher, 21(6), 553–562. https://doi.org/10.1080/01421599978960
+- Hew, K. F., & Lo, C. K. (2018). Flipped classroom improves student learning in health professions education: A meta-analysis. BMC Medical Education, 18, 38. https://doi.org/10.1186/s12909-018-1144-z
+- Howley, L., Weems, K., Peoples, D., & Whelan, A. J. (2026). AI competencies across the learning continuum. Association of American Medical Colleges. https://www.aamc.org/about-us/medical-education/cbme/publication/ai-competencies-across-learning-continuum
 - Kapur, M. (2008). Productive failure. Cognition and Instruction, 26(3), 379–424.
 - Kerfoot, B. P., et al. (2007). Spaced education improves the retention of clinical knowledge by medical students: A randomised controlled trial. Medical Education, 41(1), 23–31. https://doi.org/10.1111/j.1365-2929.2006.02644.x
 - Kirschner, P. A., Sweller, J., & Clark, R. E. (2006). Why minimal guidance during instruction does not work. Educational Psychologist, 41(2), 75–86.
 - Larsen, D. P., Butler, A. C., & Roediger, H. L. (2008). Test-enhanced learning in medical education. Medical Education, 42(10), 959–966. https://doi.org/10.1111/j.1365-2923.2008.03124.x
 - Mager, R. F. (1962). Preparing objectives for programmed instruction. Fearon.
+- Masters, K. (2023). Ethical use of artificial intelligence in health professions education: AMEE Guide No. 158. Medical Teacher, 45(6), 574–584. https://doi.org/10.1080/0142159X.2023.2186203
 - McGaghie, W. C., Issenberg, S. B., Cohen, E. R., Barsuk, J. H., & Wayne, D. B. (2011). Does simulation-based medical education with deliberate practice yield better results than traditional clinical education? A meta-analytic comparative review of the evidence. Academic Medicine, 86(6), 706–711. https://doi.org/10.1097/ACM.0b013e318217e119
 - NBME. (2020). NBME item-writing guide: Constructing written test questions for the health sciences (6th ed.). https://www.nbme.org/educators/item-writing-guide
 - Norman, G. R., & Schmidt, H. G. (1992). The psychological basis of problem-based learning: A review of the evidence. Academic Medicine, 67(9), 557–565.
@@ -341,6 +362,7 @@ If your experience or a study contradicts a rule here, open an issue with the so
 - Steenhof, N., Woods, N. N., Van Gerven, P. W. M., & Mylopoulos, M. (2019). Productive failure as an instructional approach to promote future learning. Advances in Health Sciences Education, 24(4), 739–749. https://doi.org/10.1007/s10459-019-09895-4
 - Sweller, J. (1988). Cognitive load during problem solving: Effects on learning. Cognitive Science, 12(2), 257–285. https://doi.org/10.1207/s15516709cog1202_4
 - ten Cate, O. (2005). Entrustability of professional activities and competency-based training. Medical Education, 39(12), 1176–1177. https://doi.org/10.1111/j.1365-2929.2005.02341.x
+- Thomas, P. A., Kern, D. E., Hughes, M. T., & Chen, B. Y. (Eds.). (2016). Curriculum development for medical education: A six-step approach (3rd ed.). Johns Hopkins University Press.
 - Tolsgaard, M. G., et al. (2023). The fundamentals of artificial intelligence in medical education research: AMEE Guide No. 156. Medical Teacher, 45(6), 565–573.
 - UNESCO. (2024). AI competency framework for teachers.
 - van der Vleuten, C. P. M. (1996). The assessment of professional competence: Developments, research and practical implications. Advances in Health Sciences Education, 1(1), 41–67.

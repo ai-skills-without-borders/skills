@@ -288,6 +288,84 @@ sources:
     design: field experiment
     transfer: "High-school mathematics. Unguarded AI access lowered later performance; a tutor version with safeguards largely avoided the harm. Not yet replicated in medical education."
 
+  harden-beme-1999:
+    cite: "Harden, R. M., Grant, J., Buckley, G., & Hart, I. R. (1999). BEME Guide No. 1: Best Evidence Medical Education. Medical Teacher, 21(6), 553–562."
+    short: "BEME Guide 1 (Harden et al., 1999)"
+    doi: 10.1080/01421599978960
+    population: health-professions
+    design: position paper (founding BEME guide)
+    transfer: "Calls for medical teaching decisions to move from opinion to the best available evidence; the medical-education form of scientific teaching. A position paper, not a trial."
+  harden-amee14-1999:
+    cite: "Harden, R. M., Crosby, J. R., & Davis, M. H. (1999). AMEE Guide No. 14: Outcome-based education: Part 1 – An introduction to outcome-based education. Medical Teacher, 21(1), 7–14."
+    short: "AMEE Guide 14 (Harden et al., 1999)"
+    doi: 10.1080/01421599979969
+    population: health-professions
+    design: guide
+    transfer: "Outcome-based education for medical curricula: outcomes are specified first, and teaching and assessment are planned from them. A guide, not a trial."
+  thomas-kern-2016:
+    cite: "Thomas, P. A., Kern, D. E., Hughes, M. T., & Chen, B. Y. (Eds.). (2016). Curriculum development for medical education: A six-step approach (3rd ed.). Johns Hopkins University Press."
+    short: "Thomas, Kern et al., 2016"
+    population: health-professions
+    design: textbook
+    transfer: "The standard curriculum-development text in medical education; step 3 covers goals and measurable objectives."
+  chatterjee-corral-2017:
+    cite: "Chatterjee, D., & Corral, J. (2017). How to write well-defined learning objectives. Journal of Education in Perioperative Medicine, 19(4), E610."
+    short: "Chatterjee & Corral, 2017"
+    population: health-professions
+    design: review with practical guidance
+    transfer: "Objectives as observable, measurable learner behaviour, and the basis for aligning assessment and teaching in academic medicine."
+  fatmi-2013:
+    cite: "Fatmi, M., Hartling, L., Hillier, T., Campbell, S., & Oswald, A. E. (2013). The effectiveness of team-based learning on learning outcomes in health professions education: BEME Guide No. 30. Medical Teacher, 35(12), e1608–e1624."
+    short: "BEME Guide 30 (Fatmi et al., 2013)"
+    doi: 10.3109/0142159X.2013.849802
+    population: health-professions
+    design: systematic review
+    transfer: "Team-based learning against other methods across the health professions; study designs and quality varied."
+  hew-lo-2018:
+    cite: "Hew, K. F., & Lo, C. K. (2018). Flipped classroom improves student learning in health professions education: A meta-analysis. BMC Medical Education, 18, 38."
+    short: "Hew & Lo, 2018"
+    doi: 10.1186/s12909-018-1144-z
+    population: health-professions
+    design: meta-analysis (28 studies)
+    transfer: "Flipped classrooms outperformed traditional ones (SMD 0.33), more so when class began with a quiz."
+  chen-2017:
+    cite: "Chen, F., Lui, A. M., & Martinelli, S. M. (2017). A systematic review of the effectiveness of flipped classrooms in medical education. Medical Education, 51(6), 585–597."
+    short: "Chen, Lui & Martinelli, 2017"
+    doi: 10.1111/medu.13272
+    population: health-professions
+    design: systematic review (9 controlled studies)
+    transfer: "Learners liked flipped classrooms, but effects on knowledge and skills were inconclusive (median effect size 0.08)."
+  boedeker-2025:
+    cite: "Boedeker, P., Schlingmann, T., Kailin, J., et al. (2025). Active versus passive learning in large-group sessions in medical school: A randomized cross-over trial investigating effects on learning and the feeling of learning. Medical Science Educator, 35(1), 459–467."
+    short: "Boedeker et al., 2025"
+    doi: 10.1007/s40670-024-02219-1
+    population: health-professions
+    design: randomized cross-over trial (146 second-year medical students)
+    transfer: "Interactive large-group sessions scored 0.27 SD higher than lectures on the same content, with the largest gains for lower-achieving students."
+  aamc-ai-competencies-2026:
+    cite: "Howley, L., Weems, K., Peoples, D., & Whelan, A. J. (2026). AI competencies across the learning continuum. Association of American Medical Colleges."
+    short: "AAMC AI Competencies, 2026"
+    url: https://www.aamc.org/about-us/medical-education/cbme/publication/ai-competencies-across-learning-continuum
+    population: standard
+    medical: true
+    design: competency framework
+    transfer: "AI competencies in developmental tiers from medical school through practice; the reference for what learners should be able to do with AI."
+  masters-2023:
+    cite: "Masters, K. (2023). Ethical use of artificial intelligence in health professions education: AMEE Guide No. 158. Medical Teacher, 45(6), 574–584."
+    short: "AMEE Guide 158 (Masters, 2023)"
+    doi: 10.1080/0142159X.2023.2186203
+    population: health-professions
+    design: guide
+    transfer: "Ethical issues for teachers and administrators using AI: data, privacy, consent, bias, transparency and responsibility."
+  gordon-2024:
+    cite: "Gordon, M., Daniel, M., Ajiboye, A., et al. (2024). A scoping review of artificial intelligence in medical education: BEME Guide No. 84. Medical Teacher, 46(4), 446–470."
+    short: "BEME Guide 84 (Gordon et al., 2024)"
+    doi: 10.1080/0142159X.2024.2314198
+    population: health-professions
+    design: scoping review (278 publications)
+    context_only: true
+    transfer: "Maps AI in medical education and calls for ethical guidelines. Context for this principle, not a test of whether guardrails protect learning."
+
 principles:
   # ---------------- Layer 1: overarching principles of science teaching ----------------
   - id: scientific-teaching
@@ -295,7 +373,7 @@ principles:
     layer: science
     basis: standard
     summary: "Teach the way we do science: choose methods with evidence behind them, measure what works, and change course on the data."
-    sources: [handelsman-2004:origin, freeman-2014:science-ed]
+    sources: [handelsman-2004:origin, freeman-2014:science-ed, harden-beme-1999:med-ed]
     applies:
       library: "Every skill states what each rule rests on; usage reports and maturity levels test the skills the way an experiment would."
 
@@ -304,22 +382,24 @@ principles:
     layer: science
     basis: standard
     summary: "Objectives, activities and assessment are designed together, so learners practise and are tested on what the objectives say."
-    sources: [biggs-1996:origin]
+    sources: [biggs-1996:origin, harden-amee14-1999:med-ed, frank-2010:med-ed]
     applies:
       learning-objectives-designer: "Checks each objective for an activity and an assessment and reports the gaps."
       syllabus-builder: "Links objectives, schedule and assessment; a competency counts as evidence only when it is assessed."
       exam-question-writer: "A blueprint before items; one item tests one objective."
       lesson-format-checker: "Every lesson segment names the objective it serves, and every objective is served."
+      curriculum-map-builder: "Links course goals, module goals, session objectives and assessment items, and flags goals that are never taught or never assessed."
 
   - id: observable-objectives
     name: Observable, levelled objectives
     layer: science
     basis: standard
     summary: "One observable verb at a defined cognitive level; for skills, a condition and a criterion."
-    sources: [anderson-krathwohl-2001:origin, mager-1962:origin]
+    sources: [anderson-krathwohl-2001:origin, mager-1962:origin, thomas-kern-2016:med-ed, chatterjee-corral-2017:med-ed]
     applies:
       learning-objectives-designer: "One verb, one target; no 'understand' or 'know'; level matched to what the activity demands."
       syllabus-builder: "Course objectives use the same rules."
+      curriculum-map-builder: "Checks objectives per session for one clear task, varied verbs and no vague verbs such as 'understand'."
     practice_note: "Collapsing Bloom's six levels into three (Foundational / Applied / Advanced) is a local convention for easier agreement; the skill records both."
 
   - id: active-learning
@@ -327,7 +407,8 @@ principles:
     layer: science
     basis: research
     summary: "Learners do something with the material in class, rather than only listen. It raises exam scores and cuts failure rates."
-    sources: [freeman-2014:origin]
+    sources: [freeman-2014:origin, boedeker-2025:med-ed, hew-lo-2018:med-ed, fatmi-2013:med-ed, chen-2017:med-ed]
+    limits: "In medical education, much of the evidence comes from studies with weak designs, and flipped classrooms in particular show mixed effects on knowledge. The randomized trial by Boedeker et al. (2025) is the strongest single result."
     applies:
       pbl-rbl-session-builder: "Every phase asks students to predict, analyse or decide before anything is revealed."
       reading-material-generator: "Readings end with questions students answer, not only text to absorb."
@@ -420,6 +501,7 @@ principles:
     sources: [vandervleuten-1996:origin, downing-2003:med-ed, vandervleuten-schuwirth-2005:med-ed]
     applies:
       exam-question-writer: "Asks formative or summative first; summative items need expert review, piloting and item analysis."
+      committee-meeting-planner: "Treats the thesis committee meeting as one of many checkpoints: the student brings the last meeting's action items, and the committee confirms a written summary of its advice."
       syllabus-builder: "A competency counts as evidence only where performance is observed or assessed."
 
   - id: professional-identity
@@ -436,7 +518,10 @@ principles:
     layer: ai
     basis: standard
     summary: "Disclose AI use, protect privacy, give equal access, keep the educator in charge, and never invent sources."
-    sources: [aamc-ai-2025:origin, unesco-2024:standard]
+    sources: [aamc-ai-2025:origin, aamc-ai-competencies-2026:standard, masters-2023:med-ed, unesco-2024:standard]
+    see_also:
+      - title: "AAMC: Advancing AI Across Academic Medicine resource collection"
+        url: https://www.aamc.org/about-us/mission-areas/medical-education/advancing-ai-across-academic-medicine-resource-collection
     applies:
       all: "An AI-assistance line in the institution's wording; no identifiable patient or learner data; the educator approves before anything is final; no invented sources."
       library: "Open format and paste-in versions, so access does not depend on one paid tool."
@@ -446,6 +531,6 @@ principles:
     layer: ai
     basis: research
     summary: "Unrestricted AI help can raise practice scores and lower real learning. Student-facing AI should guide rather than hand over answers, and its effects should be studied."
-    sources: [bastani-2025:origin, tolsgaard-2023:med-ed]
+    sources: [bastani-2025:origin, tolsgaard-2023:med-ed, gordon-2024:med-ed]
     applies: {}
-    limits: "The trial was in high-school mathematics. The skills here are for educators, not students, so this principle has no skill yet."
+    limits: "The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. The skills here are for educators, not students, so this principle has no skill yet."

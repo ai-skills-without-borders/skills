@@ -4,7 +4,7 @@ How skills enter the library, how their maturity is labelled, and who decides.
 
 ## Roles
 
-- **Maintainers** — merge changes, run releases, keep the catalog honest. Currently: Amit Shraga, PhD (The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science) and Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai). The list grows with founding institutions.
+- **Maintainers** — merge changes, run releases, keep the catalog honest. Currently: Amit Shraga, PhD (The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science; GitHub `mmmmpf`) and Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai; GitHub `taliaswartz`). [`CODEOWNERS`](.github/CODEOWNERS) asks them for review automatically. The list grows with founding institutions.
 - **Skill maintainer** — the person responsible for one skill: answers issues, updates it when tools change. Named in its `card.yaml`.
 - **Reviewers** — educators from an institution *other* than the skill's origin, who test and review a skill using [community/review-checklist.md](community/review-checklist.md).
 - **Contributors** — anyone who submits a skill, a fix, a profile, or a usage report.
@@ -63,6 +63,9 @@ One approval is enough. The automatic checks catch format problems, and the matu
 Reviews by other institutions are welcome at any time. They raise a skill's maturity label; they never block a change.
 
 Every pull request runs `tools/build.py --check` automatically. Approvals are recorded on the pull request; `.github/CODEOWNERS` routes review requests to the right people.
+
+
+**Automatic publishing.** A new skill submitted through the "New skill" form by a user listed under `auto_publish` in `config.yaml` (currently the two maintainers) is added to the library automatically as Draft: the form is turned into a skill folder, checked, published and the issue closed. Submissions from everyone else wait for one maintainer, as above.
 
 ## Editing paths for contributors
 

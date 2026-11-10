@@ -1,0 +1,49 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: curriculum-map-builder
+title: Curriculum Map Builder
+version: 0.1.0
+summary: Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested.
+tasks:
+- Build a curriculum map
+- Check that every objective is taught and tested
+- Find goals with no sessions
+- Compare with another curriculum
+- Make a website of the curriculum
+- Update the map after schedule changes
+audience:
+- Course directors
+- Program leaders
+inputs:
+- Course schedule
+- Course, module and session goals
+- Exams, assignments and question banks
+- Another curriculum to compare with (optional)
+- The program's rules
+- Who will see the map
+outputs:
+- One source spreadsheet with stable codes
+- Gap report with suggested fixes
+- Comparison with another curriculum
+- Self-contained map website
+- Dated change log
+runs_code: false
+maturity: draft
+tested_in:
+  claude: works
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- Constructive alignment
+- Outcome-based education (AMEE Guide 14)
+- Curriculum mapping (AMEE Guide 21)
+origin_institution: Icahn School of Medicine at Mount Sinai
+derived_from: New skill
+maintainers:
+- Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)
+reviewers: []
+license: CC-BY-4.0
+starter: false
+short: Curriculum map

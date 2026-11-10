@@ -1,5 +1,130 @@
 [
   {
+    "name": "committee-meeting-planner",
+    "title": "Committee Meeting Planner",
+    "version": "0.1.0",
+    "summary": "Helps a graduate student plan, run and write up their own thesis committee meeting, from the scheduling poll to the summary of the committee's advice.",
+    "tasks": [
+      "Schedule a thesis committee meeting",
+      "Write to the committee",
+      "Follow up on a scheduling poll",
+      "Prepare committee slides",
+      "Write a progress report",
+      "Write up the committee's advice"
+    ],
+    "audience": [
+      "Graduate and MD-PhD students",
+      "Mentors",
+      "Program coordinators and directors"
+    ],
+    "inputs": [
+      "The program's rules for committee meetings",
+      "Committee members, emails and time zones",
+      "Date and action items of the last meeting",
+      "Poll responses",
+      "The student's notes and data",
+      "The student's notes from the meeting"
+    ],
+    "outputs": [
+      "Poll email in every member's time zone",
+      "Reminders and confirmation emails",
+      "Calendar invite",
+      "Slide outline",
+      "Progress report draft (2–3 pages)",
+      "Materials email and day-before reminder",
+      "Meeting agenda",
+      "One-page summary of the committee's advice"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "untested",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [
+      "Program committee policies",
+      "NIH Individual Development Plans (NOT-OD-14-113)"
+    ],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "short": "Committee",
+    "description": "Helps a graduate student plan and run their own thesis committee meeting from start to finish. Use when a student says \"I need to schedule my committee meeting\", \"help me write to my committee\", \"follow up on my poll\", \"send the calendar invite\", \"what should I put in my committee slides\", \"help me write my progress report\" or \"help me write up my committee meeting\". Drafts every email and the calendar invite, helps prepare the slides and progress report and writes the summary afterward. Nothing is sent without the student's approval.",
+    "zip": "downloads/committee-meeting-planner.zip",
+    "paste": "paste/committee-meeting-planner.md",
+    "source_url": null
+  },
+  {
+    "name": "curriculum-map-builder",
+    "title": "Curriculum Map Builder",
+    "version": "0.1.0",
+    "summary": "Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested.",
+    "tasks": [
+      "Build a curriculum map",
+      "Check that every objective is taught and tested",
+      "Find goals with no sessions",
+      "Compare with another curriculum",
+      "Make a website of the curriculum",
+      "Update the map after schedule changes"
+    ],
+    "audience": [
+      "Course directors",
+      "Program leaders"
+    ],
+    "inputs": [
+      "Course schedule",
+      "Course, module and session goals",
+      "Exams, assignments and question banks",
+      "Another curriculum to compare with (optional)",
+      "The program's rules",
+      "Who will see the map"
+    ],
+    "outputs": [
+      "One source spreadsheet with stable codes",
+      "Gap report with suggested fixes",
+      "Comparison with another curriculum",
+      "Self-contained map website",
+      "Dated change log"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "works",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [
+      "Constructive alignment",
+      "Outcome-based education (AMEE Guide 14)",
+      "Curriculum mapping (AMEE Guide 21)"
+    ],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "short": "Curriculum map",
+    "description": "Builds and maintains a curriculum map for a whole course or program, linking course goals to module goals to session objectives to assessment items. It also checks that everything lines up. Use when an educator says \"build a curriculum map\", \"map our course\", \"check that every objective is taught and tested\", \"which goals have no sessions\", \"how does our course compare with the medical school curriculum\", \"make a website of our curriculum\" or \"update the map after the schedule changed\". For course directors and program leaders in graduate, MD-PhD, medical and postdoctoral programs. Produces one source spreadsheet, a gap report and a browsable map website.",
+    "zip": "downloads/curriculum-map-builder.zip",
+    "paste": "paste/curriculum-map-builder.md",
+    "source_url": null
+  },
+  {
     "name": "exam-question-writer",
     "title": "Exam Question Writer",
     "version": "0.1.0",

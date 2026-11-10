@@ -20,6 +20,8 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [learning-objectives-designer](skills/learning-objectives-designer) | Extracts, writes, splits, levels and maps learning objectives; produces the numbered objectives table the other skills use. | No | draft |
 | [pbl-rbl-session-builder](skills/pbl-rbl-session-builder) | Design partner for case-based PBL and tool-based RBL sessions, with readers, quizzes and intro lectures. | No | tested at origin |
 | [reading-material-generator](skills/reading-material-generator) | Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks. | No | tested at origin |
+| [committee-meeting-planner](skills/committee-meeting-planner) | Helps a graduate student plan, run and write up their own thesis committee meeting, from the scheduling poll to the summary of the committee's advice. | No | draft |
+| [curriculum-map-builder](skills/curriculum-map-builder) | Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested. | No | draft |
 | [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | draft |
 | [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | draft |
 | [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | draft |
@@ -86,7 +88,7 @@ tools/build.py               validates skills and builds dist/ and the site
 ## Founders
 
 - **Amit Shraga, PhD** — Head of Data Science Tools and Chair of the AI & Digital Tools Committee, The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
-- **Talia H. Swartz, MD, PhD** — Associate Professor of Medicine (Infectious Diseases) and Director of the Medical Scientist Training Program, Icahn School of Medicine at Mount Sinai
+- **Talia H. Swartz, MD, PhD** — Senior Associate Dean for MD-PhD Education, Professor of Medicine (Infectious Diseases) and Director of the MD-PhD Program, Icahn School of Medicine at Mount Sinai
 
 ## License
 

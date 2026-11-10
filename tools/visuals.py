@@ -5,6 +5,8 @@ NAVY, TEAL, BLUE, YELLOW, RULE = "#22405f", "#3d9696", "#4a86a8", "#f4dc4a", "#c
 
 # 24x24 line icons, one per shared skill. Unknown skills get the generic icon.
 _ICON_PATHS = {
+    "committee-meeting-planner": '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="9" cy="14" r="1.6"/><circle cx="15" cy="14" r="1.6"/><path d="M6.5 18.5c.4-1.3 1.3-2 2.5-2s2.1.7 2.5 2M12.5 18.5c.4-1.3 1.3-2 2.5-2s2.1.7 2.5 2"/>',
+    "curriculum-map-builder": '<circle cx="12" cy="4.5" r="2"/><circle cx="5.5" cy="12" r="2"/><circle cx="18.5" cy="12" r="2"/><circle cx="5.5" cy="19.5" r="2"/><circle cx="12" cy="19.5" r="2"/><circle cx="18.5" cy="19.5" r="2"/><path d="M10.6 6 6.9 10.5M13.4 6l3.7 4.5M5.5 14v3.5M7 13.4l3.8 4.6M18.5 14v3.5"/>',
     "learning-objectives-designer": '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><path d="M15.5 8.5 21 3M17.5 3H21v3.5"/>',
     "pbl-rbl-session-builder": '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21"/><circle cx="8.5" cy="9" r="1.3"/><circle cx="12.5" cy="12" r="1.3"/><path d="M9.5 9.8l2 1.4"/>',
     "reading-material-generator": '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5Z"/><path d="M12 6.5v13"/><path d="M6 9h3.5M6 12h3.5M14.5 9H18"/>',

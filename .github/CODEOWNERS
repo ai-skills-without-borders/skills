@@ -1,13 +1,17 @@
-# Who must approve changes. GitHub requests their review automatically on pull requests.
-# Replace the placeholders with real GitHub usernames, then enable
-# "Require review from Code Owners" in Settings → Rules for the main branch.
-#
-# Library maintainers approve everything by default:
-# *                                   @AMIT-GITHUB-USERNAME @TALIA-GITHUB-USERNAME
-#
-# Each shared skill can also have its own maintainer:
-# /skills/syllabus-builder/           @AMIT-GITHUB-USERNAME
-#
-# Each institution owns its variants:
-# /variants/mssm/                     @TALIA-GITHUB-USERNAME
-# /variants/weizmann/                 @AMIT-GITHUB-USERNAME
+# Who is asked to review changes. GitHub requests their review automatically on pull requests.
+# One approval from any listed owner is enough (see GOVERNANCE.md).
+
+# Library maintainers: everything by default
+*                                     @mmmmpf @taliaswartz
+
+# Shared skills and their maintainers
+/skills/learning-objectives-designer/ @mmmmpf
+/skills/syllabus-builder/             @mmmmpf
+/skills/pbl-rbl-session-builder/      @mmmmpf
+/skills/reading-material-generator/   @mmmmpf
+/skills/lesson-format-checker/        @mmmmpf
+/skills/exam-question-writer/         @mmmmpf
+
+# Each institution owns its variants
+/variants/weizmann/                   @mmmmpf
+/variants/mssm/                       @taliaswartz
