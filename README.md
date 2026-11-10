@@ -86,7 +86,7 @@ tools/build.py               validates skills and builds dist/ and the site
 ## Founders
 
 - **Amit Shraga, PhD** — Head of Data Science Tools and Chair of the AI & Digital Tools Committee, The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
-- **Talia H. Swartz, MD, PhD** — Senior Associate Dean for MD-PhD Education and Director of the Medical Scientist Training Program, Icahn School of Medicine at Mount Sinai
+- **Talia H. Swartz, MD, PhD** — Associate Professor of Medicine (Infectious Diseases) and Director of the Medical Scientist Training Program, Icahn School of Medicine at Mount Sinai
 
 ## License
 

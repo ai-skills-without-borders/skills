@@ -9,7 +9,22 @@ body:
     validations: {required: true}
   - type: textarea
     id: task
-    attributes: {label: What teaching task does it solve, and when should it be used?}
+    attributes: {label: Purpose - what task does it do, and when should an educator use it?}
+    validations: {required: true}
+  - type: textarea
+    id: inputs
+    attributes: {label: Inputs - what must the user provide?}
+    validations: {required: true}
+  - type: textarea
+    id: output
+    attributes: {label: Expected output - what exactly does it produce?}
+    validations: {required: true}
+  - type: textarea
+    id: success
+    attributes: {label: Success criteria - how do you know the output is good enough to use?}
+  - type: textarea
+    id: limitations
+    attributes: {label: Limitations - what does it not do, and what must the educator always check?}
     validations: {required: true}
   - type: input
     id: author

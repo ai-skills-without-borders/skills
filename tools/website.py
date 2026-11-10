@@ -27,7 +27,7 @@ SITE = ROOT / "tools" / "site"
 DOCS = ROOT / "docs"
 
 NAV = [("start.html", "Start here"), ("skills.html", "Skills"), ("pedagogy.html", "Pedagogy"),
-       ("quality.html", "Quality"), ("contribute.html", "Contribute")]
+       ("quality.html", "Quality"), ("contribute.html", "Contribute"), ("about.html", "About")]
 LADDER = ["draft", "tested-at-origin", "tested-elsewhere", "reviewed"]
 LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
          "tested-elsewhere": "Tested elsewhere", "reviewed": "Reviewed"}
@@ -224,8 +224,8 @@ def build_site(cards, variants, cfg, public_card):
         catalog.append(pc)
 
     pages = {
-        "index.html": (f"{cfg['library_name']} — shared AI skills for medical educators",
-                       "Shared AI skills for medical and biomedical-research educators.",
+        "index.html": (f"{cfg['library_name']} — shared AI skills for biomedical research and medical education",
+                       "Shared AI skills for educators in biomedical research and medicine.",
                        read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()), "", read("home.js")),
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
                        fill_steps(read("start.html")), "start.html", ""),
@@ -235,6 +235,8 @@ def build_site(cards, variants, cfg, public_card):
                             read("contribute.html").replace("{{CYCLE}}", visuals.cycle_svg()), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
                          read("quality.html").replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
+        "about.html": ("Why this project — " + cfg["library_name"], "Why shared AI skills matter for biomedical research and medical education, and who is behind the project.",
+                       read("about.html"), "about.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
                           read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows(ped)).replace("{{MATRIX}}", visuals.matrix_html(ped)).replace(
                               "{{PEDAGOGY_MD}}", gh_links(md(pedagogy_body()), gh)),

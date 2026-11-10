@@ -384,3 +384,22 @@ p.layer-intro { margin: 0 0 6px; color: var(--ink-soft); max-width: 70ch; }
   .top.tuck { transform: translateY(calc(-1 * var(--nav-h, 0px))); }
 }
 @media print { .pagemap, .pagebar { display: none !important; } body.has-map main { padding-left: 0; } .top { position: static; } }
+
+/* about page */
+section > .wrap.about > h2 { font-size: 1.7rem; margin: 52px 0 6px; }
+section > .wrap.about > h2:first-child { margin-top: 0; }
+.about-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 36px; }
+.about-cols p { margin: 8px 0 0; max-width: 62ch; }
+.areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.areas > div { background: var(--white); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; }
+.areas > div.open { border-style: dashed; border-color: var(--ink-soft); }
+.areas h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.areas p { margin: 0; font-size: .95rem; color: var(--ink-soft); }
+.standards { padding-left: 20px; max-width: 72ch; }
+.standards li { margin-bottom: 10px; }
+.bios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 36px; }
+.bios h3 { margin: 0 0 4px; font-size: 1.15rem; }
+.bios .bio-role { margin: 0 0 8px; font-size: .92rem; font-weight: 700; color: var(--ink-soft); }
+.bios p { margin: 0; max-width: 62ch; }
+.about .join { margin-top: 28px; font-weight: 700; }
+@media (max-width: 820px) { .about-cols, .bios { grid-template-columns: 1fr; } section > .wrap.about > h2 { font-size: 1.45rem; } }
