@@ -36,6 +36,7 @@ Candidates for a new skill, or an addition to an existing one.
 | `committee-meeting-planner` | 2 |
 | `curriculum-map-builder` | 3 |
 | `exam-question-writer` | 5 |
+| `journal-club-planner` | 1 |
 | `learning-objectives-designer` | 5 |
 | `lesson-format-checker` | 3 |
 | `mentor-compact-creator` | 1 |

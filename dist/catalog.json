@@ -177,6 +177,56 @@
     "source_url": null
   },
   {
+    "name": "journal-club-planner",
+    "title": "Journal Club Planner",
+    "version": "0.1.0",
+    "summary": "Helps a student prepare to present a research paper at journal club.",
+    "tasks": [
+      "See the skill's description"
+    ],
+    "audience": [
+      "Educators"
+    ],
+    "inputs": [
+      "The paper, as a PDF or full text",
+      "The student's own reading of the paper and each figure",
+      "Whether they present alone or in a group, and how much time they have",
+      "Who the audience is",
+      "The course rubric or instructions, if any"
+    ],
+    "outputs": [
+      "Feedback on the student's reading of each figure",
+      "A plan for splitting the paper among presenters",
+      "A slide outline with a title for each figure slide and timing",
+      "Four to six discussion questions for the student to lead",
+      "The hard questions they are most likely to get",
+      "A check against the course rubric"
+    ],
+    "runs_code": false,
+    "maturity": "draft",
+    "tested_in": {
+      "claude": "works",
+      "chatgpt": "untested",
+      "gemini": "untested",
+      "copilot": "untested"
+    },
+    "last_tested": null,
+    "used_at": [],
+    "frameworks": [],
+    "origin_institution": "Icahn School of Medicine at Mount Sinai",
+    "derived_from": "New skill",
+    "maintainers": [
+      "Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)"
+    ],
+    "reviewers": [],
+    "license": "CC-BY-4.0",
+    "starter": false,
+    "description": "Helps a student prepare to present a research paper at journal club. The student explains each figure in their own words first, and the skill checks their reading, fills gaps and explains unfamiliar methods. It then helps split the paper among presenters, plan the slides and timing, write discussion questions to lead and prepare for hard questions. Use it when a student, alone or in a group, has a journal club presentation coming up.",
+    "zip": "downloads/journal-club-planner.zip",
+    "paste": "paste/journal-club-planner.md",
+    "source_url": null
+  },
+  {
     "name": "learning-objectives-designer",
     "title": "Learning Objectives Designer",
     "version": "0.1.0",
