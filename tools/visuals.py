@@ -5,6 +5,8 @@ NAVY, TEAL, BLUE, YELLOW, RULE = "#22405f", "#3d9696", "#4a86a8", "#f4dc4a", "#c
 
 # 24x24 line icons, one per shared skill. Unknown skills get the generic icon.
 _ICON_PATHS = {
+    "journal-club-planner": '<path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15h6M9.5 18h3.5"/><circle cx="4.5" cy="9" r="1.5"/><path d="M2.5 14c.3-1.6 1-2.4 2-2.4"/>',
+    "mentor-compact-creator": '<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8.5 8h7M8.5 11.5h7"/><path d="M8 17.5c1.2-1.4 2.4-1.4 3.6 0 1.2 1.4 2.4 1.4 3.6 0"/>',
     "committee-meeting-planner": '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="9" cy="14" r="1.6"/><circle cx="15" cy="14" r="1.6"/><path d="M6.5 18.5c.4-1.3 1.3-2 2.5-2s2.1.7 2.5 2M12.5 18.5c.4-1.3 1.3-2 2.5-2s2.1.7 2.5 2"/>',
     "curriculum-map-builder": '<circle cx="12" cy="4.5" r="2"/><circle cx="5.5" cy="12" r="2"/><circle cx="18.5" cy="12" r="2"/><circle cx="5.5" cy="19.5" r="2"/><circle cx="12" cy="19.5" r="2"/><circle cx="18.5" cy="19.5" r="2"/><path d="M10.6 6 6.9 10.5M13.4 6l3.7 4.5M5.5 14v3.5M7 13.4l3.8 4.6M18.5 14v3.5"/>',
     "learning-objectives-designer": '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><path d="M15.5 8.5 21 3M17.5 3H21v3.5"/>',

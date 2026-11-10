@@ -10,6 +10,7 @@ tasks:
 - Compare with another curriculum
 - Make a website of the curriculum
 - Update the map after schedule changes
+users: [educators, program-staff]
 audience:
 - Course directors
 - Program leaders

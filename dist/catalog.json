@@ -12,6 +12,9 @@
       "Write a progress report",
       "Write up the committee's advice"
     ],
+    "users": [
+      "learners"
+    ],
     "audience": [
       "Graduate and MD-PhD students",
       "Mentors",
@@ -76,6 +79,10 @@
       "Make a website of the curriculum",
       "Update the map after schedule changes"
     ],
+    "users": [
+      "educators",
+      "program-staff"
+    ],
     "audience": [
       "Course directors",
       "Program leaders"
@@ -136,6 +143,9 @@
       "Review existing items",
       "Export to Moodle"
     ],
+    "users": [
+      "educators"
+    ],
     "audience": [
       "Course leaders",
       "Assessment committees"
@@ -182,10 +192,19 @@
     "version": "0.1.0",
     "summary": "Helps a student prepare to present a research paper at journal club.",
     "tasks": [
-      "See the skill's description"
+      "I'm presenting at journal club",
+      "Help me understand this paper",
+      "How should we split the figures",
+      "Help me make my journal club slides",
+      "What questions will they ask me",
+      "Help me lead the discussion"
+    ],
+    "users": [
+      "learners"
     ],
     "audience": [
-      "Educators"
+      "Graduate, MD-PhD and medical students",
+      "Journal club leaders"
     ],
     "inputs": [
       "The paper, as a PDF or full text",
@@ -221,7 +240,8 @@
     "reviewers": [],
     "license": "CC-BY-4.0",
     "starter": false,
-    "description": "Helps a student prepare to present a research paper at journal club. The student explains each figure in their own words first, and the skill checks their reading, fills gaps and explains unfamiliar methods. It then helps split the paper among presenters, plan the slides and timing, write discussion questions to lead and prepare for hard questions. Use it when a student, alone or in a group, has a journal club presentation coming up.",
+    "short": "Journal club",
+    "description": "Helps a student prepare to present a research paper at journal club. Use when a student says \"I'm presenting at journal club\", \"help me understand this paper\", \"how should we split the figures\", \"help me make my journal club slides\", \"what questions will they ask me\" or \"help me lead the discussion\". For graduate, MD-PhD, medical students, residents and postdocs, presenting alone or in a group. It helps the student understand and judge each figure in their own words, plan the talk, prepare discussion questions and get ready for hard questions. Uses only what is in the paper and never reproduces the paper itself.",
     "zip": "downloads/journal-club-planner.zip",
     "paste": "paste/journal-club-planner.md",
     "source_url": null
@@ -236,6 +256,9 @@
       "Fix vague or compound objectives",
       "Map a course to competencies",
       "Check alignment of objectives, activities and assessment"
+    ],
+    "users": [
+      "educators"
     ],
     "audience": [
       "Course leaders",
@@ -290,6 +313,9 @@
       "Check session timing",
       "Create a lesson in the standard structure"
     ],
+    "users": [
+      "educators"
+    ],
     "audience": [
       "Course coordinators",
       "Computational course teams"
@@ -330,25 +356,36 @@
     "name": "mentor-compact-creator",
     "title": "Mentor Compact Creator",
     "version": "0.1.0",
-    "summary": "Builds mentoring compacts in two layers.",
+    "summary": "Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top.",
     "tasks": [
-      "See the skill's description"
+      "Create a program mentoring compact",
+      "Set expectations with a new trainee",
+      "Compare mentor and trainee expectations",
+      "Reset expectations with a trainee",
+      "Review a compact yearly"
+    ],
+    "users": [
+      "educators",
+      "learners",
+      "program-staff"
     ],
     "audience": [
-      "Educators"
+      "Program directors",
+      "Mentors",
+      "Graduate students, MD-PhD students and postdocs"
     ],
     "inputs": [
-      "For the program layer",
-      "For the pair layer",
-      "The trainee's stage, such as graduate student, MD-PhD student or…",
+      "The program's compact, handbook or policies",
+      "Mentor's and trainee's separate answers",
+      "The trainee's stage",
       "The current compact, for an update"
     ],
     "outputs": [
-      "A program compact with each section marked as a program rule or as…",
-      "A side-by-side comparison of the mentor's and trainee's answers,…",
-      "Neutral questions to help the pair talk through their differences",
-      "A one-page pair agreement that sits after the program layer",
-      "A date to review the compact"
+      "Program compact, marked program rule or pair addition",
+      "Side-by-side comparison of mentor and trainee answers",
+      "Neutral questions for differences",
+      "One-page pair agreement",
+      "Review date"
     ],
     "runs_code": false,
     "maturity": "draft",
@@ -369,6 +406,7 @@
     "reviewers": [],
     "license": "CC-BY-4.0",
     "starter": false,
+    "short": "Mentor compact",
     "description": "Builds mentoring compacts in two layers. A program sets up its shared compact once, with its expectations, milestones, funding, safety rules, time away and contacts. Then each mentor and trainee add their own agreements on top, like how often they meet, authorship, working hours and career goals. Use it when a program wants a compact template, when a new trainee joins a lab, when a mentor and trainee want to reset expectations or when a compact is due for its yearly review.",
     "zip": "downloads/mentor-compact-creator.zip",
     "paste": "paste/mentor-compact-creator.md",
@@ -384,6 +422,9 @@
       "Build an RBL session",
       "Write a teaching case",
       "Pre-reading and comprehension quiz"
+    ],
+    "users": [
+      "educators"
     ],
     "audience": [
       "Session designers",
@@ -434,6 +475,9 @@
       "Turn a paper into reading material",
       "Group reading for a workshop"
     ],
+    "users": [
+      "educators"
+    ],
     "audience": [
       "Lecturers",
       "Session designers"
@@ -480,6 +524,9 @@
       "Update a syllabus",
       "Map a course to competencies or EPAs",
       "Find coverage gaps"
+    ],
+    "users": [
+      "educators"
     ],
     "audience": [
       "Course leaders",

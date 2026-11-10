@@ -2,22 +2,32 @@
 name: mentor-compact-creator
 title: Mentor Compact Creator
 version: 0.1.0
-summary: Builds mentoring compacts in two layers.
+summary: 'Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top.'
 tasks:
-- See the skill's description
+- Create a program mentoring compact
+- Set expectations with a new trainee
+- Compare mentor and trainee expectations
+- Reset expectations with a trainee
+- Review a compact yearly
+users:
+- educators
+- learners
+- program-staff
 audience:
-- Educators
+- Program directors
+- Mentors
+- Graduate students, MD-PhD students and postdocs
 inputs:
-- For the program layer
-- For the pair layer
-- The trainee's stage, such as graduate student, MD-PhD student or…
+- The program's compact, handbook or policies
+- Mentor's and trainee's separate answers
+- The trainee's stage
 - The current compact, for an update
 outputs:
-- A program compact with each section marked as a program rule or as…
-- A side-by-side comparison of the mentor's and trainee's answers,…
-- Neutral questions to help the pair talk through their differences
-- A one-page pair agreement that sits after the program layer
-- A date to review the compact
+- Program compact, marked program rule or pair addition
+- Side-by-side comparison of mentor and trainee answers
+- Neutral questions for differences
+- One-page pair agreement
+- Review date
 runs_code: false
 maturity: draft
 tested_in:
@@ -35,3 +45,4 @@ maintainers:
 reviewers: []
 license: CC-BY-4.0
 starter: false
+short: Mentor compact

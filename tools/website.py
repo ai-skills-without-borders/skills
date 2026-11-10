@@ -57,6 +57,14 @@ APPROVAL = [
 ]
 
 
+USER_LABELS = {"educators": "Educators", "learners": "Learners", "program-staff": "Program staff"}
+
+
+def users_label(users):
+    names = [USER_LABELS.get(u, u) for u in (users or [])]
+    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1].lower() if names else ""
+
+
 def pedagogy_body():
     """guide/pedagogy.md from its first section on: the page has its own title and introduction."""
     text = (ROOT / "guide" / "pedagogy.md").read_text(encoding="utf-8")
@@ -160,7 +168,8 @@ def skill_page(c, cfg, variants):
     content = read("skill.html")
     for k, v in {"TITLE": e(c["title"]), "SUMMARY": e(c["summary"]), "MATURITY": LABEL[c["maturity"]],
                  "VERSION": e(c["version"]), "RUNS_CODE": "Optional scripts" if c.get("runs_code") else "No",
-                 "MAINTAINERS": e(", ".join(c.get("maintainers") or [])), "DESCRIPTION": e(c["description"]),
+                 "MAINTAINERS": e(", ".join(c.get("maintainers") or [])),
+                 "USERS": e(users_label(c.get("users"))), "DESCRIPTION": e(c["description"]),
                  "TASKS": li(c.get("tasks")), "INPUTS": li(c.get("inputs")), "OUTPUTS": li(c.get("outputs")),
                  "PEDAGOGY": ped, "VARIANTS": vhtml, "ORIGIN": origin, "FRAMEWORKS": frameworks,
                  "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "TESTED": tested, "USED_AT": used_at,

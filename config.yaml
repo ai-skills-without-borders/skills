@@ -6,7 +6,7 @@ auto_publish: [mmmmpf, taliaswartz]
 repo: ai-skills-without-borders/skills        # <github-org>/<repo>
 site_url: https://ai-skills-without-borders.github.io/skills/
 plugin_name: ai-skills-without-borders
-version: 0.1.11
+version: 0.1.12
 contact: "Amit Shraga (Weizmann Institute of Science) and Talia H. Swartz (Icahn School of Medicine at Mount Sinai)"
 founders:
   - name: "Amit Shraga, PhD"

@@ -8,6 +8,7 @@ tasks:
 - Update a syllabus
 - Map a course to competencies or EPAs
 - Find coverage gaps
+users: [educators]
 audience:
 - Course leaders
 - Program directors

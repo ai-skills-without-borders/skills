@@ -8,6 +8,7 @@ tasks:
 - Build an RBL session
 - Write a teaching case
 - Pre-reading and comprehension quiz
+users: [educators]
 audience:
 - Session designers
 - Facilitators

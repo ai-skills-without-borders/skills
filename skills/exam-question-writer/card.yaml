@@ -9,6 +9,7 @@ tasks:
 - Blueprint an exam
 - Review existing items
 - Export to Moodle
+users: [educators]
 audience:
 - Course leaders
 - Assessment committees

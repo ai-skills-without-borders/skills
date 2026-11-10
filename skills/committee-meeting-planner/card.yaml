@@ -10,6 +10,7 @@ tasks:
 - Prepare committee slides
 - Write a progress report
 - Write up the committee's advice
+users: [learners]
 audience:
 - Graduate and MD-PhD students
 - Mentors

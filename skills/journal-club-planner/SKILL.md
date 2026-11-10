@@ -1,11 +1,5 @@
 ---
 name: journal-club-planner
-description: Helps a student prepare to present a research paper at journal club. The student explains each figure in their own words first, and the skill checks their reading, fills gaps and explains unfamiliar methods. It then helps split the paper among presenters, plan the slides and timing, write discussion questions to lead and prepare for hard questions. Use it when a student, alone or in a group, has a journal club presentation coming up.
----
-
-```markdown
----
-name: journal-club-planner
 description: Helps a student prepare to present a research paper at journal club. Use when a student says "I'm presenting at journal club", "help me understand this paper", "how should we split the figures", "help me make my journal club slides", "what questions will they ask me" or "help me lead the discussion". For graduate, MD-PhD, medical students, residents and postdocs, presenting alone or in a group. It helps the student understand and judge each figure in their own words, plan the talk, prepare discussion questions and get ready for hard questions. Uses only what is in the paper and never reproduces the paper itself.
 ---
 
@@ -15,7 +9,7 @@ This skill helps a student get ready to present a paper at journal club. The goa
 
 The student does the thinking. The skill asks for the student's own reading of each figure first, then helps them check and sharpen it. A student who presents the skill's ideas without understanding them will struggle when the questions start.
 
-**Why these rules:** the basis for each step is in the "Why these rules" section at the end, which also marks the steps that are local practice a program may change.
+**Why these rules:** the basis for each step is in `references/pedagogical-basis.md`, which also marks the steps that are local practice a program may change.
 
 ## Before you start
 
@@ -70,3 +64,121 @@ For each main figure, ask the student first, then check and help. Supplementary 
 | What else could explain the result? | Add any alternative the student missed |
 | How convinced are you? | Strong, reasonable or weak, with a reason from the data |
 | How does it lead to the next figure? | Make sure the story connects |
+
+### Things to check across the whole paper
+
+- Is the number of samples or replicates shown? Is it enough?
+- Are the statistics stated and suited to the data?
+- Do the authors claim cause where they have shown only a link?
+- Are results in cells or mice stretched to claims about patients?
+- Does the main conclusion rest on one figure or on several that agree?
+
+### When the student is stuck
+
+Give a hint before the answer. For example, "Look at what changes between the two conditions in panel B" works better than explaining the whole panel.
+
+## Working as a group and involving the audience
+
+### Splitting the paper
+
+Give each presenter a clear part. For three presenters:
+
+| Presenter | Part |
+|---|---|
+| First | The question, background and key methods |
+| Second | The first half of the figures |
+| Third | The rest of the figures, then strengths, limitations and what you would do next |
+
+For two presenters, combine the first and second parts. Everyone should understand the whole paper, not just their part. Everyone helps lead the discussion.
+
+Agree on one slide style and practice the handoffs between presenters.
+
+### Involving the audience
+
+If the course doesn't assign audience roles, you can ask a few classmates ahead of time:
+
+| Role | What they do |
+|---|---|
+| Reviewer | Comes ready to say whether the main claim is supported |
+| Methods expert | Explains one key method in two minutes if the group gets stuck |
+| Clinical lens | Asks what the paper means for patients |
+| Next step | Proposes the next experiment |
+
+### What the faculty will look for
+
+Use the course's rubric if there is one. If not, check yourself against this.
+
+| Area | What good looks like |
+|---|---|
+| Question and background | The question and why it matters are clear in the first five minutes |
+| Figures | Each figure's question, method and result are explained accurately |
+| Judgment | Strengths and weaknesses are fair and backed by the data |
+| Discussion | You draw in the audience and handle questions well |
+| Time | The talk fits its slot and leaves time for discussion |
+
+## Talk plan
+
+Leave at least a third of the time for discussion. Most journal club talks run long because the figure walk takes too much time.
+
+### Timing for a one-hour journal club
+
+| Time | What you do |
+|---|---|
+| 5 min | The question and why it matters |
+| 5 min | Background the audience needs, including any key method |
+| 25 min | Walk through the main figures |
+| 15 min | Lead the discussion |
+| 5 min | Strengths, limitations and what you would do next |
+| 5 min | Questions and wrap-up |
+
+If problem solving follows in the same block, ask the faculty leader how long your part is and scale these times to fit.
+
+### Slide outline
+
+1. **Title slide.** The paper's title, authors, journal, year and your names.
+2. **The question.** One slide on what the paper asks and why it matters.
+3. **Background.** Only what the audience needs to follow the figures. Explain each key method in plain words.
+4. **One slide per figure, or per panel for busy figures.** Give each slide a title that says what it shows, like "Knocking out X halves viral replication". Show panels one at a time.
+5. **The main conclusion.** What the authors claim, in one sentence.
+6. **Strengths and limitations.** Two or three of each, backed by specific figures.
+7. **What you would do next.** One or two experiments.
+8. **Discussion questions.**
+
+### Before the day
+
+- Meet the faculty leader about a week ahead if the course expects it.
+- Practice the talk once, out loud, with a timer.
+- Make sure every figure is readable from the back of the room.
+- Prepare a one-page handout if the course asks for one: the question, a short glossary of terms and methods and your discussion questions.
+
+## Discussion questions
+
+Help the student write four to six questions to lead the discussion. Mix the three kinds below. Each question should be about this paper and answerable from it, or from it plus what the class has learned.
+
+### Understanding
+
+Check that the audience followed the logic.
+
+- "Why do you think they used [method] in Figure 2 instead of [other method]?"
+- "What does the control in Figure 3C rule out?"
+
+### Judging
+
+Ask whether the evidence supports the claims.
+
+- "The authors conclude [claim]. Which figure supports it most strongly? Which supports it least?"
+- "What other explanation fits the result in Figure 4?"
+
+### What next
+
+Push past the paper.
+
+- "If you were in this lab, what experiment would you do next?"
+- "What would need to be true for this to help patients?"
+
+### Tips for leading the discussion
+
+- Ask one question at a time and wait. Silence for a few seconds is normal.
+- Call on audience members who have a role, like the reviewer or methods expert, if the course uses roles.
+- Have your own answer ready for each question in case no one speaks up.
+- Avoid yes or no questions and questions that only test a detail.

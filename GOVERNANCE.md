@@ -34,7 +34,8 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 | `title`, `summary` | Shown in the catalog |
 | `version` | Semantic version of the skill: patch = wording fix, minor = new capability, major = changed inputs/outputs |
 | `tasks` | What educators search for ("Write exam questions") |
-| `audience`, `inputs`, `outputs` | Who it's for, what it needs, what it produces |
+| `users` | Who uses the skill: one or more of `educators`, `learners`, `program-staff` |
+| `audience`, `inputs`, `outputs` | Who it's for in more detail, what it needs, what it produces |
 | `runs_code` | Whether any step runs scripts |
 | `maturity`, `tested_in`, `last_tested` | Evidence (see above) |
 | `used_at` | Institution ids from `community/contributors.yaml` where the skill was used for real teaching |

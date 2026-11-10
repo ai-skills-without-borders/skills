@@ -38,7 +38,7 @@ DOCS = ROOT / "docs"
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 MATURITY = ["draft", "tested-at-origin", "tested-elsewhere", "reviewed"]
 TOOL_STATES = {"untested", "works", "works-with-limits", "broken"}
-CARD_REQUIRED = ["name", "title", "version", "summary", "tasks", "audience", "inputs", "outputs",
+CARD_REQUIRED = ["name", "title", "version", "summary", "tasks", "users", "audience", "inputs", "outputs",
                  "runs_code", "maturity", "tested_in", "maintainers", "license"]
 # Product-specific tokens that make a skill non-portable
 FORBIDDEN = [r"ask_user_input_v\d", r"present_files", r"/mnt/user-data", r"/mnt/skills", r"\bAskUserQuestion\b"]
@@ -103,6 +103,9 @@ def validate():
         for k in CARD_REQUIRED:
             if k not in card:
                 errors.append(f"{tag} card.yaml missing '{k}'")
+        users = card.get("users") or []
+        if not users or not set(users) <= {"educators", "learners", "program-staff"}:
+            errors.append(f"{tag} card.yaml users must list one or more of: educators, learners, program-staff")
         if card.get("name") != d.name:
             errors.append(f"{tag} card.yaml name must equal folder name")
         if card.get("maturity") not in MATURITY:

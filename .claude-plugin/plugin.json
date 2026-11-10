@@ -1,7 +1,7 @@
 {
   "name": "ai-skills-without-borders",
   "description": "Shared AI skills for medical and biomedical-research educators: learning objectives, PBL/RBL sessions, reading material, syllabi, lesson format checks and exam questions.",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "author": { "name": "AI Skills Without Borders" },
   "homepage": "https://ai-skills-without-borders.github.io/skills/",
   "repository": "https://github.com/ai-skills-without-borders/skills",

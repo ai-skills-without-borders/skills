@@ -8,6 +8,7 @@ tasks:
 - Fix vague or compound objectives
 - Map a course to competencies
 - Check alignment of objectives, activities and assessment
+users: [educators]
 audience:
 - Course leaders
 - Session designers

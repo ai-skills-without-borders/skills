@@ -4,9 +4,17 @@ title: Journal Club Planner
 version: 0.1.0
 summary: Helps a student prepare to present a research paper at journal club.
 tasks:
-- See the skill's description
+- I'm presenting at journal club
+- Help me understand this paper
+- How should we split the figures
+- Help me make my journal club slides
+- What questions will they ask me
+- Help me lead the discussion
+users:
+- learners
 audience:
-- Educators
+- Graduate, MD-PhD and medical students
+- Journal club leaders
 inputs:
 - The paper, as a PDF or full text
 - The student's own reading of the paper and each figure
@@ -37,3 +45,4 @@ maintainers:
 reviewers: []
 license: CC-BY-4.0
 starter: false
+short: Journal club

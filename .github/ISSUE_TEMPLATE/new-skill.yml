@@ -31,7 +31,7 @@ body:
   attributes:
     label: Credit
     options:
-    - label: Credit me by name on the community page (otherwise only the institution is shown)
+    - label: Credit me by name on the community page and the skill page (otherwise only the institution is shown)
 - type: input
   id: name
   attributes:
@@ -45,6 +45,21 @@ body:
     label: 'Purpose: what task does it do, and when should an educator use it?'
   validations:
     required: true
+- type: checkboxes
+  id: users
+  attributes:
+    label: Who uses this skill? (tick all that apply)
+    options:
+    - label: Educators (faculty, course directors, mentors)
+    - label: Learners (students, trainees, postdocs)
+    - label: Program staff (directors, coordinators, administrators)
+- type: textarea
+  id: tasks
+  attributes:
+    label: 'Tasks: what would someone type to find this skill? (one per line, optional)'
+    placeholder: 'Schedule a thesis committee meeting
+
+      Write a progress report'
 - type: textarea
   id: inputs
   attributes:

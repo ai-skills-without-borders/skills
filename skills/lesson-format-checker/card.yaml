@@ -8,6 +8,7 @@ tasks:
 - Lint an assignment notebook
 - Check session timing
 - Create a lesson in the standard structure
+users: [educators]
 audience:
 - Course coordinators
 - Computational course teams

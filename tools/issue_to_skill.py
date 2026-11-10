@@ -37,9 +37,11 @@ TOP = {"before you start", "steps", "rules that always apply", "what this skill 
 # ---------------------------------------------------------------- issue form
 
 def parse_form(body):
-    fields, key = {}, None
-    for line in body.splitlines():
-        m = re.match(r"^### (.+?)\s*$", line)
+    fields, key, fence = {}, None, False
+    for line in body.replace("\r\n", "\n").splitlines():
+        if line.startswith("```"):
+            fence = not fence
+        m = None if fence else re.match(r"^### (.+?)\s*$", line)
         if m:
             key = m.group(1).strip()
             fields[key] = []
@@ -62,8 +64,10 @@ def bullets(text):
 
 
 def unfence(text):
-    m = re.search(r"```[a-zA-Z]*\n(.*?)\n```", text, re.S)
-    return (m.group(1) if m else text).strip("\n")
+    m = re.search(r"```[a-zA-Z]*\n(.*)\n```", text, re.S)
+    if m:
+        return m.group(1).strip("\n")
+    return re.sub(r"^```[a-zA-Z]*\n", "", text).strip("\n")
 
 
 # ---------------------------------------------------------------- rebuild markdown from pasted text
@@ -166,6 +170,10 @@ def first_sentence(text, limit=170):
 
 
 def short_item(text, limit=70):
+    head, sep, tail = text.partition(":")
+    if sep and re.match(r"^(For|When|If|In|During)\b", head.strip()):
+        text = tail.strip()  # "For the program layer: the program's policies" -> the useful part
+        text = text[:1].upper() + text[1:]
     s = re.split(r"[:;]| — | \(|, with |, which ", text, maxsplit=1)[0].strip().rstrip(".")
     return s if len(s) <= limit else s[: limit - 1].rsplit(" ", 1)[0] + "…"
 
@@ -176,7 +184,7 @@ def tasks_from(description):
     for q in quoted[:6]:
         q = q.strip().rstrip(".")
         out.append(q[0].upper() + q[1:])
-    return out or ["See the skill's description"]
+    return out
 
 
 def from_zip(zpath):
@@ -226,10 +234,13 @@ def build(body, author=None, issue=None, date=None, overrides=None, zpath=None, 
 
     tools_used = field(f, "Tools it has been used in").lower()
     tested = {t: ("works" if t in tools_used and "none" not in tools_used else "untested") for t in ("claude", "chatgpt", "gemini", "copilot")}
-    who = f"{person} ({institution})" if (person and credit) else f"Maintainer at {institution}"
+    who = f"{person} ({institution})" if (person and credit) else f"Contributor ({institution})"
+    ticked = field(f, "Who uses this skill").lower()
+    users = [u for u, key in (("educators", "[x] educators"), ("learners", "[x] learners"), ("program-staff", "[x] program staff")) if key in ticked] or ["educators"]
+    tasks = bullets(field(f, "Tasks")) or tasks_from(description) or [first_sentence(purpose, 90).rstrip(".")]
     card = {
         "name": name, "title": title, "version": "0.1.0", "summary": first_sentence(purpose),
-        "tasks": tasks_from(description), "audience": ["Educators"],
+        "tasks": tasks[:6], "users": users, "audience": [{"educators": "Educators", "learners": "Learners", "program-staff": "Program staff"}[u] for u in users],
         "inputs": [short_item(x) for x in bullets(field(f, "Inputs"))][:6],
         "outputs": [short_item(x) for x in bullets(field(f, "Expected output"))][:8],
         "runs_code": False, "maturity": "draft", "tested_in": tested, "last_tested": None, "used_at": [],
@@ -290,5 +301,6 @@ if __name__ == "__main__":
     ap.add_argument("--issue")
     ap.add_argument("--date")
     ap.add_argument("--zip")
+    ap.add_argument("--overwrite", action="store_true", help="replace an existing skill folder (maintainers only)")
     a = ap.parse_args()
-    print(build(Path(a.body).read_text(encoding="utf-8"), a.author, a.issue, a.date, zpath=a.zip))
+    print(build(Path(a.body).read_text(encoding="utf-8"), a.author, a.issue, a.date, zpath=a.zip, overwrite=a.overwrite))
