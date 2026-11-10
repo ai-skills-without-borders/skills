@@ -22,6 +22,8 @@
 #     institution: <id>
 #     skill: <skill name>       required: only contributions to skills are recorded
 #     person: "Name"            only with consent
+#     github: <login>           the contributor's GitHub username, if known; an accepted contribution
+#                               lets their next skill submissions publish automatically
 #     link: URL                 the pull request, issue or report
 #     note: short description
 
@@ -47,52 +49,62 @@ contributions:
     institution: weizmann
     skill: learning-objectives-designer
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-09
     type: skill
     institution: weizmann
     skill: syllabus-builder
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-09
     type: skill
     institution: weizmann
     skill: pbl-rbl-session-builder
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-09
     type: skill
     institution: weizmann
     skill: reading-material-generator
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-09
     type: skill
     institution: weizmann
     skill: lesson-format-checker
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-09
     type: skill
     institution: weizmann
     skill: exam-question-writer
     person: "Amit Shraga, PhD"
+    github: mmmmpf
   - date: 2026-11-10
     type: skill
     institution: mssm
     skill: committee-meeting-planner
     person: "Talia H. Swartz, MD, PhD"
+    github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/1
   - date: 2026-11-10
     type: skill
     institution: mssm
     skill: curriculum-map-builder
     person: "Talia H. Swartz, MD, PhD"
+    github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/2
   - date: 2026-11-10
     type: skill
     institution: mssm
     skill: mentor-compact-creator
     person: "Talia H. Swartz, MD, PhD"
+    github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/3
   - date: 2026-11-10
     type: skill
     institution: mssm
     skill: journal-club-planner
     person: "Talia H. Swartz, MD, PhD"
+    github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/4

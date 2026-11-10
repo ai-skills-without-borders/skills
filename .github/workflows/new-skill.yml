@@ -1,9 +1,10 @@
 name: New skill from issue
 # When a "New skill" issue is opened or edited, the form is turned into a skill folder and checked.
-# - Author listed under auto_publish in config.yaml: the skill is committed and published as
-#   Draft, and the issue is closed with a link.
-# - Anyone else: a pull request is opened and the maintainers are asked to review it, which
-#   sends them an email. One approval and a merge publish it.
+# - Known contributor (listed under auto_publish in config.yaml, or with an accepted contribution
+#   recorded under their GitHub username): the skill is committed and published as Draft, and the
+#   issue is closed with a link.
+# - First-time contributor: a pull request is opened and the maintainers are asked to review it,
+#   which sends them an email. One approval and a merge publish it, and make them a known contributor.
 
 on:
   issues:
@@ -41,7 +42,11 @@ jobs:
           cfg = yaml.safe_load(open("config.yaml"))
           trusted = [u for u in cfg.get("auto_publish", [])]
           author = os.environ["AUTHOR"].lower()
-          print("trusted=" + ("yes" if author in [u.lower() for u in trusted] else "no"))
+          record = yaml.safe_load(open("community/contributors.yaml")) or {}
+          returning = {str(c.get("github", "")).lower() for c in record.get("contributions") or []} - {""}
+          blocked = {u.lower() for u in cfg.get("no_auto_publish") or []}
+          ok = (author in {u.lower() for u in trusted} or author in returning) and author not in blocked
+          print("trusted=" + ("yes" if ok else "no"))
           print("reviewers=" + " ".join(u for u in trusted if u.lower() != author))
           print("mentions=" + " ".join("@" + u for u in trusted))
           print("site=" + cfg["site_url"])
@@ -58,7 +63,7 @@ jobs:
         id: build
         run: |
           zarg=""; [ -f /tmp/sub/skill.zip ] && zarg="--zip /tmp/sub/skill.zip"
-          name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
+          name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --author "$AUTHOR" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
           echo "name=$name" >> "$GITHUB_OUTPUT"
           if [ -n "$name" ] && python tools/build.py --check > /tmp/sub/check.txt 2>&1; then
             python tools/build.py
@@ -102,7 +107,7 @@ jobs:
             for r in ${{ steps.who.outputs.reviewers }}; do
               gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${pr}/requested_reviewers" -f "reviewers[]=$r" > /dev/null || true
             done
-            gh issue comment "$ISSUE" --body "Thank you for sharing a skill! It passed the automatic checks and is waiting for a maintainer's approval: #${pr}. You'll get a link here when it's published."
+            gh issue comment "$ISSUE" --body "Thank you for sharing your first skill! It passed the automatic checks and is waiting for a maintainer's approval: #${pr}. You'll get a link here when it's published. Once it is accepted, your next skills will be published automatically."
           else
             gh issue comment "$ISSUE" --body "Thank you for sharing a skill! It passed the automatic checks. ${{ steps.who.outputs.mentions }}: it is ready for review on branch \`${branch}\` (https://github.com/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1)."
           fi

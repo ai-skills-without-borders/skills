@@ -266,11 +266,11 @@ def build(body, author=None, issue=None, date=None, overrides=None, zpath=None, 
     if basis and not (d / "references" / "pedagogical-basis.md").exists():
         (d / "references" / "pedagogical-basis.md").write_text(basis, encoding="utf-8")
 
-    record(name, person if credit else None, institution, country, issue, date)
+    record(name, person if credit else None, institution, country, issue, date, author)
     return name
 
 
-def record(skill, person, institution, country, issue, date):
+def record(skill, person, institution, country, issue, date, github=None):
     data = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
     insts = data["institutions"]
     iid = next((k for k, v in insts.items() if v["name"].lower() == institution.lower()
@@ -289,6 +289,8 @@ def record(skill, person, institution, country, issue, date):
     lines = [f"  - date: {when}", "    type: skill", f"    institution: {iid}", f"    skill: {skill}"]
     if person:
         lines.append(f'    person: "{person}"')
+    if github:
+        lines.append(f"    github: {github}")
     if issue:
         lines.append(f"    link: https://github.com/ai-skills-without-borders/skills/issues/{issue}")
     REGISTRY.write_text(text.rstrip("\n") + "\n" + "\n".join(lines) + "\n", encoding="utf-8")

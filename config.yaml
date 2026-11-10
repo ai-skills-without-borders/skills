@@ -1,12 +1,16 @@
 # Library settings used by tools/build.py. Change repo once the GitHub organization exists.
 library_name: AI Skills Without Borders
 tagline: Shared AI skills for medical and biomedical-research educators
-# GitHub users whose "New skill" submissions are published automatically (as Draft)
+# Who may publish a new skill automatically (as Draft), without a maintainer's approval:
+# the users listed here, plus anyone with an accepted contribution recorded under their
+# GitHub username in community/contributors.yaml. First-time contributors need one approval.
 auto_publish: [mmmmpf, taliaswartz]
+# GitHub users whose submissions always need approval, even after earlier contributions
+no_auto_publish: []
 repo: ai-skills-without-borders/skills        # <github-org>/<repo>
 site_url: https://ai-skills-without-borders.github.io/skills/
 plugin_name: ai-skills-without-borders
-version: 0.1.12
+version: 0.1.13
 contact: "Amit Shraga (Weizmann Institute of Science) and Talia H. Swartz (Icahn School of Medicine at Mount Sinai)"
 founders:
   - name: "Amit Shraga, PhD"
