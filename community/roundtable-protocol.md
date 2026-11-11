@@ -1,5 +1,7 @@
 # Round-table workshop protocol
 
+> The two full workshops, with lesson plans, slides and handouts, are on the [Workshops page](https://ai-skills-without-borders.github.io/skills/workshops.html). This is the shorter 75-minute round-table version for conferences.
+
 A 75-minute hands-on workshop in which educators build an AI skill for a real need, test whether a colleague can use it, and add it to the shared library. It suits graduate, MD-PhD and postdoctoral training leaders, faculty educators and program administrators at any level of AI experience. No programming experience is needed.
 
 The workshop also tests the library itself: can a skill written by one educator be used, adapted and trusted by another, in another AI tool or institution?

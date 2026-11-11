@@ -22,27 +22,21 @@ import markdown
 import community
 import principles
 import visuals
+import workshops
+import workshop_pptx
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "tools" / "site"
 DOCS = ROOT / "docs"
 
 NAV = [("start.html", "Start here"), ("skills.html", "Skills"), ("pedagogy.html", "Pedagogy"),
-       ("quality.html", "Quality"), ("contribute.html", "Contribute"), ("community.html", "Community"), ("about.html", "About")]
+       ("quality.html", "Quality"), ("contribute.html", "Contribute"), ("workshops.html", "Workshops"), ("community.html", "Community"), ("about.html", "About")]
 LADDER = ["draft", "tested-at-origin", "tested-elsewhere", "reviewed"]
 LABEL = {"draft": "Draft", "tested-at-origin": "Tested at origin",
          "tested-elsewhere": "Tested elsewhere", "reviewed": "Reviewed"}
 TOOLNAME = {"claude": "Claude", "chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot"}
 STATE = {"untested": "not yet tested", "works": "works", "works-with-limits": "works, with limits", "broken": "broken"}
 
-WORKSHOP = [
-    (15, "Introduction and demonstration", "What a skill is, how it differs from a prompt, examples across AI platforms"),
-    (5, "Choose a table and a task", "Five tables by area of work; pick a task from the material you brought"),
-    (25, "Build the skill", "Fill in the template, write the skill, test it on your own material, refine"),
-    (15, "Peer exchange and portability test", "Can a colleague use it? Does it work in another AI tool?"),
-    (10, "Shared library and community", "Add the skill to the library; how the community grows"),
-    (5, "Closing", "Key lessons and how to keep contributing"),
-]
 EFFORT = [
     ("Send a usage report", "five minutes, after real teaching", "#quick"),
     ("Suggest a change or review a skill", "one real task", "#quick"),
@@ -232,12 +226,12 @@ def build_site(cards, variants, cfg, public_card):
     ped = ped_entries([n for n, _ in visuals.SHORT if n in {c["name"] for c in cards}])
     gh = f"https://github.com/{cfg['repo']}"
     # clean generated output, keep nothing stale
-    for p in ("downloads", "paste", "skills"):
+    for p in ("downloads", "paste", "skills", "workshops"):
         if (DOCS / p).exists():
             shutil.rmtree(DOCS / p)
     for p in DOCS.glob("*.html"):
         p.unlink()
-    for p in ("downloads", "paste", "skills"):
+    for p in ("downloads", "paste", "skills", "workshops"):
         (DOCS / p).mkdir(parents=True, exist_ok=True)
     for c in cards + variants:
         shutil.copy(ROOT / "dist" / "zips" / f"{c['name']}.zip", DOCS / "downloads")
@@ -246,6 +240,8 @@ def build_site(cards, variants, cfg, public_card):
         shutil.copy(ROOT / "assets" / f, DOCS / f)
     shutil.copy(SITE / "style.css", DOCS / "style.css")
     shutil.copy(SITE / "site.js", DOCS / "site.js")
+    for f in ("deck.css", "deck.js"):
+        shutil.copy(SITE / f, DOCS / f)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     (DOCS / "feed.xml").write_text(community.feed_xml({c["name"]: c["title"] for c in cards}, cfg["site_url"], cfg["library_name"]), encoding="utf-8")
 
@@ -259,6 +255,7 @@ def build_site(cards, variants, cfg, public_card):
         pc["icon"] = visuals.icon(c["name"], 26)
         catalog.append(pc)
 
+    wss = workshops.load()
     pages = {
         "index.html": (f"{cfg['library_name']} — shared AI skills for biomedical research and medical education",
                        "Shared AI skills for educators in biomedical research and medicine.",
@@ -275,9 +272,10 @@ def build_site(cards, variants, cfg, public_card):
                            read("community.html").replace("{{COUNTERS}}", community.counters_html()).replace("{{MAP}}", community.map_svg()).replace(
                                "{{COUNTRIES}}", community.countries_html()).replace("{{INSTITUTIONS}}", community.institutions_html()).replace(
                                "{{RECENT}}", community.recent_html({c["name"]: c["title"] for c in cards})), "community.html", ""),
+        "workshops.html": ("Workshops — " + cfg["library_name"], "Two ready-to-run workshops: using AI skills, and writing them. Lesson plans, slides and timings.",
+                           read("workshops.html").replace("{{WORKSHOPS}}", workshops.hub_html(wss, gh)), "workshops.html", ""),
         "about.html": ("Why this project — " + cfg["library_name"], "Why shared AI skills matter for biomedical research and medical education, and who is behind the project.",
-                       read("about.html").replace("{{ACCESS}}", visuals.access_svg() + visuals.access_svg(stacked=True)).replace("{{IDEA}}", visuals.idea_html()).replace(
-                           "{{WORKSHOP}}", visuals.timeline_html(WORKSHOP, 75)), "about.html", ""),
+                       read("about.html").replace("{{ACCESS}}", visuals.access_svg() + visuals.access_svg(stacked=True)).replace("{{IDEA}}", visuals.idea_html()), "about.html", ""),
         "pedagogy.html": ("Pedagogy — " + cfg["library_name"], "The pedagogical foundations of the skills.",
                           read("pedagogy.html").replace("{{PED_ROWS}}", ped_rows(ped)).replace("{{MATRIX}}", visuals.matrix_html(ped)).replace(
                               "{{PEDAGOGY_MD}}", gh_links(md(pedagogy_body()), gh).replace(
@@ -288,6 +286,15 @@ def build_site(cards, variants, cfg, public_card):
     for fname, (title, desc, content, active, scripts) in pages.items():
         content = re.sub(r"\{\{UI:(\w+)\}\}", lambda m: visuals.ui_icon(m.group(1)), content)
         (DOCS / fname).write_text(layout(cfg, title, desc, content, active, scripts=scripts, catalog=catalog), encoding="utf-8")
+    deck_ver = hashlib.sha1((SITE / "deck.css").read_bytes() + (SITE / "deck.js").read_bytes()).hexdigest()[:10]
+    for k, w in enumerate(wss):
+        other = wss[(k + 1) % len(wss)]
+        (DOCS / "workshops" / f"{w['id']}.html").write_text(
+            layout(cfg, f"Workshop: {w['title']} — {cfg['library_name']}", w["tagline"], workshops.plan_html(w, other, gh),
+                   "workshops.html", root="../", scripts=workshops.PLAN_JS), encoding="utf-8")
+        (DOCS / "workshops" / f"{w['id']}-slides.html").write_text(workshops.deck_html(w, gh, deck_ver), encoding="utf-8")
+        workshop_pptx.build(w, DOCS / "downloads" / f"workshop-{w['id']}.pptx", workshops.clock, workshops.segments,
+                            cfg["site_url"].replace("https://", ""))
     for c in cards:
         c2 = dict(c)
         c2.update(public_card(c))

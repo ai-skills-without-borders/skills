@@ -1,0 +1,412 @@
+# Workshop 1: Using AI skills (beginners).
+# Single source for the workshop page, the slide deck and the PowerPoint download.
+# Inline formatting: **bold**, [text](link), `code`. Links may use {ROOT} (site root) and {GH} (GitHub repo).
+id: using-skills
+order: 1
+level: Beginners
+title: Using AI skills
+tagline: A first hands-on session. Participants install a shared skill in their own AI tool, use it on their own material, and judge the result.
+minutes: 90
+audience: Educators, course leaders, program staff and trainees who have never used an AI skill. No programming and no prior AI experience needed.
+group: 6 to 30 participants. One helper for every 8 to 10 participants.
+outcome: Every participant leaves with one skill installed in their own AI tool (or ready as a paste-in), a first real output from their own material, and a habit of checking AI output before using it.
+facilitator: Anyone who has installed and used at least two skills from the library. You don't need to be an AI expert. The plan, the script and the slides are all here.
+
+objectives:
+  - Explain what an AI skill is and how it differs from a one-off prompt.
+  - Find a skill in the library that fits a real teaching task, and judge from its page what it does, what it needs and how far it has been tested.
+  - Install the skill in their own AI tool, or use its paste-in version if their plan has no skills.
+  - Use the skill on their own non-confidential material, and review the output before using it.
+  - Report how it went, so the next educator knows what to expect.
+
+bring:
+  - A laptop and its charger. A phone or tablet is not enough for installing a skill.
+  - An account with an AI assistant (Claude, ChatGPT, Gemini or Copilot), signed in. An institutional account is best if your institution has one.
+  - "One non-confidential document from your own teaching: a syllabus, a list of learning objectives, a session outline, or a paper you teach from. No patient data, no student names, grades or other identifiable learner data."
+
+prework:
+  title: Before the session (15 minutes, at home)
+  intro: Send these steps to participants a week before. A participant who arrives signed in, with a document ready, gets far more out of the session.
+  steps:
+    - title: Find out which AI tool and plan you have
+      text: "If your institution provides an AI assistant, ask your IT or AI office which one and which plan (for example ChatGPT Edu, Claude for Education, Gemini or Microsoft 365 Copilot), and whether skills are switched on. If you use a personal account, the plan is shown in your account settings."
+    - title: If you have no AI account, open a free one
+      text: "Follow your institution's policy on which tools you may use. When choosing a free plan, it helps to know that as of November 2026 Claude's free plan lets you upload skills, while the free plans of ChatGPT and Gemini do not. Every skill in the library also has a paste-in version that works in any assistant, free plans included, so you will be able to take part with any of them."
+    - title: Sign in on the laptop you will bring
+      text: Open the assistant in your browser, sign in, and check that you can start a new chat. Write down your password if you rarely use it. Sessions often lose their first minutes to forgotten passwords and two-factor codes on a phone left at home.
+    - title: Choose one document
+      text: "Pick something from your own teaching that you would like help with: objectives to rewrite, a session to plan, a paper to turn into a reading, exam questions to check. It must contain nothing confidential: no patient data, no student names or grades, nothing unpublished you may not share."
+    - title: Look at the library (optional)
+      text: "Open the [skills catalog]({ROOT}skills.html) and note one or two skills that match your document. Don't install anything yet; we will do it together."
+
+prep:
+  - when: Three weeks before
+    items:
+      - "Book a room with a power socket for every seat, a projector and reliable Wi-Fi. Check that the Wi-Fi does not block the AI tools or GitHub."
+      - "Ask your IT or AI office whether your institution's AI tool allows uploading skills. Some workplace plans have skills switched off until an administrator turns them on (for example ChatGPT Enterprise and Edu). If they are off and cannot be turned on in time, plan for the paste-in version; the session works the same way."
+      - Recruit helpers, one for every 8 to 10 participants. Ask each helper to install and use two skills before the session, in the tool most participants will use.
+  - when: One week before
+    items:
+      - "Send the invitation with the pre-work (the email template is below)."
+      - "Decide on the demonstration: one task, one skill and one sample document. A good default is [Learning Objectives Designer]({ROOT}skills/learning-objectives-designer.html) with a short, non-confidential session outline."
+  - when: The day before
+    items:
+      - Run the whole session yourself, start to finish, in the tool most participants will use. Install the demonstration skill, run the demonstration twice, and keep the best output open in a tab as a backup in case the live run is slow.
+      - "Check the install steps against what the tool shows today. Menu names change often; if a step differs, update the handout or tell participants what to look for."
+      - "Print, one per participant: the install guide, the review checklist and the recording sheet (all on this page; print it from your browser). Or share this page's link instead."
+      - "Open the slides, the catalog and the demonstration skill's page in separate browser tabs."
+  - when: On the day, 30 minutes before
+    items:
+      - Test the projector with the slides and with the AI tool. Make the browser text large enough to read from the back row.
+      - Put the Wi-Fi details and the address of this page on the board.
+      - "Brief the helpers: who sits where, and the rule for being stuck: after 5 minutes on an install, switch the participant to the paste-in version so nobody falls behind."
+
+agenda:
+  - minutes: 10
+    title: Welcome and ground rules
+    note: Goals for today, the data rule, check everyone is signed in
+    slides: [1, 3]
+    facilitator:
+      - Welcome everyone, introduce yourself and the helpers, and show the plan for the session.
+      - Go through the ground rules. The data rule is the one to stress.
+      - "Ask for a show of hands: who is signed in to their AI tool now? Send helpers to everyone who isn't."
+    participants:
+      - Tell a neighbour, in one sentence, which teaching task takes them the most time.
+      - Sign in to their AI tool if they haven't yet.
+    say: "Today each of you will take a piece of teaching expertise that a colleague wrote down, install it in your own AI assistant, and use it on your own material. You'll leave with a working tool, and with a way of checking what AI gives you. One rule above all: nothing confidential goes into the AI. No patient data, no student names or grades."
+    check: Everyone is signed in to an AI tool, or has a helper with them.
+  - minutes: 15
+    title: What a skill is
+    note: Prompt versus skill, and a live demonstration
+    slides: [4, 8]
+    facilitator:
+      - "Explain the difference between a one-off prompt and a skill (slide 5), and what a skill holds: knowledge and a framework (slide 6)."
+      - "Walk through what happens behind the scenes (slide 7): you ask in plain words, the assistant recognizes the task and follows the skill."
+      - "Live demonstration (slide 8). In a new chat without the skill, ask for the task with the sample document. Then in another new chat, with the skill on, ask the same thing in the same words. Put the two results side by side."
+    participants:
+      - Watch the demonstration and note two differences between the two results.
+    say: "Look at what the skill did that the plain request didn't. It asked me what it needed instead of guessing. It stopped and asked me to approve before going on. And the result has the same shape every time, whoever uses it. That's the expertise of the colleague who wrote it, working inside my assistant."
+    check: "Ask: who can say in one sentence what a skill adds? Take two or three answers."
+  - minutes: 10
+    title: Find a skill that fits your task
+    note: Tour the catalog and read a skill page
+    slides: [9, 11]
+    facilitator:
+      - "Show the catalog: the search box, the filters, and a skill page."
+      - "On the skill page, point out the five things to read before using a skill (slide 10): what it does, what it needs from you, what it produces, its maturity level, and its limitations."
+      - Give participants 5 minutes to choose. Help anyone whose document matches no skill to choose the closest one, or to use the demonstration skill.
+    participants:
+      - Open the catalog, find a skill that matches their document, and read its page.
+    say: "Every skill page tells you how far to trust it. Draft means only its author has tested it. Tested elsewhere means educators at another institution used it for real teaching. Whatever the level, read the limitations: they tell you what you must always check."
+    check: Everyone has a skill page open.
+  - minutes: 15
+    title: Install the skill
+    note: In your own AI tool, or as a paste-in
+    slides: [12, 13]
+    facilitator:
+      - Show the install steps for the tool most participants use, on the projector, slowly and once.
+      - Point participants to the install guide on the handout for the other tools.
+      - "Circulate with the helpers. Apply the 5-minute rule: anyone still stuck after 5 minutes switches to the paste-in version."
+    participants:
+      - "Download the skill and install it, following the guide for their tool. Without skills in their plan: open the paste-in version instead."
+    say: "If the menus look slightly different from mine, that's normal; these tools change their menus often. Look for the word Skills. And if it isn't working after five minutes, use the paste-in version. It does the same job, and we'll sort out the install afterwards."
+    check: "Green light: the skill appears in the skills list and is switched on, or the paste-in text is copied and ready."
+  - minutes: 20
+    title: Use it on your own material
+    note: Ask in plain words, attach your document, answer its questions
+    slides: [14, 15]
+    facilitator:
+      - "Explain the four steps on slide 15, then let participants work."
+      - Circulate. Note interesting moments to share in the review (a good question the skill asked, a step that surprised someone, an output that went wrong).
+      - "At the halfway point, check that everyone has a first output. Help anyone who hasn't."
+    participants:
+      - Open a new chat, ask for the task in their own words, attach their document, answer the skill's questions and approve or correct at its checkpoints.
+    say: "Talk to your assistant as you would to a colleague: say what you want and attach your document. You don't need to name the skill; the assistant should recognize the task. If it doesn't, say 'use the skill' and the skill's name. When it asks you something, answer. When it stops for your approval, read what it proposes before you say yes."
+    check: Everyone has a first output from the skill by the end of this block.
+  - minutes: 10
+    title: Review the output before you use it
+    note: A short checklist, then compare with a neighbour
+    slides: [16, 17]
+    facilitator:
+      - "Go through the review checklist (slide 16): correct, nothing invented, fits your learners, matches what the skill promised, what you would change."
+      - Ask participants to apply it to their output and then show it to a neighbour.
+      - Share one or two of the moments you noted while circulating.
+    participants:
+      - Check their output against the checklist, then compare with a neighbour.
+    say: "The skill makes the AI follow a colleague's method, but it doesn't make the AI right. You are still the expert. Check every fact, every number and every reference against your source before anything reaches a student."
+    check: Each participant can name one thing they would change before using the output.
+  - minutes: 10
+    title: Report back and next steps
+    note: The recording sheet, the usage report, where to go next
+    slides: [18, 19]
+    facilitator:
+      - Ask everyone to fill in the recording sheet (3 minutes) and collect the sheets.
+      - "Explain the usage report: it is how a skill moves from Draft to Tested elsewhere. Participants with a GitHub account can send it themselves; for everyone else, you will send it from their sheet, with their consent."
+      - "Close with the next steps (slide 19) and a quick round: one sentence each on what they will try next."
+    participants:
+      - Fill in the recording sheet. Optionally, send a usage report from the skill's page.
+    say: "Your experience today is useful to the next educator who opens this skill. If it worked, a report moves the skill up. If something went wrong, the author needs to know. Either way, it takes five minutes."
+    check: Sheets collected, with consent noted.
+
+guides:
+  - id: install
+    title: Install a skill, step by step
+    intro: "First download the skill. On the skill's page in the [catalog]({ROOT}skills.html), click **Download ZIP**. Don't unzip it: the AI tool wants the ZIP file as it is. Then follow the steps for your tool. Menu names change often; if a step doesn't match what you see, look for the word Skills."
+    tools:
+      - name: Claude (claude.ai or the Claude app)
+        steps:
+          - "Open **Settings → Capabilities** and make sure **Code execution and file creation** is on. Skills need it."
+          - "Open **Customize → Skills**."
+          - "Click **+**, then **Create skill**, then **Upload a skill**, and choose the ZIP you downloaded."
+          - "Uploaded skills start switched off. Find the skill in the list and switch it on."
+          - "On a Team or Enterprise plan, an owner must first enable skills for the organization. If you don't see Skills, ask your administrator, and use the paste-in version today."
+      - name: ChatGPT (Business, Enterprise, Edu)
+        steps:
+          - "In the sidebar open **Plugins**, then the **Skills** tab. On some plans Skills appears directly in the sidebar."
+          - "Click **Create**, then **Upload from your computer**, and choose the ZIP."
+          - "ChatGPT scans the skill before it becomes available; this usually takes a minute or two."
+          - "On Enterprise and Edu, skills are off until an administrator turns them on. On Free and Plus there are no skills: use the paste-in version."
+      - name: Gemini
+        steps:
+          - "**Gemini Enterprise:** open **Skills**, click **+**, then **Upload**, and choose the ZIP."
+          - "**The regular Gemini app:** use the paste-in version as the instructions of a Gem (see below)."
+      - name: Microsoft 365 Copilot
+        steps:
+          - "Unzip the skill. Put the skill's folder in your OneDrive under `Documents/Cowork/Skills/`."
+          - "Start a new Cowork conversation. Both Cowork and Copilot Studio need a Microsoft 365 Copilot license."
+      - name: Any assistant without skills (the paste-in version)
+        steps:
+          - "On the skill's page, click **Paste-in version**."
+          - "Copy everything under **Instructions**."
+          - "Best: create a custom GPT, a Gem, or a Project, and paste it into its instructions. Add the reference files at the bottom of the page as knowledge files if the tool allows."
+          - "Quickest: start a new chat and paste the whole text as your first message, then write your request below it."
+          - "The paste-in version does the same job. It cannot run scripts, which only one skill in the library uses, and that skill still works by reading."
+  - id: use
+    title: Use the skill on your material
+    steps:
+      - title: Start a new chat
+        text: A skill is picked up in a new conversation. With the paste-in version, start in the GPT, Gem or Project you made, or paste the text first.
+      - title: Ask in plain words and attach your document
+        text: "For example: \"Rewrite the learning objectives in this session outline\", with the outline attached. You don't have to name the skill. If the assistant doesn't seem to use it, say \"Use the Learning Objectives Designer skill\"."
+      - title: Answer its questions
+        text: A good skill asks for what it needs (your learners' stage, a framework, a length) instead of guessing. Answer briefly; you can say you don't know.
+      - title: Approve or correct at each checkpoint
+        text: The skill stops to show you its plan or a first part. Read it before you agree. This is where your judgement shapes the result.
+  - id: review
+    title: Review checklist
+    checklist:
+      - "**Is it correct?** Check facts, numbers, dates and terminology against your source."
+      - "**Did it invent anything?** References, page numbers, policies, quotations. The library's skills are told never to invent sources, but check every one."
+      - "**Does it fit?** Your learners' level, your course, your institution's rules."
+      - "**Did it do what the skill page promised?** Compare with the expected output."
+      - "**What would you change before using it?** Write it down; it goes in your report."
+  - id: sheet
+    title: Recording sheet
+    intro: One per participant. The facilitator collects the sheets and, with consent, sends them to the library as usage reports.
+    checklist:
+      - "Name (optional), institution and role:"
+      - "AI tool and plan:"
+      - "Skill used:"
+      - "Installed as a skill, or used the paste-in version?"
+      - "Minutes until a first usable output: ___"
+      - "Help needed: none / a helper once / a helper several times / could not proceed"
+      - "Used the output as it was / after edits / not at all"
+      - "What worked:"
+      - "What didn't:"
+      - "Will you use it again? yes / maybe / no"
+      - "May we send this as a usage report, listing your institution? yes / no"
+
+troubleshooting:
+  - problem: I don't see Skills in Claude.
+    fix: "Turn on **Code execution and file creation** in Settings → Capabilities, then reload the page. On Team and Enterprise plans an owner must enable skills first. Meanwhile, use the paste-in version."
+  - problem: The upload fails.
+    fix: "Upload the ZIP exactly as downloaded. Some browsers (Safari, by default) unzip downloads automatically; if you have a folder instead of a ZIP, right-click the folder and compress it, or download again with automatic opening switched off."
+  - problem: ChatGPT has no Skills option.
+    fix: Your plan doesn't include skills, or your administrator hasn't turned them on. Use the paste-in version in a custom GPT, a Project, or at the start of a chat.
+  - problem: The assistant doesn't seem to use the skill.
+    fix: "Check that the skill is switched on, and start a new chat. Then name it: \"Use the Exam Question Writer skill to…\"."
+  - problem: The result is too long, in the wrong format, or misses something.
+    fix: "Say so in the chat, as you would to a colleague. Then note it on your recording sheet: it is exactly what the skill's author needs to hear."
+  - problem: My institution blocks uploads, or I can't sign in.
+    fix: Use the paste-in version, or pair with a neighbour and work on your document together. Try the install at home with the guide on this page.
+
+after:
+  - "Send the usage reports from the sheets where participants agreed, through the [usage report form]({GH}/issues/new?template=usage-report.yml). List the institution, not the person, unless they asked to be named."
+  - "Turn every \"what didn't\" into a note for the skill's author: [suggest a change]({GH}/issues/new?template=suggest-change.yml) on GitHub, or write to the founders."
+  - "Invite participants who enjoyed it to the [writing workshop]({ROOT}workshops/writing-skills.html)."
+
+invite:
+  subject: "Hands-on session: using AI skills in your teaching"
+  body: |
+    Dear colleagues,
+
+    You are invited to a 90-minute hands-on session on using AI skills in teaching, on [date] at [time] in [room].
+
+    An AI skill is a colleague's teaching expertise, written down so that your AI assistant can follow it: for example, how to write good learning objectives or check exam questions. In the session you will install a skill from a free, shared library in your own AI assistant, use it on your own material, and learn how to check the result. No programming and no AI experience are needed.
+
+    Please bring:
+    - a laptop and charger (a phone is not enough),
+    - an account with an AI assistant, signed in on that laptop,
+    - one non-confidential document from your teaching (a syllabus, learning objectives, a session outline or a paper you teach). No patient data and no student information.
+
+    Before the session, please take 15 minutes for the preparation steps here: [link to this page]
+
+    Looking forward to seeing you,
+    [name]
+
+slides:
+  - kind: title
+    title: Using AI skills
+    text: A hands-on first session
+    notes: Welcome everyone. Introduce yourself and the helpers. Today is hands-on; everyone will leave with a skill working in their own AI tool.
+  - kind: agenda
+    title: Today, in 90 minutes
+    notes: Walk through the plan briefly. Most of the time is yours, working on your own material.
+  - kind: rules
+    title: Ground rules
+    points:
+      - "**No confidential data.** No patient data, no student names or grades, nothing you may not share."
+      - "**Follow your institution's AI policy** for which tools you may use."
+      - "**You are the expert.** Check every output before it reaches a student."
+      - "**Stuck for 5 minutes? Raise your hand.** A helper will come."
+    notes: Stress the data rule. Then ask for a show of hands, who is signed in to an AI tool now, and send helpers to anyone who isn't.
+  - kind: section
+    title: What a skill is
+    text: Part 1
+    notes: Fifteen minutes of explanation and a live demonstration, then it's your turn.
+  - kind: compare
+    title: A one-off prompt and a skill
+    left:
+      title: A one-off prompt
+      points:
+        - Written from scratch each time, by each person
+        - Quality depends on how well you prompted today
+        - Lost when the chat ends
+        - Hard to share, review or improve
+    right:
+      title: A skill
+      points:
+        - Written once by someone who knows the task well
+        - Same standards and steps every time, for everyone
+        - Installed once, available in every chat
+        - Shared, tested at other institutions, improved over time
+    notes: Most of us use AI through one-off prompts. A skill is a colleague's expertise, written down once so that any assistant can follow it.
+  - kind: equation
+    title: What a skill holds
+    parts:
+      - title: Knowledge
+        text: Standards, rules, common mistakes
+      - title: Framework
+        text: Steps, checkpoints, the shape of the result
+      - title: A skill
+        text: Transferable know-how any assistant can use
+    notes: Think of a skill as a protocol for the AI. It holds what an expert knows and how the expert works. You don't run it; you ask in plain words and the assistant uses it when the task fits.
+  - kind: steps
+    title: What happens behind the scenes
+    points:
+      - "**You ask** in plain words, with your material attached"
+      - "**It matches** the task to the skill's description"
+      - "**It follows the framework**, asking for what's missing"
+      - "**It draws on the knowledge** when a step needs it"
+      - "**You approve** at checkpoints, and decide"
+    notes: You talk to your assistant as usual. The skill works in the background.
+  - kind: demo
+    title: "Live demonstration: the same request, with and without a skill"
+    points:
+      - Does it ask for what it needs, or guess?
+      - Does it stop for your approval?
+      - Is the result in a clear, usable shape?
+      - Does it say what it couldn't check?
+    notes: "Run the same request twice, in two new chats: once without the skill and once with it, in the same words, with the same sample document. Put them side by side and ask the room for two differences. If the live run is slow, switch to the output you saved yesterday."
+  - kind: section
+    title: Find and install
+    text: Part 2
+    notes: Now it's your turn. First choose a skill, then install it.
+  - kind: steps
+    title: Read a skill page before you use it
+    points:
+      - "**What it does**, and when to use it"
+      - "**What it needs** from you"
+      - "**What it produces**"
+      - "**Maturity**: Draft, Tested at origin, Tested elsewhere, Reviewed"
+      - "**Limitations**: what you must always check"
+    notes: Open a skill page on the projector and point to each of these. Maturity tells you how far to trust it; the limitations tell you what to check.
+  - kind: exercise
+    title: Choose your skill
+    minutes: 10
+    points:
+      - Open the skills catalog
+      - Find a skill that matches the document you brought
+      - Read its page, especially the limitations
+      - No match? Use the demonstration skill
+    link: "{ROOT}skills.html"
+    notes: Give five minutes, then help anyone who hasn't chosen.
+  - kind: grid
+    title: Install it in your AI tool
+    cards:
+      - title: Claude
+        text: Settings → Capabilities, code execution on. Customize → Skills → + → Upload a skill. Switch it on.
+      - title: ChatGPT Business, Enterprise, Edu
+        text: Plugins → Skills → Create → Upload from your computer.
+      - title: Gemini Enterprise
+        text: Skills → + → Upload.
+      - title: Microsoft 365 Copilot
+        text: Unzip into OneDrive, Documents/Cowork/Skills/.
+      - title: No skills in your plan?
+        text: Open the paste-in version and paste it into a GPT, Gem, Project, or the start of a chat.
+    notes: "Show the install for the tool most participants use, slowly, once. Download the ZIP and don't unzip it. Menus change often; look for the word Skills."
+  - kind: exercise
+    title: Install your skill
+    minutes: 15
+    points:
+      - Download the ZIP from the skill's page
+      - Follow the steps for your tool on the handout
+      - "Green light: the skill is listed and switched on"
+      - Stuck for 5 minutes? Switch to the paste-in version
+    notes: Circulate with the helpers. Enforce the 5-minute rule so nobody falls behind.
+  - kind: section
+    title: Use it, then check it
+    text: Part 3
+    notes: The main part of the session. Twenty minutes on your own material.
+  - kind: exercise
+    title: Use it on your own material
+    minutes: 20
+    points:
+      - Start a new chat
+      - Ask in plain words, and attach your document
+      - Answer its questions
+      - Read each checkpoint before you approve
+    notes: You don't need to name the skill. If the assistant doesn't use it, say "use the skill" and its name. Halfway through, check that everyone has a first output.
+  - kind: checklist
+    title: Review before you use it
+    points:
+      - "**Correct?** Facts, numbers, dates, terms against your source"
+      - "**Invented anything?** References, page numbers, policies"
+      - "**Fits?** Your learners, your course, your rules"
+      - "**As promised?** Compare with the skill page's expected output"
+      - "**What would you change?** Write it down"
+    notes: The skill makes the AI follow a colleague's method. It doesn't make it right. You are still the expert.
+  - kind: exercise
+    title: Compare with a neighbour
+    minutes: 10
+    points:
+      - Apply the checklist to your output
+      - Show it to a neighbour
+      - Name one thing you would change
+    notes: Share one or two moments you noted while circulating.
+  - kind: steps
+    title: Share what happened
+    points:
+      - "**Fill in the recording sheet** (3 minutes)"
+      - "**It becomes a usage report**, with your consent"
+      - "**Reports move a skill up**, from Draft to Tested elsewhere"
+      - "**What went wrong** goes to the skill's author"
+    notes: Collect the sheets. Participants with a GitHub account can also send a usage report themselves from the skill's page.
+  - kind: closing
+    title: Where to go next
+    points:
+      - "Try a second skill this week, on a real task"
+      - "Send a usage report from the skill's page"
+      - "Write your own: the writing workshop"
+    link: "{ROOT}workshops.html"
+    notes: Close with a quick round, one sentence each on what they will try next. Thank the helpers.

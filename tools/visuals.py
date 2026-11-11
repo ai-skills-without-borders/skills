@@ -261,16 +261,19 @@ def idea_html():
     return f'<div class="idea"><ol class="idea-steps">{items}</ol><p class="idea-loop" aria-hidden="true"><span>and back to the start: every improvement reaches every user</span></p></div>'
 
 
-def timeline_html(segments, total):
-    """A schedule drawn to scale: one row per segment, bar placed at its start time."""
+def timeline_html(segments, total, step=15, highlight=None):
+    """A schedule drawn to scale: one row per segment, bar placed at its start time.
+    `highlight` is the index of the segment to draw darker (the main hands-on block)."""
     rows, t = [], 0
-    for mins, title, note in segments:
+    for k, (mins, title, note) in enumerate(segments):
         left, width = t / total * 100, mins / total * 100
+        cls = " main" if k == highlight else ""
+        cls += " flip" if left + width > 72 else ""
         rows.append(f'<li><div class="tl-text"><b>{title}</b><span>{note}</span></div>'
-                    f'<div class="tl-track"><span class="tl-bar" style="left:{left:.2f}%;width:{width:.2f}%"><em>{mins} min</em></span></div></li>')
+                    f'<div class="tl-track"><span class="tl-bar{cls}" style="left:{left:.2f}%;width:{width:.2f}%"><em>{mins} min</em></span></div></li>')
         t += mins
-    ticks = "".join(f'<span style="left:{m / total * 100:.2f}%">{m}</span>' for m in range(0, total + 1, 15))
-    return (f'<div class="timeline"><ol>{"".join(rows)}</ol>'
+    ticks = "".join(f'<span style="left:{m / total * 100:.2f}%">{m}</span>' for m in range(0, total + 1, step))
+    return (f'<div class="timeline" style="--tl-step:{step / total * 100:.4f}%"><ol>{"".join(rows)}</ol>'
             f'<div class="tl-axis"><div class="tl-text"></div><div class="tl-ticks">{ticks}</div></div></div>')
 
 

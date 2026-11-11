@@ -27,6 +27,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import community  # noqa: E402
 import principles  # noqa: E402
+import workshops  # noqa: E402
 import website  # noqa: E402  (tools/website.py)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -207,7 +208,7 @@ def main():
     cards, errors, warnings = validate()
     shared_names = [c["name"] for c in cards if not c["_variant"]]
     errors += principles.validate(shared_names)
-    errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates()
+    errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates() + workshops.validate(workshops.load())
     for w in warnings:
         print(f"warning: {w}")
     for e in errors:

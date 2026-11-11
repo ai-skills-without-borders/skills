@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install pyyaml markdown
+      - run: pip install pyyaml markdown python-pptx
       - name: Validate skills
         run: python tools/build.py --check
       - name: Build downloads and site
