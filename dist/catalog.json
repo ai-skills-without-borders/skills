@@ -161,15 +161,17 @@
       "Moodle GIFT / CSV export"
     ],
     "runs_code": false,
-    "maturity": "draft",
+    "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [
       "Item-writing principles (cf. NBME guide)"
     ],
@@ -340,15 +342,17 @@
       "Proposed framework links"
     ],
     "runs_code": false,
-    "maturity": "draft",
+    "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [
       "Bloom (revised)",
       "Three-level scale",
@@ -394,15 +398,17 @@
       "Fixed copy with approved changes"
     ],
     "runs_code": true,
-    "maturity": "draft",
+    "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [],
     "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Weizmann notebook format checker (generalized: profiles are pluggable; lesson plans added)",
@@ -626,13 +632,15 @@
     "runs_code": false,
     "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [
       "Pedagogical canon (in skill)"
     ],
@@ -677,13 +685,15 @@
     "runs_code": false,
     "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [],
     "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Reading generator used in the Weizmann MD-PhD program",
@@ -727,15 +737,17 @@
       "Companion data file for updates"
     ],
     "runs_code": false,
-    "maturity": "draft",
+    "maturity": "tested-at-origin",
     "tested_in": {
-      "claude": "untested",
-      "chatgpt": "untested",
-      "gemini": "untested",
+      "claude": "works",
+      "chatgpt": "works",
+      "gemini": "works",
       "copilot": "untested"
     },
     "last_tested": null,
-    "used_at": [],
+    "used_at": [
+      "weizmann"
+    ],
     "frameworks": [
       "Institutional EPAs",
       "AAMC Foundational Competencies",

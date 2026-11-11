@@ -22,14 +22,14 @@ outputs:
 - Coverage table
 - Moodle GIFT / CSV export
 runs_code: false
-maturity: draft
+maturity: tested-at-origin
 tested_in:
-  claude: untested
-  chatgpt: untested
-  gemini: untested
+  claude: works
+  chatgpt: works
+  gemini: works
   copilot: untested
 last_tested: null
-used_at: []
+used_at: [weizmann]
 frameworks:
 - Item-writing principles (cf. NBME guide)
 origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science

@@ -17,15 +17,15 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 <!-- CATALOG:START -->
 | Skill | What it does | Runs code | Maturity |
 |---|---|---|---|
-| [learning-objectives-designer](skills/learning-objectives-designer) | Extracts, writes, splits, levels and maps learning objectives; produces the numbered objectives table the other skills use. | No | draft |
+| [learning-objectives-designer](skills/learning-objectives-designer) | Extracts, writes, splits, levels and maps learning objectives; produces the numbered objectives table the other skills use. | No | tested at origin |
 | [pbl-rbl-session-builder](skills/pbl-rbl-session-builder) | Design partner for case-based PBL and tool-based RBL sessions, with readers, quizzes and intro lectures. | No | tested at origin |
 | [reading-material-generator](skills/reading-material-generator) | Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks. | No | tested at origin |
 | [committee-meeting-planner](skills/committee-meeting-planner) | Helps a graduate student plan, run and write up their own thesis committee meeting, from the scheduling poll to the summary of the committee's advice. | No | draft |
 | [curriculum-map-builder](skills/curriculum-map-builder) | Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested. | No | draft |
-| [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | draft |
+| [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | tested at origin |
 | [journal-club-planner](skills/journal-club-planner) | Helps a student prepare to present a research paper at journal club. | No | draft |
 | [leadership-communication-meeting-organizer](skills/leadership-communication-meeting-organizer) | Helps faculty or student leaders organize and run a structured meeting where everyone takes a role, speaks and gives feedback to practice leadership communication. | No | draft |
-| [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | draft |
+| [lesson-format-checker](skills/lesson-format-checker) | Checks lesson plans and Jupyter assignment notebooks against a house-style profile and applies only approved fixes. | Optional | tested at origin |
 | [mdphd-calendar-builder](skills/mdphd-calendar-builder) | Helps MD-PhD program directors and administrators build one complete calendar for their program. | No | draft |
 | [mentor-compact-creator](skills/mentor-compact-creator) | Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top. | No | draft |
 | [mstp-t32-planner](skills/mstp-t32-planner) | Plan our MSTP T32 renewal
@@ -33,7 +33,7 @@ What do we need for the MSTP T32
 Make a checklist for our training grant
 Check our T32 against the current announcement
 What goes in the… | No | draft |
-| [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | draft |
+| [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | tested at origin |
 | [thesis-lab-navigator](skills/thesis-lab-navigator) | Helps a graduate or MD-PhD student plan rotations and choose a thesis lab. | No | draft |
 <!-- CATALOG:END -->
 

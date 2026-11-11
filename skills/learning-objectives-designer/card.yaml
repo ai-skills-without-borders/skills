@@ -21,14 +21,14 @@ outputs:
 - Alignment gaps
 - Proposed framework links
 runs_code: false
-maturity: draft
+maturity: tested-at-origin
 tested_in:
-  claude: untested
-  chatgpt: untested
-  gemini: untested
+  claude: works
+  chatgpt: works
+  gemini: works
   copilot: untested
 last_tested: null
-used_at: []
+used_at: [weizmann]
 frameworks:
 - Bloom (revised)
 - Three-level scale

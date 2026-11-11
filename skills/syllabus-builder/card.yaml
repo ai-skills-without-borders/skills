@@ -21,14 +21,14 @@ outputs:
 - Course-leader report
 - Companion data file for updates
 runs_code: false
-maturity: draft
+maturity: tested-at-origin
 tested_in:
-  claude: untested
-  chatgpt: untested
-  gemini: untested
+  claude: works
+  chatgpt: works
+  gemini: works
   copilot: untested
 last_tested: null
-used_at: []
+used_at: [weizmann]
 frameworks:
 - Institutional EPAs
 - AAMC Foundational Competencies
