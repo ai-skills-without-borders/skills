@@ -103,7 +103,7 @@ def gh_links(fragment, gh):
     return re.sub(r'href="([^"]+)"', fix, fragment)
 
 
-def layout(cfg, title, description, content, active, root="", scripts="", catalog=None):
+def layout(cfg, title, description, content, active, root="", scripts="", catalog=None, path=""):
     gh = f"https://github.com/{cfg['repo']}"
     nav = "\n".join(
         f'      <a href="{root}{href}"{" aria-current=\"page\"" if href == active else ""}>{label}</a>'
@@ -118,10 +118,26 @@ def layout(cfg, title, description, content, active, root="", scripts="", catalo
         extra = "<script>window.ASB_CATALOG = " + json.dumps(catalog, ensure_ascii=False).replace("</", "<\\/") + ";</script>\n"
     for k, v in {"TITLE": e(title), "DESCRIPTION": e(description), "ROOT": root, "LIBNAME": e(cfg["library_name"]),
                  "NAV": nav, "VERSION": e(cfg["version"]), "GH": gh,
+                 "URL": cfg["site_url"] + (path if path != "index.html" else ""), "SITE": cfg["site_url"],
                  "CONFIG_JSON": json.dumps(conf).replace("</", "<\\/"), "SCRIPTS": extra + scripts,
                  "CONTENT": content.replace("{{GH}}", gh)}.items():
         page = page.replace("{{" + k + "}}", v)
     return page
+
+
+def static_list(cards):
+    """The catalog as plain links, for visitors whose browser doesn't run the script; the script replaces it."""
+    items = "".join(f'<li><a href="skills/{e(c["name"])}.html">{e(c["title"])}</a>: {e(c["summary"])}</li>'
+                    for c in sorted(cards, key=lambda c: c["title"]))
+    return f'<ul class="static-list">{items}</ul>'
+
+
+def sitemap(cfg, cards, wss):
+    pages = ["", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
+             "pedagogy.html", "about.html"]
+    pages += [f"workshops/{w['id']}.html" for w in wss] + [f"skills/{c['name']}.html" for c in cards]
+    urls = "".join(f"<url><loc>{e(cfg['site_url'] + p)}</loc></url>\n" for p in pages)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
 
 
 def read(name):
@@ -169,7 +185,7 @@ def skill_page(c, cfg, variants):
                  "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "TESTED": tested, "USED_AT": used_at,
                  "REVIEWERS": reviewers, "NAME": e(c["name"]), "ICON": visuals.icon(c["name"], 36)}.items():
         content = content.replace("{{" + k + "}}", v)
-    return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../")
+    return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../", path=f"skills/{c['name']}.html")
 
 
 def status_table(cards):
@@ -236,7 +252,7 @@ def build_site(cards, variants, cfg, public_card):
     for c in cards + variants:
         shutil.copy(ROOT / "dist" / "zips" / f"{c['name']}.zip", DOCS / "downloads")
         shutil.copy(ROOT / "dist" / "paste" / f"{c['name']}.md", DOCS / "paste")
-    for f in ("logo.svg", "logo.png", "favicon.svg", "favicon.png"):
+    for f in ("logo.svg", "logo.png", "favicon.svg", "favicon.png", "og-image.png"):
         shutil.copy(ROOT / "assets" / f, DOCS / f)
     shutil.copy(SITE / "style.css", DOCS / "style.css")
     shutil.copy(SITE / "site.js", DOCS / "site.js")
@@ -263,7 +279,7 @@ def build_site(cards, variants, cfg, public_card):
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
                        fill_steps(read("start.html")), "start.html", ""),
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
-                        read("skills.html"), "skills.html", read("skills.js")),
+                        read("skills.html").replace("{{STATIC_LIST}}", static_list(cards)), "skills.html", read("skills.js")),
         "contribute.html": ("Contribute — " + cfg["library_name"], "Adapt, improve and share skills.",
                             read("contribute.html").replace("{{GUIDE}}", visuals.guide_html(gh)).replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
@@ -285,14 +301,15 @@ def build_site(cards, variants, cfg, public_card):
     }
     for fname, (title, desc, content, active, scripts) in pages.items():
         content = re.sub(r"\{\{UI:(\w+)\}\}", lambda m: visuals.ui_icon(m.group(1)), content)
-        (DOCS / fname).write_text(layout(cfg, title, desc, content, active, scripts=scripts, catalog=catalog), encoding="utf-8")
+        (DOCS / fname).write_text(layout(cfg, title, desc, content, active, scripts=scripts, catalog=catalog, path=fname), encoding="utf-8")
+    (DOCS / "sitemap.xml").write_text(sitemap(cfg, cards, wss), encoding="utf-8")
     deck_ver = hashlib.sha1((SITE / "deck.css").read_bytes() + (SITE / "deck.js").read_bytes()).hexdigest()[:10]
     for k, w in enumerate(wss):
         other = wss[(k + 1) % len(wss)]
         (DOCS / "workshops" / f"{w['id']}.html").write_text(
             layout(cfg, f"Workshop: {w['title']} — {cfg['library_name']}", w["tagline"], workshops.plan_html(w, other, gh),
-                   "workshops.html", root="../", scripts=workshops.PLAN_JS), encoding="utf-8")
-        (DOCS / "workshops" / f"{w['id']}-slides.html").write_text(workshops.deck_html(w, gh, deck_ver), encoding="utf-8")
+                   "workshops.html", root="../", scripts=workshops.PLAN_JS, path=f"workshops/{w['id']}.html"), encoding="utf-8")
+        (DOCS / "workshops" / f"{w['id']}-slides.html").write_text(workshops.deck_html(w, gh, deck_ver, cfg["site_url"]), encoding="utf-8")
         workshop_pptx.build(w, DOCS / "downloads" / f"workshop-{w['id']}.pptx", workshops.clock, workshops.segments,
                             cfg["site_url"].replace("https://", ""))
     for c in cards:

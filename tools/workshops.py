@@ -274,7 +274,7 @@ def link_html(s, root, gh):
     return f'<p class="sl-link"><a href="{e(href)}">{"Open the form" if "issues/new" in href else "Open the page"}</a></p>'
 
 
-def deck_html(w, gh, css_ver):
+def deck_html(w, gh, css_ver, site=""):
     slides = []
     for k, s in enumerate(w["slides"], 1):
         dark = " dark" if s["kind"] in ("title", "closing") else (" sect" if s["kind"] == "section" else "")
@@ -289,6 +289,13 @@ def deck_html(w, gh, css_ver):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Slides: {e(w["title"])} — AI Skills Without Borders</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="description" content="{e(w["tagline"])}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Slides: {e(w["title"])}">
+<meta property="og:description" content="{e(w["tagline"])}">
+<meta property="og:url" content="{site}workshops/{e(w["id"])}-slides.html">
+<meta property="og:image" content="{site}og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">

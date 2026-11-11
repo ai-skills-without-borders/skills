@@ -151,7 +151,7 @@ agenda:
 guides:
   - id: install
     title: Install a skill, step by step
-    intro: "First download the skill. On the skill's page in the [catalog]({ROOT}skills.html), click **Download ZIP**. Don't unzip it: the AI tool wants the ZIP file as it is. Then follow the steps for your tool. Menu names change often; if a step doesn't match what you see, look for the word Skills."
+    intro: "First download the skill. On the skill's page in the [catalog]({ROOT}skills.html), click **Download ZIP**. Don't unzip it: the AI tool wants the ZIP file as it is. Then follow the steps for your tool. The steps follow each tool's help pages as of November 2026. Menu names change often; if a step doesn't match what you see, look for the word Skills."
     tools:
       - name: Claude (claude.ai or the Claude app)
         steps:
