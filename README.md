@@ -103,3 +103,7 @@ tools/build.py               validates skills and builds dist/ and the site
 ## License
 
 Skill content: [CC BY 4.0](LICENSE). Scripts: [MIT](LICENSE-CODE). Cite the library with [CITATION.cff](CITATION.cff); each release gets a DOI via Zenodo.
+
+## Disclaimer
+
+This is a community library. Each skill is maintained by its contributors, who are responsible for its content; the founders, maintainers and their institutions do not endorse or take responsibility for contributed skills or for AI outputs produced with them. Skills are provided as they are, without warranty, under the licence on each skill. Review every AI output, follow your institution's policies, and never enter patient or identifiable learner data. Nothing here is medical, legal, regulatory or financial advice. To report a problem, [open an issue](https://github.com/ai-skills-without-borders/skills/issues/new?template=problem.yml).

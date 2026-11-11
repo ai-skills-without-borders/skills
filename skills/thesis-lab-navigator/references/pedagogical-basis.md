@@ -2,7 +2,15 @@
 
 Why this skill does what it does. Labels: Research (published studies), Standard (a professional standard or widely used published guide), Practice (how experienced program leaders and students approach lab choice; programs may change it).
 
-| Rule in this skill | Basis | Source | |---|---|---| | The relationship with the mentor matters a great deal to a student's progress and well-being, so mentoring gets close attention | Research | National Academies of Sciences, Engineering, and Medicine, 2019 | | Good mentorship and a supportive PI are linked to lower anxiety and depression in graduate students, so lab culture and support are part of the choice | Research | Evans et al., 2018 | | The student works out their own priorities, talks to current and former students and asks the PI directly about mentoring, funding and expectations | Standard | Jabre et al., 2021, Ten simple rules for choosing a PhD supervisor | | Expectations are put in writing after the student joins | Standard | AAMC Compact Between Biomedical Graduate Students and Their Research Advisors | | MD-PhD questions about the PI's experience with MD-PhD students, the shorter timeline, F30 support and a physician-scientist on the committee | Practice | MD-PhD program guidance, for example the University of Pennsylvania MSTP student guide to choosing rotation and thesis mentors | | The student decides and the AI does not rank labs or people | Standard | AAMC Principles for the Responsible Use of AI in Medical Education, 2025 | | Program rules and deadlines come first | Practice | Each program's handbook |
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| The relationship with the mentor matters a great deal to a student's progress and well-being, so mentoring gets close attention | Research | National Academies of Sciences, Engineering, and Medicine, 2019 |
+| Good mentorship and a supportive PI are linked to lower anxiety and depression in graduate students, so lab culture and support are part of the choice | Research | Evans et al., 2018 |
+| The student works out their own priorities, talks to current and former students and asks the PI directly about mentoring, funding and expectations | Standard | Jabre et al., 2021, Ten simple rules for choosing a PhD supervisor |
+| Expectations are put in writing after the student joins | Standard | AAMC Compact Between Biomedical Graduate Students and Their Research Advisors |
+| MD-PhD questions about the PI's experience with MD-PhD students, the shorter timeline, F30 support and a physician-scientist on the committee | Practice | MD-PhD program guidance, for example the University of Pennsylvania MSTP student guide to choosing rotation and thesis mentors |
+| The student decides and the AI does not rank labs or people | Standard | AAMC Principles for the Responsible Use of AI in Medical Education, 2025 |
+| Program rules and deadlines come first | Practice | Each program's handbook |
 
 ## Limits
 

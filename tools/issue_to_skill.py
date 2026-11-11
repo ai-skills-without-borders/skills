@@ -150,6 +150,17 @@ def rebuild(text):
     return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip() + "\n"
 
 
+def fix_tables(text):
+    """Split table rows that were pasted onto one line: '| a | b | |---|---| | c | d |'."""
+    out = []
+    for ln in text.split("\n"):
+        if ln.startswith("|") and "|---" in ln and "| |" in ln:
+            out.extend(ln.replace("| |", "|\n|").split("\n"))
+        else:
+            out.append(ln)
+    return "\n".join(out)
+
+
 # ---------------------------------------------------------------- build the skill
 
 def split_frontmatter(text):
@@ -216,7 +227,7 @@ def build(body, author=None, issue=None, date=None, overrides=None, zpath=None, 
     if zpath:
         raw, extra = from_zip(zpath)
     fm, text = split_frontmatter(raw)
-    text = rebuild(text)
+    text = fix_tables(rebuild(text))
 
     # move "Why these rules" (to the end) into references/pedagogical-basis.md
     basis = ""

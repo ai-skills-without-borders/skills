@@ -58,11 +58,25 @@ It does not rank labs or PIs, approve a choice, negotiate for the student or rep
 
 Ask the student to rank these from most to least important to them. Then ask what each top item looks like in practice for them. There are no right answers.
 
-| Area | Questions to help the student think | |---|---| | The science | Which questions excite you enough to work on for years? Would you rather join a project or shape your own? | | Mentoring | How often do you want to meet one on one? Do you want close guidance or more independence? | | Training | What do you want to be able to do at the end: methods, writing, leading a project, mentoring others? | | Lab culture | Do you work best in a big lab with many people or a small lab with more time with the PI? How do you want disagreements and mistakes handled? | | Funding and stability | How important is it that the lab is well funded and the PI plans to stay at the institution? | | Time to degree | How much does finishing on time matter to you? Why? | | Career | Where do you want to be after the degree? Does this lab's track record fit that? | | Life outside the lab | What hours and flexibility do you need? Anything about location, family or health that matters? |
+| Area | Questions to help the student think |
+|---|---|
+| The science | Which questions excite you enough to work on for years? Would you rather join a project or shape your own? |
+| Mentoring | How often do you want to meet one on one? Do you want close guidance or more independence? |
+| Training | What do you want to be able to do at the end: methods, writing, leading a project, mentoring others? |
+| Lab culture | Do you work best in a big lab with many people or a small lab with more time with the PI? How do you want disagreements and mistakes handled? |
+| Funding and stability | How important is it that the lab is well funded and the PI plans to stay at the institution? |
+| Time to degree | How much does finishing on time matter to you? Why? |
+| Career | Where do you want to be after the degree? Does this lab's track record fit that? |
+| Life outside the lab | What hours and flexibility do you need? Anything about location, family or health that matters? |
 
 MD-PhD: add these.
 
-| Area | Questions | |---|---| | Clinical link | Do you want your thesis close to the clinic, or is a basic science question fine for your career plans? | | The timeline | How much time do you have for the PhD before you return to medical school? | | Clinical skills | Will you keep a clinical connection during the PhD, such as a continuity clinic? | | Fellowship | Do you plan to apply for an NIH F30? Does the timing work with this lab? |
+| Area | Questions |
+|---|---|
+| Clinical link | Do you want your thesis close to the clinic, or is a basic science question fine for your career plans? |
+| The timeline | How much time do you have for the PhD before you return to medical school? |
+| Clinical skills | Will you keep a clinical connection during the PhD, such as a continuity clinic? |
+| Fellowship | Do you plan to apply for an NIH F30? Does the timing work with this lab? |
 
 Keep the student's top three priorities in view for every later step.
 
@@ -177,7 +191,10 @@ MD-PhD: notice whether the PI understands the MD-PhD timeline and whether studen
 
 Build a table with the student's top priorities as the rows and the labs as the columns. In each cell write what the student actually knows, not a score. Mark any cell where the information is thin.
 
-| Priority (from the student) | Lab A | Lab B | |---|---|---| | Example: mentoring style | Weekly one-on-one meetings, PI reads drafts closely | Meets every few weeks, a senior postdoc guides day to day | | Example: funding | Two grants through 2029 | Not sure, need to ask |
+| Priority (from the student) | Lab A | Lab B |
+|---|---|---|
+| Example: mentoring style | Weekly one-on-one meetings, PI reads drafts closely | Meets every few weeks, a senior postdoc guides day to day |
+| Example: funding | Two grants through 2029 | Not sure, need to ask |
 
 Then ask:
 
@@ -220,7 +237,15 @@ Tell the student this happens. Help them talk to the program about an extra rota
 
 Why this skill does what it does. Labels: Research (published studies), Standard (a professional standard or widely used published guide), Practice (how experienced program leaders and students approach lab choice; programs may change it).
 
-| Rule in this skill | Basis | Source | |---|---|---| | The relationship with the mentor matters a great deal to a student's progress and well-being, so mentoring gets close attention | Research | National Academies of Sciences, Engineering, and Medicine, 2019 | | Good mentorship and a supportive PI are linked to lower anxiety and depression in graduate students, so lab culture and support are part of the choice | Research | Evans et al., 2018 | | The student works out their own priorities, talks to current and former students and asks the PI directly about mentoring, funding and expectations | Standard | Jabre et al., 2021, Ten simple rules for choosing a PhD supervisor | | Expectations are put in writing after the student joins | Standard | AAMC Compact Between Biomedical Graduate Students and Their Research Advisors | | MD-PhD questions about the PI's experience with MD-PhD students, the shorter timeline, F30 support and a physician-scientist on the committee | Practice | MD-PhD program guidance, for example the University of Pennsylvania MSTP student guide to choosing rotation and thesis mentors | | The student decides and the AI does not rank labs or people | Standard | AAMC Principles for the Responsible Use of AI in Medical Education, 2025 | | Program rules and deadlines come first | Practice | Each program's handbook |
+| Rule in this skill | Basis | Source |
+|---|---|---|
+| The relationship with the mentor matters a great deal to a student's progress and well-being, so mentoring gets close attention | Research | National Academies of Sciences, Engineering, and Medicine, 2019 |
+| Good mentorship and a supportive PI are linked to lower anxiety and depression in graduate students, so lab culture and support are part of the choice | Research | Evans et al., 2018 |
+| The student works out their own priorities, talks to current and former students and asks the PI directly about mentoring, funding and expectations | Standard | Jabre et al., 2021, Ten simple rules for choosing a PhD supervisor |
+| Expectations are put in writing after the student joins | Standard | AAMC Compact Between Biomedical Graduate Students and Their Research Advisors |
+| MD-PhD questions about the PI's experience with MD-PhD students, the shorter timeline, F30 support and a physician-scientist on the committee | Practice | MD-PhD program guidance, for example the University of Pennsylvania MSTP student guide to choosing rotation and thesis mentors |
+| The student decides and the AI does not rank labs or people | Standard | AAMC Principles for the Responsible Use of AI in Medical Education, 2025 |
+| Program rules and deadlines come first | Practice | Each program's handbook |
 
 ## Limits
 

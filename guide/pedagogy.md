@@ -54,6 +54,7 @@ Objectives, activities and assessment are designed together, so learners practis
 - Biggs, 1996 (origin; higher education, theory). A design theory for any course; adopted widely in medical curricula, but not tested experimentally there.
 - *Medical education:* AMEE Guide 14 (Harden et al., 1999) (guide). Outcome-based education for medical curricula: outcomes are specified first, and teaching and assessment are planned from them. A guide, not a trial.
 - *Medical education:* Frank et al., 2010 (international consensus). Defines CBME for medical curricula; a consensus, not an outcome study.
+- *Medical education:* AMEE Guide 21 (Harden, 2001) (guide). Curriculum mapping makes the links between outcomes, learning opportunities and assessment visible to teachers and students.
 
 **Where it appears**
 
@@ -98,6 +99,7 @@ Learners do something with the material in class, rather than only listen. It ra
 
 - `pbl-rbl-session-builder`: Every phase asks students to predict, analyse or decide before anything is revealed.
 - `reading-material-generator`: Readings end with questions students answer, not only text to absorb.
+- `journal-club-planner`: The audience takes rotating roles, and at least a third of the session goes to discussion the student leads.
 
 **Limit:** In medical education, much of the evidence comes from studies with weak designs, and flipped classrooms in particular show mixed effects on knowledge. The randomized trial by Boedeker et al. (2025) is the strongest single result.
 
@@ -161,11 +163,46 @@ Spreading practice over time beats massing it, and the gap should grow with how 
 
 **Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
 
+#### 9. Effective feedback — *Research*
+
+Specific, timely feedback about the task, with a clear next step, is among the strongest influences on learning, but its effect depends on how it is given.
+
+**Sources**
+
+- Hattie & Timperley, 2007 (origin; school students, review of 12 meta-analyses (196 studies)). Mostly school classrooms. Feedback is a strong influence on learning, but its effect varies widely with the type of feedback and how it is given.
+- *Medical education:* Ramani & Krackov, 2012 (literature-based practical guide). Tips from the feedback literature for clinical teachers of undergraduate and graduate medical trainees. A guide, not a trial.
+
+**Where it appears**
+
+- `leadership-communication-meeting-organizer`: Every speaker gets one specific strength and one specific next step, about the talk and not the person, in a safe setting.
+- `journal-club-planner`: The student explains each figure first, and the feedback checks and sharpens that reading.
+
+**Limit:** The large review is mostly from schools; the medical-education source is a practical guide, not a trial.
+
+#### 10. Structured mentoring and development plans — *Research*
+
+Mentoring works best when expectations are set out early, meetings are regular, progress and development plans are reviewed, and mentors are trained.
+
+**Sources**
+
+- NASEM, The Science of Effective Mentorship in STEMM, 2019 (origin; higher education, consensus study report). Undergraduate and graduate STEMM, including medicine. Effective mentorship involves setting expectations, building trust and regular review, and mentors can be trained.
+- NIH NOT-OD-14-113, 2014 (standard; professional standard, funder policy). US federally funded graduate students and postdocs: individual development plans are expected and reported.
+- *Medical education:* Pfund et al., 2014 (randomized controlled trial (16 academic health centres)). An eight-hour competency-based mentor training, including aligning expectations, improved mentors' skills as reported by mentors and their mentees.
+
+**Where it appears**
+
+- `mentor-compact-creator`: Mentor and trainee each write down their expectations, compare them and agree a one-page compact with a review date.
+- `committee-meeting-planner`: Regular committee meetings with progress, problems, a plan, and training and career goals; the committee's advice is written up and confirmed.
+- `thesis-lab-navigator`: Helps a student choose rotations and a thesis lab by asking about mentoring style and expectations, not only research topic.
+- `mdphd-calendar-builder`: Puts mentor meetings, committee meetings and yearly development plans on the program calendar.
+
+**Limit:** Strong evidence that mentor training improves mentoring skills; less direct evidence that a written compact or plan by itself improves trainee outcomes.
+
 ### Principles specific to medical education
 
 Principles with no direct counterpart in general science teaching, from health-professions education research and standards.
 
-#### 9. Competencies and entrustment — *Standard*
+#### 11. Competencies and entrustment — *Standard*
 
 Count a competency only where learners perform it and someone observes it. Frameworks need faculty review before use.
 
@@ -183,7 +220,7 @@ Count a competency only where learners perform it and someone observes it. Frame
 
 *Practice:* The E / P / X levels and the 're-check above six E links' rule are local methods that apply entrustment to course mapping.
 
-#### 10. Problems and clinical context — *Research*
+#### 12. Problems and clinical context — *Research*
 
 Working on problems activates prior knowledge and stores it where it will be used. Teaching basic science in a clinical context helps build illness scripts.
 
@@ -200,7 +237,7 @@ Working on problems activates prior knowledge and stores it where it will be use
 
 **Limit:** Whole PBL curricula show modest or mixed knowledge effects (Colliver, 2000), so the skill adds the structure of the layer-1 principles.
 
-#### 11. Deliberate practice and simulation — *Research*
+#### 13. Deliberate practice and simulation — *Research*
 
 Expertise grows through focused practice on specific weaknesses with immediate feedback, not through experience alone.
 
@@ -209,9 +246,11 @@ Expertise grows through focused practice on specific weaknesses with immediate f
 - *Medical education:* Ericsson, 2004 (review). Applies the expert-performance framework to medicine; experience alone does not build expertise.
 - *Medical education:* McGaghie et al., 2011 (meta-analysis (14 studies)). Clinical skill acquisition, effect size 0.71; the authors note the small number of studies.
 
-**Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
+**Where it appears**
 
-#### 12. Item-writing quality — *Standard*
+- `leadership-communication-meeting-organizer`: Members speak repeatedly in a low-stakes group and get immediate, specific feedback after each turn.
+
+#### 14. Item-writing quality — *Standard*
 
 Validated guidelines define well-formed items. Flawed items are common and disadvantage some students.
 
@@ -225,7 +264,7 @@ Validated guidelines define well-formed items. Flawed items are common and disad
 
 - `exam-question-writer`: The flaw checklist, the cover-the-options test, homogeneous options, no 'all/none of the above', fair vignettes.
 
-#### 13. Assessment validity and programmes — *Standard*
+#### 15. Assessment validity and programmes — *Standard*
 
 A result supports a decision only with validity evidence for that use. Competence is judged from many assessments together, not from one.
 
@@ -241,7 +280,7 @@ A result supports a decision only with validity evidence for that use. Competenc
 - `committee-meeting-planner`: Treats the thesis committee meeting as one of many checkpoints: the student brings the last meeting's action items, and the committee confirms a written summary of its advice.
 - `syllabus-builder`: A competency counts as evidence only where performance is observed or assessed.
 
-#### 14. Professional identity formation — *Standard*
+#### 16. Professional identity formation — *Standard*
 
 Medical education should help learners come to think, act and feel like physicians (and, for MD-PhD students, like physician-scientists), not only perform competently.
 
@@ -255,7 +294,7 @@ Medical education should help learners come to think, act and feel like physicia
 
 Principles for teaching with AI, across both layers above.
 
-#### 15. Responsible AI in education — *Standard*
+#### 17. Responsible AI in education — *Standard*
 
 Disclose AI use, protect privacy, give equal access, keep the educator in charge, and never invent sources.
 
@@ -273,7 +312,7 @@ Disclose AI use, protect privacy, give equal access, keep the educator in charge
 
 *See also:* [AAMC: Advancing AI Across Academic Medicine resource collection](https://www.aamc.org/about-us/mission-areas/medical-education/advancing-ai-across-academic-medicine-resource-collection)
 
-#### 16. AI that protects learning — *Research*
+#### 18. AI that protects learning — *Research*
 
 Unrestricted AI help can raise practice scores and lower real learning. Student-facing AI should guide rather than hand over answers, and its effects should be studied.
 
@@ -285,9 +324,11 @@ Unrestricted AI help can raise practice scores and lower real learning. Student-
 
 > **Evidence from general education only.** No health-professions source in the registry supports this principle yet. Treat it as a well-supported hypothesis for medical learners, and report what you see.
 
-**Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
+**Where it appears**
 
-**Limit:** The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. The skills here are for educators, not students, so this principle has no skill yet.
+- `journal-club-planner`: The student explains each figure in their own words first; the AI checks and fills gaps instead of explaining the paper for them.
+
+**Limit:** The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. Journal Club Planner is the first skill built this way; other learner-facing skills should follow it.
 <!-- PRINCIPLES:END -->
 
 ---
@@ -341,8 +382,10 @@ If your experience or a study contradicts a rule here, open an issue with the so
 - Gordon, M., Daniel, M., Ajiboye, A., et al. (2024). A scoping review of artificial intelligence in medical education: BEME Guide No. 84. Medical Teacher, 46(4), 446–470. https://doi.org/10.1080/0142159X.2024.2314198
 - Haladyna, T. M., Downing, S. M., & Rodriguez, M. C. (2002). A review of multiple-choice item-writing guidelines for classroom assessment. Applied Measurement in Education, 15(3), 309–333. https://doi.org/10.1207/S15324818AME1503_5
 - Handelsman, J., Ebert-May, D., Beichner, R., et al. (2004). Scientific teaching. Science, 304(5670), 521–522. https://doi.org/10.1126/science.1096022
+- Harden, R. M. (2001). AMEE Guide No. 21: Curriculum mapping: A tool for transparent and authentic teaching and learning. Medical Teacher, 23(2), 123–137. https://doi.org/10.1080/01421590120036547
 - Harden, R. M., Crosby, J. R., & Davis, M. H. (1999). AMEE Guide No. 14: Outcome-based education: Part 1 – An introduction to outcome-based education. Medical Teacher, 21(1), 7–14. https://doi.org/10.1080/01421599979969
 - Harden, R. M., Grant, J., Buckley, G., & Hart, I. R. (1999). BEME Guide No. 1: Best Evidence Medical Education. Medical Teacher, 21(6), 553–562. https://doi.org/10.1080/01421599978960
+- Hattie, J., & Timperley, H. (2007). The power of feedback. Review of Educational Research, 77(1), 81–112. https://doi.org/10.3102/003465430298487
 - Hew, K. F., & Lo, C. K. (2018). Flipped classroom improves student learning in health professions education: A meta-analysis. BMC Medical Education, 18, 38. https://doi.org/10.1186/s12909-018-1144-z
 - Howley, L., Weems, K., Peoples, D., & Whelan, A. J. (2026). AI competencies across the learning continuum. Association of American Medical Colleges. https://www.aamc.org/about-us/medical-education/cbme/publication/ai-competencies-across-learning-continuum
 - Kapur, M. (2008). Productive failure. Cognition and Instruction, 26(3), 379–424.
@@ -352,8 +395,12 @@ If your experience or a study contradicts a rule here, open an issue with the so
 - Mager, R. F. (1962). Preparing objectives for programmed instruction. Fearon.
 - Masters, K. (2023). Ethical use of artificial intelligence in health professions education: AMEE Guide No. 158. Medical Teacher, 45(6), 574–584. https://doi.org/10.1080/0142159X.2023.2186203
 - McGaghie, W. C., Issenberg, S. B., Cohen, E. R., Barsuk, J. H., & Wayne, D. B. (2011). Does simulation-based medical education with deliberate practice yield better results than traditional clinical education? A meta-analytic comparative review of the evidence. Academic Medicine, 86(6), 706–711. https://doi.org/10.1097/ACM.0b013e318217e119
+- National Academies of Sciences, Engineering, and Medicine. (2019). The science of effective mentorship in STEMM. The National Academies Press. https://doi.org/10.17226/25568
+- National Institutes of Health. (2014). NOT-OD-14-113: Revised policy: Descriptions on the use of Individual Development Plans (IDPs) for graduate students and postdoctoral researchers required in annual progress reports. https://grants.nih.gov/grants/guide/notice-files/NOT-OD-14-113.html
 - NBME. (2020). NBME item-writing guide: Constructing written test questions for the health sciences (6th ed.). https://www.nbme.org/educators/item-writing-guide
 - Norman, G. R., & Schmidt, H. G. (1992). The psychological basis of problem-based learning: A review of the evidence. Academic Medicine, 67(9), 557–565.
+- Pfund, C., House, S. C., Asquith, P., et al. (2014). Training mentors of clinical and translational research scholars: A randomized controlled trial. Academic Medicine, 89(5), 774–782. https://doi.org/10.1097/ACM.0000000000000218
+- Ramani, S., & Krackov, S. K. (2012). Twelve tips for giving feedback effectively in the clinical environment. Medical Teacher, 34(10), 787–791. https://doi.org/10.3109/0142159X.2012.684916
 - Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255. https://doi.org/10.1111/j.1467-9280.2006.01693.x
 - Schmidt, H. G. (1983). Problem-based learning: Rationale and description. Medical Education, 17(1), 11–16. https://doi.org/10.1111/j.1365-2923.1983.tb01086.x
 - Schmidt, H. G., & Rikers, R. M. J. P. (2007). How expertise develops in medicine: Knowledge encapsulation and illness script formation. Medical Education, 41(12), 1133–1139. https://doi.org/10.1111/j.1365-2923.2007.02915.x

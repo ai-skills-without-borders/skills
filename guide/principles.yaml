@@ -365,6 +365,48 @@ sources:
     design: scoping review (278 publications)
     context_only: true
     transfer: "Maps AI in medical education and calls for ethical guidelines. Context for this principle, not a test of whether guardrails protect learning."
+  harden-amee21-2001:
+    cite: "Harden, R. M. (2001). AMEE Guide No. 21: Curriculum mapping: A tool for transparent and authentic teaching and learning. Medical Teacher, 23(2), 123–137."
+    short: "AMEE Guide 21 (Harden, 2001)"
+    doi: 10.1080/01421590120036547
+    population: health-professions
+    design: guide
+    transfer: "Curriculum mapping makes the links between outcomes, learning opportunities and assessment visible to teachers and students."
+  hattie-timperley-2007:
+    cite: "Hattie, J., & Timperley, H. (2007). The power of feedback. Review of Educational Research, 77(1), 81–112."
+    short: "Hattie & Timperley, 2007"
+    doi: 10.3102/003465430298487
+    population: school
+    design: review of 12 meta-analyses (196 studies)
+    transfer: "Mostly school classrooms. Feedback is a strong influence on learning, but its effect varies widely with the type of feedback and how it is given."
+  ramani-krackov-2012:
+    cite: "Ramani, S., & Krackov, S. K. (2012). Twelve tips for giving feedback effectively in the clinical environment. Medical Teacher, 34(10), 787–791."
+    short: "Ramani & Krackov, 2012"
+    doi: 10.3109/0142159X.2012.684916
+    population: health-professions
+    design: literature-based practical guide
+    transfer: "Tips from the feedback literature for clinical teachers of undergraduate and graduate medical trainees. A guide, not a trial."
+  nasem-mentorship-2019:
+    cite: "National Academies of Sciences, Engineering, and Medicine. (2019). The science of effective mentorship in STEMM. The National Academies Press."
+    short: "NASEM, The Science of Effective Mentorship in STEMM, 2019"
+    doi: 10.17226/25568
+    population: higher-ed
+    design: consensus study report
+    transfer: "Undergraduate and graduate STEMM, including medicine. Effective mentorship involves setting expectations, building trust and regular review, and mentors can be trained."
+  pfund-2014:
+    cite: "Pfund, C., House, S. C., Asquith, P., et al. (2014). Training mentors of clinical and translational research scholars: A randomized controlled trial. Academic Medicine, 89(5), 774–782."
+    short: "Pfund et al., 2014"
+    doi: 10.1097/ACM.0000000000000218
+    population: health-professions
+    design: randomized controlled trial (16 academic health centres)
+    transfer: "An eight-hour competency-based mentor training, including aligning expectations, improved mentors' skills as reported by mentors and their mentees."
+  nih-idp-2014:
+    cite: "National Institutes of Health. (2014). NOT-OD-14-113: Revised policy: Descriptions on the use of Individual Development Plans (IDPs) for graduate students and postdoctoral researchers required in annual progress reports."
+    short: "NIH NOT-OD-14-113, 2014"
+    url: https://grants.nih.gov/grants/guide/notice-files/NOT-OD-14-113.html
+    population: standard
+    design: funder policy
+    transfer: "US federally funded graduate students and postdocs: individual development plans are expected and reported."
 
 principles:
   # ---------------- Layer 1: overarching principles of science teaching ----------------
@@ -382,7 +424,7 @@ principles:
     layer: science
     basis: standard
     summary: "Objectives, activities and assessment are designed together, so learners practise and are tested on what the objectives say."
-    sources: [biggs-1996:origin, harden-amee14-1999:med-ed, frank-2010:med-ed]
+    sources: [biggs-1996:origin, harden-amee14-1999:med-ed, frank-2010:med-ed, harden-amee21-2001:med-ed]
     applies:
       learning-objectives-designer: "Checks each objective for an activity and an assessment and reports the gaps."
       syllabus-builder: "Links objectives, schedule and assessment; a competency counts as evidence only when it is assessed."
@@ -412,6 +454,7 @@ principles:
     applies:
       pbl-rbl-session-builder: "Every phase asks students to predict, analyse or decide before anything is revealed."
       reading-material-generator: "Readings end with questions students answer, not only text to absorb."
+      journal-club-planner: "The audience takes rotating roles, and at least a third of the session goes to discussion the student leads."
 
   - id: productive-failure
     name: Problem solving before instruction
@@ -454,6 +497,30 @@ principles:
     sources: [cepeda-2006:origin, kerfoot-2007:med-ed]
     applies: {}
 
+  - id: effective-feedback
+    name: Effective feedback
+    layer: science
+    basis: research
+    summary: "Specific, timely feedback about the task, with a clear next step, is among the strongest influences on learning, but its effect depends on how it is given."
+    sources: [hattie-timperley-2007:origin, ramani-krackov-2012:med-ed]
+    applies:
+      leadership-communication-meeting-organizer: "Every speaker gets one specific strength and one specific next step, about the talk and not the person, in a safe setting."
+      journal-club-planner: "The student explains each figure first, and the feedback checks and sharpens that reading."
+    limits: "The large review is mostly from schools; the medical-education source is a practical guide, not a trial."
+
+  - id: structured-mentoring
+    name: Structured mentoring and development plans
+    layer: science
+    basis: research
+    summary: "Mentoring works best when expectations are set out early, meetings are regular, progress and development plans are reviewed, and mentors are trained."
+    sources: [nasem-mentorship-2019:origin, pfund-2014:med-ed, nih-idp-2014:standard]
+    applies:
+      mentor-compact-creator: "Mentor and trainee each write down their expectations, compare them and agree a one-page compact with a review date."
+      committee-meeting-planner: "Regular committee meetings with progress, problems, a plan, and training and career goals; the committee's advice is written up and confirmed."
+      thesis-lab-navigator: "Helps a student choose rotations and a thesis lab by asking about mentoring style and expectations, not only research topic."
+      mdphd-calendar-builder: "Puts mentor meetings, committee meetings and yearly development plans on the program calendar."
+    limits: "Strong evidence that mentor training improves mentoring skills; less direct evidence that a written compact or plan by itself improves trainee outcomes."
+
   # ---------------- Layer 2: principles specific to medical education ----------------
   - id: competencies-entrustment
     name: Competencies and entrustment
@@ -482,7 +549,8 @@ principles:
     basis: research
     summary: "Expertise grows through focused practice on specific weaknesses with immediate feedback, not through experience alone."
     sources: [ericsson-2004:origin, mcgaghie-2011:med-ed]
-    applies: {}
+    applies:
+      leadership-communication-meeting-organizer: "Members speak repeatedly in a low-stakes group and get immediate, specific feedback after each turn."
 
   - id: item-writing
     name: Item-writing quality
@@ -532,5 +600,6 @@ principles:
     basis: research
     summary: "Unrestricted AI help can raise practice scores and lower real learning. Student-facing AI should guide rather than hand over answers, and its effects should be studied."
     sources: [bastani-2025:origin, tolsgaard-2023:med-ed, gordon-2024:med-ed]
-    applies: {}
-    limits: "The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. The skills here are for educators, not students, so this principle has no skill yet."
+    applies:
+      journal-club-planner: "The student explains each figure in their own words first; the AI checks and fills gaps instead of explaining the paper for them."
+    limits: "The trial was in high-school mathematics, and no health-professions study yet tests whether AI guardrails protect learning. Journal Club Planner is the first skill built this way; other learner-facing skills should follow it."

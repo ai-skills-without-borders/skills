@@ -111,7 +111,24 @@ Who pays the stipend, health insurance and tuition. When that changes. Any fundi
 
 A table of the program's milestones with deadlines. Common ones:
 
-| Milestone | Deadline | Form or policy | |---|---|---| | Choose the thesis committee | | | | Committee meetings | | | | Qualifying or thesis proposal exam | | | | Individual development plan | | | | Fellowship application, such as an F30 or F31 | | | | Dissertation defense | | | | Dissertation deposit | | | | For dual-degree programs: return to clinical training | | |
+| Milestone | Deadline | Form or policy |
+|---|---|---|
+| Choose the thesis committee |
+| |
+| Committee meetings |
+| |
+| Qualifying or thesis proposal exam |
+| |
+| Individual development plan |
+| |
+| Fellowship application, such as an F30 or F31 |
+| |
+| Dissertation defense |
+| |
+| Dissertation deposit |
+| |
+| For dual-degree programs: return to clinical training |
+| |
 
 If different groups of students follow different timelines, give each its own column.
 
@@ -197,7 +214,8 @@ Leave out any question the program layer already settles, like the vacation allo
 
 Put both people's answers side by side, one topic per row.
 
-| Topic | Mentor | Trainee | Group | |---|---|---|---|
+| Topic | Mentor | Trainee | Group |
+|---|---|---|---|
 
 ### The three groups
 

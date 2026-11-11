@@ -195,6 +195,12 @@ def write_gaps(skill_names):
     lines += [f"- **{p['name']}**: {p['refs'][0]['short']}" for p in one_source] or ["- None."]
     lines += ["", "## 4. Skills with no principle mapped", ""]
     lines += [f"- `{s}`" for s in orphan_skills] or ["- None. Every skill applies at least one principle."]
+    general_only = [s for s in skill_names if s not in orphan_skills
+                    and all("all" in p["applies"] for p in principles if s in skills_of(p, skill_names))]
+    lines += ["", "## 5. Skills mapped only through the general AI principle", "",
+              "These skills rest mainly on standards and policies (such as funder rules) rather than on teaching principles. "
+              "Check whether a teaching principle applies, and add it to `guide/principles.yaml`.", ""]
+    lines += [f"- `{s}`" for s in general_only] or ["- None."]
     lines += ["", "## Principles per skill", "", "| Skill | Principles |", "|---|---|"]
     lines += [f"| `{s}` | {count[s]} |" for s in skill_names]
     lines += ["", "## Evidence by layer", "", "| Layer | Principles | With medical-education evidence |", "|---|---|---|"]
