@@ -26,7 +26,7 @@ tested_in:
   chatgpt: works
   gemini: works
   copilot: untested
-last_tested: null
+last_tested: "2026-09"
 used_at: [weizmann]
 frameworks:
 - Pedagogical canon (in skill)
