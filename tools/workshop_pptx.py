@@ -147,6 +147,9 @@ def build(w, out_path, clock, segments, site):
 
         else:
             background(sl, WHITE)
+            if s.get("part"):
+                box(sl, MX, Inches(0.3), Inches(4.2), Inches(0.36), MARKER)
+                text(sl, MX + Inches(0.12), Inches(0.33), Inches(4.0), Inches(0.3), s["part"], size=13, bold=True)
             if kind != "exercise":
                 title(sl, s["title"])
             if kind == "agenda":
@@ -154,12 +157,12 @@ def build(w, out_path, clock, segments, site):
                 rh = min(Inches(0.62), bh / len(segs))
                 for j, a in enumerate(segs):
                     y = y0 + rh * j
-                    text(sl, MX, y + Inches(0.12), Inches(1.0), rh, clock(a["start"]), size=16, color=SOFT)
-                    text(sl, MX + Inches(1.0), y + Inches(0.12), Inches(4.4), rh, a["title"], size=17, bold=True)
+                    text(sl, MX, y + Inches(0.1), Inches(1.0), rh, clock(a["start"]), size=18, color=SOFT)
+                    text(sl, MX + Inches(1.0), y + Inches(0.1), Inches(4.4), rh, a["title"], size=18, bold=True)
                     tx, tw = MX + Inches(5.6), bw - Inches(6.8)
                     box(sl, tx, y + Inches(0.17), tw, Inches(0.26), PAPER, MSO_SHAPE.RECTANGLE)
                     box(sl, tx + Emu(int(tw * a["start"] / w["minutes"])), y + Inches(0.17), Emu(int(tw * a["minutes"] / w["minutes"])), Inches(0.26), SAGE, MSO_SHAPE.RECTANGLE)
-                    text(sl, W - MX - Inches(1.1), y + Inches(0.12), Inches(1.1), rh, f'{a["minutes"]} min', size=15, bold=True, align=PP_ALIGN.RIGHT)
+                    text(sl, W - MX - Inches(1.1), y + Inches(0.12), Inches(1.1), rh, f'{a["minutes"]} min', size=18, bold=True, align=PP_ALIGN.RIGHT)
             elif kind in ("steps", "checklist"):
                 gap = Inches(0.14)
                 rh = min(Inches(0.92), (bh - gap * (len(pts) - 1)) / len(pts))
@@ -225,7 +228,7 @@ def build(w, out_path, clock, segments, site):
                         y = y0 + Inches(0.9) + Inches(0.75) * m
                         if ln:
                             box(sl, x + Inches(0.25), y, cw - Inches(0.5), Inches(0.6), MARKER if m == 0 else MARKER_SOFT)
-                            text(sl, x + Inches(0.4), y, cw - Inches(0.8), Inches(0.6), ln, size=13, bold=True, anchor=MSO_ANCHOR.MIDDLE)
+                            text(sl, x + Inches(0.4), y, cw - Inches(0.8), Inches(0.6), ln, size=16, bold=True, anchor=MSO_ANCHOR.MIDDLE)
                         else:
                             box(sl, x + Inches(0.25), y + Inches(0.15), (cw - Inches(0.5)) * (0.6 if (j == 0 and m == 2) else 1), Inches(0.28), RULE if j == 0 else SOFT)
             elif kind == "exercise":
@@ -258,6 +261,77 @@ def build(w, out_path, clock, segments, site):
                     yy = y0 + Inches(0.85) * j
                     circle_num(sl, kx, yy, Inches(0.5), j + 1)
                     text(sl, kx + Inches(0.75), yy, W - kx - MX - Inches(0.75), Inches(0.75), p, size=18, anchor=MSO_ANCHOR.MIDDLE)
+            elif kind == "item":
+                it = s["item"]
+                flags = {}
+                for where, label in it["flags"]:
+                    flags.setdefault(where, []).append(label)
+                box(sl, MX, y0, bw, Inches(3.6), PAPER)
+                text(sl, MX + Inches(0.35), y0 + Inches(0.25), bw - Inches(0.7), Inches(0.5), it["stem"], size=22, bold=True)
+                y = y0 + Inches(0.95)
+                for k2, o in enumerate(it["options"]):
+                    hgt = Inches(0.8) if len(o) > 70 else Inches(0.45)
+                    text(sl, MX + Inches(0.35), y, Inches(7.6), hgt, f"{chr(65 + k2)}.  {o}", size=18)
+                    fy = y
+                    for lab in flags.get(k2, []):
+                        box(sl, MX + Inches(8.2), fy, Inches(3.3), Inches(0.36), MARKER)
+                        text(sl, MX + Inches(8.3), fy + Inches(0.04), Inches(3.1), Inches(0.3), lab, size=14, bold=True)
+                        fy += Inches(0.42)
+                    y += max(hgt, fy - y) + Inches(0.08)
+                if "stem" in flags:
+                    box(sl, MX + Inches(8.2), y0 + Inches(0.22), Inches(3.3), Inches(0.36), MARKER)
+                    text(sl, MX + Inches(8.3), y0 + Inches(0.26), Inches(3.1), Inches(0.3), flags["stem"][0], size=14, bold=True)
+                text(sl, MX, H - Inches(1.3), bw, Inches(0.6), s["text"], size=16, color=SOFT)
+            elif kind == "beforeafter":
+                cw = (bw - Inches(0.3)) / 2
+                ch = Inches(3.9)
+                for j, (d, fill, col, mk) in enumerate(((s["left"], PAPER, INK, RGBColor(0x8A, 0x3B, 0x12)), (s["right"], INK, WHITE, MARKER))):
+                    x = MX + (cw + Inches(0.3)) * j
+                    box(sl, x, y0, cw, ch, fill)
+                    text(sl, x + Inches(0.25), y0 + Inches(0.15), cw - Inches(0.5), Inches(0.4), d["title"], size=18, bold=True, color=col)
+                    text(sl, x + Inches(0.25), y0 + Inches(0.6), cw - Inches(0.5), Inches(2.2), d["lines"], size=16, color=col, space=4)
+                    text(sl, x + Inches(0.25), y0 + Inches(2.85), cw - Inches(0.5), Inches(1.0), [f"{m + 1}. {t}" for m, t in enumerate(d["marks"])], size=16, bold=True, color=mk, space=2)
+                box(sl, MX, y0 + ch + Inches(0.15), bw, Inches(0.45), MARKER_SOFT)
+                text(sl, MX + Inches(0.2), y0 + ch + Inches(0.22), bw - Inches(0.4), Inches(0.35), s["still"], size=16)
+                text(sl, MX, y0 + ch + Inches(0.68), bw, Inches(0.3), s["source"], size=12, color=SOFT)
+            elif kind == "quotes":
+                for j, p in enumerate(pts):
+                    y = y0 + Inches(0.95) * j
+                    box(sl, MX, y, bw, Inches(0.8), PAPER)
+                    circle_num(sl, MX + Inches(0.2), y + Inches(0.15), Inches(0.5), j + 1)
+                    tb = text(sl, MX + Inches(0.95), y, bw - Inches(1.2), Inches(0.8), p, size=19, anchor=MSO_ANCHOR.MIDDLE)
+                    for para in tb.text_frame.paragraphs:
+                        for r in para.runs:
+                            r.font.name = "Courier New"
+                text(sl, MX, H - Inches(1.3), bw, Inches(0.6), s["text"], size=16, color=SOFT)
+            elif kind == "verdict":
+                cw = (bw - Inches(0.3)) / 2
+                for j, (d, head) in enumerate(((s["left"], RGBColor(0x8A, 0x3B, 0x12)), (s["right"], INK))):
+                    x = MX + (cw + Inches(0.3)) * j
+                    box(sl, x, y0, cw, Inches(4.0), PAPER)
+                    stem, _, opts = d["item"].partition("\n")
+                    text(sl, x + Inches(0.3), y0 + Inches(0.2), cw - Inches(0.6), Inches(0.4), d["title"], size=19, bold=True, color=head)
+                    text(sl, x + Inches(0.3), y0 + Inches(0.65), cw - Inches(0.6), Inches(0.9), stem, size=16, bold=True)
+                    text(sl, x + Inches(0.3), y0 + Inches(1.55), cw - Inches(0.6), Inches(0.7), "   ".join(opts.split("  ")), size=16, color=SOFT)
+                    for m, (t, st) in enumerate(d["checks"]):
+                        yy = y0 + Inches(2.3) + Inches(0.42) * m
+                        circle_num(sl, x + Inches(0.3), yy, Inches(0.32), "✓" if st == "ok" else "✕", SAGE if st == "ok" else RGBColor(0x8A, 0x3B, 0x12), WHITE, 11)
+                        text(sl, x + Inches(0.75), yy, cw - Inches(1.0), Inches(0.32), t, size=16, bold=st != "ok", anchor=MSO_ANCHOR.MIDDLE)
+                text(sl, MX, H - Inches(1.3), bw, Inches(0.6), s["text"], size=16, color=SOFT)
+            elif kind == "fix":
+                cw, ch = (bw - Inches(0.25)) / 2, Inches(1.85)
+                cells = (("What went wrong", s["failure"], MARKER_SOFT, INK, False), ("The line that caused it", s["before"], PAPER, INK, True),
+                         ("The line rewritten", s["after"], INK, WHITE, True), ("Run again, on a new input", s["rerun"], PAPER, INK, False))
+                for j, (lab, body, fill, col, mono) in enumerate(cells):
+                    x, y = MX + (cw + Inches(0.25)) * (j % 2), y0 + (ch + Inches(0.2)) * (j // 2)
+                    box(sl, x, y, cw, ch, fill)
+                    text(sl, x + Inches(0.25), y + Inches(0.15), cw - Inches(0.5), Inches(0.3), lab, size=13, bold=True, color=MARKER if fill == INK else SOFT)
+                    tb = text(sl, x + Inches(0.25), y + Inches(0.5), cw - Inches(0.5), ch - Inches(0.6), body, size=16, color=col)
+                    if mono:
+                        for para in tb.text_frame.paragraphs:
+                            for r in para.runs:
+                                r.font.name = "Courier New"
+                text(sl, MX, y0 + 2 * ch + Inches(0.3), bw, Inches(0.3), s["text"], size=12, color=SOFT)
             else:
                 text(sl, MX, y0, bw, bh, ["–  " + p for p in pts], size=22, space=12)
             if s.get("link") and kind not in ("title", "closing"):

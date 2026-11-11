@@ -16,13 +16,13 @@ audience:
 - Program staff
 inputs:
 - The program's structure
-- The program's rules for lab choice, qualifying exam, committee…
+- The program's rules for lab choice, qualifying exam, committee meetings and return to clinic
 - Entering years of current cohorts
-- Existing calendars, handbooks and the medical school and graduate…
-- Where the calendar will live, such as Google Calendar, Outlook or a…
+- Existing calendars, handbooks and the medical school and graduate school academic calendars
+- Where the calendar will live, such as Google Calendar, Outlook or a shared spreadsheet
 - Any grants with reporting dates, such as a T32
 outputs:
-- A master calendar table with event, date or window, audience,…
+- A master calendar table with event, date or window, audience, cohort, owner, reminders, source and status
 - Views by month, by cohort and by owner
 - A list of clashes with exams, holidays and religious observances
 - A CSV file to import confirmed dates into Google Calendar or Outlook

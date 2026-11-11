@@ -135,7 +135,7 @@ def static_list(cards):
 def sitemap(cfg, cards, wss):
     pages = ["", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
              "pedagogy.html", "about.html"]
-    pages += [f"workshops/{w['id']}.html" for w in wss] + [f"skills/{c['name']}.html" for c in cards]
+    pages += [f"workshops/{w['id']}{x}.html" for w in wss for x in ("", "-handouts")] + [f"skills/{c['name']}.html" for c in cards]
     urls = "".join(f"<url><loc>{e(cfg['site_url'] + p)}</loc></url>\n" for p in pages)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
 
@@ -161,7 +161,11 @@ def skill_page(c, cfg, variants):
         f'<span class="{"works" if s == "works" else ""}">{e(TOOLNAME.get(t, t))}: {e(STATE.get(s, s))}</span>'
         for t, s in (c.get("tested_in") or {}).items())
     used = c.get("used_at") or []
-    used_at = ("Used at: " + e(", ".join(map(str, used)))) if used else "No usage reports yet. Be the first to send one."
+    insts, _ = community.load()
+    names = [insts[u]["name"] if u in insts else str(u) for u in used]
+    used_at = ("Used at: " + e("; ".join(names))) if used else "No usage reports yet. Be the first to send one."
+    if c.get("evidence"):
+        used_at = f'<b>How we know:</b> {e(c["evidence"])}<br>' + used_at
     revs = c.get("reviewers") or []
     reviewers = ("Reviewed by: " + e(", ".join(map(str, revs)))) if revs else "Not yet reviewed by another institution."
     if variants:
@@ -198,7 +202,7 @@ def status_table(cards):
                     f'<td class="hide-m">{tested}</td><td>{len(c.get("used_at") or [])}</td><td>{len(c.get("reviewers") or [])}</td></tr>')
     legend = '<p class="sub" style="margin-top:10px">✓ works · ◐ works with limits · ✕ broken · ○ not yet tested</p>'
     return ('<table class="status"><thead><tr><th>Skill</th><th>Maturity</th><th class="hide-m">Tested in</th>'
-            '<th>Usage reports</th><th>Reviews</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table>" + legend)
+            '<th>Institutions using it</th><th>Reviews</th></tr></thead><tbody>' + "".join(rows) + "</tbody></table>" + legend)
 
 
 def fill_steps(page):
@@ -275,7 +279,7 @@ def build_site(cards, variants, cfg, public_card):
     pages = {
         "index.html": (f"{cfg['library_name']} — shared AI skills for biomedical research and medical education",
                        "Shared AI skills for educators in biomedical research and medicine.",
-                       read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()), "", read("home.js")),
+                       read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()).replace("{{N_PRINCIPLES}}", str(len(principles.load()[1]))), "", read("home.js")),
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
                        fill_steps(read("start.html")), "start.html", ""),
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
@@ -309,6 +313,10 @@ def build_site(cards, variants, cfg, public_card):
         (DOCS / "workshops" / f"{w['id']}.html").write_text(
             layout(cfg, f"Workshop: {w['title']} — {cfg['library_name']}", w["tagline"], workshops.plan_html(w, other, gh),
                    "workshops.html", root="../", scripts=workshops.PLAN_JS, path=f"workshops/{w['id']}.html"), encoding="utf-8")
+        (DOCS / "workshops" / f"{w['id']}-handouts.html").write_text(
+            layout(cfg, f"Handouts: {w['title']} — {cfg['library_name']}", "Printable participant handouts for the workshop.",
+                   workshops.handouts_html(w, gh), "workshops.html", root="../", scripts=workshops.PLAN_JS,
+                   path=f"workshops/{w['id']}-handouts.html"), encoding="utf-8")
         (DOCS / "workshops" / f"{w['id']}-slides.html").write_text(workshops.deck_html(w, gh, deck_ver, cfg["site_url"]), encoding="utf-8")
         workshop_pptx.build(w, DOCS / "downloads" / f"workshop-{w['id']}.pptx", workshops.clock, workshops.segments,
                             cfg["site_url"].replace("https://", ""))

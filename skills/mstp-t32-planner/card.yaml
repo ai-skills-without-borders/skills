@@ -2,15 +2,7 @@
 name: mstp-t32-planner
 title: MSTP T32 Preparer
 version: 0.1.0
-summary: 'Plan our MSTP T32 renewal
-
-  What do we need for the MSTP T32
-
-  Make a checklist for our training grant
-
-  Check our T32 against the current announcement
-
-  What goes in the…'
+summary: Helps MD-PhD program directors and administrators pull together everything needed for an NIGMS Medical Scientist Training Program (MSTP) T32 application, new or renewal.
 tasks:
 - Plan our MSTP T32 renewal
 - What do we need for the MSTP T32
@@ -28,14 +20,14 @@ inputs:
 - Application type
 - Target due date and the current award's end date
 - The team and who owns each part
-- The last application, summary statement, progress reports and…
+- The last application, summary statement, progress reports and existing data
 outputs:
-- A note confirming which announcement and notices were checked, and…
-- A tracker of every component with page limits, file names, owners…
+- A note confirming which announcement and notices were checked, and when
+- A tracker of every component with page limits, file names, owners and due dates
 - A timeline working back from the internal deadline
 - A plan for the training tables and outcomes data
 - Draft requests to faculty, the dean's office and the registrar
-- A Program Plan outline with the reviewer questions each section must…
+- A Program Plan outline with the reviewer questions each section must answer
 - A budget checklist using current NRSA levels
 - A compliance check and review-criteria self-check before submission
 runs_code: false

@@ -26,6 +26,7 @@ tested_in:
   copilot: untested
 last_tested: "2026-09"
 used_at: [weizmann]
+evidence: "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026."
 frameworks: []
 origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: Reading generator used in the Weizmann MD-PhD program

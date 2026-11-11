@@ -16,7 +16,7 @@ Every skill card has a `maturity` field. It describes evidence, not opinion.
 | Level | Meaning | Required evidence |
 |---|---|---|
 | `draft` | Written or generalized, not yet used with real teaching in this form | Passes `tools/build.py` validation |
-| `tested-at-origin` | Used for real teaching at the origin institution | A usage report from the origin |
+| `tested-at-origin` | Used for real teaching at the origin institution | An `evidence` line on the card, shown on the skill page: where it was used, who tested it, in which tools, and when |
 | `tested-elsewhere` | Used successfully at one or more other institutions | At least one usage report from another institution |
 | `reviewed` | Tested elsewhere **and** independently reviewed | A completed review checklist by a reviewer from another institution |
 
@@ -37,7 +37,7 @@ A skill moves up only with the evidence attached (linked in `used_at` or `review
 | `users` | Who uses the skill: one or more of `educators`, `learners`, `program-staff` |
 | `audience`, `inputs`, `outputs` | Who it's for in more detail, what it needs, what it produces |
 | `runs_code` | Whether any step runs scripts |
-| `maturity`, `tested_in`, `last_tested` | Evidence (see above) |
+| `maturity`, `tested_in`, `last_tested`, `evidence` | Evidence (see above). `evidence` is one plain sentence saying how the claims were established |
 | `used_at` | Institution ids from `community/contributors.yaml` where the skill was used for real teaching |
 | `frameworks` | Frameworks it works with |
 | `origin_institution`, `derived_from` | Where it came from |

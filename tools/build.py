@@ -119,6 +119,10 @@ def validate():
             errors.append(f"{tag} card.yaml runs_code={card.get('runs_code')} but scripts/ {'exists' if has_scripts else 'is empty'}")
         if card.get("maturity") in ("tested-elsewhere", "reviewed") and not card.get("used_at"):
             errors.append(f"{tag} maturity '{card['maturity']}' needs evidence in used_at")
+        if card.get("maturity") != "draft" and not card.get("evidence"):
+            errors.append(f"{tag} maturity '{card['maturity']}' needs an evidence line: where it was used and how it was tested")
+        if any(v in ("works", "works-with-limits", "broken") for v in (card.get("tested_in") or {}).values()) and not card.get("evidence"):
+            warnings.append(f"{tag} tested_in has results but no evidence line saying who tested it and when")
         if card.get("maturity") == "reviewed" and not card.get("reviewers"):
             errors.append(f"{tag} maturity 'reviewed' needs reviewers")
         if len(body) > PASTE_INSTRUCTION_LIMIT:

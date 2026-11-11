@@ -36,6 +36,7 @@ tested_in:
   copilot: untested
 last_tested: null
 used_at: []
+evidence: "Tested in Claude by the author, as reported in the submission (issue #2)."
 frameworks:
 - Constructive alignment
 - Outcome-based education (AMEE Guide 14)

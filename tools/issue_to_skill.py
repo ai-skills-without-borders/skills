@@ -176,11 +176,23 @@ def split_frontmatter(text):
 
 
 def first_sentence(text, limit=170):
-    s = re.split(r"(?<=[.!?])\s", text.strip(), maxsplit=1)[0]
+    s = re.split(r"(?<=[.!?])\s", text.strip().split("\n")[0], maxsplit=1)[0]
     return s if len(s) <= limit else s[: limit - 1].rsplit(" ", 1)[0] + "…"
 
 
-def short_item(text, limit=70):
+TOOLS = {"claude": "Claude", "chatgpt": "ChatGPT", "gemini": "Gemini", "copilot": "Copilot"}
+
+
+def summary_from(purpose, description):
+    """One sentence for the catalog card. A purpose pasted as a list of requests (several short lines,
+    no full stop) is not a summary, so the skill's own description is used instead."""
+    lines = [l for l in purpose.strip().splitlines() if l.strip()]
+    if len(lines) > 1 and not re.search(r"[.!?]", lines[0]):
+        return first_sentence(description)
+    return first_sentence(purpose)
+
+
+def short_item(text, limit=120):
     head, sep, tail = text.partition(":")
     if sep and re.match(r"^(For|When|If|In|During)\b", head.strip()):
         text = tail.strip()  # "For the program layer: the program's policies" -> the useful part
@@ -250,11 +262,14 @@ def build(body, author=None, issue=None, date=None, overrides=None, zpath=None, 
     users = [u for u, key in (("educators", "[x] educators"), ("learners", "[x] learners"), ("program-staff", "[x] program staff")) if key in ticked] or ["educators"]
     tasks = bullets(field(f, "Tasks")) or tasks_from(description) or [first_sentence(purpose, 90).rstrip(".")]
     card = {
-        "name": name, "title": title, "version": "0.1.0", "summary": first_sentence(purpose),
+        "name": name, "title": title, "version": "0.1.0", "summary": summary_from(purpose, description),
         "tasks": tasks[:6], "users": users, "audience": [{"educators": "Educators", "learners": "Learners", "program-staff": "Program staff"}[u] for u in users],
         "inputs": [short_item(x) for x in bullets(field(f, "Inputs"))][:6],
         "outputs": [short_item(x) for x in bullets(field(f, "Expected output"))][:8],
         "runs_code": False, "maturity": "draft", "tested_in": tested, "last_tested": None, "used_at": [],
+        **({"evidence": "Tested in " + " and ".join(TOOLS[t] for t, v in tested.items() if v == "works")
+            + " by the author, as reported in the submission" + (f" (issue #{issue})." if issue else ".")}
+           if any(v == "works" for v in tested.values()) else {}),
         "frameworks": [], "origin_institution": institution, "derived_from": "New skill",
         "maintainers": [who], "reviewers": [], "license": "CC-BY-4.0", "starter": False,
     }

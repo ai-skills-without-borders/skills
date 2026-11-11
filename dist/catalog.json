@@ -112,6 +112,7 @@
     },
     "last_tested": null,
     "used_at": [],
+    "evidence": "Tested in Claude by the author, as reported in the submission (issue #2).",
     "frameworks": [
       "Constructive alignment",
       "Outcome-based education (AMEE Guide 14)",
@@ -172,6 +173,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [
       "Item-writing principles (cf. NBME guide)"
     ],
@@ -233,6 +235,7 @@
     },
     "last_tested": null,
     "used_at": [],
+    "evidence": "Tested in Claude by the author, as reported in the submission (issue #4).",
     "frameworks": [],
     "origin_institution": "Icahn School of Medicine at Mount Sinai",
     "derived_from": "New skill",
@@ -272,9 +275,9 @@
       "Program staff"
     ],
     "inputs": [
-      "Number of people and their stage, such as first-year medical…",
+      "Number of people and their stage, such as first-year medical students or residents",
       "Session length and whether it's in person or virtual",
-      "What the group should practice, such as leadership communication or…",
+      "What the group should practice, such as leadership communication or explaining science simply",
       "Who runs the meeting and who leads impromptu speaking",
       "Whether anyone will give a prepared speech",
       "Any existing slides, sign-up sheet or role guides"
@@ -285,7 +288,7 @@
       "A one-page guide for each role",
       "A prep sheet for participants",
       "15 to 20 impromptu speaking prompts suited to the group",
-      "Guidance for evaluators, end-of-meeting reports and the group…",
+      "Guidance for evaluators, end-of-meeting reports and the group reflection",
       "A facilitator guide and slide outline",
       "Adjustments for virtual, large-group, short or repeated sessions"
     ],
@@ -353,6 +356,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [
       "Bloom (revised)",
       "Three-level scale",
@@ -409,6 +413,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [],
     "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Weizmann notebook format checker (generalized: profiles are pluggable; lesson plans added)",
@@ -444,14 +449,14 @@
     ],
     "inputs": [
       "The program's structure",
-      "The program's rules for lab choice, qualifying exam, committee…",
+      "The program's rules for lab choice, qualifying exam, committee meetings and return to clinic",
       "Entering years of current cohorts",
-      "Existing calendars, handbooks and the medical school and graduate…",
-      "Where the calendar will live, such as Google Calendar, Outlook or a…",
+      "Existing calendars, handbooks and the medical school and graduate school academic calendars",
+      "Where the calendar will live, such as Google Calendar, Outlook or a shared spreadsheet",
       "Any grants with reporting dates, such as a T32"
     ],
     "outputs": [
-      "A master calendar table with event, date or window, audience,…",
+      "A master calendar table with event, date or window, audience, cohort, owner, reminders, source and status",
       "Views by month, by cohort and by owner",
       "A list of clashes with exams, holidays and religious observances",
       "A CSV file to import confirmed dates into Google Calendar or Outlook",
@@ -526,6 +531,7 @@
     },
     "last_tested": null,
     "used_at": [],
+    "evidence": "Tested in Claude by the author, as reported in the submission (issue #3).",
     "frameworks": [],
     "origin_institution": "Icahn School of Medicine at Mount Sinai",
     "derived_from": "New skill",
@@ -545,7 +551,7 @@
     "name": "mstp-t32-planner",
     "title": "MSTP T32 Preparer",
     "version": "0.1.0",
-    "summary": "Plan our MSTP T32 renewal\nWhat do we need for the MSTP T32\nMake a checklist for our training grant\nCheck our T32 against the current announcement\nWhat goes in the…",
+    "summary": "Helps MD-PhD program directors and administrators pull together everything needed for an NIGMS Medical Scientist Training Program (MSTP) T32 application, new or renewal.",
     "tasks": [
       "Plan our MSTP T32 renewal",
       "What do we need for the MSTP T32",
@@ -566,15 +572,15 @@
       "Application type",
       "Target due date and the current award's end date",
       "The team and who owns each part",
-      "The last application, summary statement, progress reports and…"
+      "The last application, summary statement, progress reports and existing data"
     ],
     "outputs": [
-      "A note confirming which announcement and notices were checked, and…",
-      "A tracker of every component with page limits, file names, owners…",
+      "A note confirming which announcement and notices were checked, and when",
+      "A tracker of every component with page limits, file names, owners and due dates",
       "A timeline working back from the internal deadline",
       "A plan for the training tables and outcomes data",
       "Draft requests to faculty, the dean's office and the registrar",
-      "A Program Plan outline with the reviewer questions each section must…",
+      "A Program Plan outline with the reviewer questions each section must answer",
       "A budget checklist using current NRSA levels",
       "A compliance check and review-criteria self-check before submission"
     ],
@@ -641,6 +647,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [
       "Pedagogical canon (in skill)"
     ],
@@ -694,6 +701,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [],
     "origin_institution": "The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science",
     "derived_from": "Reading generator used in the Weizmann MD-PhD program",
@@ -748,6 +756,7 @@
     "used_at": [
       "weizmann"
     ],
+    "evidence": "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.",
     "frameworks": [
       "Institutional EPAs",
       "AAMC Foundational Competencies",

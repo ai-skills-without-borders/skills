@@ -19,9 +19,9 @@ audience:
 - Learners
 - Program staff
 inputs:
-- Number of people and their stage, such as first-year medical…
+- Number of people and their stage, such as first-year medical students or residents
 - Session length and whether it's in person or virtual
-- What the group should practice, such as leadership communication or…
+- What the group should practice, such as leadership communication or explaining science simply
 - Who runs the meeting and who leads impromptu speaking
 - Whether anyone will give a prepared speech
 - Any existing slides, sign-up sheet or role guides
@@ -31,7 +31,7 @@ outputs:
 - A one-page guide for each role
 - A prep sheet for participants
 - 15 to 20 impromptu speaking prompts suited to the group
-- Guidance for evaluators, end-of-meeting reports and the group…
+- Guidance for evaluators, end-of-meeting reports and the group reflection
 - A facilitator guide and slide outline
 - Adjustments for virtual, large-group, short or repeated sessions
 runs_code: false

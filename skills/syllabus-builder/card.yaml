@@ -29,6 +29,7 @@ tested_in:
   copilot: untested
 last_tested: "2026-09"
 used_at: [weizmann]
+evidence: "Used in teaching at the Weizmann Institute's Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026."
 frameworks:
 - Institutional EPAs
 - AAMC Foundational Competencies

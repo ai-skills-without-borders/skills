@@ -97,7 +97,8 @@ def hub_html(ws, gh):
             f'{visuals.timeline_html([(a["minutes"], e(a["title"]), "") for a in w["agenda"]], w["minutes"], 30, main_block(w))}'
             f'<p class="ws-actions"><a class="btn primary" href="workshops/{e(w["id"])}.html">Open the full plan</a> '
             f'<a class="btn plain" href="workshops/{e(w["id"])}-slides.html">Present the slides</a> '
-            f'<a class="btn plain" href="downloads/workshop-{e(w["id"])}.pptx" download>PowerPoint</a></p>'
+            f'<a class="btn plain" href="downloads/workshop-{e(w["id"])}.pptx" download>PowerPoint</a> '
+            f'<a class="btn plain" href="workshops/{e(w["id"])}-handouts.html">Handouts</a></p>'
             f'</article>')
     return "".join(cards)
 
@@ -139,6 +140,7 @@ def plan_html(w, other, gh):
          f'<h1>{e(w["title"])}</h1><p>{e(w["tagline"])}</p>'
          f'<p class="ws-actions"><a class="btn primary" href="{e(w["id"])}-slides.html">Present the slides</a> '
          f'<a class="btn plain" href="../downloads/workshop-{e(w["id"])}.pptx" download>Download PowerPoint</a> '
+         f'<a class="btn plain" href="{e(w["id"])}-handouts.html">Printable handouts</a> '
          f'<button type="button" class="btn plain ws-print">Print this plan</button></p></div>']
     h.append('<section><div class="wrap ws-plan">')
 
@@ -184,7 +186,7 @@ def plan_html(w, other, gh):
                  f'<blockquote class="ws-say"><b>What to say</b>{inline(a["say"], root, gh)}</blockquote>'
                  f'<p class="ws-ready"><b>Ready to move on when:</b> {inline(a["check"], root, gh)}</p></article>')
 
-    h.append('<h2 id="handouts">Handouts and step-by-step guides</h2><p class="sub">Print these or share this page. Each is written for someone doing it for the first time.</p>')
+    h.append(f'<h2 id="handouts">Handouts and step-by-step guides</h2><p class="sub">Each is written for someone doing it for the first time. To print only these, use the <a href="{e(w["id"])}-handouts.html">printable handouts page</a>.</p>')
     h.append("".join(guide_html(g, root, gh) for g in w["guides"]))
 
     h.append('<h2 id="trouble">When something goes wrong</h2><div class="faq">' + "".join(
@@ -192,6 +194,21 @@ def plan_html(w, other, gh):
 
     h.append('<h2 id="after">After the session</h2>' + ul(w["after"], root, gh, "ws-check"))
     h.append(f'<p class="join">The other workshop: <a href="{e(other["id"])}.html">{e(other["title"])}</a> ({e(other["level"]).lower()}, {hours(other["minutes"])}).</p>')
+    h.append("</div></section>")
+    return "".join(h)
+
+
+def handouts_html(w, gh):
+    """The participant handouts alone, on one printable page."""
+    root = "../"
+    pw = w["prework"]
+    h = [f'<div class="pagehead wrap ws-head"><p class="ws-crumb"><a href="../workshops.html">Workshops</a> › <a href="{e(w["id"])}.html">{e(w["title"])}</a></p>'
+         f'<h1>Handouts: {e(w["title"])}</h1><p>Everything participants need on paper, in one page. Print it from your browser, or share the link.</p>'
+         f'<p class="ws-actions"><button type="button" class="btn primary ws-print">Print the handouts</button> '
+         f'<a class="btn plain" href="{e(w["id"])}.html">The full plan</a></p></div><section><div class="wrap ws-plan">',
+         f'<div class="ws-guide"><h3>{e(pw["title"])}</h3><ol class="ws-steps">' + "".join(
+             f'<li><b>{inline(x["title"], root, gh)}</b><span>{inline(x["text"], root, gh)}</span></li>' for x in pw["steps"]) + "</ol></div>"]
+    h.append("".join(guide_html(g, root, gh) for g in w["guides"]))
     h.append("</div></section>")
     return "".join(h)
 
@@ -225,7 +242,40 @@ def slide_body(w, s, k, gh):
                 f'<div><p class="sl-kicker">AI Skills Without Borders</p><h1>{title}</h1>{extra}</div></div>')
     if kind == "section":
         return f'<div class="sl-section"><p class="sl-part">{e(s["text"])}</p><h1>{title}</h1></div>'
-    head = f'<h2>{title}</h2>'
+    head = (f'<p class="sl-part">{e(s["part"])}</p>' if s.get("part") else "") + f'<h2>{title}</h2>'
+    if kind == "item":
+        it = s["item"]
+        flags = {}
+        for where, label in it["flags"]:
+            flags.setdefault(where, []).append(label)
+        tag = lambda k: "".join(f'<span class="flag">{e(x)}</span>' for x in flags.get(k, []))
+        opts = "".join(f'<li><span class="opt">{chr(65 + k)}.</span> <span>{e(o)}</span>{tag(k)}</li>' for k, o in enumerate(it["options"]))
+        return head + (f'<div class="sl-item"><p class="q">{e(it["stem"])}{tag("stem")}</p><ol class="opts">{opts}</ol></div>'
+                       f'<p class="sl-foot-note">{inline(s["text"], root, gh)}</p>')
+    if kind == "beforeafter":
+        def side(d, c):
+            lines = "".join(f"<p>{inline(x, root, gh)}</p>" for x in d["lines"])
+            marks = "".join(f"<li>{e(m)}</li>" for m in d["marks"])
+            return f'<div class="ba {c}"><h3>{e(d["title"])}</h3><div class="ba-out">{lines}</div><ol class="ba-marks">{marks}</ol></div>'
+        return head + (f'<div class="sl-ba">{side(s["left"], "l")}{side(s["right"], "r")}</div>'
+                       f'<p class="ba-still">{inline(s["still"], root, gh)}</p><p class="sl-src">{e(s["source"])}</p>')
+    if kind == "quotes":
+        q = "".join(f"<li>{inline(p, root, gh)}</li>" for p in pts)
+        return head + f'<ol class="sl-quotes">{q}</ol><p class="sl-foot-note">{inline(s["text"], root, gh)}</p>'
+    if kind == "verdict":
+        def side(d, c):
+            stem, _, opts = d["item"].partition("\n")
+            ck = "".join(f'<li class="{st}"><span>{"✓" if st == "ok" else "✕"}</span>{e(t)}</li>' for t, st in d["checks"])
+            return (f'<div class="vd {c}"><h3>{e(d["title"])}</h3><p class="q">{e(stem)}</p><p class="vd-opts">{"".join(f"<span>{e(o)}</span>" for o in opts.split("  "))}</p>'
+                    f'<ul class="vd-checks">{ck}</ul></div>')
+        return head + f'<div class="sl-vd">{side(s["left"], "bad")}{side(s["right"], "good")}</div><p class="sl-foot-note">{inline(s["text"], root, gh)}</p>'
+    if kind == "fix":
+        return head + ('<div class="sl-fix">'
+                       f'<div class="fx fail"><b>What went wrong</b><p>{e(s["failure"])}</p></div>'
+                       f'<div class="fx old"><b>The line that caused it</b><p>{e(s["before"])}</p></div>'
+                       f'<div class="fx new"><b>The line rewritten</b><p>{e(s["after"])}</p></div>'
+                       f'<div class="fx rerun"><b>Run again, on a new input</b><p>{e(s["rerun"])}</p></div></div>'
+                       f'<p class="sl-src">{e(s["text"])}</p>')
     if kind == "agenda":
         rows = "".join(
             f'<li><span class="ag-time">{clock(a["start"])}</span><b>{e(a["title"])}</b>'

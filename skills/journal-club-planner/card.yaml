@@ -37,6 +37,7 @@ tested_in:
   copilot: untested
 last_tested: null
 used_at: []
+evidence: "Tested in Claude by the author, as reported in the submission (issue #4)."
 frameworks: []
 origin_institution: Icahn School of Medicine at Mount Sinai
 derived_from: New skill
