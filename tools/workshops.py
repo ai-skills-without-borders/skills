@@ -213,6 +213,21 @@ def handouts_html(w, gh):
     return "".join(h)
 
 
+def before_after_html(root=""):
+    """The before/after comparison from the beginners' deck, as a block for ordinary pages (one source for both)."""
+    w = next(x for x in load() if x["id"] == "using-skills")
+    s = next(x for x in w["slides"] if x["kind"] == "beforeafter")
+    item = next(x for x in w["slides"] if x["kind"] == "item")["item"]
+    def side(d, c):
+        lines = "".join(f"<p>{inline(x, root)}</p>" for x in d["lines"])
+        marks = "".join(f"<li>{e(m)}</li>" for m in d["marks"])
+        return f'<div class="ba2 {c}"><h3>{e(d["title"])}</h3><div class="ba2-out">{lines}</div><ol class="ba2-marks">{marks}</ol></div>'
+    opts = "".join(f"<li>{chr(65 + k)}. {e(o)}</li>" for k, o in enumerate(item["options"]))
+    return (f'<div class="ba2-q"><span class="ba2-label">The question</span><p><b>{e(item["stem"])}</b></p><ol class="ba2-opts">{opts}</ol></div>'
+            f'<div class="ba2-grid">{side(s["left"], "l")}{side(s["right"], "r")}</div>'
+            f'<p class="ba2-still">{inline(s["still"], root)}</p><p class="ba2-src">{e(s["source"].split(". ")[0])}. Outputs vary between runs and tools.</p>')
+
+
 PLAN_JS = """<script>
 document.querySelectorAll('.ws-copy').forEach(b => b.addEventListener('click', () => {
   const t = b.parentElement.querySelector('code').innerText;

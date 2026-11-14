@@ -1,16 +1,24 @@
 <div class="hero wrap hero-grid">
  <div>
   <h1>Teaching expertise, open to every educator</h1>
-  <p class="lede">What experienced educators know about teaching biomedical research and medicine usually stays within their own institution. We package it as AI skills that any educator can use for free, in any AI assistant, and improve together.</p>
-  <p class="tools">An open community, from course faculty to graduate, MD-PhD and postdoctoral training leaders. Works in Claude, ChatGPT, Gemini and Copilot, with a paste-in version for free plans. Every rule shows what it rests on, and every skill shows where it has been tested.</p>
+  <p class="lede">What experienced educators know about teaching biomedical research and medicine usually stays within their own institution. We package it as AI skills: a colleague's method, written down so that your AI assistant follows it. Free, and open to every educator.</p>
+  <p class="tools">Built for Claude, ChatGPT, Gemini and Copilot, and usable in any assistant without installing. Each skill shows where it has been tested.</p>
   <div class="ctas">
-    <a class="btn primary" href="skills.html">Browse the skills</a>
-    <a class="btn plain" href="contribute.html">Join the community</a>
+    <a class="btn primary" href="try.html">Try your first skill</a>
+    <a class="btn plain" href="skills.html">Browse all skills</a>
   </div>
-  <p class="newhere">New to AI skills? <a href="start.html">Start here</a>.</p>
  </div>
  {{HERO_ART}}
 </div>
+
+<section>
+  <div class="wrap">
+    <h2>See the difference</h2>
+    <p class="sub">The same request to an AI assistant, about the same flawed exam question: once on its own, once following the Exam Question Writer skill.</p>
+    {{BEFORE_AFTER}}
+    <p class="more"><a class="btn primary" href="try.html">Try it yourself</a></p>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -26,48 +34,42 @@
 
 <section>
   <div class="wrap">
-    <h2>Commitments built into every skill</h2>
-    <ol class="principles">
-      <li><strong>Never invents</strong> sources, figures, names, dates or framework wording. Gaps become visible placeholders or questions.</li>
-      <li><strong>You decide.</strong> The skill proposes; the educator approves. Competency maps are proposals for faculty review.</li>
-      <li><strong>Says it used AI.</strong> Outputs carry a one-line AI-assistance statement in your institution's wording.</li>
-      <li><strong>Keeps data private.</strong> No identifiable patient or learner data, ever.</li>
-      <li><strong>Works in any assistant.</strong> Skills that run code say so, and still work by reading where code can't run.</li>
-      <li><strong>Shows its evidence.</strong> Each rule is labelled with what it rests on, and each skill shows where it has been tested.</li>
-    </ol>
+    <h2>What every skill is designed to do</h2>
+    <ul class="commit3">
+      <li><b>Flag gaps instead of inventing.</b> Skills tell the AI to ask, or to leave a visible placeholder, rather than make up sources, figures or framework wording.</li>
+      <li><b>Leave the decisions to you.</b> The skill proposes and stops for your approval. You review every output before it reaches a learner.</li>
+      <li><b>Show their evidence.</b> Each rule is labelled with what it rests on, and each skill shows where it has been tested.</li>
+    </ul>
+    <p class="more"><a href="quality.html#commitments">All six commitments, and how skills are tested</a></p>
   </div>
 </section>
-
-<section>
-  <div class="wrap">
-    <h2>Starter skills</h2>
-    <p class="sub">The starter set: useful on their own, and they work together.</p>
-    <div class="starters" id="starters"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Choose your starting point</h2>
-    <p class="sub">Pick the description that fits you best.</p>
-    <div class="paths">
-      <a class="path" href="start.html"><span class="who">New to AI skills</span><h3>What is a skill, and how do I use one?</h3><p>The idea in plain words, a prompt compared with a skill, and three steps to your first use.</p><span class="go" aria-hidden="true">›</span></a>
-      <a class="path" href="skills.html"><span class="who">Teaching with AI</span><h3>Find a skill for a task on my desk</h3><p>Search by what you need to do, then download it for your AI tool.</p><span class="go" aria-hidden="true">›</span></a>
-      <a class="path" href="contribute.html"><span class="who">Course leader or curriculum team</span><h3>Adapt or improve a skill for my institution</h3><p>Configure a skill, suggest a change, edit it directly, or make a variant for your school.</p><span class="go" aria-hidden="true">›</span></a>
-      <a class="path" href="quality.html"><span class="who">Reviewer or committee</span><h3>See how skills are tested and approved</h3><p>Maturity levels, the status of every skill, and how to review one from another institution.</p><span class="go" aria-hidden="true">›</span></a>
-      <a class="path" href="pedagogy.html"><span class="who">Educator or education researcher</span><h3>Check the pedagogy behind the rules</h3><p>{{N_PRINCIPLES}} principles in three layers, the research and standards behind each, and where evidence is still missing.</p><span class="go" aria-hidden="true">›</span></a>
-      <a class="path" href="contribute.html#new"><span class="who">Skill author</span><h3>Share a skill I already use</h3><p>Send it through a form or a pull request. No GitHub experience needed.</p><span class="go" aria-hidden="true">›</span></a>
-    </div>
-  </div>
-</section>
-
 
 <section>
   <div class="wrap">
     <div class="thread" aria-labelledby="thread-h">
       <h2 id="thread-h">One objective through six skills</h2>
       <p>Write <span class="objective">O3a</span> once, and every other skill points back to it: the syllabus places it, the session teaches it, the reading prepares for it, the exam checks it.</p>
-      <div class="rail" id="rail"></div>
+      <div class="rail" id="rail">{{THREAD}}</div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Starter skills</h2>
+    <p class="sub">Useful on their own, and they work together.</p>
+    <div class="starters" id="starters">{{STARTERS}}</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where to go next</h2>
+    <div class="paths three">
+      <a class="path" href="try.html"><span class="who">Try a skill now</span><h3>Get a first result in your own AI assistant</h3><p>One example, nothing to install. Then find a skill for a task on your desk.</p><span class="go" aria-hidden="true">›</span></a>
+      <a class="path" href="quality.html"><span class="who">Check the quality</span><h3>See the pedagogy and how skills are tested</h3><p>{{N_PRINCIPLES}} principles with their research and standards, maturity levels, and the status of every skill.</p><span class="go" aria-hidden="true">›</span></a>
+      <a class="path" href="contribute.html"><span class="who">Adapt or contribute</span><h3>Improve a skill, adapt it, or share your own</h3><p>Suggest a change in plain words, make a variant for your institution, or submit a skill through a form. A free GitHub account is needed.</p><span class="go" aria-hidden="true">›</span></a>
+    </div>
+    <p class="more">Part of a global community of educators: <a href="community.html">see who is taking part</a>, or <a href="workshops.html">run a workshop</a> at your institution.</p>
   </div>
 </section>

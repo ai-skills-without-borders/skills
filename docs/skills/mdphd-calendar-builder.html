@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=3fc05e6c16">
+<link rel="stylesheet" href="../style.css?v=f5acf0836f">
 <link rel="alternate" type="application/atom+xml" title="New skills and contributions" href="../feed.xml">
 </head>
 <body>
@@ -31,7 +31,8 @@
       <img src="../favicon.svg" alt="" width="40" height="40">
       <span>AI Skills Without Borders</span>
     </a>
-    <nav aria-label="Main">
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav"><span aria-hidden="true">☰</span> Menu</button>
+    <nav aria-label="Main" id="mainnav">
       <a href="../start.html">Start here</a>
       <a href="../skills.html" aria-current="page">Skills</a>
       <a href="../pedagogy.html">Pedagogy</a>
@@ -49,36 +50,55 @@
   <div class="skillhead">
     <div>
       <p class="crumbs"><a href="../skills.html">Skills</a> › MD-PhD Calendar Builder</p>
-      <div class="titleline" style="display:flex;gap:16px;align-items:center"><span class="sk-badge big"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></svg></span><h1 style="margin:0">MD-PhD Calendar Builder</h1></div>
-      <div style="height:10px"></div>
-      <p>Helps MD-PhD program directors and administrators build one complete calendar for their program.</p>
-    </div>
-    <div class="facts">
-      <div><b>Maturity</b>Draft</div>
-      <div><b>Version</b>0.1.0</div>
-      <div><b>Used by</b>Program staff</div>
-      <div><b>Runs code</b>No</div>
-      <div><b>Maintained by</b>Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)</div>
+      <div class="titleline sk-title"><span class="sk-badge big"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></svg></span><h1>MD-PhD Calendar Builder</h1></div>
+      <p class="sk-summary">Helps MD-PhD program directors and administrators build one complete calendar for their program.</p>
+      <p class="sk-meta"><b>Draft</b>, maintained by Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)</p>
     </div>
   </div>
 </div>
-<section>
+<section class="sk-first">
   <div class="wrap twocol">
     <div>
+      <div class="block use-now" id="use">
+        <h2>Use it</h2>
+        <div class="use-ways">
+          <div class="way">
+            <h3>Try it now, without installing</h3>
+            <p>Works in any AI assistant, free plans included.</p>
+            <ol>
+              <li>Copy the skill.</li>
+              <li>Open a new chat and paste it.</li>
+              <li>Write your request at the end and attach your material.</li>
+            </ol>
+            <p class="copy-row"><button type="button" class="btn primary" data-paste="../paste/mdphd-calendar-builder.md">Copy the skill</button> <span class="copy-status" role="status"></span></p>
+            
+            <p class="sub"><a href="../paste/mdphd-calendar-builder.md">Open the text instead</a></p>
+          </div>
+          <div class="way">
+            <h3>Install it for every chat</h3>
+            <p>Choose your AI tool:</p>
+            <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
+            <div class="install" id="install" aria-live="polite"></div>
+            <div class="actions"><a class="btn plain" href="../downloads/mdphd-calendar-builder.zip" download>Download ZIP</a></div>
+            <p class="sub">Claude Code, coding agents and organization-wide setup: <a href="https://github.com/ai-skills-without-borders/skills/blob/main/guide/install.md">the full install guide</a>.</p>
+          </div>
+        </div>
+        <p class="data-rule">Your material goes to the AI tool you use, under its terms. Never paste identifiable patient or learner data. Review every output before you use it.</p>
+      </div>
       <div class="block">
-        <h2>When to use it</h2>
-        <p>Helps MD-PhD program directors and administrators build a complete program calendar for any MD-PhD program. Use when someone says &quot;help me build our program calendar&quot;, &quot;make a master calendar for the MD-PhD program&quot;, &quot;what dates should our program track&quot;, &quot;map our students&#x27; milestones by year&quot;, &quot;when should we send committee meeting reminders&quot; or &quot;put our events and deadlines in one place&quot;. It covers the yearly program cycle, each student&#x27;s milestones from admission to residency, national dates such as AMCAS, NIH fellowships and the Match, and reminders with enough lead time. It works from the program&#x27;s own structure and rules and never invents dates.</p>
+        <h2>What it does</h2>
         <div class="useit"><h3>Use it to</h3><ul><li>Help me build our program calendar</li><li>Make a master calendar for the MD-PhD program</li><li>What dates should our program track</li><li>Map our students&#x27; milestones by year</li><li>When should we send committee meeting reminders</li><li>Put our events and deadlines in one place</li></ul></div>
         <div class="flow3">
           <div class="fbox"><h3>You bring</h3><ul><li>The program&#x27;s structure</li><li>The program&#x27;s rules for lab choice, qualifying exam, committee meetings and return to clinic</li><li>Entering years of current cohorts</li><li>Existing calendars, handbooks and the medical school and graduate school academic calendars</li><li>Where the calendar will live, such as Google Calendar, Outlook or a shared spreadsheet</li><li>Any grants with reporting dates, such as a T32</li></ul></div>
           <div class="fskill" aria-hidden="true"><span class="fskill-ic"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4M9 12h6M9 15.5h6"/></svg></span><span>the skill</span></div>
           <div class="fbox get"><h3>You get</h3><ul><li>A master calendar table with event, date or window, audience, cohort, owner, reminders, source and status</li><li>Views by month, by cohort and by owner</li><li>A list of clashes with exams, holidays and religious observances</li><li>A CSV file to import confirmed dates into Google Calendar or Outlook</li><li>An upkeep plan naming who refreshes the calendar each year</li></ul></div>
         </div>
+        <details class="more"><summary>The description the AI reads</summary><p>Helps MD-PhD program directors and administrators build a complete program calendar for any MD-PhD program. Use when someone says &quot;help me build our program calendar&quot;, &quot;make a master calendar for the MD-PhD program&quot;, &quot;what dates should our program track&quot;, &quot;map our students&#x27; milestones by year&quot;, &quot;when should we send committee meeting reminders&quot; or &quot;put our events and deadlines in one place&quot;. It covers the yearly program cycle, each student&#x27;s milestones from admission to residency, national dates such as AMCAS, NIH fellowships and the Match, and reminders with enough lead time. It works from the program&#x27;s own structure and rules and never invents dates.</p></details>
       </div>
       <div class="block">
-        <h2>Pedagogical basis</h2>
-        <p>What each rule rests on. <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span> — rules labelled Practice are local conventions your institution may change. <a href="../pedagogy.html">All principles and references</a>.</p>
-        <div class="prose"><table>
+        <h2>Why you can trust it</h2>
+        <p>Every rule in this skill is labelled with what it rests on: <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span>. Rules labelled Practice are local conventions your institution may change.</p>
+        <details class="more"><summary>The rules and their sources</summary><div class="prose"><table>
 <thead>
 <tr>
 <th>Rule in this skill</th>
@@ -136,7 +156,7 @@
 <li>National Academies of Sciences, Engineering, and Medicine. (2019). The Science of Effective Mentorship in STEMM. The National Academies Press. https://doi.org/10.17226/25568</li>
 <li>National Institutes of Health. NOT-OD-14-113: NIH Encourages Institutions to Develop Individual Development Plans for Graduate Students and Postdoctoral Researchers. https://grants.nih.gov/grants/guide/notice-files/NOT-OD-14-113.html</li>
 <li>National Institutes of Health. Standard Due Dates. https://grants.nih.gov/grants/how-to-apply-application-guide/due-dates-and-submission-policies/due-dates.htm</li>
-</ul></div>
+</ul></div><p><a href="../pedagogy.html">All principles and references</a></p></details>
       </div>
       <div class="block">
         <h2>Institutional variants</h2>
@@ -150,32 +170,30 @@
     </div>
     <div>
       <div class="panel">
-        <h2>Download and install</h2>
-        <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
-        <div class="install" id="install" aria-live="polite" style="margin:14px 0 0"></div>
-        <div class="actions">
-          <a class="btn primary" href="../downloads/mdphd-calendar-builder.zip" download>Download ZIP</a>
-          <a class="btn plain" href="../paste/mdphd-calendar-builder.md">Paste-in version</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Tested with AI tools</h2>
+        <h2>Where it has been tested</h2>
         <div class="tested"><span class="">Claude: not yet tested</span><span class="">ChatGPT: not yet tested</span><span class="">Gemini: not yet tested</span><span class="">Copilot: not yet tested</span></div>
         <p style="margin-top:12px">No usage reports yet. Be the first to send one.</p>
         <p>Not yet reviewed by another institution.</p>
+        <dl class="facts-mini">
+          <div><dt>Maturity</dt><dd>Draft</dd></div>
+          <div><dt>Version</dt><dd>0.1.0</dd></div>
+          <div><dt>Used by</dt><dd>Program staff</dd></div>
+          <div><dt>Runs code</dt><dd>No</dd></div>
+        </dl>
         <a href="../quality.html">How skills are tested and approved</a>
       </div>
       <div class="panel">
-        <h2>Improve or adapt this skill</h2>
-        <p class="sub">First time? <a href="../contribute.html#first">See how it works in four steps</a>.</p>
+        <h2>Used it? Tell us how it went</h2>
+        <p>Five minutes. Reports from other institutions are how a skill moves up from Draft.</p>
+        <div class="actions"><a class="btn primary" href="https://github.com/ai-skills-without-borders/skills/issues/new?template=usage-report.yml">Report how it went</a></div>
+        <h3 class="panel-sub">Improve or adapt it</h3>
         <ul>
-          <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=usage-report.yml">Report how it went</a> — five minutes, the most useful contribution</li>
           <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=suggest-change.yml">Suggest a change</a> in plain words</li>
-          <li><a href="https://github.com/ai-skills-without-borders/skills/edit/main/skills/mdphd-calendar-builder/SKILL.md">Edit the skill on GitHub</a> — GitHub makes a copy and a pull request for approval</li>
+          <li><a href="https://github.com/ai-skills-without-borders/skills/edit/main/skills/mdphd-calendar-builder/SKILL.md">Edit the skill on GitHub</a>; GitHub makes a copy and a pull request for approval</li>
           <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=review.yml">Review or endorse it</a> after testing</li>
           <li><a href="../contribute.html#adapt">Adapt it for your institution</a></li>
+          <li><a href="https://github.com/ai-skills-without-borders/skills/tree/main/skills/mdphd-calendar-builder">Read the skill files</a></li>
         </ul>
-        <div class="actions"><a class="btn plain" href="https://github.com/ai-skills-without-borders/skills/tree/main/skills/mdphd-calendar-builder">Read the skill files</a></div>
       </div>
     </div>
   </div>
@@ -184,12 +202,12 @@
 </main>
 <footer>
   <div class="wrap">
-    <p>Library version 0.1.18. Open to every institution. Skills are shared by their contributors and provided as they are; review every AI output before use (<a href="../about.html#disclaimer">disclaimer</a>). <a href="../about.html">About the project</a>, <a href="../about.html#contact">contact us</a> and <a href="https://github.com/ai-skills-without-borders/skills">source on GitHub</a>.</p>
+    <p>Library version 2.0.0. Open to every institution. Skills are shared by their contributors and provided as they are; review every AI output before use (<a href="../about.html#disclaimer">disclaimer</a>). <a href="../about.html">About the project</a>, <a href="../about.html#contact">contact us</a> and <a href="https://github.com/ai-skills-without-borders/skills">source on GitHub</a>.</p>
     <p>Skill content CC BY 4.0, scripts MIT. Competency frameworks referenced here belong to their publishers and are not reproduced.</p>
   </div>
 </footer>
-<script>window.ASB = {"library_name": "AI Skills Without Borders", "repo": "ai-skills-without-borders/skills", "plugin_name": "ai-skills-without-borders", "version": "0.1.18"};</script>
-<script src="../site.js?v=3fc05e6c16"></script>
+<script>window.ASB = {"library_name": "AI Skills Without Borders", "repo": "ai-skills-without-borders/skills", "plugin_name": "ai-skills-without-borders", "version": "2.0.0"};</script>
+<script src="../site.js?v=f5acf0836f"></script>
 
 </body>
 </html>

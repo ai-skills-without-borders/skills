@@ -4,11 +4,10 @@
   const GH = `https://github.com/${C.repo || ""}`;
   function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
   const TOOLS = {
-    claude: { name: "Claude", how: () => `<strong>Claude</strong>Download the skill's ZIP, then in Claude open Customize → Skills → + → Upload a skill. Switch it on after uploading. Claude Code: <code>/plugin marketplace add ${esc(C.repo)}</code>, then <code>/plugin install ${esc(C.plugin_name)}@${esc(C.plugin_name)}</code>.` },
-    chatgpt: { name: "ChatGPT", how: () => `<strong>ChatGPT Business, Enterprise or Edu</strong>Download the skill's ZIP, then Skills → Create → Upload from your computer. Your workspace admin decides who can upload and share skills. On Free or Plus, use the paste-in version in a custom GPT.` },
-    gemini: { name: "Gemini", how: () => `<strong>Gemini Enterprise</strong>Download the ZIP, then Skills → + → Upload. In the regular Gemini app, use the paste-in version as the instructions of a Gem.` },
-    copilot: { name: "Copilot", how: () => `<strong>Microsoft 365 Copilot</strong>Unzip the skill and put its folder in your OneDrive under Documents/Cowork/Skills/, then start a new Cowork conversation. Copilot Studio agents accept an uploaded skill. Both need a Copilot license.` },
-    free: { name: "Free plan", how: () => `<strong>Any assistant without skills</strong>Open the paste-in version, paste the Instructions into a GPT, Gem or Project (or at the start of a chat), and add the reference files as knowledge files.` },
+    claude: { name: "Claude", how: () => `<strong>Claude (any plan, the free plan included)</strong><ol><li>Open <b>Settings → Capabilities</b> and turn on <b>Code execution and file creation</b>.</li><li>Open <b>Customize → Skills</b>, click <b>+</b>, then <b>Create skill → Upload a skill</b>, and choose the ZIP.</li><li>Switch the skill on in the list.</li></ol>On Team and Enterprise plans an owner must enable skills first.` },
+    chatgpt: { name: "ChatGPT", how: () => `<strong>ChatGPT Business, Enterprise or Edu</strong><ol><li>In the sidebar open <b>Plugins → Skills</b>.</li><li>Click <b>Create → Upload from your computer</b>, and choose the ZIP.</li></ol>On Enterprise and Edu an admin must turn skills on first. On Free and Plus there are no skills: use “Try without installing”.` },
+    gemini: { name: "Gemini", how: () => `<strong>Gemini Enterprise</strong><ol><li>Open <b>Skills</b>, click <b>+</b>, then <b>Upload</b>, and choose the ZIP.</li></ol>In the regular Gemini app, use “Try without installing” and paste it into a Gem's instructions.` },
+    copilot: { name: "Copilot", how: () => `<strong>Microsoft 365 Copilot</strong><ol><li>Unzip the skill.</li><li>Put its folder in your OneDrive under <code>Documents/Cowork/Skills/</code>.</li><li>Start a new Cowork conversation.</li></ol>Needs a Microsoft 365 Copilot license.` },
   };
   let tool = "claude";
   try { tool = localStorage.getItem("asb-tool") || "claude"; } catch (e) {}
@@ -28,6 +27,37 @@
     const inst = document.getElementById("install");
     if (inst) inst.innerHTML = TOOLS[tool].how();
   }
+  // Copy a skill's complete paste-in package (instructions and reference files) with an opening line,
+  // so trying a skill needs no installing and no assembling.
+  async function copyPackage(btn) {
+    const status = btn.parentElement.querySelector(".copy-status");
+    const say = t => { if (status) status.textContent = t; };
+    try {
+      const r = await fetch(btn.dataset.paste);
+      if (!r.ok) throw new Error(r.status);
+      const md = await r.text();
+      const text = (btn.dataset.before || "Follow the AI skill below for my requests in this chat. Before you start, ask me for anything it needs.") +
+        "\n\n" + md + "\n\n---\n\n" + (btn.dataset.after || "My request: ");
+      await navigator.clipboard.writeText(text);
+      say(btn.dataset.done || "Copied. Open a new chat in your AI assistant, paste, and write your request at the end.");
+      btn.classList.add("done");
+    } catch (e) {
+      say("Couldn't copy automatically. Open the text instead and copy all of it.");
+      window.location.href = btn.dataset.paste;
+    }
+  }
+  document.addEventListener("click", ev => { const b = ev.target.closest("[data-paste]"); if (b) { ev.preventDefault(); copyPackage(b); } });
+
+  // Menu button on phones: the main links fold away behind one button.
+  document.addEventListener("click", ev => {
+    const b = ev.target.closest(".menu-btn");
+    if (!b) return;
+    const open = b.getAttribute("aria-expanded") !== "true";
+    b.setAttribute("aria-expanded", open);
+    b.closest(".top").classList.toggle("menu-open", open);
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 0);
+  });
+
   window.ASBsite = { esc, GH, TOOLS, getTool: () => tool, onTool: f => listeners.push(f), renderToolPicker };
   document.addEventListener("DOMContentLoaded", renderToolPicker);
 

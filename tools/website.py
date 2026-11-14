@@ -125,6 +125,51 @@ def layout(cfg, title, description, content, active, root="", scripts="", catalo
     return page
 
 
+THREAD = [
+    ("learning-objectives-designer", "Objectives", "writes O3a"),
+    ("syllabus-builder", "Syllabus", "places it"),
+    ("pbl-rbl-session-builder", "Session", "teaches it"),
+    ("reading-material-generator", "Reading", "prepares for it"),
+    ("exam-question-writer", "Exam items", "checks it"),
+    ("lesson-format-checker", "Lesson check", "verifies the plan lists it"),
+]
+
+
+def home_html(cards):
+    """The home page, with every section in the HTML itself so it reads without JavaScript."""
+    rail = "".join(f'<a class="node{" first" if i == 0 else ""}" href="skills/{n}.html"><span class="dot" aria-hidden="true"></span>'
+                   f'<span class="lbl">{l}</span><span class="what">{w}</span></a>' for i, (n, l, w) in enumerate(THREAD))
+    starters = "".join(f'<a href="skills/{e(c["name"])}.html"><div class="titleline"><span class="sk-badge">{visuals.icon(c["name"], 26)}</span>'
+                       f'<div><h3>{e(c["title"])}</h3><p>{e(c["summary"])}</p></div></div></a>' for c in cards if c.get("starter"))
+    return (read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()).replace("{{N_PRINCIPLES}}", str(len(principles.load()[1])))
+            .replace("{{BEFORE_AFTER}}", workshops.before_after_html()).replace("{{THREAD}}", rail).replace("{{STARTERS}}", starters))
+
+
+TRY_REQUEST = ("My request: review the exam question below for item-writing flaws and suggest the smallest fix. "
+               "It is a formative practice question for second-year medical students. The objective it tests: "
+               "\"Describe the endocrine and regulatory functions of the kidney.\" I have no source to check the key against.")
+
+
+def try_html():
+    w = next(x for x in workshops.load() if x["id"] == "using-skills")
+    item = next(x for x in w["slides"] if x["kind"] == "item")["item"]
+    q_text = item["stem"] + "\n" + "\n".join(f"{chr(65 + k)}. {o}" for k, o in enumerate(item["options"]))
+    q_html = f'<p><b>{e(item["stem"])}</b></p><ol class="ba2-opts">' + "".join(
+        f"<li>{chr(65 + k)}. {e(o)}</li>" for k, o in enumerate(item["options"])) + "</ol>"
+    return (read("try.html").replace("{{PASTE}}", "paste/exam-question-writer.md")
+            .replace("{{AFTER}}", e(TRY_REQUEST + "\n\n" + q_text)).replace("{{QUESTION}}", q_html)
+            .replace("{{BEFORE_AFTER}}", workshops.before_after_html()))
+
+
+def paste_note(c):
+    """Long skills don't fit comfortably in a single chat message on free plans."""
+    f = ROOT / "dist" / c["paste"]
+    if f.exists() and f.stat().st_size > 60_000:
+        return ('<p class="sub">This skill is long. Paste it into the instructions or files of a Project, '
+                'custom GPT or Gem rather than into a chat message.</p>')
+    return ""
+
+
 def static_list(cards):
     """The catalog as plain links, for visitors whose browser doesn't run the script; the script replaces it."""
     items = "".join(f'<li><a href="skills/{e(c["name"])}.html">{e(c["title"])}</a>: {e(c["summary"])}</li>'
@@ -133,7 +178,7 @@ def static_list(cards):
 
 
 def sitemap(cfg, cards, wss):
-    pages = ["", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
+    pages = ["", "try.html", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
              "pedagogy.html", "about.html"]
     pages += [f"workshops/{w['id']}{x}.html" for w in wss for x in ("", "-handouts")] + [f"skills/{c['name']}.html" for c in cards]
     urls = "".join(f"<url><loc>{e(cfg['site_url'] + p)}</loc></url>\n" for p in pages)
@@ -186,7 +231,7 @@ def skill_page(c, cfg, variants):
                  "USERS": e(users_label(c.get("users"))), "DESCRIPTION": e(c["description"]),
                  "TASKS": li(c.get("tasks")), "INPUTS": li(c.get("inputs")), "OUTPUTS": li(c.get("outputs")),
                  "PEDAGOGY": ped, "VARIANTS": vhtml, "ORIGIN": origin, "FRAMEWORKS": frameworks,
-                 "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "TESTED": tested, "USED_AT": used_at,
+                 "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "PASTE_NOTE": paste_note(c), "TESTED": tested, "USED_AT": used_at,
                  "REVIEWERS": reviewers, "NAME": e(c["name"]), "ICON": visuals.icon(c["name"], 36)}.items():
         content = content.replace("{{" + k + "}}", v)
     return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../", path=f"skills/{c['name']}.html")
@@ -279,7 +324,9 @@ def build_site(cards, variants, cfg, public_card):
     pages = {
         "index.html": (f"{cfg['library_name']} — shared AI skills for biomedical research and medical education",
                        "Shared AI skills for educators in biomedical research and medicine.",
-                       read("home.html").replace("{{HERO_ART}}", visuals.hero_svg()).replace("{{N_PRINCIPLES}}", str(len(principles.load()[1]))), "", read("home.js")),
+                       home_html(cards), "", ""),
+        "try.html": ("Try your first skill — " + cfg["library_name"], "Try an AI skill in your own assistant in a few minutes, with nothing to install.",
+                     try_html(), "start.html", ""),
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
                        fill_steps(read("start.html")), "start.html", ""),
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",

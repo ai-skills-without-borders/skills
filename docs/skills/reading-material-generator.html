@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=3fc05e6c16">
+<link rel="stylesheet" href="../style.css?v=f5acf0836f">
 <link rel="alternate" type="application/atom+xml" title="New skills and contributions" href="../feed.xml">
 </head>
 <body>
@@ -31,7 +31,8 @@
       <img src="../favicon.svg" alt="" width="40" height="40">
       <span>AI Skills Without Borders</span>
     </a>
-    <nav aria-label="Main">
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav"><span aria-hidden="true">☰</span> Menu</button>
+    <nav aria-label="Main" id="mainnav">
       <a href="../start.html">Start here</a>
       <a href="../skills.html" aria-current="page">Skills</a>
       <a href="../pedagogy.html">Pedagogy</a>
@@ -49,36 +50,55 @@
   <div class="skillhead">
     <div>
       <p class="crumbs"><a href="../skills.html">Skills</a> › Reading Material Generator</p>
-      <div class="titleline" style="display:flex;gap:16px;align-items:center"><span class="sk-badge big"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5Z"/><path d="M12 6.5v13"/><path d="M6 9h3.5M6 12h3.5M14.5 9H18"/></svg></span><h1 style="margin:0">Reading Material Generator</h1></div>
-      <div style="height:10px"></div>
-      <p>Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks.</p>
-    </div>
-    <div class="facts">
-      <div><b>Maturity</b>Tested at origin</div>
-      <div><b>Version</b>0.1.0</div>
-      <div><b>Used by</b>Educators</div>
-      <div><b>Runs code</b>No</div>
-      <div><b>Maintained by</b>Amit Shraga, PhD (Weizmann Institute of Science)</div>
+      <div class="titleline sk-title"><span class="sk-badge big"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5Z"/><path d="M12 6.5v13"/><path d="M6 9h3.5M6 12h3.5M14.5 9H18"/></svg></span><h1>Reading Material Generator</h1></div>
+      <p class="sk-summary">Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks.</p>
+      <p class="sk-meta"><b>Tested at origin</b>, maintained by Amit Shraga, PhD (Weizmann Institute of Science)</p>
     </div>
   </div>
 </div>
-<section>
+<section class="sk-first">
   <div class="wrap twocol">
     <div>
+      <div class="block use-now" id="use">
+        <h2>Use it</h2>
+        <div class="use-ways">
+          <div class="way">
+            <h3>Try it now, without installing</h3>
+            <p>Works in any AI assistant, free plans included.</p>
+            <ol>
+              <li>Copy the skill.</li>
+              <li>Open a new chat and paste it.</li>
+              <li>Write your request at the end and attach your material.</li>
+            </ol>
+            <p class="copy-row"><button type="button" class="btn primary" data-paste="../paste/reading-material-generator.md">Copy the skill</button> <span class="copy-status" role="status"></span></p>
+            
+            <p class="sub"><a href="../paste/reading-material-generator.md">Open the text instead</a></p>
+          </div>
+          <div class="way">
+            <h3>Install it for every chat</h3>
+            <p>Choose your AI tool:</p>
+            <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
+            <div class="install" id="install" aria-live="polite"></div>
+            <div class="actions"><a class="btn plain" href="../downloads/reading-material-generator.zip" download>Download ZIP</a></div>
+            <p class="sub">Claude Code, coding agents and organization-wide setup: <a href="https://github.com/ai-skills-without-borders/skills/blob/main/guide/install.md">the full install guide</a>.</p>
+          </div>
+        </div>
+        <p class="data-rule">Your material goes to the AI tool you use, under its terms. Never paste identifiable patient or learner data. Review every output before you use it.</p>
+      </div>
       <div class="block">
-        <h2>When to use it</h2>
-        <p>Turns one or more source documents (journal papers, book chapters, reviews, protocols) into structured, interactive reading material sized for a real class session in medical or biomedical-research education. Use whenever an educator asks for reading material, a pre-reading, a group reading assignment, a flipped-classroom reading, or wants to turn a paper or chapter into something learners read before or during a lecture, PBL, RBL or workshop — even without the phrase &quot;reading material&quot;. Triggers include &quot;turn this paper into something my students can read&quot;, &quot;I need the reading part of my session&quot;, &quot;make a group reading out of this chapter&quot;, &quot;summarize this paper for a 2-hour session&quot;. Also use to shorten or lengthen an existing reading, add a glossary, add discussion questions, or add figures from the source.</p>
+        <h2>What it does</h2>
         <div class="useit"><h3>Use it to</h3><ul><li>Create a pre-reading</li><li>Turn a paper into reading material</li><li>Group reading for a workshop</li></ul></div>
         <div class="flow3">
           <div class="fbox"><h3>You bring</h3><ul><li>Source documents</li><li>Session time or word budget</li><li>Objective IDs</li></ul></div>
           <div class="fskill" aria-hidden="true"><span class="fskill-ic"><svg class="sk-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5Z"/><path d="M12 6.5v13"/><path d="M6 9h3.5M6 12h3.5M14.5 9H18"/></svg></span><span>the skill</span></div>
           <div class="fbox get"><h3>You get</h3><ul><li>Self-contained HTML reading (or Markdown)</li></ul></div>
         </div>
+        <details class="more"><summary>The description the AI reads</summary><p>Turns one or more source documents (journal papers, book chapters, reviews, protocols) into structured, interactive reading material sized for a real class session in medical or biomedical-research education. Use whenever an educator asks for reading material, a pre-reading, a group reading assignment, a flipped-classroom reading, or wants to turn a paper or chapter into something learners read before or during a lecture, PBL, RBL or workshop — even without the phrase &quot;reading material&quot;. Triggers include &quot;turn this paper into something my students can read&quot;, &quot;I need the reading part of my session&quot;, &quot;make a group reading out of this chapter&quot;, &quot;summarize this paper for a 2-hour session&quot;. Also use to shorten or lengthen an existing reading, add a glossary, add discussion questions, or add figures from the source.</p></details>
       </div>
       <div class="block">
-        <h2>Pedagogical basis</h2>
-        <p>What each rule rests on. <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span> — rules labelled Practice are local conventions your institution may change. <a href="../pedagogy.html">All principles and references</a>.</p>
-        <div class="prose"><table>
+        <h2>Why you can trust it</h2>
+        <p>Every rule in this skill is labelled with what it rests on: <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span>. Rules labelled Practice are local conventions your institution may change.</p>
+        <details class="more"><summary>The rules and their sources</summary><div class="prose"><table>
 <thead>
 <tr>
 <th>Rule in this skill</th>
@@ -118,7 +138,7 @@
 <td>Adults read non-fiction silently at ~238 words/minute (Brysbaert, 2019, <em>Journal of Memory and Language</em> 109:104047). The budget (~50 words/minute) deliberately leaves time for study, reflection and discussion. Institutions may measure and set their own constant</td>
 </tr>
 </tbody>
-</table></div>
+</table></div><p><a href="../pedagogy.html">All principles and references</a></p></details>
       </div>
       <div class="block">
         <h2>Institutional variants</h2>
@@ -132,32 +152,30 @@
     </div>
     <div>
       <div class="panel">
-        <h2>Download and install</h2>
-        <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
-        <div class="install" id="install" aria-live="polite" style="margin:14px 0 0"></div>
-        <div class="actions">
-          <a class="btn primary" href="../downloads/reading-material-generator.zip" download>Download ZIP</a>
-          <a class="btn plain" href="../paste/reading-material-generator.md">Paste-in version</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Tested with AI tools</h2>
+        <h2>Where it has been tested</h2>
         <div class="tested"><span class="works">Claude: works</span><span class="works">ChatGPT: works</span><span class="works">Gemini: works</span><span class="">Copilot: not yet tested</span></div>
         <p style="margin-top:12px"><b>How we know:</b> Used in teaching at the Weizmann Institute&#x27;s Gutwirth Medical School. Tested by the author in Claude, ChatGPT and Gemini, September 2026.<br>Used at: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science</p>
         <p>Not yet reviewed by another institution.</p>
+        <dl class="facts-mini">
+          <div><dt>Maturity</dt><dd>Tested at origin</dd></div>
+          <div><dt>Version</dt><dd>0.1.0</dd></div>
+          <div><dt>Used by</dt><dd>Educators</dd></div>
+          <div><dt>Runs code</dt><dd>No</dd></div>
+        </dl>
         <a href="../quality.html">How skills are tested and approved</a>
       </div>
       <div class="panel">
-        <h2>Improve or adapt this skill</h2>
-        <p class="sub">First time? <a href="../contribute.html#first">See how it works in four steps</a>.</p>
+        <h2>Used it? Tell us how it went</h2>
+        <p>Five minutes. Reports from other institutions are how a skill moves up from Draft.</p>
+        <div class="actions"><a class="btn primary" href="https://github.com/ai-skills-without-borders/skills/issues/new?template=usage-report.yml">Report how it went</a></div>
+        <h3 class="panel-sub">Improve or adapt it</h3>
         <ul>
-          <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=usage-report.yml">Report how it went</a> — five minutes, the most useful contribution</li>
           <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=suggest-change.yml">Suggest a change</a> in plain words</li>
-          <li><a href="https://github.com/ai-skills-without-borders/skills/edit/main/skills/reading-material-generator/SKILL.md">Edit the skill on GitHub</a> — GitHub makes a copy and a pull request for approval</li>
+          <li><a href="https://github.com/ai-skills-without-borders/skills/edit/main/skills/reading-material-generator/SKILL.md">Edit the skill on GitHub</a>; GitHub makes a copy and a pull request for approval</li>
           <li><a href="https://github.com/ai-skills-without-borders/skills/issues/new?template=review.yml">Review or endorse it</a> after testing</li>
           <li><a href="../contribute.html#adapt">Adapt it for your institution</a></li>
+          <li><a href="https://github.com/ai-skills-without-borders/skills/tree/main/skills/reading-material-generator">Read the skill files</a></li>
         </ul>
-        <div class="actions"><a class="btn plain" href="https://github.com/ai-skills-without-borders/skills/tree/main/skills/reading-material-generator">Read the skill files</a></div>
       </div>
     </div>
   </div>
@@ -166,12 +184,12 @@
 </main>
 <footer>
   <div class="wrap">
-    <p>Library version 0.1.18. Open to every institution. Skills are shared by their contributors and provided as they are; review every AI output before use (<a href="../about.html#disclaimer">disclaimer</a>). <a href="../about.html">About the project</a>, <a href="../about.html#contact">contact us</a> and <a href="https://github.com/ai-skills-without-borders/skills">source on GitHub</a>.</p>
+    <p>Library version 2.0.0. Open to every institution. Skills are shared by their contributors and provided as they are; review every AI output before use (<a href="../about.html#disclaimer">disclaimer</a>). <a href="../about.html">About the project</a>, <a href="../about.html#contact">contact us</a> and <a href="https://github.com/ai-skills-without-borders/skills">source on GitHub</a>.</p>
     <p>Skill content CC BY 4.0, scripts MIT. Competency frameworks referenced here belong to their publishers and are not reproduced.</p>
   </div>
 </footer>
-<script>window.ASB = {"library_name": "AI Skills Without Borders", "repo": "ai-skills-without-borders/skills", "plugin_name": "ai-skills-without-borders", "version": "0.1.18"};</script>
-<script src="../site.js?v=3fc05e6c16"></script>
+<script>window.ASB = {"library_name": "AI Skills Without Borders", "repo": "ai-skills-without-borders/skills", "plugin_name": "ai-skills-without-borders", "version": "2.0.0"};</script>
+<script src="../site.js?v=f5acf0836f"></script>
 
 </body>
 </html>

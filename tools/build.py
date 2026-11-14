@@ -223,6 +223,7 @@ def main():
     if check_only:
         return
     for sub in ("zips", "paste"):
+        shutil.rmtree(DIST / sub, ignore_errors=True)  # no leftovers from renamed or removed skills
         (DIST / sub).mkdir(parents=True, exist_ok=True)
     for c in cards:
         build_zip(c)

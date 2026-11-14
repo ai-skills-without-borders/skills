@@ -2,36 +2,55 @@
   <div class="skillhead">
     <div>
       <p class="crumbs"><a href="../skills.html">Skills</a> › {{TITLE}}</p>
-      <div class="titleline" style="display:flex;gap:16px;align-items:center"><span class="sk-badge big">{{ICON}}</span><h1 style="margin:0">{{TITLE}}</h1></div>
-      <div style="height:10px"></div>
-      <p>{{SUMMARY}}</p>
-    </div>
-    <div class="facts">
-      <div><b>Maturity</b>{{MATURITY}}</div>
-      <div><b>Version</b>{{VERSION}}</div>
-      <div><b>Used by</b>{{USERS}}</div>
-      <div><b>Runs code</b>{{RUNS_CODE}}</div>
-      <div><b>Maintained by</b>{{MAINTAINERS}}</div>
+      <div class="titleline sk-title"><span class="sk-badge big">{{ICON}}</span><h1>{{TITLE}}</h1></div>
+      <p class="sk-summary">{{SUMMARY}}</p>
+      <p class="sk-meta"><b>{{MATURITY}}</b>, maintained by {{MAINTAINERS}}</p>
     </div>
   </div>
 </div>
-<section>
+<section class="sk-first">
   <div class="wrap twocol">
     <div>
+      <div class="block use-now" id="use">
+        <h2>Use it</h2>
+        <div class="use-ways">
+          <div class="way">
+            <h3>Try it now, without installing</h3>
+            <p>Works in any AI assistant, free plans included.</p>
+            <ol>
+              <li>Copy the skill.</li>
+              <li>Open a new chat and paste it.</li>
+              <li>Write your request at the end and attach your material.</li>
+            </ol>
+            <p class="copy-row"><button type="button" class="btn primary" data-paste="../{{PASTE}}">Copy the skill</button> <span class="copy-status" role="status"></span></p>
+            {{PASTE_NOTE}}
+            <p class="sub"><a href="../{{PASTE}}">Open the text instead</a></p>
+          </div>
+          <div class="way">
+            <h3>Install it for every chat</h3>
+            <p>Choose your AI tool:</p>
+            <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
+            <div class="install" id="install" aria-live="polite"></div>
+            <div class="actions"><a class="btn plain" href="../{{ZIP}}" download>Download ZIP</a></div>
+            <p class="sub">Claude Code, coding agents and organization-wide setup: <a href="{{GH}}/blob/main/guide/install.md">the full install guide</a>.</p>
+          </div>
+        </div>
+        <p class="data-rule">Your material goes to the AI tool you use, under its terms. Never paste identifiable patient or learner data. Review every output before you use it.</p>
+      </div>
       <div class="block">
-        <h2>When to use it</h2>
-        <p>{{DESCRIPTION}}</p>
+        <h2>What it does</h2>
         <div class="useit"><h3>Use it to</h3><ul>{{TASKS}}</ul></div>
         <div class="flow3">
           <div class="fbox"><h3>You bring</h3><ul>{{INPUTS}}</ul></div>
           <div class="fskill" aria-hidden="true"><span class="fskill-ic">{{ICON}}</span><span>the skill</span></div>
           <div class="fbox get"><h3>You get</h3><ul>{{OUTPUTS}}</ul></div>
         </div>
+        <details class="more"><summary>The description the AI reads</summary><p>{{DESCRIPTION}}</p></details>
       </div>
       <div class="block">
-        <h2>Pedagogical basis</h2>
-        <p>What each rule rests on. <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span> — rules labelled Practice are local conventions your institution may change. <a href="../pedagogy.html">All principles and references</a>.</p>
-        <div class="prose">{{PEDAGOGY}}</div>
+        <h2>Why you can trust it</h2>
+        <p>Every rule in this skill is labelled with what it rests on: <span class="basis research">Research</span> <span class="basis standard">Standard</span> <span class="basis practice">Practice</span>. Rules labelled Practice are local conventions your institution may change.</p>
+        <details class="more"><summary>The rules and their sources</summary><div class="prose">{{PEDAGOGY}}</div><p><a href="../pedagogy.html">All principles and references</a></p></details>
       </div>
       <div class="block">
         <h2>Institutional variants</h2>
@@ -45,32 +64,30 @@
     </div>
     <div>
       <div class="panel">
-        <h2>Download and install</h2>
-        <div class="seg" role="group" aria-label="Your AI tool" id="tools"></div>
-        <div class="install" id="install" aria-live="polite" style="margin:14px 0 0"></div>
-        <div class="actions">
-          <a class="btn primary" href="../{{ZIP}}" download>Download ZIP</a>
-          <a class="btn plain" href="../{{PASTE}}">Paste-in version</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h2>Tested with AI tools</h2>
+        <h2>Where it has been tested</h2>
         <div class="tested">{{TESTED}}</div>
         <p style="margin-top:12px">{{USED_AT}}</p>
         <p>{{REVIEWERS}}</p>
+        <dl class="facts-mini">
+          <div><dt>Maturity</dt><dd>{{MATURITY}}</dd></div>
+          <div><dt>Version</dt><dd>{{VERSION}}</dd></div>
+          <div><dt>Used by</dt><dd>{{USERS}}</dd></div>
+          <div><dt>Runs code</dt><dd>{{RUNS_CODE}}</dd></div>
+        </dl>
         <a href="../quality.html">How skills are tested and approved</a>
       </div>
       <div class="panel">
-        <h2>Improve or adapt this skill</h2>
-        <p class="sub">First time? <a href="../contribute.html#first">See how it works in four steps</a>.</p>
+        <h2>Used it? Tell us how it went</h2>
+        <p>Five minutes. Reports from other institutions are how a skill moves up from Draft.</p>
+        <div class="actions"><a class="btn primary" href="{{GH}}/issues/new?template=usage-report.yml">Report how it went</a></div>
+        <h3 class="panel-sub">Improve or adapt it</h3>
         <ul>
-          <li><a href="{{GH}}/issues/new?template=usage-report.yml">Report how it went</a> — five minutes, the most useful contribution</li>
           <li><a href="{{GH}}/issues/new?template=suggest-change.yml">Suggest a change</a> in plain words</li>
-          <li><a href="{{GH}}/edit/main/skills/{{NAME}}/SKILL.md">Edit the skill on GitHub</a> — GitHub makes a copy and a pull request for approval</li>
+          <li><a href="{{GH}}/edit/main/skills/{{NAME}}/SKILL.md">Edit the skill on GitHub</a>; GitHub makes a copy and a pull request for approval</li>
           <li><a href="{{GH}}/issues/new?template=review.yml">Review or endorse it</a> after testing</li>
           <li><a href="../contribute.html#adapt">Adapt it for your institution</a></li>
+          <li><a href="{{GH}}/tree/main/skills/{{NAME}}">Read the skill files</a></li>
         </ul>
-        <div class="actions"><a class="btn plain" href="{{GH}}/tree/main/skills/{{NAME}}">Read the skill files</a></div>
       </div>
     </div>
   </div>

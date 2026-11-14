@@ -1,0 +1,46 @@
+<div class="pagehead wrap">
+  <h1>Try your first skill</h1>
+  <p>One example, in the AI assistant you already use. Nothing to install, and no account on this site. You will see a skill check an exam question for item-writing flaws, and learn how to judge what it gives you.</p>
+</div>
+
+<section>
+  <div class="wrap try">
+    <ol class="try-steps">
+      <li>
+        <h2 id="open">Open a new chat in your AI assistant</h2>
+        <p>Claude, ChatGPT, Gemini or Copilot, on any plan, free plans included. If your institution provides one, use it and follow its rules.</p>
+      </li>
+      <li>
+        <h2 id="copy">Copy the skill and the example</h2>
+        <p>One button copies everything the assistant needs: the <a href="skills/exam-question-writer.html">Exam Question Writer</a> skill, the example question below, and a request to review it.</p>
+        <p class="copy-row"><button type="button" class="btn primary" data-paste="{{PASTE}}" data-after="{{AFTER}}" data-done="Copied. Now paste it into the new chat and send.">Copy the skill and the example</button> <span class="copy-status" role="status"></span></p>
+        <div class="ba2-q try-q"><span class="ba2-label">The example question (made up for practice)</span>{{QUESTION}}</div>
+        <p class="sub">The copy already tells the assistant what it would otherwise ask you: who the question is for and which objective it tests. With your own material, the skill asks you instead.</p>
+      </li>
+      <li>
+        <h2 id="paste">Paste it into the chat and send</h2>
+        <p>It is a long message: the skill's instructions come first, and your request is at the end. That is expected. The run happens in your assistant, not on this site.</p>
+      </li>
+      <li>
+        <h2 id="check">Check what comes back</h2>
+        <p>Outputs differ between runs and tools, so look for these signs rather than for the same words:</p>
+        <ul class="ws-check">
+          <li><b>It names the flaws it found</b>, against a checklist: the negative stem, "All of the above", the longest option being the answer, the options in mixed forms.</li>
+          <li><b>It keeps what the question tests</b> (the kidney's functions) instead of swapping in a new question.</li>
+          <li><b>It doesn't claim the answer is checked</b>: with no source given, the keyed answer is marked unverified.</li>
+          <li><b>It tells you what still needs your judgement</b>, for example a lead-in that can't be answered with the options covered.</li>
+        </ul>
+        <details class="more"><summary>See an example: the same request with and without the skill</summary>{{BEFORE_AFTER}}</details>
+      </li>
+      <li>
+        <h2 id="next">Now try it on your own work</h2>
+        <div class="paths three try-next">
+          <a class="path" href="skills.html"><span class="who">Find a skill</span><h3>Search by what you need to do</h3><p>Objectives, a syllabus, a session, a reading, exam questions, mentoring and more.</p><span class="go" aria-hidden="true">›</span></a>
+          <a class="path" href="skills/exam-question-writer.html#use"><span class="who">Keep it</span><h3>Install the skill for every chat</h3><p>Steps for Claude, ChatGPT, Gemini and Copilot, so you don't paste it each time.</p><span class="go" aria-hidden="true">›</span></a>
+          <a class="path" href="{{GH}}/issues/new?template=usage-report.yml"><span class="who">Tell us</span><h3>How did it go?</h3><p>Five minutes. Reports from other institutions are how skills improve.</p><span class="go" aria-hidden="true">›</span></a>
+        </div>
+      </li>
+    </ol>
+    <p class="data-rule">Your material goes to the AI tool you use, under its terms. Never paste identifiable patient or learner data. Review every output before it reaches a learner.</p>
+  </div>
+</section>

@@ -253,14 +253,11 @@ guides:
     steps:
     - Unzip the skill. Put the skill's folder in your OneDrive under `Documents/Cowork/Skills/`.
     - Start a new Cowork conversation. Both Cowork and Copilot Studio need a Microsoft 365 Copilot license.
-  - name: Any assistant without skills (the paste-in version)
+  - name: Any assistant, without installing
     steps:
-    - On the skill's page, click **Paste-in version**.
-    - Copy everything under **Instructions**.
-    - 'Best: create a custom GPT, a Gem, or a Project, and paste it into its instructions. Add the reference files
-      at the bottom of the page as knowledge files if the tool allows.'
-    - 'Quickest: start a new chat and paste the whole text as your first message, then write your request below
-      it.'
+    - On the skill's page, under **Try it now, without installing**, click **Copy the skill**. It copies the instructions and all reference files in one go.
+    - 'Quickest: open a new chat, paste, and write your request at the end of the message.'
+    - 'To keep it: paste the same text into the instructions of a custom GPT, a Gem or a Project.'
     - The paste-in version does the same job. It cannot run scripts, which only one skill in the library uses, and
       that skill still works by reading.
 - id: practice
@@ -545,12 +542,12 @@ slides:
   notes: Show this live on the projector, once and slowly. If most of your participants use another tool, show that
     tool's steps from the handout instead. Download the ZIP and don't unzip it.
 - kind: steps
-  title: No skills in your plan? The paste-in version
+  title: No skills in your plan? Use it without installing
   points:
-  - On the skill's page, click **Paste-in version**
-  - Copy everything under **Instructions**
-  - Paste into a GPT, Gem or Project, or at the start of a new chat
-  - Write your request below it
+  - On the skill's page, click **Copy the skill**
+  - Open a new chat and paste it
+  - Write your request at the end of the message
+  - To keep it, paste it into a GPT, Gem or Project instead
   notes: This works in every assistant, free plans included. It is also the fallback for anyone stuck after five
     minutes. ChatGPT, Gemini and Copilot steps are in the handout.
 - kind: exercise
