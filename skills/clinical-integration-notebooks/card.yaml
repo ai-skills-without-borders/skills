@@ -1,0 +1,50 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: clinical-integration-notebooks
+title: Clinical Integration Task Generator
+version: 0.1.0
+summary: Builds clinical integration sessions for a methods-based course.
+tasks:
+- Create clinical integration tasks for my course
+- Find an NEJM case that fits the methods my students have learned
+- Build a case-based team assignment from my course schedule
+- Make an integration session where students apply lab methods to a patient case
+- Generate this year's integration notebooks from my assignments and dates
+- Pick a clinical case for a physician-scientist methods course
+users:
+- educators
+- program-staff
+audience:
+- Educators
+- Program staff
+inputs:
+- '**Course assignments or materials'
+- '**Dates'
+- '**Course profile'
+- Optional
+outputs:
+- ''
+- 1. **Student notebook
+- learning goals
+- case background
+- a short lay-language handout that hides the diagnosis
+- a timed session plan, by default 3.5 h
+- discussion questions for each method, presentation requirements, and evaluation criteria
+- 2. **Instructor key
+runs_code: false
+maturity: draft
+tested_in:
+  claude: works
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+evidence: 'Tested in Claude by the author, as reported in the submission (issue #9).'
+frameworks: []
+origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
+derived_from: New skill
+maintainers:
+- Amit Shraga (The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science)
+reviewers: []
+license: CC-BY-4.0
+starter: false

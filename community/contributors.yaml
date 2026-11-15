@@ -136,3 +136,10 @@ contributions:
     person: "Talia H. Swartz, MD, PhD"
     github: taliaswartz
     link: https://github.com/ai-skills-without-borders/skills/issues/8
+  - date: 2026-11-15
+    type: skill
+    institution: weizmann
+    skill: clinical-integration-notebooks
+    person: "Amit Shraga"
+    github: mmmmpf
+    link: https://github.com/ai-skills-without-borders/skills/issues/9

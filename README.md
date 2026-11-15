@@ -20,6 +20,7 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [learning-objectives-designer](skills/learning-objectives-designer) | Extracts, writes, splits, levels and maps learning objectives; produces the numbered objectives table the other skills use. | No | tested at origin |
 | [pbl-rbl-session-builder](skills/pbl-rbl-session-builder) | Design partner for case-based PBL and tool-based RBL sessions, with readers, quizzes and intro lectures. | No | tested at origin |
 | [reading-material-generator](skills/reading-material-generator) | Turns papers and chapters into session-sized interactive readings with glossary, reflection prompts and self-checks. | No | tested at origin |
+| [clinical-integration-notebooks](skills/clinical-integration-notebooks) | Builds clinical integration sessions for a methods-based course. | No | draft |
 | [committee-meeting-planner](skills/committee-meeting-planner) | Helps a graduate student plan, run and write up their own thesis committee meeting, from the scheduling poll to the summary of the committee's advice. | No | draft |
 | [curriculum-map-builder](skills/curriculum-map-builder) | Builds and maintains a curriculum map that links course goals to module goals, session objectives and assessment items, and checks that every goal is taught and tested. | No | draft |
 | [exam-question-writer](skills/exam-question-writer) | Blueprints and writes objective-aligned SBA, short-answer and data-interpretation items, checked for item-writing flaws. | No | tested at origin |

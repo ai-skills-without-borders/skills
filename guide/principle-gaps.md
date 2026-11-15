@@ -31,12 +31,14 @@ Candidates for a new skill, or an addition to an existing one.
 
 These skills rest mainly on standards and policies (such as funder rules) rather than on teaching principles. Check whether a teaching principle applies, and add it to `guide/principles.yaml`.
 
+- `clinical-integration-notebooks`
 - `mstp-t32-planner`
 
 ## Principles per skill
 
 | Skill | Principles |
 |---|---|
+| `clinical-integration-notebooks` | 1 |
 | `committee-meeting-planner` | 3 |
 | `curriculum-map-builder` | 3 |
 | `exam-question-writer` | 5 |
