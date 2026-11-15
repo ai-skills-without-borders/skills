@@ -28,6 +28,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ISSUE: ${{ github.event.issue.number }}
       AUTHOR: ${{ github.event.issue.user.login }}
+      TITLE: ${{ github.event.issue.title }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -59,8 +60,15 @@ jobs:
           url=$(grep -oE 'https://github\.com/(user-attachments/files|[^ )]+/files)/[^ )]+\.zip' /tmp/sub/body.md | head -1 || true)
           if [ -n "$url" ]; then curl -sSL -H "Authorization: Bearer $GH_TOKEN" -o /tmp/sub/skill.zip "$url"; fi
 
+      - name: Is it really a new skill?
+        id: real
+        run: |
+          python tools/issue_triage.py /tmp/sub/body.md --title "$TITLE" --labels new-skill > /tmp/sub/kind.txt
+          if grep -q '^kind=new-skill' /tmp/sub/kind.txt; then echo "real=yes" >> "$GITHUB_OUTPUT"; else echo "real=no" >> "$GITHUB_OUTPUT"; fi
+
       - name: Build and check the skill
         id: build
+        if: steps.real.outputs.real == 'yes'
         run: |
           zarg=""; [ -f /tmp/sub/skill.zip ] && zarg="--zip /tmp/sub/skill.zip"
           name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --author "$AUTHOR" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
@@ -113,7 +121,7 @@ jobs:
           fi
 
       - name: Report a problem
-        if: steps.build.outputs.ok != 'yes'
+        if: steps.real.outputs.real == 'yes' && steps.build.outputs.ok != 'yes'
         run: |
           {
             echo "Thank you for sharing a skill! It could not be prepared automatically. Please fix the form (edit this issue) and it will be retried, or a maintainer will help: ${{ steps.who.outputs.mentions }}"

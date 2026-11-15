@@ -11,6 +11,7 @@ Called by tools/build.py. Pages:
     contribute.html   report, suggest, edit, adapt, share
 """
 import hashlib
+import urllib.parse
 import html
 import json
 import re
@@ -23,6 +24,7 @@ import community
 import principles
 import visuals
 import workshops
+import forms
 import workshop_pptx
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -231,7 +233,7 @@ def skill_page(c, cfg, variants):
                  "USERS": e(users_label(c.get("users"))), "DESCRIPTION": e(c["description"]),
                  "TASKS": li(c.get("tasks")), "INPUTS": li(c.get("inputs")), "OUTPUTS": li(c.get("outputs")),
                  "PEDAGOGY": ped, "VARIANTS": vhtml, "ORIGIN": origin, "FRAMEWORKS": frameworks,
-                 "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "PASTE_NOTE": paste_note(c), "TESTED": tested, "USED_AT": used_at,
+                 "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "PASTE_NOTE": paste_note(c), "REPORT_SKILL": urllib.parse.quote(forms.skill_option(c)), "TESTED": tested, "USED_AT": used_at,
                  "REVIEWERS": reviewers, "NAME": e(c["name"]), "ICON": visuals.icon(c["name"], 36)}.items():
         content = content.replace("{{" + k + "}}", v)
     return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../", path=f"skills/{c['name']}.html")

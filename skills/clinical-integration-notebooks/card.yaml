@@ -27,15 +27,15 @@ outputs:
 - 'Summary table: task date, method window, case chosen, matched methods'
 - 'profile.json for reuse next year (first run only)'
 runs_code: false
-maturity: tested-at-origin
+maturity: draft
 tested_in:
   claude: works
   chatgpt: untested
   gemini: untested
   copilot: untested
 last_tested: null
-used_at: [weizmann]
-evidence: 'Used with two cohorts of the Computational Molecular Biology of the Cell course at the Weizmann Institute''s Gutwirth Medical School, as reported by the author (issue #10). Tested by the author in Claude.'
+used_at: []
+evidence: 'Tried by the author on the CMBC course materials, November 2026 (issue #10). The integration tasks it produces have run with two cohorts, prepared before the skill existed.'
 frameworks: []
 origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: New skill

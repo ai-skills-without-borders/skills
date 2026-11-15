@@ -211,6 +211,8 @@ def validate_templates():
     """Issue forms must parse, and every form must ask for institution and country."""
     errors = []
     for f in sorted((ROOT / ".github" / "ISSUE_TEMPLATE").glob("*.yml")):
+        if f.name == "config.yml":
+            continue
         tag = f"[forms] {f.name}"
         try:
             d = yaml.safe_load(f.read_text(encoding="utf-8"))

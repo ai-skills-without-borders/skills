@@ -88,3 +88,13 @@ Maintainers decide by consensus. Disagreements about a skill's content go to its
 ## Releases
 
 Releases are tagged `vYEAR.MONTH` (e.g. `v2026.12`). Each release is archived on Zenodo with a DOI so authors can cite the exact version they used.
+
+## Issue intake
+
+Every new or edited issue is read by the intake automation (`.github/workflows/intake.yml`):
+
+- **It checks what the issue is from its content**, not only from the form it came through, and corrects the label, telling the contributor why. Blank issues are switched off, so every submission starts from a form.
+- **A usage report updates the skill by itself**: the reporting institution is added to `used_at`, the tool to `tested_in`, a sentence with a link to the report to `evidence`, and the maturity level moves up when the form says the skill's output was used in real teaching (Draft to Tested at origin at the skill's own institution; to Tested elsewhere at another). Reviewed is never set automatically. A report written without the form changes nothing; the contributor is asked to send it through the form, because free text can't say for sure whether the skill's own output reached learners.
+- **Known contributors' reports are published at once**; reports from first-time contributors open a pull request for one maintainer's approval, as new skills do.
+- **The skill lists in the forms follow the library**: every build updates them, so contributors pick a skill instead of typing its name.
+

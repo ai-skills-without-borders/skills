@@ -28,6 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import community  # noqa: E402
 import principles  # noqa: E402
 import workshops  # noqa: E402
+import forms  # noqa: E402
 import website  # noqa: E402  (tools/website.py)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -212,6 +213,8 @@ def main():
     cards, errors, warnings = validate()
     shared_names = [c["name"] for c in cards if not c["_variant"]]
     errors += principles.validate(shared_names)
+    if not check_only:
+        forms.sync([c for c in cards if not c["_variant"]])  # skill lists in the issue forms follow the library
     errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates() + workshops.validate(workshops.load())
     for w in warnings:
         print(f"warning: {w}")

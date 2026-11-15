@@ -1,0 +1,160 @@
+name: Issue intake
+# Every new or edited issue is read for what it is, whatever form (or none) it came through.
+# - A wrong or missing label is corrected, and the contributor is told why.
+# - A usage report updates the skill's card and the community record:
+#   known contributors' reports are published at once; others open a pull request for one approval.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: intake-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    if: github.event.issue.state == 'open' && !github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE: ${{ github.event.issue.number }}
+      AUTHOR: ${{ github.event.issue.user.login }}
+      TITLE: ${{ github.event.issue.title }}
+      LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pyyaml markdown python-pptx
+
+      - name: What is this issue?
+        id: kind
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}" --jq .body > /tmp/body.md
+          python tools/issue_triage.py /tmp/body.md --title "$TITLE" --labels "$LABELS" >> "$GITHUB_OUTPUT"
+          cat "$GITHUB_OUTPUT"
+
+      - name: Correct the label
+        if: steps.kind.outputs.relabel == 'yes'
+        run: |
+          kind='${{ steps.kind.outputs.kind }}'
+          gh issue edit "$ISSUE" --add-label "$kind"
+          for l in ${{ steps.kind.outputs.remove }}; do gh issue edit "$ISSUE" --remove-label "$l"; done
+          case "$kind" in
+            usage-report) what="a usage report about \`${{ steps.kind.outputs.skill }}\`" ;;
+            new-skill) what="a new skill" ;;
+            *) what="\`$kind\`" ;;
+          esac
+          gh issue comment "$ISSUE" --body "Thanks! I've filed this as ${what}, because ${{ steps.kind.outputs.reason }}. If that's not right, change the label and a maintainer will take a look."
+
+      - name: Who sent it
+        id: who
+        if: steps.kind.outputs.kind == 'usage-report'
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import os, yaml
+          cfg = yaml.safe_load(open("config.yaml"))
+          trusted = list(cfg.get("auto_publish", []))
+          author = os.environ["AUTHOR"].lower()
+          record = yaml.safe_load(open("community/contributors.yaml")) or {}
+          returning = {str(c.get("github", "")).lower() for c in record.get("contributions") or []} - {""}
+          blocked = {u.lower() for u in cfg.get("no_auto_publish") or []}
+          ok = (author in {u.lower() for u in trusted} or author in returning) and author not in blocked
+          print("trusted=" + ("yes" if ok else "no"))
+          print("reviewers=" + " ".join(u for u in trusted if u.lower() != author))
+          print("mentions=" + " ".join("@" + u for u in trusted))
+          print("site=" + cfg["site_url"])
+          PY
+
+      - name: Record the usage report
+        id: rec
+        if: steps.kind.outputs.kind == 'usage-report'
+        run: |
+          set +e
+          python -I tools/usage_report.py /tmp/body.md --issue "$ISSUE" --author "$AUTHOR" --date "$(date -u +%F)" --skill '${{ steps.kind.outputs.skill }}' > /tmp/out.txt 2> /tmp/err.txt
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [ $code -eq 0 ] && python tools/build.py --check > /tmp/check.txt 2>&1; then
+            python tools/build.py
+            echo "ok=yes" >> "$GITHUB_OUTPUT"
+            echo "skill=$(sed -n 1p /tmp/out.txt)" >> "$GITHUB_OUTPUT"
+            echo "summary=$(sed -n 2p /tmp/out.txt)" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish (known contributors)
+        if: steps.rec.outputs.ok == 'yes' && steps.who.outputs.trusted == 'yes'
+        env:
+          SUMMARY: ${{ steps.rec.outputs.summary }}
+          SKILL: ${{ steps.rec.outputs.skill }}
+          SITE: ${{ steps.who.outputs.site }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            gh issue comment "$ISSUE" --body "Thank you! This report was already recorded, so nothing changed."
+          else
+            git commit -m "Usage report for ${SKILL} from issue #${ISSUE}"
+            git pull --rebase -X theirs origin main || true
+            python tools/build.py && git add -A && (git diff --cached --quiet || git commit -m "Rebuild after usage report #${ISSUE}")
+            git push
+            gh workflow run build.yml --ref main
+            gh issue comment "$ISSUE" --body "Thank you! Recorded: ${SUMMARY}. The skill page updates within a few minutes: ${SITE}skills/${SKILL}.html"
+          fi
+          gh issue close "$ISSUE"
+
+      - name: Open a pull request (everyone else)
+        if: steps.rec.outputs.ok == 'yes' && steps.who.outputs.trusted != 'yes'
+        env:
+          SUMMARY: ${{ steps.rec.outputs.summary }}
+          SKILL: ${{ steps.rec.outputs.skill }}
+        run: |
+          branch="usage-report/issue-${ISSUE}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add -A
+          git commit -m "Usage report for ${SKILL} from issue #${ISSUE}"
+          git push -f origin "$branch"
+          pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls?head=${GITHUB_REPOSITORY_OWNER}:${branch}&state=open" --jq '.[0].number // empty')
+          if [ -z "$pr" ]; then
+            body="Usage report from #${ISSUE} by @${AUTHOR}: ${SUMMARY}.
+
+          Approve and merge to publish it. Closes #${ISSUE}."
+            pr=$(gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls" -f title="Usage report: ${SKILL}" -f head="$branch" -f base=main -f body="$body" --jq .number) || pr=""
+          fi
+          if [ -n "$pr" ]; then
+            for r in ${{ steps.who.outputs.reviewers }}; do
+              gh api -X POST "repos/${GITHUB_REPOSITORY}/pulls/${pr}/requested_reviewers" -f "reviewers[]=$r" > /dev/null || true
+            done
+            gh issue comment "$ISSUE" --body "Thank you for the report! It is ready and waiting for a maintainer's approval: #${pr}. After your first accepted contribution, your next reports are published automatically."
+          else
+            gh issue comment "$ISSUE" --body "Thank you for the report! ${{ steps.who.outputs.mentions }}: it is ready for review on branch \`${branch}\` (https://github.com/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1)."
+          fi
+
+      - name: Ask for the form
+        if: steps.kind.outputs.kind == 'usage-report' && steps.rec.outputs.code == '3'
+        run: |
+          gh issue comment "$ISSUE" --body "Thank you for telling us how it went! To record it on the skill's page, please send it through the usage report form; it takes two minutes and asks the one thing this note can't tell us: whether the skill's output was used in real teaching. https://github.com/${GITHUB_REPOSITORY}/issues/new?template=usage-report.yml"
+
+      - name: Ask for help
+        if: steps.kind.outputs.kind == 'usage-report' && steps.rec.outputs.ok != 'yes' && steps.rec.outputs.code != '3'
+        run: |
+          {
+            echo "Thank you for the report! It couldn't be recorded automatically. ${{ steps.who.outputs.mentions }}: please take a look."
+            echo
+            echo '```'
+            cat /tmp/err.txt /tmp/check.txt 2>/dev/null | grep -v '^warning' | tail -10
+            echo '```'
+          } > /tmp/comment.md
+          gh issue comment "$ISSUE" --body-file /tmp/comment.md

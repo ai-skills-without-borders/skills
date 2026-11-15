@@ -40,24 +40,54 @@ body:
   attributes:
     label: Skill
     options:
-    - learning-objectives-designer
-    - pbl-rbl-session-builder
-    - reading-material-generator
-    - syllabus-builder
-    - lesson-format-checker
-    - exam-question-writer
-    - other
+    - Clinical Integration Task Generator (clinical-integration-notebooks)
+    - Committee Meeting Planner (committee-meeting-planner)
+    - Curriculum Map Builder (curriculum-map-builder)
+    - Exam Question Writer (exam-question-writer)
+    - Journal Club Planner (journal-club-planner)
+    - Leadership Communication Meeting Organizer (leadership-communication-meeting-organizer)
+    - Learning Objectives Designer (learning-objectives-designer)
+    - Lesson & Notebook Format Checker (lesson-format-checker)
+    - MD-PhD Calendar Builder (mdphd-calendar-builder)
+    - MSTP T32 Preparer (mstp-t32-planner)
+    - Mentor Compact Creator (mentor-compact-creator)
+    - PBL / RBL Session Builder (pbl-rbl-session-builder)
+    - Reading Material Generator (reading-material-generator)
+    - Syllabus Builder (syllabus-builder)
+    - Thesis Lab Navigator (thesis-lab-navigator)
+    - Another skill, or not sure
   validations:
     required: true
 - type: input
   id: version
   attributes:
     label: Skill version (from card.yaml)
-- type: input
+- type: dropdown
   id: tool
   attributes:
-    label: AI tool and plan
-    placeholder: e.g. ChatGPT Edu, Claude Pro, Gemini Enterprise, paste-in in Gemini app
+    label: AI tool
+    options:
+    - Claude
+    - ChatGPT
+    - Gemini
+    - Microsoft 365 Copilot
+    - Another assistant (paste-in)
+  validations:
+    required: true
+- type: input
+  id: plan
+  attributes:
+    label: Plan or version (optional)
+    placeholder: e.g. ChatGPT Edu, Claude Pro, Gemini Enterprise
+- type: dropdown
+  id: context
+  attributes:
+    label: How did you use it?
+    description: 'Real teaching moves a skill up the maturity ladder: at the institution that wrote it, to Tested at origin; at another institution, to Tested elsewhere.'
+    options:
+    - Real teaching, with learners
+    - Preparing teaching, before learners saw it
+    - Trying it out
   validations:
     required: true
 - type: textarea
