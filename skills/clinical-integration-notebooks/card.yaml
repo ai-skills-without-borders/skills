@@ -17,29 +17,25 @@ audience:
 - Educators
 - Program staff
 inputs:
-- '**Course assignments or materials'
-- '**Dates'
-- '**Course profile'
-- Optional
+- 'Course assignments or materials: a zip of notebooks, slides or a methods book'
+- 'Dates: the date of each integration task, and when each method is taught'
+- 'Course profile (first run only): course name, session length, group size, presenters, language'
+- 'Optional: session themes, and cases used in past years so they are not repeated'
 outputs:
-- ''
-- 1. **Student notebook
-- learning goals
-- case background
-- a short lay-language handout that hides the diagnosis
-- a timed session plan, by default 3.5 h
-- discussion questions for each method, presentation requirements, and evaluation criteria
-- 2. **Instructor key
+- 'Student notebook (HTML): learning goals, case background, a handout that hides the diagnosis, a timed session plan and discussion questions'
+- 'Instructor key (HTML): verified citation, diagnosis, matched methods with their teaching dates, Q&A questions and a debrief note'
+- 'Summary table: task date, method window, case chosen, matched methods'
+- 'profile.json for reuse next year (first run only)'
 runs_code: false
-maturity: draft
+maturity: tested-at-origin
 tested_in:
   claude: works
   chatgpt: untested
   gemini: untested
   copilot: untested
 last_tested: null
-used_at: []
-evidence: 'Tested in Claude by the author, as reported in the submission (issue #9).'
+used_at: [weizmann]
+evidence: 'Used with two cohorts of the Computational Molecular Biology of the Cell course at the Weizmann Institute''s Gutwirth Medical School, as reported by the author (issue #10). Tested by the author in Claude.'
 frameworks: []
 origin_institution: The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science
 derived_from: New skill

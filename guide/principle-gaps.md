@@ -16,8 +16,7 @@ No health-professions source in the registry supports these yet (sources that gi
 
 Candidates for a new skill, or an addition to an existing one.
 
-- **Spaced practice** (science). Spreading practice over time beats massing it, and the gap should grow with how long knowledge must last.
-- **Professional identity formation** (medicine). Medical education should help learners come to think, act and feel like physicians (and, for MD-PhD students, like physician-scientists), not only perform competently.
+- None.
 
 ## 3. Principles resting on a single source
 
@@ -31,14 +30,13 @@ Candidates for a new skill, or an addition to an existing one.
 
 These skills rest mainly on standards and policies (such as funder rules) rather than on teaching principles. Check whether a teaching principle applies, and add it to `guide/principles.yaml`.
 
-- `clinical-integration-notebooks`
 - `mstp-t32-planner`
 
 ## Principles per skill
 
 | Skill | Principles |
 |---|---|
-| `clinical-integration-notebooks` | 1 |
+| `clinical-integration-notebooks` | 6 |
 | `committee-meeting-planner` | 3 |
 | `curriculum-map-builder` | 3 |
 | `exam-question-writer` | 5 |

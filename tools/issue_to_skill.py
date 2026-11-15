@@ -59,8 +59,17 @@ def field(fields, prefix):
 
 
 def bullets(text):
-    items = [re.sub(r"^\s*[-*•]\s*", "", ln).strip() for ln in text.splitlines()]
-    return [i for i in items if i]
+    """Top-level list items only: indented sub-items belong to the item above, and a lead-in line
+    ending with a colon ("For each task:") is not an item. Bold marks are dropped."""
+    items = []
+    for ln in text.splitlines():
+        if not ln.strip() or re.match(r"^\s{2,}\S", ln):
+            continue
+        m = re.match(r"^\s*(?:[-*•]|\d+[.)])\s+", ln)
+        if not m and not items and ln.rstrip().endswith(":"):
+            continue
+        items.append(re.sub(r"\*\*(.+?)\*\*", r"\1", ln[m.end():] if m else ln).strip())
+    return items
 
 
 def unfence(text):
@@ -197,8 +206,17 @@ def short_item(text, limit=120):
     if sep and re.match(r"^(For|When|If|In|During)\b", head.strip()):
         text = tail.strip()  # "For the program layer: the program's policies" -> the useful part
         text = text[:1].upper() + text[1:]
-    s = re.split(r"[:;]| — | \(|, with |, which ", text, maxsplit=1)[0].strip().rstrip(".")
-    return s if len(s) <= limit else s[: limit - 1].rsplit(" ", 1)[0] + "…"
+    head, sep, tail = text.partition(":")
+    if sep and len(head.split()) <= 5 and tail.strip():
+        # "Dates: the date of each task, plus ..." -> "Dates: the date of each task"
+        first = re.split(r"[;.]| — | \(|, plus |, with |, which ", tail.strip(), maxsplit=1)[0].strip()
+        s = f"{head.strip()}: {first}"
+    else:
+        s = re.split(r"[:;]| — | \(|, with |, which ", text, maxsplit=1)[0].strip().rstrip(".")
+    if len(s) <= limit:
+        return s
+    cut = s[: limit].rsplit(", ", 1)[0]
+    return cut if len(cut) > 40 else s[: limit - 1].rsplit(" ", 1)[0] + "…"
 
 
 def tasks_from(description):

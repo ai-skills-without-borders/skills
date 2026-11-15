@@ -63,6 +63,7 @@ Objectives, activities and assessment are designed together, so learners practis
 - `exam-question-writer`: A blueprint before items; one item tests one objective.
 - `lesson-format-checker`: Every lesson segment names the objective it serves, and every objective is served.
 - `curriculum-map-builder`: Links course goals, module goals, session objectives and assessment items, and flags goals that are never taught or never assessed.
+- `clinical-integration-notebooks`: Each case is chosen to fit only methods already taught by that date, and the evaluation criteria follow the session's goals.
 
 #### 3. Observable, levelled objectives — *Standard*
 
@@ -100,6 +101,7 @@ Learners do something with the material in class, rather than only listen. It ra
 - `pbl-rbl-session-builder`: Every phase asks students to predict, analyse or decide before anything is revealed.
 - `reading-material-generator`: Readings end with questions students answer, not only text to absorb.
 - `journal-club-planner`: The audience takes rotating roles, and at least a third of the session goes to discussion the student leads.
+- `clinical-integration-notebooks`: Teams choose methods and combine them into one investigation plan, then defend it in a chalk talk and Q&A.
 
 **Limit:** In medical education, much of the evidence comes from studies with weak designs, and flipped classrooms in particular show mixed effects on knowledge. The randomized trial by Boedeker et al. (2025) is the strongest single result.
 
@@ -161,7 +163,9 @@ Spreading practice over time beats massing it, and the gap should grow with how 
 - Cepeda et al., 2006 (origin; laboratory studies, meta-analysis (317 experiments)). Verbal recall tasks; the best gap between sessions grows with how long knowledge must last.
 - *Medical education:* Kerfoot et al., 2007 (RCT (third-year medical students, urology)). Weekly emailed clinical cases and questions improved retention months after the rotation.
 
-**Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
+**Where it appears**
+
+- `clinical-integration-notebooks`: Recurring tasks bring back methods taught weeks earlier, alongside at least one new one, across the course.
 
 #### 9. Effective feedback — *Research*
 
@@ -234,6 +238,7 @@ Working on problems activates prior knowledge and stores it where it will be use
 **Where it appears**
 
 - `pbl-rbl-session-builder`: Case- or tool-driven phases, learning issues and research questions, calibrated to the student stage.
+- `clinical-integration-notebooks`: Every task starts from a recent real patient case (NEJM), and students reason from the case to the mechanism, not to the diagnosis.
 
 **Limit:** Whole PBL curricula show modest or mixed knowledge effects (Colliver, 2000), so the skill adds the structure of the layer-1 principles.
 
@@ -288,7 +293,9 @@ Medical education should help learners come to think, act and feel like physicia
 
 - *Medical education:* Cruess et al., 2014 (perspective). Proposes identity formation as a main goal of medical education; a perspective, not an outcome study.
 
-**Where it appears:** no skill yet. A candidate for a new skill or an addition to an existing one.
+**Where it appears**
+
+- `clinical-integration-notebooks`: Students take the role of a physician-scientist planning how to investigate a patient's disease mechanism, and present it to peers.
 
 ### Teaching in the AI era
 

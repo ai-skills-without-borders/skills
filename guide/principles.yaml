@@ -431,6 +431,7 @@ principles:
       exam-question-writer: "A blueprint before items; one item tests one objective."
       lesson-format-checker: "Every lesson segment names the objective it serves, and every objective is served."
       curriculum-map-builder: "Links course goals, module goals, session objectives and assessment items, and flags goals that are never taught or never assessed."
+      clinical-integration-notebooks: "Each case is chosen to fit only methods already taught by that date, and the evaluation criteria follow the session's goals."
 
   - id: observable-objectives
     name: Observable, levelled objectives
@@ -455,6 +456,7 @@ principles:
       pbl-rbl-session-builder: "Every phase asks students to predict, analyse or decide before anything is revealed."
       reading-material-generator: "Readings end with questions students answer, not only text to absorb."
       journal-club-planner: "The audience takes rotating roles, and at least a third of the session goes to discussion the student leads."
+      clinical-integration-notebooks: "Teams choose methods and combine them into one investigation plan, then defend it in a chalk talk and Q&A."
 
   - id: productive-failure
     name: Problem solving before instruction
@@ -495,7 +497,8 @@ principles:
     basis: research
     summary: "Spreading practice over time beats massing it, and the gap should grow with how long knowledge must last."
     sources: [cepeda-2006:origin, kerfoot-2007:med-ed]
-    applies: {}
+    applies:
+      clinical-integration-notebooks: "Recurring tasks bring back methods taught weeks earlier, alongside at least one new one, across the course."
 
   - id: effective-feedback
     name: Effective feedback
@@ -541,6 +544,7 @@ principles:
     sources: [schmidt-1983:origin, norman-schmidt-1992:med-ed, schmidt-rikers-2007:med-ed, colliver-2000:med-ed]
     applies:
       pbl-rbl-session-builder: "Case- or tool-driven phases, learning issues and research questions, calibrated to the student stage."
+      clinical-integration-notebooks: "Every task starts from a recent real patient case (NEJM), and students reason from the case to the mechanism, not to the diagnosis."
     limits: "Whole PBL curricula show modest or mixed knowledge effects (Colliver, 2000), so the skill adds the structure of the layer-1 principles."
 
   - id: deliberate-practice
@@ -578,7 +582,8 @@ principles:
     basis: standard
     summary: "Medical education should help learners come to think, act and feel like physicians (and, for MD-PhD students, like physician-scientists), not only perform competently."
     sources: [cruess-2014:origin]
-    applies: {}
+    applies:
+      clinical-integration-notebooks: "Students take the role of a physician-scientist planning how to investigate a patient's disease mechanism, and present it to peers."
 
   # ---------------- Layer 3: teaching in the AI era ----------------
   - id: responsible-ai
