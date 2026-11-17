@@ -1,0 +1,48 @@
+# Skill card — see GOVERNANCE.md for field meanings and maturity levels
+name: plain-language-writer
+title: Plain Language Writer
+version: 0.1.0
+summary: Writes or edits teaching text so it is clear and sounds human, with before-and-after changes for your approval.
+tasks:
+- Make text plainer
+- Rewrite for students
+- Edit a course page or syllabus
+- Draft an email to students or faculty
+- Remove wording that sounds like AI
+users:
+- educators
+- learners
+- program-staff
+audience:
+- Educators
+- Learners
+- Program staff
+inputs:
+- Text to edit or notes to draft from
+- Who will read it
+- Where it is going, such as an email, course page or journal
+- School style rules, if any
+outputs:
+- Rewritten text
+- Before-and-after table of the main changes
+- List of unclear phrases to check
+- A final check of length, names, claims and terms against the original
+runs_code: false
+maturity: draft
+tested_in:
+  claude: untested
+  chatgpt: untested
+  gemini: untested
+  copilot: untested
+last_tested: null
+used_at: []
+frameworks:
+- ISO 24495-1 Plain language
+- U.S. Federal Plain Language Guidelines
+origin_institution: Icahn School of Medicine at Mount Sinai
+derived_from: New skill
+maintainers:
+- Talia H. Swartz, MD, PhD (Icahn School of Medicine at Mount Sinai)
+reviewers: []
+license: CC-BY-4.0
+starter: false
