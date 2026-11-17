@@ -479,6 +479,7 @@ principles:
       reading-material-generator: "A teaching arc in the order a newcomer needs, inline definitions, depth over coverage."
       lesson-format-checker: "Time estimates on every part; provided code at first exposure, student-written code once the pattern is known."
       learning-objectives-designer: "One target per objective."
+      plain-language-writer: "Puts the one point the reader needs first, keeps terms the readers know, and removes wording that makes text harder to follow on a first read."
 
   - id: retrieval-practice
     name: Retrieval practice with feedback
@@ -598,6 +599,7 @@ principles:
     applies:
       all: "An AI-assistance line in the institution's wording; no identifiable patient or learner data; the educator approves before anything is final; no invented sources."
       library: "Open format and paste-in versions, so access does not depend on one paid tool."
+      plain-language-writer: "Stops for the educator's approval of the main changes, never makes a claim stronger or weaker, and asks instead of guessing what a sentence means."
 
   - id: ai-guardrails
     name: AI that protects learning

@@ -48,6 +48,7 @@ These skills rest mainly on standards and policies (such as funder rules) rather
 | `mentor-compact-creator` | 2 |
 | `mstp-t32-planner` | 1 |
 | `pbl-rbl-session-builder` | 6 |
+| `plain-language-writer` | 2 |
 | `reading-material-generator` | 4 |
 | `syllabus-builder` | 5 |
 | `thesis-lab-navigator` | 2 |

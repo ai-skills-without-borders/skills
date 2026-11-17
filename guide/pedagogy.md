@@ -138,6 +138,7 @@ Working memory is limited, and novices need guidance: one inference per prompt, 
 - `reading-material-generator`: A teaching arc in the order a newcomer needs, inline definitions, depth over coverage.
 - `lesson-format-checker`: Time estimates on every part; provided code at first exposure, student-written code once the pattern is known.
 - `learning-objectives-designer`: One target per objective.
+- `plain-language-writer`: Puts the one point the reader needs first, keeps terms the readers know, and removes wording that makes text harder to follow on a first read.
 
 #### 7. Retrieval practice with feedback — *Research*
 
@@ -316,6 +317,7 @@ Disclose AI use, protect privacy, give equal access, keep the educator in charge
 
 - Every skill: An AI-assistance line in the institution's wording; no identifiable patient or learner data; the educator approves before anything is final; no invented sources.
 - The library: Open format and paste-in versions, so access does not depend on one paid tool.
+- `plain-language-writer`: Stops for the educator's approval of the main changes, never makes a claim stronger or weaker, and asks instead of guessing what a sentence means.
 
 *See also:* [AAMC: Advancing AI Across Academic Medicine resource collection](https://www.aamc.org/about-us/mission-areas/medical-education/advancing-ai-across-academic-medicine-resource-collection)
 

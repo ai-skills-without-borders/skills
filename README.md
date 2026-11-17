@@ -30,6 +30,7 @@ Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https:/
 | [mdphd-calendar-builder](skills/mdphd-calendar-builder) | Helps MD-PhD program directors and administrators build one complete calendar for their program. | No | draft |
 | [mentor-compact-creator](skills/mentor-compact-creator) | Builds a two-layer mentoring compact: a shared program layer written once, and a one-page agreement each mentor and trainee add on top. | No | draft |
 | [mstp-t32-planner](skills/mstp-t32-planner) | Helps MD-PhD program directors and administrators pull together everything needed for an NIGMS Medical Scientist Training Program (MSTP) T32 application, new or renewal. | No | draft |
+| [plain-language-writer](skills/plain-language-writer) | Writes or edits teaching text so it is clear and sounds human, with before-and-after changes for your approval. | No | draft |
 | [syllabus-builder](skills/syllabus-builder) | Builds or updates a syllabus from partial course material, with an evidence-based (E/P/X) map to any competency framework. | No | tested at origin |
 | [thesis-lab-navigator](skills/thesis-lab-navigator) | Helps a graduate or MD-PhD student plan rotations and choose a thesis lab. | No | draft |
 <!-- CATALOG:END -->

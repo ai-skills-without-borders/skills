@@ -52,6 +52,7 @@ body:
     - MSTP T32 Preparer (mstp-t32-planner)
     - Mentor Compact Creator (mentor-compact-creator)
     - PBL / RBL Session Builder (pbl-rbl-session-builder)
+    - Plain Language Writer (plain-language-writer)
     - Reading Material Generator (reading-material-generator)
     - Syllabus Builder (syllabus-builder)
     - Thesis Lab Navigator (thesis-lab-navigator)
