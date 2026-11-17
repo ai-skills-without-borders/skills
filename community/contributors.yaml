@@ -150,3 +150,9 @@ contributions:
     person: "Amit Shraga"
     github: mmmmpf
     link: https://github.com/ai-skills-without-borders/skills/issues/10
+  - date: 2026-11-17
+    type: skill
+    institution: mssm
+    skill: plain-language-writer
+    person: "Talia H. Swartz, MD, PhD"
+    link: https://github.com/ai-skills-without-borders/skills/tree/main/skills/plain-language-writer

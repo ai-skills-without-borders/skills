@@ -215,6 +215,9 @@ def main():
     errors += principles.validate(shared_names)
     if not check_only:
         forms.sync([c for c in cards if not c["_variant"]])  # skill lists in the issue forms follow the library
+        added = community.sync_skill_contributions([c for c in cards if not c["_variant"]])
+        if added:
+            print("recorded on the community page: " + ", ".join(added))
     errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates() + workshops.validate(workshops.load())
     for w in warnings:
         print(f"warning: {w}")

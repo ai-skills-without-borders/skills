@@ -104,5 +104,5 @@ Every new or edited issue is read by the intake automation (`.github/workflows/i
 The Share page sends usage reports and new skills through a small Cloudflare Worker (`worker/`), which checks the sender is a person and files the GitHub issue with the label `via-website`. Set-up steps are in `worker/README.md`; the forms switch on when `web_forms` in `config.yaml` is filled in.
 
 - Website usage reports publish automatically. To withdraw one, add the label `withdrawn` to its issue: everything it changed is undone (`community/report-log.yaml` records what each report changed).
-- Website skills always open a pull request for one maintainer's approval.
+- Website skills always open a pull request for one maintainer's approval. A skill can be sent as an uploaded `.skill` or `.zip` file instead of pasted instructions; the Worker keeps the file for 60 days and the automation fetches it from there.
 - The forms are built from the GitHub issue forms (`docs/forms.json`), so both stay identical.

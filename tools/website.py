@@ -171,8 +171,13 @@ def form_html(name, form):
     for f in form["fields"]:
         if f["id"] == "version":  # GitHub users can read card.yaml; website users shouldn't be asked to
             continue
+        if f["id"] == "instructions":
+            out.append(f'<p class="fld"><label for="{name}-file">Skill file (.skill or .zip)</label>'
+                       '<span class="hint">If you built the skill in Claude or another tool and exported it, upload the file here. '
+                       'Then you don\'t need to paste the instructions below. Up to 5 MB.</span>'
+                       f'<input type="file" id="{name}-file" name="skillfile" accept=".skill,.zip"></p>')
         fid = f"{name}-{f['id']}"
-        label = e(f["label"].replace(" (paste SKILL.md or attach a ZIP below)", " (paste the skill's instructions)"))
+        label = e(f["label"].replace(" (paste SKILL.md or attach a ZIP below)", " (or paste the skill's instructions)"))
         req = ' <span class="req" aria-hidden="true">*</span><span class="sr-only"> (required)</span>' if f["required"] else ""
         desc = f'<span class="hint">{e(f["description"])}</span>' if f.get("description") else ""
         r = " required" if f["required"] else ""
@@ -394,7 +399,7 @@ def build_site(cards, variants, cfg, public_card):
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",
                          read("quality.html").replace("{{APPROVAL}}", visuals.approval_html(APPROVAL)).replace("{{STATUS_TABLE}}", status_table(cards)).replace("{{CYCLE}}", visuals.cycle_svg()), "quality.html", ""),
         "community.html": ("Community — " + cfg["library_name"], "Contributions by country and institution.",
-                           read("community.html").replace("{{COUNTERS}}", community.counters_html()).replace("{{MAP}}", community.map_svg()).replace(
+                           read("community.html").replace("{{COUNTERS}}", community.counters_html(len([c for c in cards if not c.get("_variant")]))).replace("{{MAP}}", community.map_svg()).replace(
                                "{{COUNTRIES}}", community.countries_html()).replace("{{INSTITUTIONS}}", community.institutions_html()).replace(
                                "{{RECENT}}", community.recent_html({c["name"]: c["title"] for c in cards})), "community.html", ""),
         "workshops.html": ("Workshops — " + cfg["library_name"], "Two ready-to-run workshops: using AI skills, and writing them. Lesson plans, slides and timings.",

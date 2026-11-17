@@ -60,7 +60,12 @@ jobs:
         run: |
           mkdir -p /tmp/sub
           gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}" --jq .body > /tmp/sub/body.md
-          url=$(grep -oE 'https://github\.com/(user-attachments/files|[^ )]+/files)/[^ )]+\.zip' /tmp/sub/body.md | head -1 || true)
+          url=$(grep -oE 'https://github\.com/(user-attachments/files|[^ )]+/files)/[^ )]+\.(zip|skill)' /tmp/sub/body.md | head -1 || true)
+          if [ -z "$url" ]; then
+            # A file uploaded through the website: only from the library's own Worker.
+            host=$(python -c "import yaml,urllib.parse;print(urllib.parse.urlparse(yaml.safe_load(open('config.yaml'))['web_forms']['endpoint']).netloc)")
+            [ -n "$host" ] && url=$(grep -oE "https://${host}/file/[0-9a-f-]{36}\.zip" /tmp/sub/body.md | head -1 || true)
+          fi
           if [ -n "$url" ]; then curl -sSL -H "Authorization: Bearer $GH_TOKEN" -o /tmp/sub/skill.zip "$url"; fi
 
       - name: Is it really a new skill?

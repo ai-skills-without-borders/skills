@@ -11,8 +11,11 @@
 //   REPO              text. ai-skills-without-borders/skills
 //   SITE              text. https://ai-skills-without-borders.github.io/skills/
 // Optional: a KV namespace bound as LIMITS, for a per-address limit (5 submissions an hour).
+// Optional: a KV namespace bound as FILES, to accept uploaded .skill / .zip files (kept 60 days, served
+//           at /file/<id>.zip for the repository's automation to fetch).
 
-const MAX_BYTES = 60000;     // GitHub allows 65,536 characters in an issue body
+const MAX_BODY = 60000;            // GitHub allows 65,536 characters in an issue body
+const MAX_FILE = 5 * 1024 * 1024;  // uploaded skill files
 const PER_HOUR = 5;
 
 export default {
@@ -28,11 +31,18 @@ export default {
     const reply = (status, obj) => new Response(JSON.stringify(obj), { status, headers: { ...cors, "Content-Type": "application/json" } });
 
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
-    if (req.method !== "POST" || new URL(req.url).pathname !== "/submit") return reply(404, { error: "Not found." });
+    const path = new URL(req.url).pathname;
+    const fm = path.match(/^\/file\/([0-9a-f-]{36})\.zip$/);
+    if (req.method === "GET" && fm && env.FILES) {
+      const bytes = await env.FILES.get(fm[1], { type: "arrayBuffer" });
+      if (!bytes) return new Response("Not found.", { status: 404 });
+      return new Response(bytes, { headers: { "Content-Type": "application/zip", "Content-Disposition": `attachment; filename="${fm[1]}.zip"` } });
+    }
+    if (req.method !== "POST" || path !== "/submit") return reply(404, { error: "Not found." });
     if (origin !== allowed) return reply(403, { error: "Submissions are accepted from the library's site only." });
 
     const raw = await req.text();
-    if (raw.length > MAX_BYTES) return reply(413, { error: "That is too long for one submission. Shorten the instructions, or send them by email." });
+    if (raw.length > MAX_BODY + MAX_FILE * 1.4) return reply(413, { error: "That is too large for one submission. Please send it by email." });
     let data;
     try { data = JSON.parse(raw); } catch { return reply(400, { error: "The form could not be read. Please try again." }); }
     if (data.website) return reply(200, { ok: true });   // honeypot: a field people never see
@@ -69,7 +79,22 @@ export default {
       lines.push(`### ${f.label}`, "", v ? escapeMentions(v) : "_No response_", "");
     }
     if (problems.length) return reply(400, { error: "Please check: " + problems.join("; ") + "." });
+    if (data.file && data.form === "new-skill") {
+      if (!env.FILES) return reply(400, { error: "File uploads aren't switched on yet. Please paste the instructions instead." });
+      const name = String(data.file.name || "");
+      let bytes;
+      try { bytes = Uint8Array.from(atob(String(data.file.b64 || "")), c => c.charCodeAt(0)); } catch { bytes = new Uint8Array(); }
+      const isZip = bytes.length > 4 && bytes[0] === 0x50 && bytes[1] === 0x4b && bytes[2] === 0x03 && bytes[3] === 0x04;
+      if (!/\.(skill|zip)$/i.test(name) || !isZip) return reply(400, { error: "The file should be a .skill or .zip file exported from your AI tool." });
+      if (bytes.length > MAX_FILE) return reply(413, { error: "The file is larger than 5 MB. Please send it by email." });
+      const id = crypto.randomUUID();
+      await env.FILES.put(id, bytes, { expirationTtl: 60 * 24 * 3600 });
+      lines.push("### Skill file", "", `${new URL(req.url).origin}/file/${id}.zip`, "");
+    } else if (data.form === "new-skill" && !(values.instructions || "").trim()) {
+      return reply(400, { error: "Please paste the instructions, or upload the .skill file." });
+    }
     lines.push("### Submitted via", "", "The library's website (no GitHub account).", "");
+    if (lines.join("\n").length > MAX_BODY) return reply(413, { error: "That is too long for one submission. Upload the .skill file instead of pasting, or send it by email." });
 
     const pick = id => (values[id] || "").toString().replace(/\s*\([a-z0-9-]+\)$/, "").slice(0, 80);
     const title = form.title.replace("<skill>", pick("skill")).replace("<tool>", pick("tool")).replace("<name>", pick("name"));

@@ -38,7 +38,8 @@ Free plans are enough for all of it. You need to do this once; nothing here need
    | Text | `SITE` | `https://ai-skills-without-borders.github.io/skills/` |
 
 4. Optional, recommended: a limit of five submissions an hour per address. **Storage & Databases → KV → Create** a namespace called `asb-limits`; then in the Worker's **Settings → Bindings → Add → KV namespace**, variable name `LIMITS`, namespace `asb-limits`.
-5. Note the Worker's address, shown on its page: `https://asb-forms.<something>.workers.dev`.
+5. To accept uploaded `.skill` and `.zip` files: **Storage & Databases → KV → Create** a namespace called `asb-files`; then in the Worker's **Settings → Bindings → Add → KV namespace**, variable name `FILES`, namespace `asb-files`. Files are kept 60 days, long enough for the automation (or a maintainer's review) to pick them up.
+6. Note the Worker's address, shown on its page: `https://asb-forms.<something>.workers.dev`.
 
 ## 4. Switch the forms on
 

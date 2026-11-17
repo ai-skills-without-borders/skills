@@ -43,18 +43,29 @@
     }
     const fields = {};
     form.querySelectorAll("input[name], select[name], textarea[name]").forEach(x => {
-      if (x.name === "website" || x.name === "cf-turnstile-response") return;
+      if (x.name === "website" || x.name === "cf-turnstile-response" || x.name === "skillfile") return;
       if (x.type === "checkbox") { (fields[x.name] = fields[x.name] || []); if (x.checked) fields[x.name].push(x.value); }
       else fields[x.name] = x.value;
     });
     const token = (form.querySelector('[name="cf-turnstile-response"]') || {}).value || "";
+    let file = null;
+    const picked = form.querySelector('[name="skillfile"]');
+    if (picked && picked.files[0]) {
+      const f = picked.files[0];
+      if (f.size > 5 * 1024 * 1024) { status.textContent = "The file is larger than 5 MB. Please send it by email."; return; }
+      const b64 = await new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(",")[1] || ""); r.onerror = bad; r.readAsDataURL(f); });
+      file = { name: f.name, b64 };
+    } else if (form.dataset.form === "new-skill" && !form.querySelector('[name="instructions"]').value.trim()) {
+      status.textContent = "Please upload the .skill file, or paste the instructions.";
+      return;
+    }
     button.disabled = true;
     status.textContent = "Sending…";
     try {
       const r = await fetch(cfg.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ form: form.dataset.form, fields, token, website: form.querySelector('[name="website"]').value }),
+        body: JSON.stringify({ form: form.dataset.form, fields, token, file, website: form.querySelector('[name="website"]').value }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.ok) throw new Error(j.error || "The submission couldn't be sent. Please try again.");

@@ -11,6 +11,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+REPO = "ai-skills-without-borders/skills"
 REGISTRY = ROOT / "community" / "contributors.yaml"
 WORLD = Path(__file__).resolve().parent / "site" / "world.json"
 
@@ -105,6 +106,37 @@ def _project(lat, lon, scale, translate):
     return x * scale + translate[0], -y * scale + translate[1]
 
 
+def sync_skill_contributions(cards):
+    """Every skill in the library is recorded as a contribution, however it arrived (issue form,
+    website, pull request or a maintainer's commit). Missing ones are added from the skill's card.
+    Returns the names added; raises if a skill's institution isn't in the record yet."""
+    import subprocess
+    insts, contribs = load()
+    have = {c["skill"] for c in contribs if c.get("type") == "skill"}
+    added, lines = [], []
+    for c in cards:
+        if c["name"] in have:
+            continue
+        origin = (c.get("origin_institution") or "").lower()
+        inst = next((k for k, v in insts.items() if v["name"].lower() == origin or v["name"].lower() in origin or (origin and origin in v["name"].lower())), None)
+        if not inst:
+            raise SystemExit(f"[community] skill '{c['name']}': its institution '{c.get('origin_institution')}' is not in "
+                             "community/contributors.yaml; add the institution there (name, country, lat, lon).")
+        date = subprocess.run(["git", "log", "--diff-filter=A", "--format=%as", "--", f"skills/{c['name']}/SKILL.md"],
+                              cwd=ROOT, capture_output=True, text=True).stdout.split()
+        date = date[-1] if date else __import__("datetime").date.today().isoformat()
+        person = (c.get("maintainers") or [""])[0].split(" (")[0].strip()
+        lines += [f"  - date: {date}", "    type: skill", f"    institution: {inst}", f"    skill: {c['name']}"]
+        if person and not person.lower().startswith("contributor"):
+            lines.append(f"    person: {json.dumps(person, ensure_ascii=False)}")
+        lines.append(f"    link: https://github.com/{REPO}/tree/main/skills/{c['name']}")
+        added.append(c["name"])
+    if lines:
+        with (ROOT / "community" / "contributors.yaml").open("a", encoding="utf-8") as fh:
+            fh.write("\n".join(lines) + "\n")
+    return added
+
+
 def stats():
     insts, contribs = load()
     by_country = Counter(insts[c["institution"]]["country"] for c in contribs)
@@ -113,11 +145,11 @@ def stats():
     return insts, contribs, by_country, by_inst
 
 
-def counters_html():
+def counters_html(n_skills=None):
     insts, contribs, by_country, _ = stats()
-    skills = len({c["skill"] for c in contribs if c.get("skill")})
+    skills = n_skills if n_skills is not None else len({c["skill"] for c in contribs if c.get("skill")})
     items = [(len(by_country), "countries"), (len(insts), "institutions"), (len(contribs), "contributions"),
-             (skills, "skills with contributions")]
+             (skills, "skills in the library")]
     return '<div class="counters">' + "".join(f'<div><b>{n}</b><span>{label}</span></div>' for n, label in items) + "</div>"
 
 
