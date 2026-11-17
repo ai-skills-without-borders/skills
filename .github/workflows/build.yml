@@ -5,7 +5,7 @@ on:
   pull_request:
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 jobs:
@@ -20,6 +20,20 @@ jobs:
         run: python tools/build.py --check
       - name: Build downloads and site
         run: python tools/build.py
+      # Everything the build generates is kept in the repository too: the GitHub forms' skill lists,
+      # the community record, README, downloads. A skill that arrives by pull request, a direct commit
+      # or the website then appears everywhere without anyone running the build by hand.
+      - name: Keep generated files in step
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Update generated files (forms, community record, README, downloads)"
+            git pull --rebase -X theirs origin main || true
+            git push || echo "::warning::Couldn't push the generated files; the next build will retry."
+          fi
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main'
         with: {path: docs}
