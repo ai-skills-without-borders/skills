@@ -1,7 +1,7 @@
 {
   "name": "ai-skills-without-borders",
   "description": "Shared AI skills for medical and biomedical-research educators: teaching, assessment, curriculum, mentoring and program planning, each with its evidence and testing record.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": { "name": "AI Skills Without Borders" },
   "homepage": "https://ai-skills-without-borders.github.io/skills/",
   "repository": "https://github.com/ai-skills-without-borders/skills",

@@ -25,9 +25,15 @@
     forms.forEach(f => f.querySelectorAll("input, select, textarea, button").forEach(x => x.disabled = true));
     return;
   }
-  window.asbTurnstile = () => {
+  // Turnstile's script loads separately; whichever arrives second draws the bot check.
+  let drawn = false;
+  function drawChecks() {
+    if (drawn || !window.turnstile) return;
+    drawn = true;
     document.querySelectorAll(".share-form .turnstile").forEach(el => window.turnstile.render(el, { sitekey: cfg.sitekey }));
-  };
+  }
+  window.asbTurnstile = drawChecks;
+  drawChecks();
 
   forms.forEach(form => form.addEventListener("submit", async ev => {
     ev.preventDefault();
@@ -43,11 +49,15 @@
     }
     const fields = {};
     form.querySelectorAll("input[name], select[name], textarea[name]").forEach(x => {
-      if (x.name === "website" || x.name === "cf-turnstile-response" || x.name === "skillfile") return;
+      if (x.name === "asb_hp" || x.name === "cf-turnstile-response" || x.name === "skillfile") return;
       if (x.type === "checkbox") { (fields[x.name] = fields[x.name] || []); if (x.checked) fields[x.name].push(x.value); }
       else fields[x.name] = x.value;
     });
     const token = (form.querySelector('[name="cf-turnstile-response"]') || {}).value || "";
+    if (cfg.sitekey && !token) {
+      status.textContent = "Please wait for the check that you are a person (just above the Send button) to finish, then send again.";
+      return;
+    }
     let file = null;
     const picked = form.querySelector('[name="skillfile"]');
     if (picked && picked.files[0]) {
@@ -65,7 +75,7 @@
       const r = await fetch(cfg.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ form: form.dataset.form, fields, token, file, website: form.querySelector('[name="website"]').value }),
+        body: JSON.stringify({ form: form.dataset.form, fields, token, file, website: form.querySelector('[name="asb_hp"]').value }),
       });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || !j.ok) throw new Error(j.error || "The submission couldn't be sent. Please try again.");

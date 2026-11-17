@@ -45,7 +45,7 @@ def _usage_fields(body):
 
 def sync(cards):
     """Rewrite the forms if they are out of date. Returns the files changed."""
-    options = [skill_option(c) for c in sorted(cards, key=lambda c: c["title"])] + ["Another skill, or not sure"]
+    options = [skill_option(c) for c in sorted(cards, key=lambda c: c["title"].lower())] + ["Another skill, or not sure"]
     changed = []
     for f in sorted(FORMS.glob("*.yml")):
         if f.name == "config.yml":

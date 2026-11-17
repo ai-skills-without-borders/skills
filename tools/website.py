@@ -167,7 +167,7 @@ def form_html(name, form):
     """A website version of one GitHub issue form; the Worker files it as that form would."""
     out = [f'<form class="share-form" data-form="{name}" novalidate>',
            '<p class="req-note"><span class="req" aria-hidden="true">*</span> Required</p>',
-           '<p class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>']
+           '<p class="hp" aria-hidden="true"><label>Leave this empty <input name="asb_hp" tabindex="-1" autocomplete="off" data-lpignore="true"></label></p>']
     for f in form["fields"]:
         if f["id"] == "version":  # GitHub users can read card.yaml; website users shouldn't be asked to
             continue
