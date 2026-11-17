@@ -341,4 +341,15 @@ def build(w, out_path, clock, segments, site):
         sl.notes_slide.notes_text_frame.text = re.sub(r"\*\*|`", "", s["notes"])
     prs.core_properties.title = f'{w["title"]}: workshop slides'
     prs.core_properties.author = "AI Skills Without Borders"
-    prs.save(out_path)
+    import datetime, io, zipfile
+    fixed = datetime.datetime(2026, 1, 1)
+    prs.core_properties.created = prs.core_properties.modified = fixed
+    prs.core_properties.last_modified_by = "AI Skills Without Borders"
+    buf = io.BytesIO()
+    prs.save(buf)
+    # Rewrite the package with fixed entry dates, so the same slides always give the same file.
+    with zipfile.ZipFile(io.BytesIO(buf.getvalue())) as src, zipfile.ZipFile(out_path, "w", zipfile.ZIP_DEFLATED) as dst:
+        for item in src.infolist():
+            info = zipfile.ZipInfo(item.filename, date_time=(2026, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            dst.writestr(info, src.read(item.filename))

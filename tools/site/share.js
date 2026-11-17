@@ -74,7 +74,7 @@
     try {
       const r = await fetch(cfg.endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },  // a "simple" request: no CORS preflight to go wrong
         body: JSON.stringify({ form: form.dataset.form, fields, token, file, website: form.querySelector('[name="asb_hp"]').value }),
       });
       const j = await r.json().catch(() => ({}));

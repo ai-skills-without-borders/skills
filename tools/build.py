@@ -151,7 +151,10 @@ def build_zip(card):
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for p in sorted(d.rglob("*")):
             if p.is_file() and not (set(p.parts) & SKIP_IN_ZIP):
-                z.write(p, Path(d.name) / p.relative_to(d))
+                # Fixed timestamps: the same skill always gives the same ZIP, so builds don't churn the repo.
+                info = zipfile.ZipInfo(str(Path(d.name) / p.relative_to(d)), date_time=(2026, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                z.writestr(info, p.read_bytes())
     return out
 
 
