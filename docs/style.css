@@ -821,3 +821,6 @@ details.more > summary { cursor: pointer; font-weight: 700; }
 .share-done h3 { margin: 0 0 8px; }
 .share-alt { margin-top: 20px; }
 .share-form :disabled { opacity: .6; cursor: not-allowed; }
+.share-form .req { color: #c0261d; font-weight: 700; font-size: 1em; margin-left: 2px; }
+.share-form .req-note { margin: 0 0 10px; font-size: .9rem; color: var(--ink-soft); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

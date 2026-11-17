@@ -166,13 +166,14 @@ def try_html():
 def form_html(name, form):
     """A website version of one GitHub issue form; the Worker files it as that form would."""
     out = [f'<form class="share-form" data-form="{name}" novalidate>',
+           '<p class="req-note"><span class="req" aria-hidden="true">*</span> Required</p>',
            '<p class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>']
     for f in form["fields"]:
         if f["id"] == "version":  # GitHub users can read card.yaml; website users shouldn't be asked to
             continue
         fid = f"{name}-{f['id']}"
         label = e(f["label"].replace(" (paste SKILL.md or attach a ZIP below)", " (paste the skill's instructions)"))
-        req = ' <span class="req">required</span>' if f["required"] else ""
+        req = ' <span class="req" aria-hidden="true">*</span><span class="sr-only"> (required)</span>' if f["required"] else ""
         desc = f'<span class="hint">{e(f["description"])}</span>' if f.get("description") else ""
         r = " required" if f["required"] else ""
         if f["type"] == "checkboxes":

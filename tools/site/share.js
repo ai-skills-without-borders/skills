@@ -38,7 +38,7 @@
     if (missing.length) {
       missing.forEach(x => x.classList.add("invalid"));
       missing[0].focus();
-      status.textContent = "Please fill in the fields marked required.";
+      status.textContent = "Please fill in the fields marked *.";
       return;
     }
     const fields = {};
