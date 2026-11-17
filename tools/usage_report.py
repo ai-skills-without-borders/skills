@@ -47,8 +47,8 @@ def find_institution(rec, name, author):
         for i in insts:
             if i["id"] == n or i["name"].lower() == n or n in i["name"].lower() or i["name"].lower() in n:
                 return i["id"]
-    # No usable answer: the institution of the author's earlier contributions.
-    for c in reversed(rec.get("contributions") or []):
+    # No usable answer: the institution of the author's earlier contributions (GitHub submissions only).
+    for c in reversed(rec.get("contributions") or [] if author else []):
         if str(c.get("github", "")).lower() == author.lower():
             return c["institution"]
     return ""
@@ -60,6 +60,18 @@ def origin_id(rec, card):
         if i["name"].lower() == o or i["name"].lower() in o or o in i["name"].lower():
             return i["id"]
     return ""
+
+
+LOG = ROOT / "community" / "report-log.yaml"
+
+
+def log_change(issue, what):
+    """What each automatic report changed, so a maintainer can withdraw it with one label."""
+    log = yaml.safe_load(LOG.read_text(encoding="utf-8")) if LOG.exists() else None
+    log = log or {}
+    log[int(issue)] = {k: v for k, v in what.items() if v}
+    LOG.write_text("# What each automatic usage report changed; read by tools/withdraw_report.py.\n"
+                   + yaml.safe_dump(log, sort_keys=True, allow_unicode=True, width=1000), encoding="utf-8")
 
 
 def main():
@@ -127,9 +139,16 @@ def main():
     if f"#{a.issue}" not in ev:
         card["evidence"] = (ev + " " + sentence).strip()
         changes.append("added the report to the evidence line")
+    last_before = card.get("last_tested")
     card["last_tested"] = a.date[:7]
 
     card_path.write_text(header + yaml.safe_dump(card, sort_keys=False, allow_unicode=True, width=1000), encoding="utf-8")
+    log_change(a.issue, {"skill": skill, "institution": inst,
+                         "added_used_at": inst if any("institutions using it" in c for c in changes) else None,
+                         "tested_in": tool if any("working in" in c for c in changes) else None,
+                         "maturity_from": level if card.get("maturity") != level else None,
+                         "last_tested_from": str(last_before) if last_before and str(last_before) != a.date[:7] else None,
+                         "sentence": sentence if any("evidence" in c for c in changes) else None})
 
     link = f"https://github.com/ai-skills-without-borders/skills/issues/{a.issue}"
     if not any(c.get("link") == link for c in rec.get("contributions") or []):
@@ -137,7 +156,7 @@ def main():
         lines = [f"  - date: {a.date}", "    type: usage-report", f"    institution: {inst}", f"    skill: {skill}"]
         if name and "[x]" in get("Credit").lower():
             lines.append(f"    person: {json.dumps(name, ensure_ascii=False)}")
-        lines += [f"    github: {a.author}", f"    link: {link}"]
+        lines += ([f"    github: {a.author}"] if a.author else []) + [f"    link: {link}"]
         with rec_path.open("a", encoding="utf-8") as fh:
             fh.write("\n".join(lines) + "\n")
         changes.append("recorded the report on the community page")

@@ -7,10 +7,16 @@ tagline: Shared AI skills for medical and biomedical-research educators
 auto_publish: [mmmmpf, taliaswartz]
 # GitHub users whose submissions always need approval, even after earlier contributions
 no_auto_publish: []
+# Website forms (share.html) for people without a GitHub account. They post to a Cloudflare Worker
+# (worker/worker.js, set up as in worker/README.md), which files the GitHub issue. Leave empty to
+# show the GitHub forms and the contact email instead.
+web_forms:
+  endpoint: "https://asb-forms.amit-shraga.workers.dev/submit"
+  turnstile_sitekey: "0x4AAAAAAGFhaPZ_NDUNkctv" # the Turnstile widget's site key (public)
 repo: ai-skills-without-borders/skills        # <github-org>/<repo>
 site_url: https://ai-skills-without-borders.github.io/skills/
 plugin_name: ai-skills-without-borders
-version: 2.0.0
+version: 1.0.0
 contact: "Amit Shraga (Weizmann Institute of Science) and Talia H. Swartz (Icahn School of Medicine at Mount Sinai)"
 founders:
   - name: "Amit Shraga, PhD"

@@ -797,3 +797,27 @@ details.more > summary { cursor: pointer; font-weight: 700; }
   .top.menu-open > .wrap > nav { display: flex; flex-direction: column; gap: 0; width: 100%; padding: 4px 0 10px; }
   .top.menu-open > .wrap > nav a { padding: 10px 0; border-top: 1px solid var(--rule); }
 }
+
+/* share page: website forms */
+.share > * { max-width: 860px; }
+.share-closed { background: var(--marker-soft); border-radius: 10px; padding: 14px 18px; margin: 0 0 22px; }
+.share-closed p { margin: 0; }
+.share-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.share-tabs button { font: inherit; font-weight: 700; color: var(--ink); background: var(--white); border: 1.5px solid var(--ink); border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+.share-tabs button[aria-selected="true"] { background: var(--ink); color: var(--white); }
+.share-form { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px; display: grid; gap: 4px; }
+.share-form .fld { margin: 0 0 14px; display: grid; gap: 6px; border: 0; padding: 0; min-width: 0; }
+.share-form label, .share-form legend { font-weight: 700; }
+.share-form .hint { color: var(--ink-soft); font-size: .9rem; }
+.share-form .req { font-weight: 400; font-size: .82rem; color: var(--ink-soft); margin-left: 6px; }
+.share-form input, .share-form select, .share-form textarea { font: inherit; color: var(--ink); background: var(--paper); border: 1.5px solid var(--rule); border-radius: 8px; padding: 8px 10px; width: 100%; box-sizing: border-box; }
+.share-form textarea { resize: vertical; }
+.share-form .cb { font-weight: 400; display: flex; gap: 10px; align-items: flex-start; }
+.share-form .cb input { width: auto; margin-top: 4px; }
+.share-form .invalid { border-color: #8a3b12; }
+.share-form .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.share-form .send { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 6px 0 0; }
+.send-status { font-weight: 700; color: var(--ink-soft); }
+.share-done h3 { margin: 0 0 8px; }
+.share-alt { margin-top: 20px; }
+.share-form :disabled { opacity: .6; cursor: not-allowed; }

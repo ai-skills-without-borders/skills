@@ -28,6 +28,7 @@ jobs:
       AUTHOR: ${{ github.event.issue.user.login }}
       TITLE: ${{ github.event.issue.title }}
       LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}
+      WEB: ${{ contains(github.event.issue.labels.*.name, 'via-website') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -67,6 +68,10 @@ jobs:
           returning = {str(c.get("github", "")).lower() for c in record.get("contributions") or []} - {""}
           blocked = {u.lower() for u in cfg.get("no_auto_publish") or []}
           ok = (author in {u.lower() for u in trusted} or author in returning) and author not in blocked
+          # Website reports are filed by the forms' account; they publish automatically, protected by the
+          # bot check, the per-address limit, and the "withdrawn" label.
+          if os.environ.get("WEB") == "true":
+              ok = True
           print("trusted=" + ("yes" if ok else "no"))
           print("reviewers=" + " ".join(u for u in trusted if u.lower() != author))
           print("mentions=" + " ".join("@" + u for u in trusted))
@@ -78,7 +83,8 @@ jobs:
         if: steps.kind.outputs.kind == 'usage-report'
         run: |
           set +e
-          python -I tools/usage_report.py /tmp/body.md --issue "$ISSUE" --author "$AUTHOR" --date "$(date -u +%F)" --skill '${{ steps.kind.outputs.skill }}' > /tmp/out.txt 2> /tmp/err.txt
+          author="$AUTHOR"; [ "$WEB" = "true" ] && author=""
+          python -I tools/usage_report.py /tmp/body.md --issue "$ISSUE" --author "$author" --date "$(date -u +%F)" --skill '${{ steps.kind.outputs.skill }}' > /tmp/out.txt 2> /tmp/err.txt
           code=$?
           set -e
           echo "code=$code" >> "$GITHUB_OUTPUT"

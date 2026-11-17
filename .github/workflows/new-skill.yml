@@ -29,6 +29,7 @@ jobs:
       ISSUE: ${{ github.event.issue.number }}
       AUTHOR: ${{ github.event.issue.user.login }}
       TITLE: ${{ github.event.issue.title }}
+      WEB: ${{ contains(github.event.issue.labels.*.name, 'via-website') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -47,6 +48,8 @@ jobs:
           returning = {str(c.get("github", "")).lower() for c in record.get("contributions") or []} - {""}
           blocked = {u.lower() for u in cfg.get("no_auto_publish") or []}
           ok = (author in {u.lower() for u in trusted} or author in returning) and author not in blocked
+          if os.environ.get("WEB") == "true":
+              ok = False  # skills sent from the website always get one maintainer's approval
           print("trusted=" + ("yes" if ok else "no"))
           print("reviewers=" + " ".join(u for u in trusted if u.lower() != author))
           print("mentions=" + " ".join("@" + u for u in trusted))
@@ -71,7 +74,7 @@ jobs:
         if: steps.real.outputs.real == 'yes'
         run: |
           zarg=""; [ -f /tmp/sub/skill.zip ] && zarg="--zip /tmp/sub/skill.zip"
-          name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --author "$AUTHOR" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
+          name=$(python -I tools/issue_to_skill.py /tmp/sub/body.md --issue "$ISSUE" --author "$([ "$WEB" = "true" ] || echo "$AUTHOR")" --date "$(date -u +%F)" $zarg 2>/tmp/sub/err.txt | tail -1) || true
           echo "name=$name" >> "$GITHUB_OUTPUT"
           if [ -n "$name" ] && python tools/build.py --check > /tmp/sub/check.txt 2>&1; then
             python tools/build.py

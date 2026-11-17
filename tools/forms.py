@@ -72,3 +72,29 @@ def sync(cards):
         cfg.write_text(want, encoding="utf-8")
         changed.append("config.yml")
     return changed
+
+
+WEB_FORMS = ("usage-report", "new-skill")
+
+
+def schema():
+    """The two forms the website offers, as JSON for the site and for the Worker that files them.
+    The issue forms are the single source: same fields, labels and options."""
+    out = {}
+    for name in WEB_FORMS:
+        d = yaml.safe_load((FORMS / f"{name}.yml").read_text(encoding="utf-8"))
+        fields = []
+        for b in d["body"]:
+            if b["type"] == "markdown":
+                continue
+            a = b.get("attributes", {})
+            f = {"id": b["id"], "type": b["type"], "label": a["label"],
+                 "required": bool(b.get("validations", {}).get("required"))}
+            for k in ("description", "placeholder"):
+                if a.get(k):
+                    f[k] = a[k]
+            if b["type"] in ("dropdown", "checkboxes"):
+                f["options"] = [o if isinstance(o, str) else o["label"] for o in a.get("options", [])]
+            fields.append(f)
+        out[name] = {"title": d.get("title", ""), "labels": d.get("labels", []), "fields": fields}
+    return out

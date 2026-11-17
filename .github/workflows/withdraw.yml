@@ -1,0 +1,43 @@
+name: Withdraw a usage report
+# A maintainer adds the label "withdrawn" to a usage-report issue: everything that report changed
+# automatically is undone (community record, evidence line, institution, tool result, maturity level).
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  withdraw:
+    if: github.event.label.name == 'withdrawn' && contains(github.event.issue.labels.*.name, 'usage-report')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install pyyaml markdown python-pptx
+      - name: Undo the report
+        run: |
+          python -I tools/withdraw_report.py "$ISSUE"
+          python tools/build.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            gh issue comment "$ISSUE" --body "Withdrawn. This report had made no automatic changes, so nothing needed undoing."
+          else
+            git commit -m "Withdraw usage report #${ISSUE}"
+            git pull --rebase -X theirs origin main || true
+            python tools/build.py && git add -A && (git diff --cached --quiet || git commit -m "Rebuild after withdrawing #${ISSUE}")
+            git push
+            gh workflow run build.yml --ref main
+            gh issue comment "$ISSUE" --body "Withdrawn: the changes this report made to the skill and the community page have been undone."
+          fi
+          gh issue close "$ISSUE" --reason "not planned" || gh issue close "$ISSUE"

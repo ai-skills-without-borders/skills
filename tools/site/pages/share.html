@@ -1,0 +1,23 @@
+<div class="pagehead wrap">
+  <h1>Share with the library</h1>
+  <p>Tell us how a skill went, or share a skill of your own. No account needed: fill in the form and send it. What you send is published openly on GitHub and on this site, so leave out anything confidential.</p>
+</div>
+
+<section>
+  <div class="wrap share">
+    {{CLOSED}}
+    <div class="share-tabs" role="tablist" aria-label="What would you like to share?">
+      <button type="button" role="tab" id="tab-report" aria-controls="panel-report" aria-selected="true">Report how a skill went</button>
+      <button type="button" role="tab" id="tab-skill" aria-controls="panel-skill" aria-selected="false">Share a new skill</button>
+    </div>
+    <div role="tabpanel" id="panel-report" aria-labelledby="tab-report">
+      <p class="sub">About five minutes. Reports from real teaching move a skill up the maturity ladder automatically: at the institution that wrote it, to Tested at origin; anywhere else, to Tested elsewhere.</p>
+      {{FORM_REPORT}}
+    </div>
+    <div role="tabpanel" id="panel-skill" aria-labelledby="tab-skill" hidden>
+      <p class="sub">Describe the task in plain words; the six parts are explained on the <a href="contribute.html">Contribute page</a>, with a prompt that lets your AI assistant interview you and draft it. A maintainer approves new skills before they appear, usually within a few days.</p>
+      {{FORM_SKILL}}
+    </div>
+    <p class="sub share-alt">Prefer GitHub? Use the <a href="{{GH}}/issues/new?template=usage-report.yml">usage report</a> or <a href="{{GH}}/issues/new?template=new-skill.yml">new skill</a> forms there. Questions: <a href="about.html#contact">write to us</a>.</p>
+  </div>
+</section>

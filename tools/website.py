@@ -163,6 +163,58 @@ def try_html():
             .replace("{{BEFORE_AFTER}}", workshops.before_after_html()))
 
 
+def form_html(name, form):
+    """A website version of one GitHub issue form; the Worker files it as that form would."""
+    out = [f'<form class="share-form" data-form="{name}" novalidate>',
+           '<p class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>']
+    for f in form["fields"]:
+        if f["id"] == "version":  # GitHub users can read card.yaml; website users shouldn't be asked to
+            continue
+        fid = f"{name}-{f['id']}"
+        label = e(f["label"].replace(" (paste SKILL.md or attach a ZIP below)", " (paste the skill's instructions)"))
+        req = ' <span class="req">required</span>' if f["required"] else ""
+        desc = f'<span class="hint">{e(f["description"])}</span>' if f.get("description") else ""
+        r = " required" if f["required"] else ""
+        if f["type"] == "checkboxes":
+            boxes = "".join(f'<label class="cb"><input type="checkbox" name="{e(f["id"])}" value="{e(o)}"> {e(o)}</label>' for o in f["options"])
+            out.append(f'<fieldset class="fld"><legend>{label}{req}</legend>{desc}{boxes}</fieldset>')
+            continue
+        if f["type"] == "dropdown":
+            opts = '<option value="">Choose…</option>' + "".join(f'<option>{e(o)}</option>' for o in f["options"])
+            ctl = f'<select id="{fid}" name="{e(f["id"])}"{r}>{opts}</select>'
+        elif f["type"] == "textarea":
+            rows = 10 if f["id"] == "instructions" else 3
+            ctl = f'<textarea id="{fid}" name="{e(f["id"])}" rows="{rows}"{r}></textarea>'
+        else:
+            ph = f' placeholder="{e(f["placeholder"])}"' if f.get("placeholder") else ""
+            ctl = f'<input id="{fid}" name="{e(f["id"])}" maxlength="300"{ph}{r}>'
+        out.append(f'<p class="fld"><label for="{fid}">{label}{req}</label>{desc}{ctl}</p>')
+    out.append('<div class="turnstile"></div><p class="send"><button type="submit" class="btn primary">Send</button> '
+               '<span class="send-status" role="status" aria-live="polite"></span></p></form>')
+    return "".join(out)
+
+
+def share_html(cfg, gh):
+    sch = forms.schema()
+    web = cfg.get("web_forms") or {}
+    closed = "" if web.get("endpoint") else (
+        '<div class="share-closed"><p><b>The website forms open soon.</b> Until then, send a report or a skill through '
+        f'GitHub (<a href="{gh}/issues/new?template=usage-report.yml">usage report</a>, '
+        f'<a href="{gh}/issues/new?template=new-skill.yml">new skill</a>; a free account is needed), '
+        'or <a href="about.html#contact">email it to us</a> and we will add it.</p></div>')
+    return (read("share.html").replace("{{CLOSED}}", closed)
+            .replace("{{FORM_REPORT}}", form_html("usage-report", sch["usage-report"]))
+            .replace("{{FORM_SKILL}}", form_html("new-skill", sch["new-skill"])))
+
+
+def share_js(cfg):
+    web = cfg.get("web_forms") or {}
+    key = web.get("turnstile_sitekey", "")
+    return ((f'<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=asbTurnstile" async defer></script>' if key else "")
+            + f'<script>window.ASB_FORMS = {json.dumps({"endpoint": web.get("endpoint", ""), "sitekey": key})};</script>'
+            + '<script src="share.js?v=' + hashlib.sha1((SITE / "share.js").read_bytes()).hexdigest()[:10] + '"></script>')
+
+
 def paste_note(c):
     """Long skills don't fit comfortably in a single chat message on free plans."""
     f = ROOT / "dist" / c["paste"]
@@ -180,7 +232,7 @@ def static_list(cards):
 
 
 def sitemap(cfg, cards, wss):
-    pages = ["", "try.html", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
+    pages = ["", "try.html", "share.html", "start.html", "skills.html", "workshops.html", "contribute.html", "community.html", "quality.html",
              "pedagogy.html", "about.html"]
     pages += [f"workshops/{w['id']}{x}.html" for w in wss for x in ("", "-handouts")] + [f"skills/{c['name']}.html" for c in cards]
     urls = "".join(f"<url><loc>{e(cfg['site_url'] + p)}</loc></url>\n" for p in pages)
@@ -307,7 +359,8 @@ def build_site(cards, variants, cfg, public_card):
         shutil.copy(ROOT / "assets" / f, DOCS / f)
     shutil.copy(SITE / "style.css", DOCS / "style.css")
     shutil.copy(SITE / "site.js", DOCS / "site.js")
-    for f in ("deck.css", "deck.js"):
+    (DOCS / "forms.json").write_text(json.dumps(forms.schema(), ensure_ascii=False), encoding="utf-8")
+    for f in ("deck.css", "deck.js", "share.js"):
         shutil.copy(SITE / f, DOCS / f)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     (DOCS / "feed.xml").write_text(community.feed_xml({c["name"]: c["title"] for c in cards}, cfg["site_url"], cfg["library_name"]), encoding="utf-8")
@@ -327,6 +380,8 @@ def build_site(cards, variants, cfg, public_card):
         "index.html": (f"{cfg['library_name']} — shared AI skills for biomedical research and medical education",
                        "Shared AI skills for educators in biomedical research and medicine.",
                        home_html(cards), "", ""),
+        "share.html": ("Share with the library — " + cfg["library_name"], "Report how a skill went, or share a skill of your own. No account needed.",
+                       share_html(cfg, gh), "contribute.html", share_js(cfg)),
         "try.html": ("Try your first skill — " + cfg["library_name"], "Try an AI skill in your own assistant in a few minutes, with nothing to install.",
                      try_html(), "start.html", ""),
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
