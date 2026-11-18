@@ -1,0 +1,7 @@
+# What each automatic usage report changed; read by tools/withdraw_report.py.
+12:
+  institution: weizmann
+  last_tested_from: never
+  sentence: 'Used in preparation or a trial at The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science with Claude, as reported in issue #12.'
+  skill: plain-language-writer
+  tested_in: claude

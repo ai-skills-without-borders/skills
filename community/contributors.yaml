@@ -156,3 +156,8 @@ contributions:
     skill: plain-language-writer
     person: "Talia H. Swartz, MD, PhD"
     link: https://github.com/ai-skills-without-borders/skills/tree/main/skills/plain-language-writer
+  - date: 2026-11-18
+    type: usage-report
+    institution: weizmann
+    skill: plain-language-writer
+    link: https://github.com/ai-skills-without-borders/skills/issues/12

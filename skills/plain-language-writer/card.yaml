@@ -30,11 +30,11 @@ outputs:
 runs_code: false
 maturity: draft
 tested_in:
-  claude: untested
+  claude: works
   chatgpt: untested
   gemini: untested
   copilot: untested
-last_tested: null
+last_tested: 2026-11
 used_at: []
 frameworks:
 - ISO 24495-1 Plain language
@@ -46,3 +46,4 @@ maintainers:
 reviewers: []
 license: CC-BY-4.0
 starter: false
+evidence: 'Used in preparation or a trial at The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science with Claude, as reported in issue #12.'
