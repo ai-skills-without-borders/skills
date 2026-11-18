@@ -759,12 +759,12 @@
     "runs_code": false,
     "maturity": "draft",
     "tested_in": {
-      "claude": "works",
+      "claude": "untested",
       "chatgpt": "untested",
       "gemini": "untested",
       "copilot": "untested"
     },
-    "last_tested": "2026-11",
+    "last_tested": null,
     "used_at": [],
     "frameworks": [
       "ISO 24495-1 Plain language",
@@ -778,7 +778,6 @@
     "reviewers": [],
     "license": "CC-BY-4.0",
     "starter": false,
-    "evidence": "Used in preparation or a trial at The Miriam and Aaron Gutwirth Medical School, Weizmann Institute of Science with Claude, as reported in issue #12.",
     "description": "Use when an educator asks to write, rewrite or edit text so it is clear and sounds human, not like AI. Triggers include \"make this plainer\", \"this sounds like AI\", \"rewrite for students\", \"make this easier to follow\", \"edit my course page\", \"write an email to my students\", \"clean up this syllabus text\".",
     "zip": "downloads/plain-language-writer.zip",
     "paste": "paste/plain-language-writer.md",
