@@ -25,7 +25,7 @@ jobs:
       - run: pip install pyyaml markdown python-pptx
       - name: Undo the report
         run: |
-          python -I tools/withdraw_report.py "$ISSUE"
+          python tools/withdraw_report.py "$ISSUE"
           python tools/build.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

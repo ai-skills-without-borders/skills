@@ -84,7 +84,7 @@ jobs:
         run: |
           set +e
           author="$AUTHOR"; [ "$WEB" = "true" ] && author=""
-          python -I tools/usage_report.py /tmp/body.md --issue "$ISSUE" --author "$author" --date "$(date -u +%F)" --skill '${{ steps.kind.outputs.skill }}' > /tmp/out.txt 2> /tmp/err.txt
+          python tools/usage_report.py /tmp/body.md --issue "$ISSUE" --author "$author" --date "$(date -u +%F)" --skill '${{ steps.kind.outputs.skill }}' > /tmp/out.txt 2> /tmp/err.txt
           code=$?
           set -e
           echo "code=$code" >> "$GITHUB_OUTPUT"
