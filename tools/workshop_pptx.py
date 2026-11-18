@@ -348,8 +348,8 @@ def build(w, out_path, clock, segments, site):
     buf = io.BytesIO()
     prs.save(buf)
     # Rewrite the package with fixed entry dates, so the same slides always give the same file.
-    with zipfile.ZipFile(io.BytesIO(buf.getvalue())) as src, zipfile.ZipFile(out_path, "w", zipfile.ZIP_DEFLATED) as dst:
+    with zipfile.ZipFile(io.BytesIO(buf.getvalue())) as src, zipfile.ZipFile(out_path, "w", zipfile.ZIP_STORED) as dst:
         for item in src.infolist():
             info = zipfile.ZipInfo(item.filename, date_time=(2026, 1, 1, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.compress_type = zipfile.ZIP_STORED  # no compression: identical bytes on every machine
             dst.writestr(info, src.read(item.filename))

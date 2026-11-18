@@ -106,6 +106,95 @@ def _project(lat, lon, scale, translate):
     return x * scale + translate[0], -y * scale + translate[1]
 
 
+GENERIC = {"the", "of", "and", "for", "at", "in", "de", "la", "le", "du", "der", "und", "school", "medicine", "medical",
+           "university", "universität", "université", "universidad", "college", "institute", "institution", "science",
+           "sciences", "health", "center", "centre", "faculty", "hospital", "department", "graduate", "program",
+           "national", "academy", "research", "campus", "state", "city", "foundation"}
+
+
+def _words(text):
+    return {w for w in re.findall(r"[^\W\d_]{3,}", (text or "").lower()) if w not in GENERIC}
+
+
+def country_code(text, world=None):
+    """An ISO alpha-2 code from what a contributor typed ("Israel", "USA", "uk", "IL"), or ""."""
+    world = world or _world()
+    t = re.sub(r"[^a-z ]", "", (text or "").lower()).strip()
+    aliases = {"usa": "US", "us": "US", "united states": "US", "america": "US", "uk": "GB", "england": "GB",
+               "scotland": "GB", "wales": "GB", "great britain": "GB", "britain": "GB", "korea": "KR",
+               "south korea": "KR", "uae": "AE", "holland": "NL", "czech republic": "CZ", "russia": "RU"}
+    if t in aliases:
+        return aliases[t]
+    for code, name in world["names"].items():
+        if t and (t == code.lower() or t == name.lower() or t == re.sub(r"[^a-z ]", "", name.lower())):
+            return code
+    return ""
+
+
+def match_institution(insts, name, country=""):
+    """The id of the listed institution a contributor means, however they wrote its name, or None."""
+    n = (name or "").strip().lower()
+    if not n:
+        return None
+    for k, v in insts.items():
+        full = v["name"].lower()
+        if n in (k, full) or n in full or full in n:
+            return k
+    code = country_code(country) if country else ""
+    mine = _words(n)
+    scored = []
+    for k, v in insts.items():
+        if code and v.get("country") and v["country"] != code:
+            continue
+        shared = mine & (_words(v["name"]) | _words(k.replace("-", " ")) | {w for a in v.get("aliases") or [] for w in _words(a)})
+        if shared:
+            scored.append((len(shared), k))
+    scored.sort(reverse=True)
+    if scored and (len(scored) == 1 or scored[0][0] > scored[1][0]):
+        return scored[0][1]
+    return None
+
+
+def _unproject(x, y, scale, translate):
+    """Latitude and longitude of a point on the map (inverse of _project)."""
+    xr, yr = (x - translate[0]) / scale, -(y - translate[1]) / scale
+    lo, hi = -math.pi / 2, math.pi / 2
+    for _ in range(60):
+        phi = (lo + hi) / 2
+        p2 = phi * phi; p4 = p2 * p2
+        yy = phi * (1.007226 + p2 * (0.015085 + p4 * (-0.044475 + 0.028874 * p2 - 0.005916 * p4)))
+        lo, hi = (phi, hi) if yy < yr else (lo, phi)
+    p2 = phi * phi; p4 = p2 * p2
+    lam = xr / (0.8707 - 0.131979 * p2 + p4 * (-0.013791 + p4 * (0.003971 * p2 - 0.001529 * p4)))
+    return round(math.degrees(phi), 2), round(math.degrees(lam), 2)
+
+
+def find_or_add_institution(name, country):
+    """The id for an institution, adding it to the record (placed at its country's centre on the map) if new.
+    Returns (id, added); id is "" when the country can't be recognised, so a person can help."""
+    insts, _ = load()
+    iid = match_institution(insts, name, country)
+    if iid:
+        return iid, False
+    name = " ".join((name or "").split())[:150]
+    world = _world()
+    code = country_code(country, world)
+    if not name or not code or code not in world.get("centroids", {}):
+        return "", False
+    lat, lon = _unproject(*world["centroids"][code], world["scale"], world["translate"])
+    base = "-".join(sorted(_words(name), key=name.lower().find)[:3]) or re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")[:30]
+    base = re.sub(r"[^a-z0-9-]+", "", base) or "institution"
+    iid, n = base, 2
+    while iid in insts:
+        iid, n = f"{base}-{n}", n + 1
+    entry = (f"  {iid}:\n    name: {json.dumps(name, ensure_ascii=False)}\n    country: {code}\n"
+             f"    lat: {lat}\n    lon: {lon}\n")
+    text = REGISTRY.read_text(encoding="utf-8")
+    text = text.replace("\ncontributions:\n", "\n" + entry + "\ncontributions:\n", 1)
+    REGISTRY.write_text(text, encoding="utf-8")
+    return iid, True
+
+
 def sync_skill_contributions(cards):
     """Every skill in the library is recorded as a contribution, however it arrived (issue form,
     website, pull request or a maintainer's commit). Missing ones are added from the skill's card.
@@ -118,7 +207,7 @@ def sync_skill_contributions(cards):
         if c["name"] in have:
             continue
         origin = (c.get("origin_institution") or "").lower()
-        inst = next((k for k, v in insts.items() if v["name"].lower() == origin or v["name"].lower() in origin or (origin and origin in v["name"].lower())), None)
+        inst = match_institution(insts, origin)
         if not inst:
             raise SystemExit(f"[community] skill '{c['name']}': its institution '{c.get('origin_institution')}' is not in "
                              "community/contributors.yaml; add the institution there (name, country, lat, lon).")

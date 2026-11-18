@@ -37,7 +37,7 @@ def main():
     if what.get("tested_in"):
         card.setdefault("tested_in", {})[what["tested_in"]] = "untested"
     if what.get("last_tested_from"):
-        card["last_tested"] = what["last_tested_from"]
+        card["last_tested"] = None if what["last_tested_from"] == "never" else what["last_tested_from"]
     if what.get("maturity_from"):
         card["maturity"] = what["maturity_from"]
     card_path.write_text(header + yaml.safe_dump(card, sort_keys=False, allow_unicode=True, width=1000), encoding="utf-8")
@@ -54,7 +54,13 @@ def main():
             block.append(ln)
         else:
             out.append(ln)
-    REC.write_text("".join(out), encoding="utf-8")
+    text = "".join(out)
+    # An institution this report added to the map goes too, unless something else now refers to it.
+    iid = what.get("added_institution")
+    if iid and f"institution: {iid}\n" not in text:
+        import re
+        text = re.sub(rf"\n  {re.escape(iid)}:\n(?:    .*\n)+", "", text, count=1)
+    REC.write_text(text, encoding="utf-8")
     LOG.write_text("# What each automatic usage report changed; read by tools/withdraw_report.py.\n"
                    + yaml.safe_dump(log, sort_keys=True, allow_unicode=True, width=1000), encoding="utf-8")
     print(what["skill"])

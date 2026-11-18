@@ -25,6 +25,7 @@ import yaml
 import issue_to_skill as its
 import issue_triage
 import forms
+import community
 
 ROOT = Path(__file__).resolve().parent.parent
 LADDER = ["draft", "tested-at-origin", "tested-elsewhere", "reviewed"]
@@ -41,12 +42,11 @@ def load_record():
 
 
 def find_institution(rec, name, author):
-    insts = rec.get("institutions") or []
-    if name:
-        n = name.lower()
-        for i in insts:
-            if i["id"] == n or i["name"].lower() == n or n in i["name"].lower() or i["name"].lower() in n:
-                return i["id"]
+    """A listed institution only (no adding): the named one, else the author's earlier one."""
+    insts = {i["id"]: i for i in rec.get("institutions") or []}
+    iid = community.match_institution(insts, name)
+    if iid:
+        return iid
     # No usable answer: the institution of the author's earlier contributions (GitHub submissions only).
     for c in reversed(rec.get("contributions") or [] if author else []):
         if str(c.get("github", "")).lower() == author.lower():
@@ -92,9 +92,14 @@ def main():
         sys.exit(2)
     rec_path, rec = load_record()
     inst = find_institution(rec, get("Institution"), a.author)
+    new_inst = False
     if not inst:
-        print("The institution is not yet on the community map; a maintainer will add it.", file=sys.stderr)
-        sys.exit(2)
+        # A new institution joins the community map automatically, placed at its country's centre.
+        inst, new_inst = community.find_or_add_institution(get("Institution"), get("Country"))
+        if not inst:
+            print("Could not recognise the country, so the institution couldn't be placed on the map.", file=sys.stderr)
+            sys.exit(2)
+        rec_path, rec = load_record()
     inst_name = next(i["name"] for i in rec["institutions"] if i["id"] == inst)
 
     card_path = ROOT / "skills" / skill / "card.yaml"
@@ -143,11 +148,11 @@ def main():
     card["last_tested"] = a.date[:7]
 
     card_path.write_text(header + yaml.safe_dump(card, sort_keys=False, allow_unicode=True, width=1000), encoding="utf-8")
-    log_change(a.issue, {"skill": skill, "institution": inst,
+    log_change(a.issue, {"skill": skill, "institution": inst, "added_institution": inst if new_inst else None,
                          "added_used_at": inst if any("institutions using it" in c for c in changes) else None,
                          "tested_in": tool if any("working in" in c for c in changes) else None,
                          "maturity_from": level if card.get("maturity") != level else None,
-                         "last_tested_from": str(last_before) if last_before and str(last_before) != a.date[:7] else None,
+                         "last_tested_from": "never" if not last_before else (str(last_before) if str(last_before) != a.date[:7] else None),
                          "sentence": sentence if any("evidence" in c for c in changes) else None})
 
     link = f"https://github.com/ai-skills-without-borders/skills/issues/{a.issue}"

@@ -315,17 +315,11 @@ def build(body, author=None, issue=None, date=None, overrides=None, zpath=None, 
 
 
 def record(skill, person, institution, country, issue, date, github=None):
-    data = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
-    insts = data["institutions"]
-    iid = next((k for k, v in insts.items() if v["name"].lower() == institution.lower()
-                or institution.lower() in v["name"].lower() or v["name"].lower() in institution.lower()), None)
+    import community
+    iid, _ = community.find_or_add_institution(institution, country)
+    if not iid:
+        raise SystemExit(f"Could not recognise the country '{country}', so the institution couldn't be placed on the map.")
     text = REGISTRY.read_text(encoding="utf-8")
-    if iid is None:
-        iid = re.sub(r"[^a-z0-9]+", "-", institution.lower()).strip("-")[:30] or "institution"
-        code = COUNTRY_CODES.get(country.strip().lower(), country.strip().upper()[:2])
-        entry = (f"  {iid}:\n    name: {yaml.safe_dump(institution, width=10**6).strip()}\n    country: {code}\n"
-                 "    lat: 0\n    lon: 0  # TODO: approximate location for the map\n")
-        text = text.replace("\ncontributions:\n", "\n" + entry + "\ncontributions:\n", 1)
     if f"skill: {skill}\n" in text:
         REGISTRY.write_text(text, encoding="utf-8")
         return
