@@ -1,0 +1,99 @@
+# How to install a skill in each AI tool. The ONE source for install steps: the "Install a skill" section of the
+# Skills page, the skill pages, the workshop handouts and slides are all built from this file. Edit it here only.
+#
+# Every step must come from the tool's own help pages (listed under sources). Leave out anything they don't state.
+# Markup: **bold**, [text](url), `code`. When a tool changes its menus, update the steps and the date below.
+
+checked: 24 November 2026
+
+download: >-
+  On the skill's page, under **Install it for every chat**, download the ZIP for your tool. Don't unzip it: the
+  tools want the ZIP as it is.
+
+tools:
+- id: claude
+  name: Claude
+  zip: standard
+  plans: >-
+    All plans, the free plan included. On a Team plan skills are on by default. On an Enterprise plan an owner turns
+    on code execution and skills in **Organization settings → Plugins & skills**.
+  steps:
+  - Open **Settings → Capabilities** and turn on **Code execution and file creation** (called **Create and edit
+    files** in the newer layout).
+  - Open **Customize → Skills**.
+  - Click **+**, then **Create skill**, then **Upload a skill**, and choose the ZIP.
+  - Check that the skill is switched on in the list.
+  short:
+  - '**Settings → Capabilities**: turn on code execution and file creation'
+  - '**Customize → Skills**, then **+**'
+  - '**Create skill → Upload a skill**, choose the ZIP'
+  - Check that it is **switched on** in the list
+  sources:
+  - [Claude Help Center, "https://support.claude.com/en/articles/12512180-use-skills-in-claude"]
+
+- id: chatgpt
+  name: ChatGPT
+  zip: standard
+  plans: >-
+    ChatGPT Business, Enterprise, Healthcare and Edu. Workspace admins decide whether members can use and upload
+    skills. If you don't see Skills, use the skill without installing (below).
+  steps:
+  - In the sidebar, select **Plugins**, then open **Skills**.
+  - Select **Create**, then **Upload from your computer**, and choose the ZIP.
+  - ChatGPT checks the skill first. Most skills are ready as soon as the check finishes.
+  note: Skills added in the desktop app and on the web or phone don't sync. Add the skill in each place you use.
+  sources:
+  - [OpenAI Help Center, "https://help.openai.com/en/articles/20001066-skills-in-chatgpt"]
+
+- id: gemini
+  name: Gemini
+  zip: flat
+  plans: >-
+    The Gemini app on the web, on Mac and on phones, for users aged 18 and over. Google's help pages don't say which
+    plans include skills. If you don't see Skills, use the skill without installing (below).
+  steps:
+  - On [gemini.google.com](https://gemini.google.com), click **Customize** in the sidebar. If you don't see it,
+    click **More** first.
+  - At the top, click **Skills**.
+  - Click **Create**, then **Upload**, choose the ZIP for Gemini and Copilot, and click **Open**.
+  - Review the skill, then click **Create**.
+  note: If your sidebar shows **Switch to Spark Skills** instead of Customize, open it and use **Create → Upload**.
+  sources:
+  - [Gemini Apps Help (skills), "https://support.google.com/gemini/answer/17094296"]
+  - [Gemini Apps Help (importing skills), "https://support.google.com/gemini/answer/18977944"]
+
+- id: copilot
+  name: Copilot
+  zip: flat
+  plans: >-
+    Microsoft 365 Copilot Chat with a work or school account and a Microsoft 365 Copilot (Premium) license. Not in
+    Copilot Chat (Basic).
+  steps:
+  - In [Copilot Chat](https://copilot.cloud.microsoft/chat), select **Agents → More agents**.
+  - Open the drop-down beside **Add** and select **Upload skill**.
+  - Choose the ZIP for Gemini and Copilot, and select **Upload**.
+  note: >-
+    Without the Premium license you can add a skill to an agent you build: **Agents & Skills → New agent →
+    Configure → Skills → Add**, then upload the same ZIP. An agent can hold up to 8 skills.
+  sources:
+  - [Microsoft Learn (Copilot Chat skills), "https://learn.microsoft.com/en-us/plugins/build-copilot-chat-skills"]
+  - [Microsoft Learn (Agent Builder skills), "https://learn.microsoft.com/en-us/plugins/agent-builder-add-skills"]
+
+- id: none
+  name: No skills in your plan
+  plans: Every skill also works in any assistant, free plans included, without installing.
+  steps:
+  - On the skill's page, under **Try it now, without installing**, click **Copy the skill**. It copies the
+    instructions and all reference files in one go.
+  - Open a new chat, paste, and write your request at the end of the message.
+  - Paste it again whenever you start a new chat for this task.
+  note: Without installing, a skill can't run scripts. Only one skill in the library uses them, and it still works
+    by reading.
+
+- id: code
+  name: Claude Code
+  plans: For people who work in a terminal.
+  steps:
+  - Run `/plugin marketplace add ai-skills-without-borders/skills`.
+  - Run `/plugin install ai-skills-without-borders@ai-skills-without-borders`.
+  - To update later, run `/plugin marketplace update ai-skills-without-borders`.

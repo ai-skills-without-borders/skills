@@ -8,7 +8,7 @@ Don't include patient data, learner names or grades, or unpublished material.
 
 1. **Skill and version** (from `card.yaml`)
 2. **Your institution** and your role (course leader, facilitator, coordinator, other)
-3. **AI tool and plan** (e.g. ChatGPT Edu, Claude Pro, Gemini Enterprise, Copilot Cowork, paste-in version in a free plan)
+3. **AI tool and plan** (e.g. ChatGPT Edu, Claude Pro, Gemini, Microsoft 365 Copilot, paste-in version in a free plan)
 4. **Task** — what you asked it to do, in one or two sentences
 5. **Outcome** — used as-is / used after edits / not used
 6. **Time** — roughly how long until you had a usable result

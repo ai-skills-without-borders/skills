@@ -54,6 +54,7 @@
     "starter": false,
     "description": "Builds clinical integration sessions for a methods-based course. For each integration task date, it finds a recent NEJM clinical case (MGH Case Records, or Clinical Problem-Solving if needed). The case has to fit methods students have already learned, including at least one taught since the previous task. It then writes a student-facing session notebook and an instructor key.  Students don't diagnose the patient. Working in small teams, they choose course methods and combine them into a plan a physician-scientist could use to investigate the disease mechanism. Selected students then present one method each in a chalk talk and answer questions.  Use it when you teach methods in separate sessions (lab techniques, omics, imaging, data analysis) and want recurring sessions where students apply them together to a real patient. This works best in preclinical, MD-PhD or biomedical graduate courses. It is also useful when you need a fresh case each year without the hours of searching for one.",
     "zip": "downloads/clinical-integration-notebooks.zip",
+    "zip_flat": "downloads/clinical-integration-notebooks-gemini-copilot.zip",
     "paste": "paste/clinical-integration-notebooks.md",
     "source_url": null
   },
@@ -121,6 +122,7 @@
     "short": "Committee",
     "description": "Helps a graduate student plan and run their own thesis committee meeting from start to finish. Use when a student says \"I need to schedule my committee meeting\", \"help me write to my committee\", \"follow up on my poll\", \"send the calendar invite\", \"what should I put in my committee slides\", \"help me write my progress report\" or \"help me write up my committee meeting\". Drafts every email and the calendar invite, helps prepare the slides and progress report and writes the summary afterward. Nothing is sent without the student's approval.",
     "zip": "downloads/committee-meeting-planner.zip",
+    "zip_flat": "downloads/committee-meeting-planner-gemini-copilot.zip",
     "paste": "paste/committee-meeting-planner.md",
     "source_url": null
   },
@@ -187,6 +189,7 @@
     "short": "Curriculum map",
     "description": "Builds and maintains a curriculum map for a whole course or program, linking course goals to module goals to session objectives to assessment items. It also checks that everything lines up. Use when an educator says \"build a curriculum map\", \"map our course\", \"check that every objective is taught and tested\", \"which goals have no sessions\", \"how does our course compare with the medical school curriculum\", \"make a website of our curriculum\" or \"update the map after the schedule changed\". For course directors and program leaders in graduate, MD-PhD, medical and postdoctoral programs. Produces one source spreadsheet, a gap report and a browsable map website.",
     "zip": "downloads/curriculum-map-builder.zip",
+    "zip_flat": "downloads/curriculum-map-builder-gemini-copilot.zip",
     "paste": "paste/curriculum-map-builder.md",
     "source_url": null
   },
@@ -245,6 +248,7 @@
     "starter": false,
     "description": "Writes exam and practice questions aligned to learning objectives for medical and biomedical-research education — single-best-answer MCQs with clinical or research vignettes, short-answer items with rubrics, and data-interpretation items — starting from a blueprint and checking every item for known item-writing flaws. Use whenever an educator wants exam questions, quiz items, practice questions, a question bank, an assessment blueprint, or wants existing items reviewed, improved, tagged to objectives, or exported for an LMS (Moodle GIFT, CSV). Works best with the numbered objectives table from the learning-objectives-designer skill; with only a topic or material, it first drafts focused objectives. Asks whether items are for formative practice or summative assessment and adjusts rigour accordingly.",
     "zip": "downloads/exam-question-writer.zip",
+    "zip_flat": "downloads/exam-question-writer-gemini-copilot.zip",
     "paste": "paste/exam-question-writer.md",
     "source_url": null
   },
@@ -306,6 +310,7 @@
     "short": "Journal club",
     "description": "Helps a student prepare to present a research paper at journal club. Use when a student says \"I'm presenting at journal club\", \"help me understand this paper\", \"how should we split the figures\", \"help me make my journal club slides\", \"what questions will they ask me\" or \"help me lead the discussion\". For graduate, MD-PhD, medical students, residents and postdocs, presenting alone or in a group. It helps the student understand and judge each figure in their own words, plan the talk, prepare discussion questions and get ready for hard questions. Uses only what is in the paper and never reproduces the paper itself.",
     "zip": "downloads/journal-club-planner.zip",
+    "zip_flat": "downloads/journal-club-planner-gemini-copilot.zip",
     "paste": "paste/journal-club-planner.md",
     "source_url": null
   },
@@ -371,6 +376,7 @@
     "starter": false,
     "description": "Helps faculty or student leaders organize and run a structured meeting where everyone takes a role, speaks and gives feedback to practice leadership communication. Use when someone says \"help me run a speaking practice session\", \"plan a communication workshop where students practice speaking\", \"assign meeting roles for a public speaking session\", \"write impromptu speaking prompts\", \"make role guides for a timekeeper and grammarian\" or \"help me run a leadership communication session\". It produces the run of show, role assignments, role guides, student prep sheets, impromptu prompts, feedback guidance and printable materials. It works for in-person, virtual, short or large-group sessions.",
     "zip": "downloads/leadership-communication-meeting-organizer.zip",
+    "zip_flat": "downloads/leadership-communication-meeting-organizer-gemini-copilot.zip",
     "paste": "paste/leadership-communication-meeting-organizer.md",
     "source_url": null
   },
@@ -430,6 +436,7 @@
     "starter": true,
     "description": "Extracts, writes, simplifies, levels and maps learning objectives for a course, module, session or assignment in medical or biomedical-research education. Use whenever an educator wants to write or fix learning objectives, pull objectives out of existing course material (slides, syllabi, session plans, notebooks), split compound objectives into single focused ones, assign cognitive levels (Bloom or a simpler three-level scale), check alignment between objectives, activities and assessment, or map objectives to a competency framework (institutional EPAs, AAMC Foundational Competencies, GREAT MD-PhD competencies, AI competencies). Also use when asked \"what are the objectives of this course\", \"are my objectives measurable\", \"map my course\", or before generating exam questions or a syllabus. Produces a numbered objectives table that the syllabus-builder and exam-question-writer skills consume.",
     "zip": "downloads/learning-objectives-designer.zip",
+    "zip_flat": "downloads/learning-objectives-designer-gemini-copilot.zip",
     "paste": "paste/learning-objectives-designer.md",
     "source_url": null
   },
@@ -483,6 +490,7 @@
     "starter": false,
     "description": "Checks a lesson plan, session plan or course/assignment Jupyter notebook against an institution's house-style format profile, reports every deviation with a proposed fix, and applies only the fixes the educator approves, in a new copy. Use whenever an educator uploads or points to a lesson plan, session plan or assignment notebook (.ipynb, .md, .docx) and asks to check, review, audit, lint, validate or \"fix the format\" of it, asks whether it follows the house style or template, wants timing checked against the session length, or wants a new lesson or notebook created in the standard structure. Ships with two example profiles (a Jupyter assignment-notebook profile and a generic lesson-plan profile) that institutions copy and adapt. Does not judge pedagogical quality and is not for generic data-analysis notebooks unrelated to teaching.",
     "zip": "downloads/lesson-format-checker.zip",
+    "zip_flat": "downloads/lesson-format-checker-gemini-copilot.zip",
     "paste": "paste/lesson-format-checker.md",
     "source_url": null
   },
@@ -541,6 +549,7 @@
     "starter": false,
     "description": "Helps MD-PhD program directors and administrators build a complete program calendar for any MD-PhD program. Use when someone says \"help me build our program calendar\", \"make a master calendar for the MD-PhD program\", \"what dates should our program track\", \"map our students' milestones by year\", \"when should we send committee meeting reminders\" or \"put our events and deadlines in one place\". It covers the yearly program cycle, each student's milestones from admission to residency, national dates such as AMCAS, NIH fellowships and the Match, and reminders with enough lead time. It works from the program's own structure and rules and never invents dates.",
     "zip": "downloads/mdphd-calendar-builder.zip",
+    "zip_flat": "downloads/mdphd-calendar-builder-gemini-copilot.zip",
     "paste": "paste/mdphd-calendar-builder.md",
     "source_url": null
   },
@@ -602,6 +611,7 @@
     "short": "Mentor compact",
     "description": "Builds mentoring compacts in two layers. A program sets up its shared compact once, with its expectations, milestones, funding, safety rules, time away and contacts. Then each mentor and trainee add their own agreements on top, like how often they meet, authorship, working hours and career goals. Use it when a program wants a compact template, when a new trainee joins a lab, when a mentor and trainee want to reset expectations or when a compact is due for its yearly review.",
     "zip": "downloads/mentor-compact-creator.zip",
+    "zip_flat": "downloads/mentor-compact-creator-gemini-copilot.zip",
     "paste": "paste/mentor-compact-creator.md",
     "source_url": null
   },
@@ -663,6 +673,7 @@
     "starter": false,
     "description": "Helps MD-PhD program directors and administrators pull together everything needed for an NIGMS Medical Scientist Training Program (MSTP) T32 application, new or renewal. Use when someone says \"we're putting together our MSTP T32\", \"help me plan our training grant renewal\", \"what do we need for the MSTP T32\", \"make a checklist for the T32\", \"what goes in the organizational support letter\", \"help me collect the training tables\" or \"check our T32 against the announcement\". It first checks that the team is using the current NIH announcement and notices, then builds a component tracker, a timeline, data and letter requests, an outline of the Program Plan mapped to the review criteria and a final compliance check. The program leaders write the application.",
     "zip": "downloads/mstp-t32-planner.zip",
+    "zip_flat": "downloads/mstp-t32-planner-gemini-copilot.zip",
     "paste": "paste/mstp-t32-planner.md",
     "source_url": null
   },
@@ -719,6 +730,7 @@
     "starter": true,
     "description": "Builds case-based PBL (problem-based learning) and tool-based RBL (research-based learning) sessions — plus their pre-session readers, comprehension quizzes, and intro lectures — for a course in ANY discipline. Use whenever someone wants to build, draft, design, revise, or improve a PBL or RBL session, a teaching case, a discovery activity, a pre-reading, a reading-comprehension quiz, or an intro lecture for active learning. The skill first asks for your course context — discipline, your students' actual stage, session format, the tools and sources you have — then applies a portable pedagogical canon — invisible pedagogy, one-inference-per-prompt step-width, predict-before-reveal, the productive trap, information-release discipline, figures-as-tasks, and a warm-collegial facilitator voice with no AI effusiveness. It calibrates every prompt to the student stage you specify, never invents sources or citations, and works as a design partner that catches AI failure modes before they reach a draft.",
     "zip": "downloads/pbl-rbl-session-builder.zip",
+    "zip_flat": "downloads/pbl-rbl-session-builder-gemini-copilot.zip",
     "paste": "paste/pbl-rbl-session-builder.md",
     "source_url": null
   },
@@ -780,6 +792,7 @@
     "starter": false,
     "description": "Use when an educator asks to write, rewrite or edit text so it is clear and sounds human, not like AI. Triggers include \"make this plainer\", \"this sounds like AI\", \"rewrite for students\", \"make this easier to follow\", \"edit my course page\", \"write an email to my students\", \"clean up this syllabus text\".",
     "zip": "downloads/plain-language-writer.zip",
+    "zip_flat": "downloads/plain-language-writer-gemini-copilot.zip",
     "paste": "paste/plain-language-writer.md",
     "source_url": null
   },
@@ -832,6 +845,7 @@
     "starter": true,
     "description": "Turns one or more source documents (journal papers, book chapters, reviews, protocols) into structured, interactive reading material sized for a real class session in medical or biomedical-research education. Use whenever an educator asks for reading material, a pre-reading, a group reading assignment, a flipped-classroom reading, or wants to turn a paper or chapter into something learners read before or during a lecture, PBL, RBL or workshop — even without the phrase \"reading material\". Triggers include \"turn this paper into something my students can read\", \"I need the reading part of my session\", \"make a group reading out of this chapter\", \"summarize this paper for a 2-hour session\". Also use to shorten or lengthen an existing reading, add a glossary, add discussion questions, or add figures from the source.",
     "zip": "downloads/reading-material-generator.zip",
+    "zip_flat": "downloads/reading-material-generator-gemini-copilot.zip",
     "paste": "paste/reading-material-generator.md",
     "source_url": null
   },
@@ -892,6 +906,7 @@
     "starter": false,
     "description": "Builds or updates a course syllabus from whatever course material exists (complete or partial) and maps the course to the institution's competency framework with evidence-based rules — institutional EPAs, AAMC Foundational Competencies, the AAMC GREAT MD-PhD competencies, AI competencies, or any framework the educator supplies. For course leaders in medical, MD-PhD, PhD and biomedical-research programs, any course kind (block, module, longitudinal track, lab course, elective) and any teaching format (lecture, PBL, RBL, TBL, CBL, simulation, labs, journal club). Use whenever someone wants to create, draft, fill in, update or review a syllabus or course outline; map a course or assignment to competencies, EPAs or milestones; check which competencies a course covers or where its gaps are; or says \"here are my course materials, make the syllabus\" — even with only an outline, a few slide decks or a verbal description.",
     "zip": "downloads/syllabus-builder.zip",
+    "zip_flat": "downloads/syllabus-builder-gemini-copilot.zip",
     "paste": "paste/syllabus-builder.md",
     "source_url": null
   },
@@ -948,6 +963,7 @@
     "starter": false,
     "description": "Helps a graduate or MD-PhD student plan rotations and choose a thesis lab. It helps the student work out what they need from a lab, plan rotations, prepare questions for the PI and lab members, reflect on what they saw during a rotation, compare labs against their own priorities and ask to join. The student makes the decision.",
     "zip": "downloads/thesis-lab-navigator.zip",
+    "zip_flat": "downloads/thesis-lab-navigator-gemini-copilot.zip",
     "paste": "paste/thesis-lab-navigator.md",
     "source_url": null
   }

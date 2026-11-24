@@ -24,6 +24,7 @@ import community
 import principles
 import visuals
 import workshops
+import install
 import forms
 import workshop_pptx
 
@@ -291,7 +292,7 @@ def skill_page(c, cfg, variants):
                  "USERS": e(users_label(c.get("users"))), "DESCRIPTION": e(c["description"]),
                  "TASKS": li(c.get("tasks")), "INPUTS": li(c.get("inputs")), "OUTPUTS": li(c.get("outputs")),
                  "PEDAGOGY": ped, "VARIANTS": vhtml, "ORIGIN": origin, "FRAMEWORKS": frameworks,
-                 "ZIP": e(c["zip"]), "PASTE": e(c["paste"]), "PASTE_NOTE": paste_note(c), "REPORT_SKILL": urllib.parse.quote(forms.skill_option(c)), "TESTED": tested, "USED_AT": used_at,
+                 "ZIP": e(c["zip"]), "ZIP_FLAT": e(c["zip_flat"]), "PASTE": e(c["paste"]), "PASTE_NOTE": paste_note(c), "REPORT_SKILL": urllib.parse.quote(forms.skill_option(c)), "TESTED": tested, "USED_AT": used_at,
                  "REVIEWERS": reviewers, "NAME": e(c["name"]), "ICON": visuals.icon(c["name"], 36)}.items():
         content = content.replace("{{" + k + "}}", v)
     return layout(cfg, f"{c['title']} — {cfg['library_name']}", c["summary"], content, "skills.html", root="../", path=f"skills/{c['name']}.html")
@@ -360,6 +361,7 @@ def build_site(cards, variants, cfg, public_card):
         (DOCS / p).mkdir(parents=True, exist_ok=True)
     for c in cards + variants:
         shutil.copy(ROOT / "dist" / "zips" / f"{c['name']}.zip", DOCS / "downloads")
+        shutil.copy(ROOT / "dist" / "zips" / f"{c['name']}-gemini-copilot.zip", DOCS / "downloads")
         shutil.copy(ROOT / "dist" / "paste" / f"{c['name']}.md", DOCS / "paste")
     for f in ("logo.svg", "logo.png", "favicon.svg", "favicon.png", "og-image.png"):
         shutil.copy(ROOT / "assets" / f, DOCS / f)
@@ -393,7 +395,7 @@ def build_site(cards, variants, cfg, public_card):
         "start.html": ("New to skills? — " + cfg["library_name"], "What an AI skill is and how to use one.",
                        fill_steps(read("start.html")), "start.html", ""),
         "skills.html": ("The skills — " + cfg["library_name"], "Search and download the skills.",
-                        read("skills.html").replace("{{STATIC_LIST}}", static_list(cards)), "skills.html", read("skills.js")),
+                        read("skills.html").replace("{{STATIC_LIST}}", static_list(cards)).replace("{{INSTALL}}", install.section_html(workshops.inline)), "skills.html", read("skills.js")),
         "contribute.html": ("Contribute — " + cfg["library_name"], "Adapt, improve and share skills.",
                             read("contribute.html").replace("{{GUIDE}}", visuals.guide_html(gh)).replace("{{CYCLE}}", visuals.cycle_svg()).replace("{{EFFORT}}", visuals.effort_html(EFFORT)), "contribute.html", ""),
         "quality.html": ("Quality and review — " + cfg["library_name"], "How skills are tested and approved.",

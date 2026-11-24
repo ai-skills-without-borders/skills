@@ -24,7 +24,18 @@ def e(s):
 
 
 def load():
-    return sorted((yaml.safe_load(p.read_text(encoding="utf-8")) for p in SRC.glob("*.yaml")), key=lambda w: w["order"])
+    """The workshops. Install steps aren't written in the workshop files: "tools: install" in a guide and
+    "points: install:<tool>" on a slide take them from guide/install.yaml, the one source for them."""
+    import install
+    ws = sorted((yaml.safe_load(p.read_text(encoding="utf-8")) for p in SRC.glob("*.yaml")), key=lambda w: w["order"])
+    for w in ws:
+        for g in w.get("guides") or []:
+            if g.get("tools") == "install":
+                g["tools"] = install.as_workshop_tools()
+        for s in w.get("slides") or []:
+            if isinstance(s.get("points"), str) and s["points"].startswith("install:"):
+                s["points"] = list(install.tool(s["points"].split(":", 1)[1])["short"])
+    return ws
 
 
 def validate(ws):

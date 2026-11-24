@@ -6,7 +6,7 @@
 
 A community library of *Agent Skills* — packaged instructions that teach an AI assistant to do a specific teaching task well: write learning objectives, build a PBL session, turn a paper into a pre-reading, build a syllabus, check a lesson plan, write exam questions.
 
-Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https://agentskills.io) format. The same folder works in Claude, ChatGPT (Business / Enterprise / Edu), Gemini Enterprise, Microsoft 365 Copilot (Cowork, Copilot Studio) and coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot). For personal plans without skill support, every skill also comes as a paste-in version for a GPT, Gem or Project.
+Each skill is a folder with a `SKILL.md` file in the open [Agent Skills](https://agentskills.io) format. The same skill works in Claude, ChatGPT (Business, Enterprise, Healthcare, Edu), Gemini, Microsoft 365 Copilot and Claude Code. For plans without skills, every skill also comes as a paste-in version that works in any assistant.
 
 > **New to skills?** Read [what a skill is and how to use one](guide/getting-started.md).
 
@@ -49,11 +49,12 @@ learning-objectives-designer ──► objectives table (O1, O2, …)
 
 ## Install
 
-See **[guide/install.md](guide/install.md)** for step-by-step instructions per tool. Quick versions:
+The install steps for each tool are on the [Skills page](https://ai-skills-without-borders.github.io/skills/skills.html#install), with links to each tool's help pages. They are written once, in [guide/install.yaml](guide/install.yaml), which also feeds the skill pages and the workshop handouts and slides.
 
+- **Claude, ChatGPT:** download the skill's ZIP and upload it in the tool's Skills settings.
+- **Gemini, Microsoft 365 Copilot:** download the skill's "ZIP for Gemini and Copilot" (these tools want `SKILL.md` at the top of the ZIP) and upload it.
 - **Claude Code:** `/plugin marketplace add ai-skills-without-borders/skills` then `/plugin install ai-skills-without-borders@ai-skills-without-borders`
-- **Claude.ai, ChatGPT, Gemini Enterprise, Copilot Cowork:** download a skill's ZIP from the [catalog site](https://ai-skills-without-borders.github.io/skills/) and upload it in the tool's Skills settings.
-- **Any assistant (free/personal plans):** use the skill's paste-in version as the instructions of a GPT, Gem or Project.
+- **Any assistant, any plan:** copy the skill's paste-in version into a new chat.
 
 ## Principles
 

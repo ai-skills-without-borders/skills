@@ -3,30 +3,27 @@
   const C = window.ASB || {};
   const GH = `https://github.com/${C.repo || ""}`;
   function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-  const TOOLS = {
-    claude: { name: "Claude", how: () => `<strong>Claude (any plan, the free plan included)</strong><ol><li>Open <b>Settings → Capabilities</b> and turn on <b>Code execution and file creation</b>.</li><li>Open <b>Customize → Skills</b>, click <b>+</b>, then <b>Create skill → Upload a skill</b>, and choose the ZIP.</li><li>Switch the skill on in the list.</li></ol>On Team and Enterprise plans an owner must enable skills first.` },
-    chatgpt: { name: "ChatGPT", how: () => `<strong>ChatGPT Business, Enterprise or Edu</strong><ol><li>In the sidebar open <b>Plugins → Skills</b>.</li><li>Click <b>Create → Upload from your computer</b>, and choose the ZIP.</li></ol>On Enterprise and Edu an admin must turn skills on first. On Free and Plus there are no skills: use “Try without installing”.` },
-    gemini: { name: "Gemini", how: () => `<strong>Gemini Enterprise</strong><ol><li>Open <b>Skills</b>, click <b>+</b>, then <b>Upload</b>, and choose the ZIP.</li></ol>In the regular Gemini app, use “Try without installing” and paste it into a Gem's instructions.` },
-    copilot: { name: "Copilot", how: () => `<strong>Microsoft 365 Copilot</strong><ol><li>Unzip the skill.</li><li>Put its folder in your OneDrive under <code>Documents/Cowork/Skills/</code>.</li><li>Start a new Cowork conversation.</li></ol>Needs a Microsoft 365 Copilot license.` },
-  };
+  // Tool names, for the "Tested in" lines. The install steps themselves are built into the Skills page from
+  // guide/install.yaml; this only shows the panel for the tool the reader chose, and remembers it.
+  const TOOLS = { claude: { name: "Claude" }, chatgpt: { name: "ChatGPT" }, gemini: { name: "Gemini" }, copilot: { name: "Copilot" } };
   let tool = "claude";
   try { tool = localStorage.getItem("asb-tool") || "claude"; } catch (e) {}
-  if (!TOOLS[tool]) tool = "claude";
   const listeners = [];
   function renderToolPicker() {
-    const box = document.getElementById("tools");
-    if (box) {
-      box.innerHTML = Object.entries(TOOLS).map(([k, t]) => `<button type="button" data-tool="${k}" aria-pressed="${k === tool}">${t.name}</button>`).join("");
-      box.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-        tool = b.dataset.tool;
-        try { localStorage.setItem("asb-tool", tool); } catch (e) {}
-        renderToolPicker();
-        listeners.forEach(f => f(tool));
-      }));
-    }
-    const inst = document.getElementById("install");
-    if (inst) inst.innerHTML = TOOLS[tool].how();
+    const panels = document.querySelectorAll("[data-tool-panel]");
+    if (!panels.length) return;
+    if (![...panels].some(p => p.dataset.toolPanel === tool)) tool = panels[0].dataset.toolPanel;
+    panels.forEach(p => { p.hidden = p.dataset.toolPanel !== tool; });
+    document.querySelectorAll(".inst-pick button").forEach(b => b.setAttribute("aria-pressed", b.dataset.tool === tool));
   }
+  document.addEventListener("click", ev => {
+    const b = ev.target.closest(".inst-pick button");
+    if (!b) return;
+    tool = b.dataset.tool;
+    try { localStorage.setItem("asb-tool", tool); } catch (e) {}
+    renderToolPicker();
+    listeners.forEach(f => f(tool));
+  });
   // Copy a skill's complete paste-in package (instructions and reference files) with an opening line,
   // so trying a skill needs no installing and no assembling.
   async function copyPackage(btn) {
@@ -176,3 +173,11 @@
   window.addEventListener("resize", setTopH);
   window.addEventListener("load", setTopH);
 })();
+
+// A link to a section further down (e.g. skills.html#install) can land in the wrong place when content above it
+// is filled in after the page loads. Jump again once everything is in.
+window.addEventListener("load", () => {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const t = id && document.getElementById(id);
+  if (t) setTimeout(() => t.scrollIntoView(), 60);
+});

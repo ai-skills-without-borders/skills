@@ -7,7 +7,8 @@ Usage:
     python tools/build.py             # validate, then build dist/ and docs/
 
 Builds:
-    dist/zips/<skill>.zip       skill folder for upload (Claude, ChatGPT, Gemini, Copilot)
+    dist/zips/<skill>.zip       skill folder at the top of the ZIP, for upload to Claude and ChatGPT
+    dist/zips/<skill>-gemini-copilot.zip   SKILL.md at the top of the ZIP, for Gemini and Microsoft 365 Copilot
     dist/paste/<skill>.md       single-file paste-in version for GPTs, Gems, Projects
     dist/catalog.json           machine-readable catalog of all skill cards
     docs/                       the multi-page website (see tools/website.py)
@@ -28,6 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import community  # noqa: E402
 import principles  # noqa: E402
 import workshops  # noqa: E402
+import install  # noqa: E402
 import forms  # noqa: E402
 import website  # noqa: E402  (tools/website.py)
 
@@ -146,16 +148,21 @@ def validate():
 
 
 def build_zip(card):
+    """Two ZIPs, because the tools disagree on the layout:
+    <skill>.zip has the skill folder at the top (Claude needs this);
+    <skill>-gemini-copilot.zip has SKILL.md at the top (Gemini and Microsoft 365 Copilot need this)."""
     d = card["_dir"]
-    out = DIST / "zips" / f"{d.name}.zip"
-    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        for p in sorted(d.rglob("*")):
-            if p.is_file() and not (set(p.parts) & SKIP_IN_ZIP):
-                # Fixed timestamps: the same skill always gives the same ZIP, so builds don't churn the repo.
-                info = zipfile.ZipInfo(str(Path(d.name) / p.relative_to(d)), date_time=(2026, 1, 1, 0, 0, 0))
-                info.compress_type = zipfile.ZIP_STORED  # no compression: identical bytes on every machine
+    files = [p for p in sorted(d.rglob("*")) if p.is_file() and not (set(p.parts) & SKIP_IN_ZIP)]
+    outs = []
+    for out, top in ((DIST / "zips" / f"{d.name}.zip", Path(d.name)), (DIST / "zips" / f"{d.name}-gemini-copilot.zip", Path())):
+        with zipfile.ZipFile(out, "w", zipfile.ZIP_STORED) as z:
+            for p in files:
+                # Fixed timestamps and no compression: the same skill gives identical bytes on every machine.
+                info = zipfile.ZipInfo(str(top / p.relative_to(d)), date_time=(2026, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_STORED
                 z.writestr(info, p.read_bytes())
-    return out
+        outs.append(out)
+    return outs[0]
 
 
 def build_paste(card, cfg):
@@ -190,6 +197,7 @@ def public_card(card):
     if card.get("_variant"):
         c["variant_institution_dir"] = card["_dir"].parent.name
     c["zip"] = f"downloads/{card['name']}.zip"
+    c["zip_flat"] = f"downloads/{card['name']}-gemini-copilot.zip"
     c["paste"] = f"paste/{card['name']}.md"
     c["source_url"] = None
     return c
@@ -221,7 +229,7 @@ def main():
         added = community.sync_skill_contributions([c for c in cards if not c["_variant"]])
         if added:
             print("recorded on the community page: " + ", ".join(added))
-    errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates() + workshops.validate(workshops.load())
+    errors += community.validate([c["name"] for c in cards]) + community.validate_cards(cards) + community.validate_templates() + workshops.validate(workshops.load()) + install.validate()
     for w in warnings:
         print(f"warning: {w}")
     for e in errors:
